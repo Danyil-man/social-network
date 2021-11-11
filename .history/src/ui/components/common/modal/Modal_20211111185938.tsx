@@ -1,4 +1,5 @@
 import React, { FC, useState } from "react";
+//import { modalState } from "../../../../core/store/redux/slice/modalSlica";
 import m from "./Modal.module.scss"
 
 interface PropsModal {
