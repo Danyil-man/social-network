@@ -1,0 +1,92 @@
+
+.wrapper{
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+.media{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.followers{
+    p{
+        opacity: 0.5;
+    }
+}
+
+.avabtn{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.following{
+    p{
+        opacity: 0.5;
+    }
+}
+
+.description{
+    h6{
+        font-size: 16px;
+        font-weight: 500;
+        padding-bottom: 15px;
+    }
+    span{
+        opacity: 0.4;
+    }
+    p{
+        font-size: 12px;
+        opacity: 0.6;
+    }
+}
+
+.navigation{
+    padding-top: 25px;
+
+    .editProf{
+        background-color: #fff;
+        border-radius: 12px;
+        color: #333;
+        border: none;
+        padding: 9px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 16px;
+        transition: .2s ease-in-out;
+    }
+
+    .editProf:hover{
+        color: #fff;
+        background-color: #333;
+    }
+
+    .NewPost{
+        border: none;
+        background-color: #0087FF;
+        color: #fff;
+        border-radius: 12px;
+        padding: 9px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 16px;
+        margin-left: 12px;
+        transition: .2s ease-in-out;
+    }
+
+    .NewPost:hover{
+        background-color: #fff;
+        color: #0087FF;
+    }
+}
+
+.privacy{
+    margin-top: 32px;
+    font-size: 10px;
+    opacity: 0.5;
+    color: #777;
+
+}
