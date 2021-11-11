@@ -1,0 +1,157 @@
+
+.form{
+    flex-basis: 50%;
+    max-width: 460px;
+    padding-left: 100px;
+    
+}
+
+.form__content{
+    text-align: center;
+}
+
+.form__item{
+    padding-bottom: 30px;
+    width: 100%;
+    text-align: start;
+    input{
+        width: 100%;
+        padding: 14px;
+        border-radius: 12px;
+        border: 1px solid #C9CAD1;
+    }
+}
+
+.label{
+    font-size: 12px;
+    text-align: start;
+}
+
+.Htext{
+    font-size: 48px;
+    color: #010101;
+    font-weight: bold;
+    padding-bottom: 50px;
+    text-align: start;
+}
+
+.form__button{
+    padding-bottom: 20px;
+}
+
+.buttonContinue{
+    
+    display: block;
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    background-color: #0087FF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    }
+    &:hover{
+        background-color: #0873d1;
+        transition: .2s linear;
+    
+}
+
+.question{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 12px;
+    a{
+        text-decoration: none;
+        padding-left: 15px;
+    }
+}
+
+.input{
+    padding-top: 5px;
+}
+
+@media screen and (max-width: 925px) {
+    .form{
+        width: 100%;
+        flex-basis: 100%;
+        padding-left: 0px;
+    }
+    
+    .form__content{
+        text-align: center;
+    }
+    
+    .form__item{
+        padding-bottom: 20px;
+        width: 100%;
+        text-align: start;
+        input{
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid #C9CAD1;
+        }
+    }
+    
+    .label{
+        font-size: 12px;
+        text-align: start;
+    }
+    
+    .Htext{
+        font-size: 42px;
+    }
+    
+    .form__button{
+        padding-bottom: 20px;
+    }
+
+    
+}
+
+@media screen and (max-width: 500px){
+    
+    .form{
+        width: 100%;
+        flex-basis: 100%;
+    }
+    
+    .form__content{
+        width: 100%;
+        text-align: center;
+    }
+    
+    .form__item{
+        padding-bottom: 20px;
+        width: 100%;
+        text-align: start;
+        input{
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid #C9CAD1;
+        }
+    }
+    
+    .label{
+        font-size: 12px;
+        text-align: start;
+    }
+    
+    .Htext{
+        font-size: 32px;
+    }
+
+    .mainfooter{
+        position: absolute;
+        bottom: 0;
+        padding: 15px;
+        left: 0;
+        width: 100%;
+    }
+
+}

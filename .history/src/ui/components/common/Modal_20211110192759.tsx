@@ -1,0 +1,15 @@
+import React, { useState } from "react";
+import { ModuleName } from "typescript";
+import { modalState } from "../../../core/store/redux/slice/modalSlica";
+
+const Modal = () => {
+    const [isModal, setIsModal] = useState<ModuleName>(modalState)
+    const toggleModal = () => setIsModal(wasModal => !wasModal)
+    return(
+        <div>
+           <h1>I am Modal</h1>
+        </div>
+    )
+}
+
+export default Modal;

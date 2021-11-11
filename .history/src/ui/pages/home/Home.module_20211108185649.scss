@@ -1,0 +1,33 @@
+//Functin Elements
+.btnLogOut{
+    background: none;
+    font-size: 12px;
+    color: #FB766E;
+    border-color: 1px #FB766E;
+    padding: 10px 20px;
+}
+
+//Content
+.wrapper{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.content{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 920px;
+}
+
+.lefside{
+    flex-basis: 50%;
+    max-width: 560px;
+}
+
+.rightside{
+    flex-basis: 50%;
+    max-width: 305px;
+}
