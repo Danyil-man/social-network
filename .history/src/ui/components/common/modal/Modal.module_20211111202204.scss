@@ -1,0 +1,90 @@
+.background {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    width: 500px;
+    height: 500px;
+    position: relative;
+    border-radius: 12px;
+    background-color: #f7f4f4;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: ;
+    padding: 25px;
+    .title{
+        display: inline-block;
+        text-align: center;
+        margin: 10px;
+    }
+    .body {
+        font-size: 16px;
+        text-align: center;
+      }
+      .footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding-bottom: 15px;
+        button {
+          width: 150px;
+          height: 45px;
+          margin: 10px;
+          border: none;
+          background-color: #0087FF;
+          color: white;
+          border-radius: 8px;
+          font-size: 20px;
+          cursor: pointer;
+        }
+        button:hover{
+          background-color: #fff;
+          color: #0087FF;
+          transition: .2s ease-in-out;
+        }
+      }
+  }
+
+  .descriptionblock{
+    margin-bottom: 15px;
+    input{
+      border: none;
+      background: none;
+      font-size: 16px;
+      outline: none;
+    }
+  }
+
+  .fileblock{
+    display: flex;
+    justify-content: center;
+    margin:  0 auto;
+    input{
+      margin-top: 10px;
+    }
+  }
+  
+  .CloseBtn {
+    display: flex;
+    justify-content: end;
+    button {
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: #0087FF;
+        cursor: pointer;
+    }
+    button:hover{
+      opacity: 0.7;
+      transition: .2s ease-in-out;
+    }
+  }
