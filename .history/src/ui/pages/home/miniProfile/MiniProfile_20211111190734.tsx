@@ -3,12 +3,11 @@ import mProf from "./MiniProfile.module.scss";
 import avatar from "../../../../public/images/MiniProf/avatar.png";
 import { useTranslation } from "react-i18next";
 import Modal from "../../../components/common/modal/Modal";
-import { useAuth } from "../../../../core/hooks/useAuth";
 
 const MiniProfile = () =>{
     const {t} = useTranslation();
     const [isModal, setIsModal] = useState(false)
-    const { email} = useAuth();
+    const { isAuth, email} = useAuth();
     //const toggleModal = () => setIsModal(wasModal => !wasModal)
     return(
         <div className={mProf.wrapper}>
@@ -29,7 +28,7 @@ const MiniProfile = () =>{
             </div>
 
             <div className={mProf.description}>
-                <h6> {email} <span>-</span> Photographer</h6>
+                <h6>Alexander Sokolov <span>-</span> Photographer</h6>
                 <p>Like to travel and shoot cinematic and b/w photos <br /> Tools - Capture One for Raw  </p>
 
             </div>

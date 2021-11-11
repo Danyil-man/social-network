@@ -29,7 +29,7 @@ const MiniProfile = () =>{
             </div>
 
             <div className={mProf.description}>
-                <h6> {email} <span>-</span> Photographer</h6>
+                <h6>Alexander Sokolov <span>-</span> Photographer</h6>
                 <p>Like to travel and shoot cinematic and b/w photos <br /> Tools - Capture One for Raw  </p>
 
             </div>
