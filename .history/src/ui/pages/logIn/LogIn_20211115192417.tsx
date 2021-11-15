@@ -8,7 +8,6 @@ import Form from "../../components/common/form/Form";
 
 import { setUser } from "../../../core/store/redux/slice/userSlice";
 import { useTranslation } from "react-i18next";
-import { auth } from "../../../firebase";
 
 
 const LogIn = () => {

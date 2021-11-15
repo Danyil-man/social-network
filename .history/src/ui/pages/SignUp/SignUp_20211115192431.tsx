@@ -7,7 +7,6 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { setUser } from '../../../core/store/redux/slice/userSlice';
 import Form from "../../components/common/form/Form";
 import { useTranslation } from "react-i18next";
-import { auth } from "../../../firebase";
 
 const SignUp = () => {
     const { t } = useTranslation();
