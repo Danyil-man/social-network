@@ -1,0 +1,45 @@
+.wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container{
+      width: 100%;
+      max-width: 1080px;
+      height: 680px;
+      background-color: #fff;
+      position: relative;
+      border-radius: 12px;
+      background-color: #f7f4f4;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      display: flex;
+      overflow: hidden;
+      z-index: 1;
+
+      .postImg{
+          flex-basis: 50%;
+          background-color: grey;
+      }
+
+      .interaction{
+        flex-basis: 50%;
+      }
+      .CloseBtn{
+          
+        .titleCloseBtn{
+            border: none;
+            background: none;
+            i{
+                font-size: 35px;
+            }
+        }
+      }
+  }
+
