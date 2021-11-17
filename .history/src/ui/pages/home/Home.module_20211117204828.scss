@@ -26,22 +26,7 @@
   .rightside {
     display: none;
   }
-  .content {
-    justify-content: center;
-  }
   .lefside {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .rightside {
-    display: none;
-  }
-  .content {
-    justify-content: center;
-  }
-  .lefside {
-    width: 100%;
+    flex-basis: 100%;
   }
 }

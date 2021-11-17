@@ -34,12 +34,12 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1024px) {
   .rightside {
     display: none;
   }
   .content {
-    justify-content: center;
+    //justify-content: center;
   }
   .lefside {
     width: 100%;

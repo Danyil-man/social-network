@@ -17,12 +17,7 @@
 
 .item {
   margin-right: 25px;
-}
-
-@media screen and (max-width: 700px) {
-  .item {
-    img {
-      width: 54px;
-    }
+  img {
+    width: 40;
   }
 }

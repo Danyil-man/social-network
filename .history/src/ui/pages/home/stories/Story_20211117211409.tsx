@@ -9,7 +9,7 @@ const Story = (props: StoryProps) => {
     return (
         <div>
             <div className={stories.item}>
-                <img width={64} src={props.img} alt="story" />
+                <img src={props.img} alt="story" />
             </div>
         </div>
 

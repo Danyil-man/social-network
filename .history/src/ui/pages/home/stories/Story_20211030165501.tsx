@@ -1,18 +1,18 @@
 import React from "react";
 import stories from "./Stories.module.scss";
 
-interface StoryProps {
+interface StoryProps{
     img: string;
 }
 
 const Story = (props: StoryProps) => {
-    return (
-        <div>
+    return(
+        <>
             <div className={stories.item}>
-                <img width={64} src={props.img} alt="story" />
+            <img src={props.img} alt="story" />
             </div>
-        </div>
-
+        </>
+        
     )
 }
 

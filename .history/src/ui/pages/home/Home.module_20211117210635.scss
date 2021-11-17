@@ -27,18 +27,23 @@
     display: none;
   }
   .content {
+    width: 100%;
+    display: flex;
     justify-content: center;
+    margin: 0 25px;
   }
   .lefside {
     width: 100%;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1024px) {
   .rightside {
     display: none;
   }
   .content {
+    width: 100%;
+    display: flex;
     justify-content: center;
   }
   .lefside {

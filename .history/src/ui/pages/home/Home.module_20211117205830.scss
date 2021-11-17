@@ -27,18 +27,8 @@
     display: none;
   }
   .content {
-    justify-content: center;
-  }
-  .lefside {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .rightside {
-    display: none;
-  }
-  .content {
+    max-width: 100%;
+    display: flex;
     justify-content: center;
   }
   .lefside {

@@ -27,14 +27,15 @@
     display: none;
   }
   .content {
-    justify-content: center;
+    //justify-content: center;
+    margin: 0 25px;
   }
   .lefside {
     width: 100%;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1024px) {
   .rightside {
     display: none;
   }

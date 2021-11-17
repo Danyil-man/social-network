@@ -20,7 +20,8 @@
   display: flex;
   border-radius: 32px;
   overflow: hidden;
-  margin: 0 25px;
+  position: relative;
+
   .postImgBlock {
     flex-basis: 55%;
     .postImg {
