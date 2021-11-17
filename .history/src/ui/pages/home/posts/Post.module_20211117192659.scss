@@ -1,0 +1,123 @@
+.postItem {
+  width: 100%;
+  margin-top: 50px;
+}
+
+.mainImg {
+  cursor: pointer;
+  img {
+    border-radius: 48px;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+}
+
+.leftHeader {
+  display: flex;
+  align-items: center;
+}
+
+.rightHeader {
+  button {
+    border: none;
+    cursor: pointer;
+  }
+  i {
+    font-size: 18px;
+    opacity: 0.4;
+  }
+}
+
+.content_info {
+  padding-left: 15px;
+  .username {
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .status {
+    opacity: 0.5;
+    font-size: 12px;
+  }
+}
+
+.interaction {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding: 0px 10px 0px 10px;
+
+  .leftInteracion {
+    display: flex;
+    .likes {
+      i {
+        margin-right: 10px;
+        cursor: pointer;
+      }
+      display: flex;
+      align-items: center;
+      margin-right: 45px;
+    }
+    .comments {
+      i {
+        padding-right: 10px;
+        cursor: pointer;
+      }
+      display: flex;
+      align-items: center;
+    }
+  }
+  .rightIneraction {
+    button {
+      background: none;
+      cursor: pointer;
+      border: none;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      font-weight: bold;
+      i {
+        padding-left: 10px;
+        font-size: 18px;
+      }
+    }
+    button:hover {
+      i {
+        transform: translateX(5px);
+        transition: 0.4s ease-in-out;
+      }
+    }
+  }
+}
+
+.text {
+  padding-top: 20px;
+  font-weight: 700;
+  opacity: 0.5;
+  font-size: 16px;
+}
+
+.commentsPost {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  align-items: center;
+  input {
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 14px;
+  }
+  button {
+    background: none;
+    border: none;
+    color: #0087ff;
+    font-weight: 600;
+    font-size: 16px;
+  }
+}
