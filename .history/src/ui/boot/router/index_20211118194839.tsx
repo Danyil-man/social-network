@@ -4,7 +4,7 @@ import IdxHome from "../../pages/home";
 import IdxLogIn from "../../pages/logIn";
 import IdxSignUp from "../../pages/signUp";
 import { BrowserRouter } from 'react-router-dom';
-import IdxProfile from "../../pages/home/profile";
+import IdxProfile from "../../pages/profile";
 
 const Routing = () => {
 

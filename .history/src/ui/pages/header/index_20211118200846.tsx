@@ -9,7 +9,7 @@ import { useState } from "react";
 import HttpApi from 'i18next-http-backend'
 import { useAuth } from "../../../core/hooks/useAuth";
 import { Link } from "react-router-dom";
-import IdxProfile from "../home/profile";
+import IdxProfile from "../profile";
 
 interface HeaderProps {
     photo: string;
@@ -69,6 +69,7 @@ const Header = (props: HeaderProps) => {
                     {isAuth && (
                         <div className={h.homeBtnBlock}>
                             <Link to='/profile'>Home</Link>
+                            <button onClick={() => IdxProfile}>Home</button>
                         </div>
                     )}
                     <div className={h.dropdown}>
