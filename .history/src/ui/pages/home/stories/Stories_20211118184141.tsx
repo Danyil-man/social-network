@@ -34,9 +34,6 @@ let storiesArr = [
     {
         img: item3
     },
-    {
-        img: item5
-    },
 ]
 
 const Stories = () => {

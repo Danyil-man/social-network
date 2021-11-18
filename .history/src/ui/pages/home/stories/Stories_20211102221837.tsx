@@ -31,18 +31,12 @@ let storiesArr = [
     {
         img: item6
     },
-    {
-        img: item3
-    },
-    {
-        img: item5
-    },
 ]
 
 const Stories = () => {
     return (
         <div className={stories.wrapper}>
-            {storiesArr.map(story => <Story img={story.img} />)}
+           {storiesArr.map( story => <Story img = {story.img} /> )}
         </div>
     )
 }
