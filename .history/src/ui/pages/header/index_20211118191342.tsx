@@ -8,7 +8,6 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import { useState } from "react";
 import HttpApi from 'i18next-http-backend'
 import { useAuth } from "../../../core/hooks/useAuth";
-import { Link } from "react-router-dom";
 
 interface HeaderProps {
     photo: string;
@@ -67,7 +66,7 @@ const Header = (props: HeaderProps) => {
                 <div className={h.right__content}>
                     {isAuth && (
                         <div className={h.homeBtnBlock}>
-                            <Link to='/profile'>Home</Link>
+                            <button>HOME</button>
                         </div>
                     )}
                     <div className={h.dropdown}>

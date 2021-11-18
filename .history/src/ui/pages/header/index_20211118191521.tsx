@@ -67,7 +67,7 @@ const Header = (props: HeaderProps) => {
                 <div className={h.right__content}>
                     {isAuth && (
                         <div className={h.homeBtnBlock}>
-                            <Link to='/profile'>Home</Link>
+                            <Link to='/profile'>HOME</Link>
                         </div>
                     )}
                     <div className={h.dropdown}>

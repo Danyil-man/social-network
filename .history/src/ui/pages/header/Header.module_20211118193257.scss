@@ -48,28 +48,23 @@
   align-items: center;
 
   .homeBtnBlock {
-    margin-right: 30px;
+    text-align: center;
+    align-items: center;
+    margin-right: 15px;
+    background-color: #010101;
+    border-radius: 12px;
+    padding: 10px 20px;
     a {
       text-decoration: none;
-      padding: 10px 20px;
       color: #fff;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 600;
-      background-color: #010101;
-      border-radius: 12px;
-      text-align: center;
-      &:hover {
-        color: #010101;
-        background-color: #e5e5e5;
-        border: 1px solid #010101;
-        transition: 0.2s ease-in-out;
-      }
     }
   }
 }
 
 .status__content {
-  margin-left: 80px;
+  margin-left: 100px;
   text-align: center;
   .miniava {
     cursor: pointer;
