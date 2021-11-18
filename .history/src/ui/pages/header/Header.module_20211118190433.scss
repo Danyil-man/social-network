@@ -100,7 +100,6 @@
   border-radius: 0px 0px 10px 10px;
   p {
     font-size: 14px;
-    font-weight: bold;
   }
 }
 
@@ -112,17 +111,5 @@
 @media screen and (max-width: 700px) {
   .content {
     padding: 15px 44px;
-  }
-
-  .dropdowncontent {
-    width: 54px;
-    margin-left: -5px;
-  }
-
-  .dropdownitem {
-    p {
-      font-size: 12px;
-      font-weight: bold;
-    }
   }
 }
