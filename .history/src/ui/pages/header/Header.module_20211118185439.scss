@@ -68,6 +68,8 @@
   position: absolute;
   background-color: #fff;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
   border-radius: 0px 0px 0px 10px;
   padding: 7px;
   p {
@@ -82,7 +84,6 @@
 
 .dropdowncontent {
   width: 64px;
-  margin-left: -10px;
   top: 88px;
   position: absolute;
   background-color: #fff;

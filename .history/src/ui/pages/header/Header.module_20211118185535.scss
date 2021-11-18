@@ -78,11 +78,12 @@
 
 .dropwownbtn {
   cursor: pointer;
+  display: flex;
+  justify-content: center;
 }
 
 .dropdowncontent {
   width: 64px;
-  margin-left: -10px;
   top: 88px;
   position: absolute;
   background-color: #fff;

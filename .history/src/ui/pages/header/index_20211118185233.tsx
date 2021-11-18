@@ -47,7 +47,7 @@ const Header = (props: HeaderProps) => {
     const languages = [
         {
             code: 'en',
-            name: 'EN',
+            name: 'English',
             country_code: 'en',
         },
         {
@@ -73,7 +73,7 @@ const Header = (props: HeaderProps) => {
                                 {languages.map(({ code, name, country_code }) => (
                                     <div className={h.dropback} key={country_code}>
                                         <button className={h.dropdownitem} onClick={() => i18next.changeLanguage(code)}>
-                                            <b>{name}</b>
+                                            {name}
                                         </button>
                                     </div>
                                 ))}
