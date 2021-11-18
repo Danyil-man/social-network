@@ -20,7 +20,6 @@ const IdxProfile = () => {
         }).catch((error) => alert(error))
     }
     let status = `${t('signedas')} ${email}`;
-    let name = email;
     return isAuth ? (
         <div>
             <Header
@@ -28,14 +27,9 @@ const IdxProfile = () => {
                 status={status}
                 LogOut={LogOut}
             />
-            <Profile
-                photo={headerAva}
-                name={name}
-            />
 
         </div>
     ) : (
-
         <Redirect to="/login" />
     )
 }

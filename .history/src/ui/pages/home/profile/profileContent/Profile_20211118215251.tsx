@@ -15,15 +15,8 @@ const Profile = (props: ProfileProps) => {
                         <div className={profile.photoBlock}>
                             <img width={115} src={props.photo} alt="profile__photo" />
                         </div>
-                        <div className={profile.description}>
-                            <div className={profile.headerDescription}>
-                                <h4>{props.name}</h4>
-                                <p>Photographer</p>{/* will be props  */}
-                            </div>
-                            <div className={profile.lifeDescription}>
-                                <p>Quasi facere reiciendis rerum tempore ea magni dignissimos quia, quo neque. Lorem ipsum dolor sit amet consectetur adipisicing elit. At deserunt amet quos ipsum, eum incidunt.</p>
-                            </div>
-                        </div>
+                        <p>{props.name}</p>
+                        <p>Loremipsum dolor sit amet consectetur adipisicing elit. Delectus assumenda, expedita doloribus distinctio ex cupiditate?</p>
                     </div>
                     <div className={profile.rightSide}>
                         Followers/Statistics

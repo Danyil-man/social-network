@@ -1,0 +1,19 @@
+.wrapper {
+  padding-top: 152px;
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  width: 100%;
+  max-width: 1080px;
+  height: 120px;
+  //overflow: hidden;
+}
+
+.mainHeader {
+  width: 100%;
+  img {
+    max-width: 100%;
+  }
+}

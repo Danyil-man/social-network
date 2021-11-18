@@ -4,7 +4,7 @@ import { removeUser } from '../../../../core/store/redux/slice/userSlice';
 import { Redirect } from "react-router";
 import { useAppDispatch } from "../../../../core/hooks/redux-hooks";
 import { useAuth } from "../../../../core/hooks/useAuth";
-import headerAva from "../../../../public/images/MiniProf/header__ava.png";
+import headerAva from "../../../../public/images/MiniProf/header__ava.jpg";
 import { useTranslation } from 'react-i18next';
 import { auth } from '../../../../firebase';
 import Profile from "./profileContent/Profile";
