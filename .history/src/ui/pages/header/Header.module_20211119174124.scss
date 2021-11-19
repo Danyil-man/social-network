@@ -1,0 +1,148 @@
+//Func Components
+.btnLogOut {
+  width: 100%;
+  background: none;
+  border: none;
+  font-size: 12px;
+  color: #fb766e;
+  border: 1px solid #fb766e;
+  border-radius: 12px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  &:hover {
+    background-color: #fb766e;
+    color: white;
+  }
+}
+//Content
+
+.header {
+  width: 100%;
+  position: fixed;
+  background-color: #fff;
+  z-index: 1;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 64px;
+  height: 88px;
+  box-shadow: 0 10px 10px -8px #e5e5e5;
+}
+.language {
+  cursor: pointer;
+}
+
+.dropdown {
+  //flex-basis: 50%;
+  //position: relative;
+  text-align: center;
+  display: inline-block;
+}
+
+.right__content {
+  display: flex;
+  align-items: center;
+
+  // .homeBtnBlock {
+  //   margin-right: 30px;
+  //   a {
+  //     text-decoration: none;
+  //     padding: 10px 20px;
+  //     color: #fff;
+  //     font-size: 14px;
+  //     font-weight: 600;
+  //     background-color: #010101;
+  //     border-radius: 12px;
+  //     text-align: center;
+  //     &:hover {
+  //       color: #010101;
+  //       background-color: #e5e5e5;
+  //       border: 1px solid #010101;
+  //       transition: 0.2s ease-in-out;
+  //     }
+  //   }
+  // }
+}
+
+.status__content {
+  margin-left: 80px;
+  text-align: center;
+  .miniava {
+    cursor: pointer;
+    img:hover {
+      border-radius: 50px;
+      transition: 0.6s ease-in-out;
+    }
+  }
+}
+
+.status__dropdown {
+  width: 100%;
+  max-width: 160px;
+  right: 0;
+  top: 88px;
+  position: absolute;
+  background-color: #fff;
+  font-weight: bold;
+  border-radius: 0px 0px 0px 10px;
+  padding: 7px;
+  p {
+    padding-bottom: 10px;
+    font-size: 14px;
+  }
+}
+
+.dropwownbtn {
+  cursor: pointer;
+}
+
+.dropdowncontent {
+  width: 64px;
+  margin-left: -10px;
+  top: 88px;
+  position: absolute;
+  background-color: #fff;
+  font-weight: bold;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.dropdownitem {
+  width: 100%;
+  padding: 5px;
+  cursor: pointer;
+  transition: 0.2s linear;
+  border: none;
+  background: none;
+  border-radius: 0px 0px 10px 10px;
+  p {
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+
+.dropdownitem:hover {
+  color: #fff;
+  background-color: black;
+}
+
+@media screen and (max-width: 700px) {
+  .content {
+    padding: 15px 44px;
+  }
+
+  .dropdowncontent {
+    width: 54px;
+    margin-left: -5px;
+  }
+
+  .dropdownitem {
+    p {
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+}
