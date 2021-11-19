@@ -49,8 +49,8 @@ const Post = ({ post }: PostProp) => {
                 <div className={style.leftHeader}>
                     <img width={40} src={postAva} alt="postHeader" />
                     <div className={style.content_info}>
-                        <p className={style.username}> {username} </p>
-                        <p className={style.status}>{status}</p>
+                        <p className={post.username}> {username} </p>
+                        <p className={post.status}>{status}</p>
                     </div>
                 </div>
 

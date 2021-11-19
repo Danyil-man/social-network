@@ -10,10 +10,12 @@ interface PostProp {
 
 
 interface PostData {
+    id: string;
     username: string;
     postAva: string;
     postImg: string;
     postDescription: string;
+    nav: string;
     status: string;
     likes: number | undefined;
     comments: number | undefined;
@@ -32,10 +34,12 @@ const Post = ({ post }: PostProp) => {
     }
 
     const {
+        id,
         username,
         postAva,
         postImg,
         postDescription,
+        nav,
         status,
         likes,
         comments,
@@ -49,8 +53,8 @@ const Post = ({ post }: PostProp) => {
                 <div className={style.leftHeader}>
                     <img width={40} src={postAva} alt="postHeader" />
                     <div className={style.content_info}>
-                        <p className={style.username}> {username} </p>
-                        <p className={style.status}>{status}</p>
+                        <p className={post.username}> {username} </p>
+                        <p className={post.status}>{status}</p>
                     </div>
                 </div>
 

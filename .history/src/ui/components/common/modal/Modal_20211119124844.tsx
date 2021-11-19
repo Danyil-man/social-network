@@ -33,23 +33,23 @@ const Modal: FC<PropsModal> = ({ closeModal }) => {
             }
         )
 
-        // const documentRef = await addDoc(collection(db, 'posts'), {
-        //     profImg: data.image,
-        //     description: descriptionRef.current,
-        //     time: serverTimestamp(),
-        // })
+        const documentRef = await addDoc(collection(db, 'posts'), {
+            profImg: data.image,
+            description: descriptionRef.current,
+            time: serverTimestamp(),
+        })
 
-        // console.log("NEW DOC ADDED WITH ID: ", documentRef.id);
+        console.log("NEW DOC ADDED WITH ID: ", documentRef.id);
 
-        // await uploadString(imageRef, file, "data_url").then(async snapshot => {
-        //     const downloadURL = await getDownloadURL(imageRef);
+        await uploadString(imageRef, file, "data_url").then(async snapshot => {
+            const downloadURL = await getDownloadURL(imageRef);
 
-        //     await updateDoc(doc(db, 'posts', documentRef.id), {
-        //         image: downloadURL
-        //     })
-        // })
+            await updateDoc(doc(db, 'posts', documentRef.id), {
+                image: downloadURL
+            })
+        })
 
-        // setFile(null)
+        setFile(null)
     }
 
     const addPostImg = (e: any) => {

@@ -13,8 +13,7 @@
 
 .container {
   width: 100%;
-  min-height: 450px;
-  max-height: 680px;
+  min-height: 680px;
   max-width: 1080px;
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -36,9 +35,6 @@
   .interaction {
     flex-basis: 45%;
     background-color: #fff;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
 
     .header {
       padding: 20px 30px;

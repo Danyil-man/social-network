@@ -11,11 +11,9 @@ const Routing = () => {
 
     return (
         <>
-
+            <Header />
             <BrowserRouter>
-                <Header photo={""} status={""} LogOut={undefined} />
                 <Switch>
-
                     <Route exact path='/' component={IdxHome} />
                     <Route exact path='/login' component={IdxLogIn} />
                     <Route exact path='/signup' component={IdxSignUp} />
