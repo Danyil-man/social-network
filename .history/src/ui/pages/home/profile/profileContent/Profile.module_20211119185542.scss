@@ -45,9 +45,6 @@
 
   .rightSide {
     flex-basis: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 
     .mediasubscriptions {
       display: flex;
@@ -64,46 +61,6 @@
 
       .followersBlock {
         margin-right: 80px;
-      }
-    }
-
-    .navigation {
-      display: flex;
-      justify-content: end;
-      .editProf {
-        background-color: #fff;
-        margin-right: 30px;
-        border-radius: 12px;
-        color: #333;
-        border: none;
-        padding: 9px;
-        cursor: pointer;
-        font-weight: 600;
-        font-size: 16px;
-        transition: 0.2s ease-in-out;
-      }
-
-      .editProf:hover {
-        color: #fff;
-        background-color: #333;
-      }
-
-      .NewPost {
-        border: none;
-        background-color: #0087ff;
-        color: #fff;
-        border-radius: 12px;
-        padding: 9px;
-        cursor: pointer;
-        font-weight: 600;
-        font-size: 16px;
-        margin-left: 12px;
-        transition: 0.2s ease-in-out;
-      }
-
-      .NewPost:hover {
-        background-color: #fff;
-        color: #0087ff;
       }
     }
   }

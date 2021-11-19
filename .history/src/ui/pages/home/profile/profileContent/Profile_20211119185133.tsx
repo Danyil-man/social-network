@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
+import React from "react";
 import profile from "./Profile.module.scss";
 
 interface ProfileProps {
@@ -7,10 +6,7 @@ interface ProfileProps {
     name: any;
 }
 
-
 const Profile = (props: ProfileProps) => {
-    const { t } = useTranslation();
-    const [isModal, setIsModal] = useState(false)
     return (
         <div className={profile.wrapper}>
             <div className={profile.content}>
@@ -31,18 +27,14 @@ const Profile = (props: ProfileProps) => {
                     </div>
                     <div className={profile.rightSide}>
                         <div className={profile.mediasubscriptions}>
-                            <div className={profile.followersBlock}>
+                            <div>
                                 <b>1,1K</b>
                                 <p>Followers</p>
                             </div>
-                            <div className={profile.followingBlock}>
+                            <div>
                                 <b>448</b>
                                 <p>Following</p>
                             </div>
-                        </div>
-                        <div className={profile.navigation}>
-                            <button className={profile.editProf}>{t('editProf')}</button>
-                            <button onClick={() => setIsModal(true)} className={profile.NewPost}>{t('newPost')}</button>
                         </div>
                     </div>
                 </div>

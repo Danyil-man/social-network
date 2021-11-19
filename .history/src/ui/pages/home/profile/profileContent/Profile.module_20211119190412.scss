@@ -45,9 +45,10 @@
 
   .rightSide {
     flex-basis: 40%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    flex: 1;
 
     .mediasubscriptions {
       display: flex;
@@ -68,11 +69,8 @@
     }
 
     .navigation {
-      display: flex;
-      justify-content: end;
       .editProf {
         background-color: #fff;
-        margin-right: 30px;
         border-radius: 12px;
         color: #333;
         border: none;

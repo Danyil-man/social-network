@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import profile from "./Profile.module.scss";
 
@@ -10,7 +10,6 @@ interface ProfileProps {
 
 const Profile = (props: ProfileProps) => {
     const { t } = useTranslation();
-    const [isModal, setIsModal] = useState(false)
     return (
         <div className={profile.wrapper}>
             <div className={profile.content}>
