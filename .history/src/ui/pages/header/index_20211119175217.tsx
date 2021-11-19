@@ -93,11 +93,9 @@ const Header = (props: HeaderProps) => {
                                     <div className={h.profile__navigation}>
                                         <Link to='/profile'>Profile</Link>
                                     </div>
-                                    <div className={h.profile__footer}>
-                                        <button className={h.btnLogOut} onClick={() => props.LogOut()}>
-                                            Log out
-                                        </button>
-                                    </div>
+                                    <button className={h.btnLogOut} onClick={() => props.LogOut()}>
+                                        Log out
+                                    </button>
                                 </div>
                             )}
                         </div>

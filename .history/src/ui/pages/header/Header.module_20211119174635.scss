@@ -5,7 +5,6 @@
   border: none;
   font-size: 12px;
   color: #fb766e;
-  font-weight: 500;
   border: 1px solid #fb766e;
   border-radius: 12px;
   padding: 10px 20px;
@@ -79,9 +78,6 @@
       transition: 0.6s ease-in-out;
     }
   }
-  .profile__footer {
-    margin-top: 10px;
-  }
 }
 
 .status__dropdown {
@@ -89,33 +85,14 @@
   max-width: 160px;
   right: 0;
   top: 88px;
-  position: absolute;
+
   background-color: #fff;
   font-weight: bold;
   border-radius: 0px 0px 0px 10px;
   padding: 7px;
   p {
+    padding-bottom: 10px;
     font-size: 14px;
-  }
-  .profile__navigation {
-    margin-top: 10px;
-    a {
-      display: block;
-      width: 100%;
-      padding: 5px 0px;
-      font-size: 12px;
-      font-weight: 500;
-      background-color: #fff;
-      text-decoration: none;
-      border: 1px solid #010101;
-      border-radius: 12px;
-      color: #010101;
-      transition: 0.2s ease-in-out;
-      &:hover {
-        color: #fff;
-        background-color: #010101;
-      }
-    }
   }
 }
 

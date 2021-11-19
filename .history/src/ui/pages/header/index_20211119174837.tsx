@@ -90,14 +90,10 @@ const Header = (props: HeaderProps) => {
                             {isStatus && (
                                 <div className={h.status__dropdown}>
                                     <p>{props.status}</p>
-                                    <div className={h.profile__navigation}>
-                                        <Link to='/profile'>Profile</Link>
-                                    </div>
-                                    <div className={h.profile__footer}>
-                                        <button className={h.btnLogOut} onClick={() => props.LogOut()}>
-                                            Log out
-                                        </button>
-                                    </div>
+                                    <Link to='/profile'>Profile</Link>
+                                    <button className={h.btnLogOut} onClick={() => props.LogOut()}>
+                                        Log out
+                                    </button>
                                 </div>
                             )}
                         </div>
