@@ -63,7 +63,9 @@ const Header = (props: HeaderProps) => {
         <div className={h.header}>
             <div className={h.content}>
                 <div className={h.logo}>
-                    <Link to="/"> <img src={logo} alt="logo" /></Link>
+                    <Link to="/"></Link>
+
+                    <img src={logo} alt="logo" />
                 </div>
                 <div className={h.right__content}>
                     <div className={h.dropdown}>
