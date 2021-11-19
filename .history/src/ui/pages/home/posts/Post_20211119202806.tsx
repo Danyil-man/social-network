@@ -7,17 +7,17 @@ interface PostProp {
     post: PostData
 }
 
-interface PostData {
-    username: string;
-    postAva: string;
-    postImg: string;
-    postDescription: string;
-    status: string;
-    likes: number | undefined;
-    comments: number | undefined;
-}
+
 
 const Post = ({ post }: PostProp) => {
+
+    function Share() {
+        alert('Share with ...')
+    }
+
+    function Edit() {
+        alert('Edit')
+    }
 
     const {
         username,
@@ -29,14 +29,6 @@ const Post = ({ post }: PostProp) => {
         comments,
 
     } = post;
-
-    function Share() {
-        alert('Share with ...')
-    }
-
-    function Edit() {
-        alert('Edit')
-    }
 
     const [isModal, setIsModal] = useState(false)
     return (

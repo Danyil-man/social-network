@@ -75,7 +75,7 @@ const Profile = (props: ProfileProps) => {
                 </div>
                 <div className={profile.photosBlockContent}>
                     {photos.map(photo => <div className={profile.photoItem}>
-                        <img width={358} height={358} src={photo.img} alt="" />
+                        <img width={357} src={photo.img} alt="" />
                     </div>
 
                     )}

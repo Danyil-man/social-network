@@ -2,11 +2,6 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import profile from "./Profile.module.scss";
 import pic1 from "../../../../../public/images/profile_photos/photo1.png";
-import pic2 from "../../../../../public/images/profile_photos/photo2.png";
-import pic3 from "../../../../../public/images/profile_photos/photo3.png";
-import pic4 from "../../../../../public/images/profile_photos/photo4.png";
-import pic5 from "../../../../../public/images/profile_photos/photo5.png";
-import pic6 from "../../../../../public/images/profile_photos/photo6.png";
 
 interface ProfileProps {
     photo: string;
@@ -15,23 +10,8 @@ interface ProfileProps {
 
 let photos = [
     {
-        img: pic1
-    },
-    {
-        img: pic2
-    },
-    {
-        img: pic3
-    },
-    {
-        img: pic4
-    },
-    {
-        img: pic5
-    },
-    {
-        img: pic6
-    },
+
+    }
 ]
 
 
@@ -74,11 +54,7 @@ const Profile = (props: ProfileProps) => {
                     </div>
                 </div>
                 <div className={profile.photosBlockContent}>
-                    {photos.map(photo => <div className={profile.photoItem}>
-                        <img width={358} height={358} src={photo.img} alt="" />
-                    </div>
 
-                    )}
                 </div>
             </div>
         </div>

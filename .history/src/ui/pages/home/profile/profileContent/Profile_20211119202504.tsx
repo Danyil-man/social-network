@@ -14,24 +14,7 @@ interface ProfileProps {
 }
 
 let photos = [
-    {
-        img: pic1
-    },
-    {
-        img: pic2
-    },
-    {
-        img: pic3
-    },
-    {
-        img: pic4
-    },
-    {
-        img: pic5
-    },
-    {
-        img: pic6
-    },
+    pic1: pic1,
 ]
 
 
@@ -74,11 +57,7 @@ const Profile = (props: ProfileProps) => {
                     </div>
                 </div>
                 <div className={profile.photosBlockContent}>
-                    {photos.map(photo => <div className={profile.photoItem}>
-                        <img width={358} height={358} src={photo.img} alt="" />
-                    </div>
 
-                    )}
                 </div>
             </div>
         </div>

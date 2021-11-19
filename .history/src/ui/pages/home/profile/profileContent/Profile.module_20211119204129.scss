@@ -6,7 +6,7 @@
 
 .content {
   width: 100%;
-  max-width: 1084px;
+  max-width: 1080px;
 }
 
 .mainHeader {
@@ -111,14 +111,7 @@
 
 .photosBlockContent {
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 60px;
 
   .photoItem {
-    margin-right: 3px;
-    img {
-      max-width: 100%;
-    }
   }
 }
