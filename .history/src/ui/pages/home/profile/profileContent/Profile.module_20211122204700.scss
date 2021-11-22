@@ -241,11 +241,9 @@
       flex-basis: 40%;
       flex-direction: column;
       margin: 0 auto;
+      text-align: center;
 
       .mediasubscriptions {
-        text-align: center;
-        display: flex;
-        justify-content: center;
         b {
           font-size: 20px;
         }
@@ -256,9 +254,6 @@
 
         .followersBlock {
           margin-right: 80px;
-        }
-
-        .followingBlock {
         }
       }
 

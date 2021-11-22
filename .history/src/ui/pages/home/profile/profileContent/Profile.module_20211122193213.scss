@@ -25,19 +25,20 @@
       margin-left: 30px;
       max-width: 648px;
       .headerDescription {
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         h4 {
           font-size: 24px;
           font-weight: 700;
         }
         p {
-          margin-top: 3px;
+          margin-top: 5px;
           font-size: 16px;
           font-weight: 500;
         }
       }
 
       .lifeDescription {
+        margin-top: 20px;
         font-size: 12px;
         opacity: 0.8;
       }
@@ -130,20 +131,28 @@
 @media screen and (max-width: 1135px) {
   .mainHeader {
     .leftSide {
+      display: flex;
+      max-width: 100%;
+      flex-basis: 60%;
+
       .description {
-        margin-left: 20px;
+        margin-left: 30px;
+        max-width: 648px;
         .headerDescription {
+          margin-bottom: 20px;
           h4 {
             font-size: 20px;
             font-weight: 700;
           }
           p {
+            margin-top: 5px;
             font-size: 14px;
             font-weight: 500;
           }
         }
 
         .lifeDescription {
+          margin-top: 20px;
           font-size: 12px;
           opacity: 0.8;
         }
@@ -151,7 +160,16 @@
     }
 
     .rightSide {
+      flex-basis: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
       .mediasubscriptions {
+        display: flex;
+        text-align: end;
+        justify-content: end;
+
         b {
           font-size: 18px;
         }
@@ -166,6 +184,8 @@
       }
 
       .navigation {
+        display: flex;
+        justify-content: end;
         .editProf {
           background-color: #fff;
           margin-right: 20px;
@@ -192,130 +212,6 @@
   .photosCollageContent {
     .photoItem {
       width: 32%;
-    }
-  }
-}
-
-@media screen and (max-width: 680px) {
-  .content {
-  }
-  .mainHeader {
-    flex-direction: column;
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    .leftSide {
-      display: flex;
-      max-width: 100%;
-      flex-basis: 60%;
-
-      .photoBlock {
-        img {
-        }
-      }
-
-      .description {
-        margin-left: 30px;
-        max-width: 648px;
-        .headerDescription {
-          margin-bottom: 15px;
-          h4 {
-            font-size: 24px;
-            font-weight: 700;
-          }
-          p {
-            margin-top: 3px;
-            font-size: 16px;
-            font-weight: 500;
-          }
-        }
-
-        .lifeDescription {
-          font-size: 12px;
-          opacity: 0.8;
-        }
-      }
-    }
-
-    .rightSide {
-      flex-basis: 40%;
-      flex-direction: column;
-      margin: 0 auto;
-
-      .mediasubscriptions {
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        b {
-          font-size: 20px;
-        }
-        P {
-          opacity: 0.8;
-          font-size: 16px;
-        }
-
-        .followersBlock {
-          margin-right: 80px;
-        }
-
-        .followingBlock {
-        }
-      }
-
-      .navigation {
-        .editProf {
-          background-color: #fff;
-          margin-right: 30px;
-          border-radius: 12px;
-          color: #333;
-          border: none;
-          padding: 9px;
-          cursor: pointer;
-          font-weight: 600;
-          font-size: 16px;
-          transition: 0.2s ease-in-out;
-        }
-
-        .editProf:hover {
-          color: #fff;
-          background-color: #333;
-        }
-
-        .NewPost {
-          border: none;
-          background-color: #0087ff;
-          color: #fff;
-          border-radius: 12px;
-          padding: 9px;
-          cursor: pointer;
-          font-weight: 600;
-          font-size: 16px;
-          margin-left: 12px;
-          transition: 0.2s ease-in-out;
-        }
-
-        .NewPost:hover {
-          background-color: #fff;
-          color: #0087ff;
-        }
-      }
-    }
-  }
-
-  .photosCollageContent {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 60px;
-
-    .photoItem {
-      margin-right: 3px;
-      margin-bottom: 3px;
-      img {
-        height: 100%;
-        max-width: 100%;
-      }
     }
   }
 }

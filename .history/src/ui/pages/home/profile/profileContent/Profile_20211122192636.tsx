@@ -52,7 +52,7 @@ const Profile = (props: ProfileProps) => {
                                 <p>Photographer</p>{/* will be props  */}
                             </div>
                             <div className={style.lifeDescription}>
-                                <p> Quasi facere reiciendis rerum tempore ea magni dignissimos quia, quo neque. Lorem ipsum dolor sit amet consectetur adipisicing elit. At deserunt amet quos ipsum, eum incidunt.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis vitae voluptate vero veritatis magni, inventore placeat est libero repudiandae porro? Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, voluptatem blanditiis aliquid ratione ducimus molestias ipsam cupiditate, eveniet facilis rem at error perspiciatis velit provident illo laborum iure quaerat repellat temporibus adipisci porro. Numquam nostrum eos est aliquid ex, repellendus, quo ullam officia aliquam ipsum aut dolorum a saepe rem. Quasi facere reiciendis rerum tempore ea magni dignissimos quia, quo neque. Lorem ipsum dolor sit amet consectetur adipisicing elit. At deserunt amet quos ipsum, eum incidunt.</p>
                             </div>
                         </div>
                     </div>

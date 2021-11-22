@@ -239,13 +239,14 @@
 
     .rightSide {
       flex-basis: 40%;
+      display: flex;
       flex-direction: column;
-      margin: 0 auto;
+      justify-content: space-between;
 
       .mediasubscriptions {
-        text-align: center;
         display: flex;
-        justify-content: center;
+        text-align: end;
+
         b {
           font-size: 20px;
         }
@@ -257,12 +258,11 @@
         .followersBlock {
           margin-right: 80px;
         }
-
-        .followingBlock {
-        }
       }
 
       .navigation {
+        display: flex;
+        justify-content: end;
         .editProf {
           background-color: #fff;
           margin-right: 30px;

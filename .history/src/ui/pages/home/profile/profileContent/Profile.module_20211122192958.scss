@@ -25,19 +25,20 @@
       margin-left: 30px;
       max-width: 648px;
       .headerDescription {
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         h4 {
           font-size: 24px;
           font-weight: 700;
         }
         p {
-          margin-top: 3px;
+          margin-top: 5px;
           font-size: 16px;
           font-weight: 500;
         }
       }
 
       .lifeDescription {
+        margin-top: 20px;
         font-size: 12px;
         opacity: 0.8;
       }
@@ -130,107 +131,28 @@
 @media screen and (max-width: 1135px) {
   .mainHeader {
     .leftSide {
-      .description {
-        margin-left: 20px;
-        .headerDescription {
-          h4 {
-            font-size: 20px;
-            font-weight: 700;
-          }
-          p {
-            font-size: 14px;
-            font-weight: 500;
-          }
-        }
-
-        .lifeDescription {
-          font-size: 12px;
-          opacity: 0.8;
-        }
-      }
-    }
-
-    .rightSide {
-      .mediasubscriptions {
-        b {
-          font-size: 18px;
-        }
-        P {
-          opacity: 0.8;
-          font-size: 14px;
-        }
-
-        .followersBlock {
-          margin-right: 70px;
-        }
-      }
-
-      .navigation {
-        .editProf {
-          background-color: #fff;
-          margin-right: 20px;
-          border-radius: 12px;
-          color: #333;
-          border: none;
-          padding: 9px;
-          cursor: pointer;
-          font-weight: 600;
-          font-size: 16px;
-          transition: 0.2s ease-in-out;
-        }
-      }
-    }
-  }
-  .photosCollageContent {
-    .photoItem {
-      width: 33%;
-    }
-  }
-}
-
-@media screen and (max-width: 950px) {
-  .photosCollageContent {
-    .photoItem {
-      width: 32%;
-    }
-  }
-}
-
-@media screen and (max-width: 680px) {
-  .content {
-  }
-  .mainHeader {
-    flex-direction: column;
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    .leftSide {
       display: flex;
       max-width: 100%;
       flex-basis: 60%;
-
-      .photoBlock {
-        img {
-        }
-      }
 
       .description {
         margin-left: 30px;
         max-width: 648px;
         .headerDescription {
-          margin-bottom: 15px;
+          margin-bottom: 20px;
           h4 {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
           }
           p {
-            margin-top: 3px;
+            margin-top: 5px;
             font-size: 16px;
             font-weight: 500;
           }
         }
 
         .lifeDescription {
+          margin-top: 20px;
           font-size: 12px;
           opacity: 0.8;
         }
@@ -239,13 +161,15 @@
 
     .rightSide {
       flex-basis: 40%;
+      display: flex;
       flex-direction: column;
-      margin: 0 auto;
+      justify-content: space-between;
 
       .mediasubscriptions {
-        text-align: center;
         display: flex;
-        justify-content: center;
+        text-align: end;
+        justify-content: end;
+
         b {
           font-size: 20px;
         }
@@ -257,12 +181,11 @@
         .followersBlock {
           margin-right: 80px;
         }
-
-        .followingBlock {
-        }
       }
 
       .navigation {
+        display: flex;
+        justify-content: end;
         .editProf {
           background-color: #fff;
           margin-right: 30px;
@@ -301,21 +224,17 @@
       }
     }
   }
-
   .photosCollageContent {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 60px;
-
     .photoItem {
-      margin-right: 3px;
-      margin-bottom: 3px;
-      img {
-        height: 100%;
-        max-width: 100%;
-      }
+      width: 33%;
+    }
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .photosCollageContent {
+    .photoItem {
+      width: 32%;
     }
   }
 }
