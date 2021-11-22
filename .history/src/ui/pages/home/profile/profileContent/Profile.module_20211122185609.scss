@@ -1,6 +1,6 @@
 .wrapper {
   padding-top: 152px;
-  margin: 0 25px;
+  //margin: 0 25px;
   display: flex;
   justify-content: center;
 }
@@ -129,16 +129,19 @@
 
 @media screen and (max-width: 1135px) {
   .photosBlockContent {
-    .photoItem {
-      width: 33%;
-    }
-  }
-}
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 60px;
 
-@media screen and (max-width: 950px) {
-  .photosBlockContent {
     .photoItem {
-      width: 32%;
+      width: 40%;
+      margin-right: 3px;
+      margin-bottom: 3px;
+      img {
+        max-width: 100%;
+      }
     }
   }
 }

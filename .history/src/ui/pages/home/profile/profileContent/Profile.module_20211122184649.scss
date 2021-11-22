@@ -129,16 +129,19 @@
 
 @media screen and (max-width: 1135px) {
   .photosBlockContent {
-    .photoItem {
-      width: 33%;
-    }
-  }
-}
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 60px;
 
-@media screen and (max-width: 950px) {
-  .photosBlockContent {
     .photoItem {
-      width: 32%;
+      margin-right: 3px;
+      margin-bottom: 3px;
+      img {
+        min-height: 60%;
+        max-width: 90%;
+      }
     }
   }
 }
