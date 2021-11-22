@@ -2,7 +2,7 @@ import React from "react";
 import style from "./LogIn.module.scss";
 import welcome from "../../../public/images/welcome.png";
 import { useAppDispatch } from "../../../core/hooks/redux-hooks";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useHistory } from "react-router";
 import Form from "../../components/common/form/Form";
 

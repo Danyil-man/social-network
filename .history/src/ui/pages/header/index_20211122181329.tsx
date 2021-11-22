@@ -83,18 +83,18 @@ const Header = (props: HeaderProps) => {
                         )}
                     </div>
                     {isAuth && (
-                        <div className={style.status__content}>
-                            <div className={style.miniava} onClick={(e) => setIsStatus(!isStatus)}>
+                        <div className={h.status__content}>
+                            <div className={h.miniava} onClick={(e) => setIsStatus(!isStatus)}>
                                 <img width={40} src={props.photo} alt="ava" />
                             </div>
                             {isStatus && (
-                                <div className={style.status__dropdown}>
+                                <div className={h.status__dropdown}>
                                     <p>{props.status}</p>
-                                    <div className={style.profile__navigation}>
+                                    <div className={h.profile__navigation}>
                                         <Link to='/profile'>Profile</Link>
                                     </div>
-                                    <div className={style.profile__footer}>
-                                        <button className={style.btnLogOut} onClick={() => props.LogOut()}>
+                                    <div className={h.profile__footer}>
+                                        <button className={h.btnLogOut} onClick={() => props.LogOut()}>
                                             Log out
                                         </button>
                                     </div>

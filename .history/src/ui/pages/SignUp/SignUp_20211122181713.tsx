@@ -1,25 +1,21 @@
 import React from "react";
-import style from "./LogIn.module.scss";
-import welcome from "../../../public/images/welcome.png";
-import { useAppDispatch } from "../../../core/hooks/redux-hooks";
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { useHistory } from "react-router";
+import welcome from "../../../public/images/welcome.png";
+import style from "./SignUp.module.scss";
+import { useAppDispatch } from "../../../core/hooks/redux-hooks";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { setUser } from '../../../core/store/redux/slice/userSlice';
 import Form from "../../components/common/form/Form";
-
-import { setUser } from "../../../core/store/redux/slice/userSlice";
 import { useTranslation } from "react-i18next";
 import { auth } from "../../../firebase";
 
-
-const LogIn = () => {
-
+const SignUp = () => {
     const { t } = useTranslation();
-    const dispatch = useAppDispatch();
     const { push } = useHistory();
+    const dispatch = useAppDispatch();
 
-
-    const handleLogin = (email: string, password: string) => {
-        signInWithEmailAndPassword(auth, email, password)
+    const handleRegister = (email: string, password: string) => {
+        createUserWithEmailAndPassword(auth, email, password)
             .then(({ user }) => {
                 console.log(user);
                 dispatch(setUser({
@@ -29,7 +25,7 @@ const LogIn = () => {
                 }));
                 push('/');
             })
-            .catch((error) => alert("Wrong password or email"))
+            .catch(console.error)
     }
 
     return (
@@ -40,16 +36,15 @@ const LogIn = () => {
                 </div>
 
                 <Form
-                    handleClick={handleLogin}
-                    title={t('login')}
-                    questiontag={t('donthaveanacc?')}
-                    directtag='/signup'
-                    hrefDirection={t('signup')}
+                    handleClick={handleRegister}
+                    title={t('signup')}
+                    questiontag={t('haveaccount?')}
+                    directtag='/login'
+                    hrefDirection={t('login')}
                 />
-
             </div>
         </div>
-    );
+    )
 }
 
-export default LogIn;
+export default SignUp;
