@@ -7,6 +7,11 @@ import { BrowserRouter } from 'react-router-dom';
 import IdxProfile from "../../pages/home/profile";
 import Header from "../../pages/header";
 
+interface HeaderProps {
+    photo: string;
+    status: string;
+    LogOut: any;
+}
 
 
 const Routing = () => {
@@ -15,10 +20,10 @@ const Routing = () => {
         <>
 
             <BrowserRouter>
-                <Header />
+                <Header photo={""} status={""} LogOut={undefined} />
                 <Switch>
 
-                    <Route exact path='/home' component={IdxHome} />
+                    <Route exact path='/' component={IdxHome} />
                     <Route exact path='/login' component={IdxLogIn} />
                     <Route exact path='/signup' component={IdxSignUp} />
                     <Route exact path='/profile' component={IdxProfile} />

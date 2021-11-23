@@ -7,9 +7,9 @@ import Profile from "./profileContent/Profile";
 
 
 const IdxProfile = () => {
-    const { isAuth, email } = useAuth();
+    const { email } = useAuth();
     let name = email;
-    return isAuth ? (
+    return (
         <div>
             <Profile
                 photo={headerAva}
@@ -17,9 +17,6 @@ const IdxProfile = () => {
             />
 
         </div>
-    ) : (
-
-        <Redirect to="/login" />
     )
 }
 

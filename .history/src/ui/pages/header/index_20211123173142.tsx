@@ -70,7 +70,7 @@ const Header = () => {
         <div className={style.header}>
             <div className={style.content}>
                 <div className={style.logo}>
-                    <Link to="/home"> <img src={logo} alt="logo" /></Link>
+                    <Link to="/"> <img src={logo} alt="logo" /></Link>
                 </div>
                 <div className={style.right__content}>
                     <div className={style.dropdown}>

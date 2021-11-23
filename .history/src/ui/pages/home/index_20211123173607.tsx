@@ -8,12 +8,12 @@ const IdxHome = () => {
 
     const { isAuth } = useAuth();
 
-    return isAuth ? (
+    return (
         <div>
             <Home />
         </div>
-    ) : (
-        <Redirect to="/login" />
+        // ) : (
+        //     <Redirect to="/login" />
+        // )
     )
-}
-export default IdxHome;
+    export default IdxHome;

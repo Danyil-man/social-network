@@ -21,7 +21,6 @@ const userSlice = createSlice({
             state.email = null;
             state.token = null;
             state.id = null;
-            state.username = null;
         },
         userPost(state, action) {
             state.email = action.payload.email;

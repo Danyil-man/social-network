@@ -13,7 +13,6 @@ import IdxProfile from "../home/profile";
 import { useAppDispatch } from "../../../core/hooks/redux-hooks";
 import { auth } from "../../../firebase";
 import { removeUser } from "../../../core/store/redux/slice/userSlice";
-import headerAva from "../../../public/images/MiniProf/header__ava.png";
 
 
 i18next
@@ -70,7 +69,7 @@ const Header = () => {
         <div className={style.header}>
             <div className={style.content}>
                 <div className={style.logo}>
-                    <Link to="/home"> <img src={logo} alt="logo" /></Link>
+                    <Link to="/"> <img src={logo} alt="logo" /></Link>
                 </div>
                 <div className={style.right__content}>
                     <div className={style.dropdown}>
@@ -92,7 +91,7 @@ const Header = () => {
                     {isAuth && (
                         <div className={style.status__content}>
                             <div className={style.miniava} onClick={(e) => setIsStatus(!isStatus)}>
-                                <img width={40} src={headerAva} alt="ava" />
+                                <img width={40} src={photo} alt="ava" />
                             </div>
                             {isStatus && (
                                 <div className={style.status__dropdown}>

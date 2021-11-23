@@ -69,14 +69,13 @@
 }
 
 .fileblock {
-  width: 100%;
   display: flex;
   justify-content: center;
   input {
     margin-top: 10px;
   }
   img {
-    max-width: 100%;
+    width: 100%;
   }
 }
 

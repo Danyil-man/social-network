@@ -7,6 +7,9 @@ import { BrowserRouter } from 'react-router-dom';
 import IdxProfile from "../../pages/home/profile";
 import Header from "../../pages/header";
 
+interface HeaderProps {
+
+}
 
 
 const Routing = () => {
@@ -18,7 +21,7 @@ const Routing = () => {
                 <Header />
                 <Switch>
 
-                    <Route exact path='/home' component={IdxHome} />
+                    <Route exact path='/' component={IdxHome} />
                     <Route exact path='/login' component={IdxLogIn} />
                     <Route exact path='/signup' component={IdxSignUp} />
                     <Route exact path='/profile' component={IdxProfile} />

@@ -8,7 +8,7 @@ const IdxHome = () => {
 
     const { isAuth } = useAuth();
 
-    return isAuth ? (
+    return (
         <div>
             <Home />
         </div>
