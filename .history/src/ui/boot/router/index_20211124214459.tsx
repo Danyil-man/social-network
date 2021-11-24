@@ -1,13 +1,11 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-
+import IdxLogin from "../../pages/logIn/index";
+import IdxSignUp from "../../pages/signUp";
 import { BrowserRouter } from 'react-router-dom';
-import Header from "ui/pages/header";
-import IdxHome from "ui/pages/home";
-import IdxProfile from "ui/pages/home/profile";
-import IdxLogIn from "ui/pages/logIn/index";
-import IdxSignUp from "ui/pages/signUp";
-
+import IdxProfile from "../../pages/home/profile";
+import Header from "../../pages/header";
+import IdxHome from "pages/home";
 
 
 
@@ -23,8 +21,8 @@ const Routing = () => {
                 <Header />
                 <Switch>
 
-                    <Route path='/' component={IdxHome} />
-                    <Route exact path='/login' component={IdxLogIn} />
+                    <Route exact path='/' component={IdxHome} />
+                    <Route exact path='/login' component={IdxLogin} />
                     <Route exact path='/signup' component={IdxSignUp} />
                     <Route exact path='/profile' component={IdxProfile} />
                 </Switch>

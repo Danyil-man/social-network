@@ -9,7 +9,6 @@ import Form from "../../components/common/form/Form";
 import { useTranslation } from "react-i18next";
 import { auth } from "../../../firebase";
 
-
 const SignUp = () => {
     const { t } = useTranslation();
     const { push } = useHistory();
