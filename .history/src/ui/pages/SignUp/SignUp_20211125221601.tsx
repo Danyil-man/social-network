@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router";
-import welcome from "public/images/welcome.png";
+import welcome from "../../../public/images/welcome.png";
 import style from "./SignUp.module.scss";
 
 import { createUserWithEmailAndPassword } from "firebase/auth";

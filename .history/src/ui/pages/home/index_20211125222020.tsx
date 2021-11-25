@@ -1,7 +1,6 @@
 import Home from './Home';
 import { Redirect } from "react-router";
-import { useAuth } from 'core/hooks/useAuth';
-
+import { useAuth } from "core/hooks/useAuth";
 
 
 const IdxHome = () => {

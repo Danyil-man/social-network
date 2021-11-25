@@ -1,25 +1,26 @@
 import React from "react";
-import { useHistory } from "react-router";
+import style from "./LogIn.module.scss";
 import welcome from "public/images/welcome.png";
-import style from "./SignUp.module.scss";
-
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useAppDispatch } from "core/hooks/redux-hooks";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useHistory } from "react-router";
 
 import { useTranslation } from "react-i18next";
-import { auth } from "firebase";
 import Form from "ui/components/common/form/Form";
 import { setUser } from "core/store/redux/slice/userSlice";
-import { useAppDispatch } from "core/hooks/redux-hooks";
+import { auth } from "firebase";
 
 
 
-const SignUp = () => {
+const LogIn = () => {
+
     const { t } = useTranslation();
-    const { push } = useHistory();
     const dispatch = useAppDispatch();
+    const { push } = useHistory();
 
-    const handleRegister = (email: string, password: string) => {
-        createUserWithEmailAndPassword(auth, email, password)
+
+    const handleLogin = (email: string, password: string) => {
+        signInWithEmailAndPassword(auth, email, password)
             .then(({ user }) => {
                 console.log(user);
                 dispatch(setUser({
@@ -29,7 +30,7 @@ const SignUp = () => {
                 }));
                 push('/');
             })
-            .catch(console.error)
+            .catch((error) => alert("Wrong password or email"))
     }
 
     return (
@@ -40,15 +41,16 @@ const SignUp = () => {
                 </div>
 
                 <Form
-                    handleClick={handleRegister}
-                    title={t('signup')}
-                    questiontag={t('haveaccount?')}
-                    directtag='/login'
-                    hrefDirection={t('login')}
+                    handleClick={handleLogin}
+                    title={t('login')}
+                    questiontag={t('donthaveanacc?')}
+                    directtag='/signup'
+                    hrefDirection={t('signup')}
                 />
+
             </div>
         </div>
-    )
+    );
 }
 
-export default SignUp;
+export default LogIn;

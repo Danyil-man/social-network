@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import PostModal from "ui/components/postModal/postModal";
-
+import PostModal from "../../../components/postModal/postModal";
 import style from "./Post.module.scss";
 
 

@@ -1,15 +1,13 @@
 import React from "react";
 import { useHistory } from "react-router";
-import welcome from "public/images/welcome.png";
+import welcome from "../../../public/images/welcome.png";
 import style from "./SignUp.module.scss";
-
+import { useAppDispatch } from "../../../core/hooks/redux-hooks";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-
+import { setUser } from '../../../core/store/redux/slice/userSlice';
 import { useTranslation } from "react-i18next";
 import { auth } from "firebase";
 import Form from "ui/components/common/form/Form";
-import { setUser } from "core/store/redux/slice/userSlice";
-import { useAppDispatch } from "core/hooks/redux-hooks";
 
 
 

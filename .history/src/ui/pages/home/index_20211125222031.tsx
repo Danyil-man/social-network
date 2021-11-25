@@ -1,6 +1,5 @@
 import Home from './Home';
 import { Redirect } from "react-router";
-import { useAuth } from 'core/hooks/useAuth';
 
 
 

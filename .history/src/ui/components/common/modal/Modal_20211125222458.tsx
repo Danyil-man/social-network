@@ -1,7 +1,8 @@
 import { addDoc, collection, doc, serverTimestamp, updateDoc } from "@firebase/firestore";
 import { ref, getDownloadURL, uploadString, uploadBytesResumable } from "@firebase/storage";
+import { userInfo } from "os";
 import React, { FC, useRef, useState } from "react";
-import { userPost } from "core/store/redux/slice/userSlice";
+import { userPost } from "../../../../core/store/redux/slice/userSlice";
 import { db, storage } from "firebase";
 import style from "./Modal.module.scss"
 

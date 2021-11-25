@@ -1,18 +1,19 @@
 import React from "react";
 import style from "./Header.module.scss";
-import logo from "public/images/logo.png";
-import language from "public/images/language.svg";
+import logo from "../../../public/images/logo.png";
+import language from "../../../public/images/language.svg";
 import i18next from "i18next";
 import { initReactI18next, useTranslation } from "react-i18next";
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { useState } from "react";
 import HttpApi from 'i18next-http-backend'
-import { useAuth } from "core/hooks/useAuth";
+import { useAuth } from "../../../core/hooks/useAuth";
 import { Link } from "react-router-dom";
-import { useAppDispatch } from "core/hooks/redux-hooks";
-import { auth } from "firebase";
-import { removeUser } from "core/store/redux/slice/userSlice";
-import headerAva from "public/images/MiniProf/header__ava.png";
+import IdxProfile from "../home/profile";
+import { useAppDispatch } from "../../../core/hooks/redux-hooks";
+import { auth } from "../../../firebase";
+import { removeUser } from "../../../core/store/redux/slice/userSlice";
+import headerAva from "../../../public/images/MiniProf/header__ava.png";
 
 
 i18next

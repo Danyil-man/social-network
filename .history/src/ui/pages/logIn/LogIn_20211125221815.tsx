@@ -4,11 +4,11 @@ import welcome from "public/images/welcome.png";
 import { useAppDispatch } from "core/hooks/redux-hooks";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useHistory } from "react-router";
-import { useTranslation } from "react-i18next";
-import Form from "ui/components/common/form/Form";
-import { setUser } from "core/store/redux/slice/userSlice";
-import { auth } from "firebase";
+import Form from "components/common/form/Form";
 
+import { setUser } from "../../../core/store/redux/slice/userSlice";
+import { useTranslation } from "react-i18next";
+import { auth } from "../../../firebase";
 
 
 const LogIn = () => {

@@ -23,7 +23,7 @@ const Routing = () => {
                 <Header />
                 <Switch>
 
-                    <Route exact path='/' component={IdxHome} />
+                    <Route path='/' component={IdxHome} />
                     <Route exact path='/login' component={IdxLogIn} />
                     <Route exact path='/signup' component={IdxSignUp} />
                     <Route exact path='/profile' component={IdxProfile} />

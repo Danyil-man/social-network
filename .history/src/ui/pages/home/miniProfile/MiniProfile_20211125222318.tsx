@@ -3,7 +3,6 @@ import style from "./MiniProfile.module.scss";
 import avatar from "public/images/MiniProf/avatar.png";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "core/hooks/useAuth";
-import Modal from "ui/components/common/modal/Modal";
 
 const MiniProfile = () => {
     const { t } = useTranslation();
