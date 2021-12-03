@@ -7,11 +7,11 @@ import { initReactI18next, useTranslation } from "react-i18next";
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { useState } from "react";
 import HttpApi from 'i18next-http-backend'
-//import { useAuth } from "core/hooks/useAuth";
+import { useAuth } from "core/hooks/useAuth";
 import { Link } from "react-router-dom";
-//import { useAppDispatch } from "core/hooks/redux-hooks";
-//import { auth } from "firebase";
-//import { removeUser } from "core/store/redux/slice/userSlice";
+import { useAppDispatch } from "core/hooks/redux-hooks";
+import { auth } from "firebase";
+import { removeUser } from "core/store/redux/slice/userSlice";
 import headerAva from "public/images/MiniProf/header__ava.png";
 
 
@@ -42,9 +42,15 @@ i18next
 const Header = () => {
     const [isActive, setIsActive] = useState(false);
     const [isStatus, setIsStatus] = useState(false);
+    const dispatch = useAppDispatch();
+    const { isAuth, email } = useAuth();
     const { t } = useTranslation();
-
-    let status = `${t('signedas')}`;
+    const LogOut = () => {
+        auth.signOut().then(() => {
+            dispatch(removeUser())
+        }).catch((error) => alert(error))
+    }
+    let status = `${t('signedas')} ${email}`;
 
     const languages = [
         {
@@ -82,27 +88,27 @@ const Header = () => {
                             </div>
                         )}
                     </div>
-                    {/* {isAuth && ( */}
-                    <div className={style.status__content}>
-                        <div className={style.miniava} onClick={(e) => setIsStatus(!isStatus)}>
-                            <img width={40} src={headerAva} alt="ava" />
-                        </div>
-                        {isStatus && (
-                            <div className={style.status__dropdown}>
-                                <p>{status}</p>
-                                <div className={style.profile__navigation}>
-                                    <Link to='/profile'>Profile</Link>
-                                </div>
-                                <div className={style.profile__footer}>
-                                    <button className={style.btnLogOut} >
-                                        Log out
-                                    </button>
-                                </div>
+                    {isAuth && (
+                        <div className={style.status__content}>
+                            <div className={style.miniava} onClick={(e) => setIsStatus(!isStatus)}>
+                                <img width={40} src={headerAva} alt="ava" />
                             </div>
-                        )}
-                    </div>
-                    {/* )
-                    } */}
+                            {isStatus && (
+                                <div className={style.status__dropdown}>
+                                    <p>{status}</p>
+                                    <div className={style.profile__navigation}>
+                                        <Link to='/profile'>Profile</Link>
+                                    </div>
+                                    <div className={style.profile__footer}>
+                                        <button className={style.btnLogOut} onClick={() => LogOut()}>
+                                            Log out
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    )
+                    }
                 </div>
             </div>
         </div>
@@ -110,6 +116,4 @@ const Header = () => {
     );
 }
 
-// onClick={() => LogOut()}
-
-export default Header
+export default Header;

@@ -15,11 +15,10 @@ const IdxProfile = () => {
             />
 
         </div>
-    )
-    //  : (
+    ) : (
 
-    //     <Redirect to="/login" />
-    // )
+        <Redirect to="/login" />
+    )
 }
 
 export default IdxProfile;

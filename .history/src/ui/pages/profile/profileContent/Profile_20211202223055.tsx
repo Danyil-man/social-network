@@ -10,7 +10,7 @@ import pic6 from "public/images/profile_photos/photo6.png";
 
 interface ProfileProps {
     photo: string;
-    //name: any;
+    name: any;
 }
 
 let photos = [
@@ -48,7 +48,7 @@ const Profile = (props: ProfileProps) => {
                         </div>
                         <div className={style.description}>
                             <div className={style.headerDescription}>
-                                <h4>Props Name</h4>
+                                <h4>{props.name}</h4>
                                 <p>Photographer</p>{/* will be props  */}
                             </div>
                             <div className={style.lifeDescription}>

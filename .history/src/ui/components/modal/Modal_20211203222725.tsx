@@ -2,6 +2,7 @@ import { addDoc, collection, doc, serverTimestamp, updateDoc } from "@firebase/f
 import { ref, getDownloadURL, uploadString, uploadBytesResumable } from "@firebase/storage";
 import React, { FC, useRef, useState } from "react";
 //import { userPost } from "core/store/redux/slice/userSlice";
+import { db, storage } from "firebase";
 import style from "./Modal.module.scss"
 
 interface PropsModal {
@@ -14,6 +15,57 @@ const Modal: FC<PropsModal> = ({ closeModal }) => {
     const [file, setFile] = useState(null);
     const descriptionRef = useRef(null);
     const [prog, setProg] = useState(0);
+
+
+    const uploadPost = (file: any) => {
+        if (!file) return;
+
+        const imageRef = ref(storage, `posts/${file.name}`);
+        const uploadResult = uploadBytesResumable(imageRef, file);
+        uploadResult.on("state_changed", snapshot => {
+            const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+
+            setProg(progress)
+        }, (error) => console.log(error),
+            () => {
+                getDownloadURL(uploadResult.snapshot.ref).then(url => console.log(url));
+            }
+        )
+
+        // const documentRef = await addDoc(collection(db, 'posts'), {
+        //     profImg: data.image,
+        //     description: descriptionRef.current,
+        //     time: serverTimestamp(),
+        // })
+
+        // console.log("NEW DOC ADDED WITH ID: ", documentRef.id);
+
+        // await uploadString(imageRef, file, "data_url").then(async snapshot => {
+        //     const downloadURL = await getDownloadURL(imageRef);
+
+        //     await updateDoc(doc(db, 'posts', documentRef.id), {
+        //         image: downloadURL
+        //     })
+        // })
+
+        // setFile(null)
+    }
+
+    const addPostImg = (e: any) => {
+        const reader = new FileReader();
+        const file = (e.target.files[0])
+
+        if (file) {
+            reader.readAsDataURL(e.target.files[0])
+            uploadPost(file)
+        }
+
+
+        reader.onload = (readerEvent: any) => {
+            setFile(readerEvent.target.result)
+        }
+    }
+
 
 
 
@@ -36,7 +88,7 @@ const Modal: FC<PropsModal> = ({ closeModal }) => {
                                     <input
                                         ref={uploadfile}
                                         type="file"
-
+                                        onChange={addPostImg}
                                     />
                                 </div>
                             )}
@@ -51,7 +103,7 @@ const Modal: FC<PropsModal> = ({ closeModal }) => {
                                 <div>
                                     <button
                                         type="button"
-
+                                        onClick={() => uploadPost}
                                         disabled={!file}
                                     >
                                         Upload Post

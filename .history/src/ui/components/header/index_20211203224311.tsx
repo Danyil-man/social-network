@@ -42,9 +42,10 @@ i18next
 const Header = () => {
     const [isActive, setIsActive] = useState(false);
     const [isStatus, setIsStatus] = useState(false);
-    const { t } = useTranslation();
+    const { t } = useTranslation()
 
-    let status = `${t('signedas')}`;
+
+    let status = { t('signedas') }
 
     const languages = [
         {
@@ -82,27 +83,28 @@ const Header = () => {
                             </div>
                         )}
                     </div>
-                    {/* {isAuth && ( */}
-                    <div className={style.status__content}>
-                        <div className={style.miniava} onClick={(e) => setIsStatus(!isStatus)}>
-                            <img width={40} src={headerAva} alt="ava" />
-                        </div>
-                        {isStatus && (
-                            <div className={style.status__dropdown}>
-                                <p>{status}</p>
-                                <div className={style.profile__navigation}>
-                                    <Link to='/profile'>Profile</Link>
-                                </div>
-                                <div className={style.profile__footer}>
-                                    <button className={style.btnLogOut} >
-                                        Log out
-                                    </button>
-                                </div>
+                    {isAuth && (
+                        <div className={style.status__content}>
+                            <div className={style.miniava} onClick={(e) => setIsStatus(!isStatus)}>
+                                <img width={40} src={headerAva} alt="ava" />
                             </div>
-                        )}
-                    </div>
-                    {/* )
-                    } */}
+                            {isStatus && (
+                                <div className={style.status__dropdown}>
+                                    <p>{status}</p>
+                                    <div className={style.profile__navigation}>
+                                        <Link to='/profile'>Profile</Link>
+                                    </div>
+                                    <div className={style.profile__footer}>
+                                        <button className={style.btnLogOut} >
+                                            {/* onClick={() => LogOut()} */}
+                                            Log out
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    )
+                    }
                 </div>
             </div>
         </div>
@@ -110,6 +112,4 @@ const Header = () => {
     );
 }
 
-// onClick={() => LogOut()}
-
-export default Header
+export default Header;

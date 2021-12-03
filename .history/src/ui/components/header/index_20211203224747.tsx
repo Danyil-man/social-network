@@ -42,9 +42,10 @@ i18next
 const Header = () => {
     const [isActive, setIsActive] = useState(false);
     const [isStatus, setIsStatus] = useState(false);
-    const { t } = useTranslation();
+    const { t } = useTranslation()
 
-    let status = `${t('signedas')}`;
+    // let title = { t('signup') }
+
 
     const languages = [
         {
@@ -95,6 +96,7 @@ const Header = () => {
                                 </div>
                                 <div className={style.profile__footer}>
                                     <button className={style.btnLogOut} >
+                                        {/* onClick={() => LogOut()} */}
                                         Log out
                                     </button>
                                 </div>
@@ -109,7 +111,5 @@ const Header = () => {
 
     );
 }
-
-// onClick={() => LogOut()}
 
 export default Header

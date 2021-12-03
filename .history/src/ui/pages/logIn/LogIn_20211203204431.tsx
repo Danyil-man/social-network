@@ -1,19 +1,20 @@
 import React from "react";
-import { useHistory } from "react-router";
+import style from "./LogIn.module.scss";
 import welcome from "public/images/welcome.png";
-import style from "./SignUp.module.scss";
+import { useHistory } from "react-router";
 import { useTranslation } from "react-i18next";
 import Form from "ui/components/form/Form";
 
 
 
+const LogIn = () => {
 
-const SignUp = () => {
     const { t } = useTranslation();
+    const dispatch = useAppDispatch();
     const { push } = useHistory();
 
 
-    const handleRegister = (email: string, password: string) => {
+    const handleLogin = (email: string, password: string) => {
         //push('/');
     }
 
@@ -25,15 +26,16 @@ const SignUp = () => {
                 </div>
 
                 <Form
-                    handleClick={handleRegister}
-                    title={t('signup')}
-                    questiontag={t('haveaccount?')}
-                    directtag='/login'
-                    hrefDirection={t('login')}
+                    handleClick={handleLogin}
+                    title={t('login')}
+                    questiontag={t('donthaveanacc?')}
+                    directtag='/signup'
+                    hrefDirection={t('signup')}
                 />
+
             </div>
         </div>
-    )
+    );
 }
 
-export default SignUp;
+export default LogIn;

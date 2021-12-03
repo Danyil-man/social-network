@@ -94,7 +94,7 @@ const Header = () => {
                                     <Link to='/profile'>Profile</Link>
                                 </div>
                                 <div className={style.profile__footer}>
-                                    <button className={style.btnLogOut} >
+                                    <button className={style.btnLogOut} onClick={() => LogOut()}>
                                         Log out
                                     </button>
                                 </div>
@@ -109,7 +109,5 @@ const Header = () => {
 
     );
 }
-
-// onClick={() => LogOut()}
 
 export default Header
