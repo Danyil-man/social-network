@@ -37,12 +37,12 @@ const SignUp = () => {
                     }}
                 >
                     <Form className={styleFormik.form}>
-                        <div className={styleFormik.form__content}>
+                        <form className={styleFormik.form__content}>
                             <h1 className={styleFormik.Htext}> {t('signup')} </h1>
                             <div className={styleFormik.form__item}>
                                 <label className={styleFormik.label}>Email</label>
                                 <div className={styleFormik.input}>
-                                    <Field type="text" name="username" placeholder="john_doe" required />
+                                    <input type="text" name="username" placeholder="john_doe" required />
                                 </div>
                             </div>
                             <div className={styleFormik.form__item}>
@@ -54,7 +54,7 @@ const SignUp = () => {
                             <div className={styleFormik.form__item}>
                                 <label className={styleFormik.label}>{t('password')}</label>
                                 <div className={styleFormik.input}>
-                                    <Field type="password" name="password" placeholder="Type in..." required />
+                                    <input type="password" name="password" placeholder="Type in..." required />
                                 </div>
                             </div>
                             <div className={styleFormik.mainfooter}>
@@ -66,7 +66,7 @@ const SignUp = () => {
                                     <Link to='/login'>{t('login')}</Link>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </Form>
                 </Formik>
             </div>

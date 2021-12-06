@@ -1,34 +1,35 @@
 import React from "react";
-import { useHistory } from "react-router";
+import style from "./LogIn.module.scss";
 import welcome from "public/images/welcome.png";
-import style from "./SignUp.module.scss";
+import styleFormik from "./Form.module.scss";
+import { useHistory } from "react-router";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import styleFormik from "./Form.module.scss";
-import { Field, Form, Formik } from "formik";
+import { Form, Formik } from "formik";
 
 
 
+const LogIn = () => {
 
-const SignUp = () => {
     const { t } = useTranslation();
     const { push } = useHistory();
 
 
-    const handleRegister = (email: string, password: string) => {
+    const submit = () => {
         //push('/');
+        alert("logged in")
     }
 
     return (
         <div className={style.wrapper}>
+
             <div className={style.content}>
+
                 <div className={style.welcomeImg}>
                     <img src={welcome} alt="welcome" />
                 </div>
-
                 <Formik
                     initialValues={{
-                        username: '',
                         login: '',
                         password: ''
                     }}
@@ -38,40 +39,35 @@ const SignUp = () => {
                 >
                     <Form className={styleFormik.form}>
                         <div className={styleFormik.form__content}>
-                            <h1 className={styleFormik.Htext}> {t('signup')} </h1>
+                            <h1 className={styleFormik.Htext}>{t('login')} </h1>
                             <div className={styleFormik.form__item}>
                                 <label className={styleFormik.label}>Email</label>
                                 <div className={styleFormik.input}>
-                                    <Field type="text" name="username" placeholder="john_doe" required />
-                                </div>
-                            </div>
-                            <div className={styleFormik.form__item}>
-                                <label className={styleFormik.label}>Email</label>
-                                <div className={styleFormik.input}>
-                                    <Field type="email" name="login" placeholder="example@mail.com" required />
+                                    <input type="email" placeholder="example@mail.com" required />
                                 </div>
                             </div>
                             <div className={styleFormik.form__item}>
                                 <label className={styleFormik.label}>{t('password')}</label>
                                 <div className={styleFormik.input}>
-                                    <Field type="password" name="password" placeholder="Type in..." required />
+                                    <input type="password" placeholder="Type in..." required />
                                 </div>
                             </div>
-                            <div className={styleFormik.mainfooter}>
-                                <button className={styleFormik.buttonContinue}>
-                                    {t('signup')}
-                                </button>
-                                <div className={styleFormik.questionBlock}>
-                                    <p className={styleFormik.question}>{t('haveaccount?')}</p>
-                                    <Link to='/login'>{t('login')}</Link>
-                                </div>
+                        </div>
+                        <div className={styleFormik.mainfooter}>
+                            <button className={styleFormik.buttonContinue}>
+                                {t('login')}
+                            </button>
+                            <div className={styleFormik.questionBlock}>
+                                <p className={styleFormik.question}>{t('donthaveanacc?')} </p>
+                                <Link to='/signup'>{t('signup')}</Link>
                             </div>
                         </div>
                     </Form>
                 </Formik>
             </div>
+
         </div>
-    )
+    );
 }
 
-export default SignUp;
+export default LogIn;

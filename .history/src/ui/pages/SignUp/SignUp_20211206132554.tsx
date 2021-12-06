@@ -37,7 +37,7 @@ const SignUp = () => {
                     }}
                 >
                     <Form className={styleFormik.form}>
-                        <div className={styleFormik.form__content}>
+                        <form className={styleFormik.form__content}>
                             <h1 className={styleFormik.Htext}> {t('signup')} </h1>
                             <div className={styleFormik.form__item}>
                                 <label className={styleFormik.label}>Email</label>
@@ -66,7 +66,7 @@ const SignUp = () => {
                                     <Link to='/login'>{t('login')}</Link>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </Form>
                 </Formik>
             </div>

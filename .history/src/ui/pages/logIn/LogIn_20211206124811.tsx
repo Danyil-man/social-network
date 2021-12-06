@@ -5,7 +5,7 @@ import styleFormik from "./Form.module.scss";
 import { useHistory } from "react-router";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { Field, Form, Formik } from "formik";
+import { Formik } from "formik";
 
 
 
@@ -33,26 +33,25 @@ const LogIn = () => {
                         login: '',
                         password: ''
                     }}
-                    onSubmit={(values) => {
-                        console.log({ values })
-                    }}
+                    onSubmit={submit}
                 >
-                    <Form className={styleFormik.form}>
+                    <div className={styleFormik.form}>
                         <div className={styleFormik.form__content}>
                             <h1 className={styleFormik.Htext}>{t('login')} </h1>
                             <div className={styleFormik.form__item}>
                                 <label className={styleFormik.label}>Email</label>
                                 <div className={styleFormik.input}>
-                                    <Field type="email" name="login" placeholder="example@mail.com" required />
+                                    <input type="email" placeholder="example@mail.com" required />
                                 </div>
                             </div>
                             <div className={styleFormik.form__item}>
                                 <label className={styleFormik.label}>{t('password')}</label>
                                 <div className={styleFormik.input}>
-                                    <Field type="password" name="password" placeholder="Type in..." required />
+                                    <input type="password" placeholder="Type in..." required />
                                 </div>
                             </div>
                         </div>
+
                         <div className={styleFormik.mainfooter}>
                             <button className={styleFormik.buttonContinue}>
                                 {t('login')}
@@ -62,7 +61,7 @@ const LogIn = () => {
                                 <Link to='/signup'>{t('signup')}</Link>
                             </div>
                         </div>
-                    </Form>
+                    </div>
                 </Formik>
             </div>
 
