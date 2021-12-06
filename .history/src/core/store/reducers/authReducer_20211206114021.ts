@@ -41,12 +41,7 @@ export const actions = {
     setUserData: (username: string | null, login: string | null, password: string | null, isAuth: boolean) => ({
         type: SET_USER_DATA,
         data: {username, login, password, isAuth}
-    } as const),
-
-    getUserData: (login: string | null, password: string | null, isAuth: boolean) => ({
-        type: SET_USER_DATA,
-        data: {login, password, isAuth}
-    } as const ) 
+    } as const)
 }
 
 //                                                  THUNK
@@ -68,28 +63,33 @@ export const registration = (username: string, login: string, password: string):
         dispatch(actions.setUserData(username, login, password, true))
     } else {
         let message = response.data.success.length > 0 ? response.data.success[0] : "Error";
-        //dispatch({_error: message}) 
-        console.log(message)
+        dispatch({error: message})
     }
 }
 
-export const login = (login: string, password:string):ThunkType => async (dispatch) => {
-    let response = await authAPI.login(login, password);
-    if(response.data.resultCode === ResultCodes.Success){
-        dispatch(actions.getUserData(login, password, true))
-    }else {
-        let message = response.data.success.length > 0 ? response.data.success[0] : "Error";
-        //dispatch({_error: message}) 
-        console.log(message)
-    }
-}
+export const 
 
-export const logout = ():ThunkType => async (dispatch) => {
-    let response = await authAPI.logout();
-    if(response.data === 0){
-        dispatch(actions.setUserData(null, null, null, false))
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 export default authReducer;

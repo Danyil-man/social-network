@@ -86,10 +86,29 @@ export const login = (login: string, password:string):ThunkType => async (dispat
 
 export const logout = ():ThunkType => async (dispatch) => {
     let response = await authAPI.logout();
-    if(response.data === 0){
-        dispatch(actions.setUserData(null, null, null, false))
-    }
+    if(response.data)
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 export default authReducer;

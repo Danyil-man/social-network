@@ -92,4 +92,25 @@ export const logout = ():ThunkType => async (dispatch) => {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export default authReducer;

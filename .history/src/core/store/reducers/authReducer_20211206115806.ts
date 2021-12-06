@@ -77,19 +77,30 @@ export const login = (login: string, password:string):ThunkType => async (dispat
     let response = await authAPI.login(login, password);
     if(response.data.resultCode === ResultCodes.Success){
         dispatch(actions.getUserData(login, password, true))
-    }else {
-        let message = response.data.success.length > 0 ? response.data.success[0] : "Error";
-        //dispatch({_error: message}) 
-        console.log(message)
     }
 }
 
-export const logout = ():ThunkType => async (dispatch) => {
-    let response = await authAPI.logout();
-    if(response.data === 0){
-        dispatch(actions.setUserData(null, null, null, false))
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 export default authReducer;
