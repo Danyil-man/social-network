@@ -1,19 +1,19 @@
 import React from "react";
-import style from "./LogIn.module.scss";
-import welcome from "public/images/welcome.png";
 import { useHistory } from "react-router";
+import welcome from "public/images/welcome.png";
+import style from "./SignUp.module.scss";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import Form from "ui/components/form/Form";
 
 
 
-const LogIn = () => {
 
+const SignUp = () => {
     const { t } = useTranslation();
     const { push } = useHistory();
 
 
-    const handleLogin = (email: string, password: string) => {
+    const handleRegister = (email: string, password: string) => {
         //push('/');
     }
 
@@ -25,10 +25,9 @@ const LogIn = () => {
                 </div>
 
 
-
                 <div className={style.form}>
                     <form className={style.form__content}>
-                        <h1 className={style.Htext}>{t('login')} </h1>
+                        <h1 className={style.Htext}> {t('signup')} </h1>
                         <div className={style.form__item}>
                             <label className={style.label}>Email</label>
                             <div className={style.input}>
@@ -45,17 +44,26 @@ const LogIn = () => {
 
                     <div className={style.mainfooter}>
                         <button className={style.buttonContinue}>
-                            {t('login')}
+                            {t('signup')}
                         </button>
                         <div className={style.questionBlock}>
-                            <p className={style.question}>{t('donthaveanacc?')} </p>
-                            <Link to='/signup'>{t('signup')}</Link>
+                            <p className={style.question}>{t('haveaccount?')}</p>
+                            <Link to='/login'>{t('login')}</Link>
                         </div>
                     </div>
                 </div>
+
+
+                <Form
+                    handleClick={handleRegister}
+                    title={t('signup')}
+                    questiontag={t('haveaccount?')}
+                    directtag='/login'
+                    hrefDirection={t('login')}
+                />
             </div>
         </div>
-    );
+    )
 }
 
-export default LogIn;
+export default SignUp;

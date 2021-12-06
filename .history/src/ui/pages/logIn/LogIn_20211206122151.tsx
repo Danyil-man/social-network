@@ -3,6 +3,7 @@ import style from "./LogIn.module.scss";
 import welcome from "public/images/welcome.png";
 import { useHistory } from "react-router";
 import { useTranslation } from "react-i18next";
+import Form from "ui/components/form/Form";
 import { Link } from "react-router-dom";
 
 
@@ -53,6 +54,14 @@ const LogIn = () => {
                         </div>
                     </div>
                 </div>
+                <Form
+                    handleClick={handleLogin}
+                    title={t('login')}
+                    questiontag={t('donthaveanacc?')}
+                    directtag='/signup'
+                    hrefDirection={t('signup')}
+                />
+
             </div>
         </div>
     );

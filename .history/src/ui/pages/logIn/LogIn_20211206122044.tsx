@@ -3,7 +3,7 @@ import style from "./LogIn.module.scss";
 import welcome from "public/images/welcome.png";
 import { useHistory } from "react-router";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import Form from "ui/components/form/Form";
 
 
 
@@ -28,31 +28,39 @@ const LogIn = () => {
 
                 <div className={style.form}>
                     <form className={style.form__content}>
-                        <h1 className={style.Htext}>{t('login')} </h1>
+                        <h1 className={style.Htext}> {title} </h1>
                         <div className={style.form__item}>
                             <label className={style.label}>Email</label>
                             <div className={style.input}>
-                                <input type="email" placeholder="example@mail.com" required />
+                                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="example@mail.com" required />
                             </div>
                         </div>
                         <div className={style.form__item}>
                             <label className={style.label}>{t('password')}</label>
                             <div className={style.input}>
-                                <input type="password" placeholder="Type in..." required />
+                                <input type="password" value={pass} onChange={(e) => setPass(e.target.value)} placeholder="Type in..." required />
                             </div>
                         </div>
                     </form>
 
                     <div className={style.mainfooter}>
-                        <button className={style.buttonContinue}>
-                            {t('login')}
+                        <button className={style.buttonContinue} onClick={() => handleClick(email, pass)}>
+                            {title}
                         </button>
                         <div className={style.questionBlock}>
-                            <p className={style.question}>{t('donthaveanacc?')} </p>
-                            <Link to='/signup'>{t('signup')}</Link>
+                            <p className={style.question}> {questiontag} </p>
+                            <Link to={directtag}>{hrefDirection}</Link>
                         </div>
                     </div>
                 </div>
+                <Form
+                    handleClick={handleLogin}
+                    title={t('login')}
+                    questiontag={t('donthaveanacc?')}
+                    directtag='/signup'
+                    hrefDirection={t('signup')}
+                />
+
             </div>
         </div>
     );
