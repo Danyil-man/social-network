@@ -26,10 +26,10 @@ const authReducer = (state = initialState, action:ActionCreatorsType):InitialSta
         case SET_USER_DATA: 
         return{
             ...state,
-            username: action.data.username,
-            login: action.data.login,
-            password: action.data.password,
-            isAuth: true,
+            state.username = action.data.username,
+            state.login = action.data.login,
+            state.password = action.data.password,
+            state.isAuth = true,
         }
 
         // case GET_USER_DATA: 

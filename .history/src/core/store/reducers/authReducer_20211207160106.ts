@@ -5,11 +5,11 @@ import { AppStateType, InfernActiontype } from "../redux/reduxStore";
 const SET_USER_DATA = "SET_USER_DATA";
 const GET_USER_DATA = "GET_USER_DATA";
 
-interface InitialStateType {
+type InitialStateType = {
     username?: string,
     login?: string,
     password?: string,
-    isAuth: boolean
+    isAuth?: boolean
 }
 
 const initialState: InitialStateType = {
@@ -26,10 +26,7 @@ const authReducer = (state = initialState, action:ActionCreatorsType):InitialSta
         case SET_USER_DATA: 
         return{
             ...state,
-            username: action.data.username,
-            login: action.data.login,
-            password: action.data.password,
-            isAuth: true,
+            ...action.data
         }
 
         // case GET_USER_DATA: 

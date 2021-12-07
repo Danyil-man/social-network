@@ -47,12 +47,14 @@ type LoginType = {
 export const authAPI = {
     reg(username:string, login: string, password:string ){
         console.log(username, login, password)
-        return instanceApi.post('create-account', {
-            body: {
+        return instanceApi({
+            method: 'post',
+            url: 'create-account',
+            body: JSON.stringify({
                 username, 
                 login, 
                 password
-            }
+            }) 
         })
     },
 

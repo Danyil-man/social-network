@@ -5,17 +5,17 @@ import { AppStateType, InfernActiontype } from "../redux/reduxStore";
 const SET_USER_DATA = "SET_USER_DATA";
 const GET_USER_DATA = "GET_USER_DATA";
 
-interface InitialStateType {
-    username?: string,
-    login?: string,
-    password?: string,
+type InitialStateType = {
+    username: string | null,
+    login: string | null,
+    password: string | null,
     isAuth: boolean
 }
 
 const initialState: InitialStateType = {
-    username: undefined,
-    login: undefined,
-    password: undefined,
+    username: null,
+    login: null,
+    password: null,
     isAuth: false
 }
 
@@ -26,17 +26,14 @@ const authReducer = (state = initialState, action:ActionCreatorsType):InitialSta
         case SET_USER_DATA: 
         return{
             ...state,
-            username: action.data.username,
-            login: action.data.login,
-            password: action.data.password,
-            isAuth: true,
+            ...action.data
         }
 
-        // case GET_USER_DATA: 
-        // return{
-        //     ...state,
-        //     ...action.data
-        // }
+        case GET_USER_DATA: 
+        return{
+            ...state,
+            ...action.data
+        }
 
         default:
             return state
@@ -48,7 +45,7 @@ const authReducer = (state = initialState, action:ActionCreatorsType):InitialSta
 type ActionCreatorsType = InfernActiontype<typeof actions>
 
 export const actions = {
-    setUserData: (username?: string, login?: string, password?: string, isAuth?: boolean) => ({
+    setUserData: (username: string | null, login: string | null, password: string | null, isAuth: boolean) => ({
         type: SET_USER_DATA,
         data: {username, login, password, isAuth}
     } as const),
@@ -70,10 +67,13 @@ type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionCreator
 // }
 
 export const registration = (username: string, login: string, password: string):ThunkType => async (dispatch) => {
-    let response = await authAPI.reg(username, login, password).then( response => {
-        let {username, login, password} = response.data.data
+    let response = await authAPI.reg(username, login, password);
+    debugger
+    if(response.status===200){
+        let {username, login, password} = response.data
         dispatch(actions.setUserData(username, login, password, true))
-    })
+    }
+    
 }
 
 export const logIn = (login: string, password:string):ThunkType => async (dispatch) => {
@@ -81,10 +81,10 @@ export const logIn = (login: string, password:string):ThunkType => async (dispat
     dispatch(actions.getUserData(login, password, true))
 }
 
-export const logOut = ():ThunkType => async (dispatch) => {
+export const logout = ():ThunkType => async (dispatch) => {
     let response = await authAPI.logout();
     if(response.data === 0){
-        dispatch(actions.setUserData(undefined, undefined, undefined, false))
+        dispatch(actions.setUserData(null, null, null, false))
     }
 }
 

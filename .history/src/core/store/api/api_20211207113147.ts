@@ -5,10 +5,6 @@ import axios from "axios";
 
 const instanceApi = axios.create({
     baseURL: "https://linkstagram-api.ga/",
-    headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-        'Accept': '*/*',
-      }
 })
 
 // instanceApi.interceptors.request.use(
@@ -28,13 +24,11 @@ const instanceApi = axios.create({
 //                                               AuthUserAPI
 type ResponseType<D={}> = {
     data: D
-    messages: string
+    messages: Array<string>
 }
 
 type RegistrationType = {
-    username: string
-    login:string
-    password:string
+    success: string
 }
 
 type LoginType = {
@@ -42,22 +36,18 @@ type LoginType = {
     password : string
 }
 
-
-
 export const authAPI = {
     reg(username:string, login: string, password:string ){
-        console.log(username, login, password)
-        return instanceApi.post('create-account', {
-            body: {
-                username, 
-                login, 
-                password
-            }
+        return instanceApi.post<ResponseType>('create-account', {
+            username,
+            login,
+            password
         })
     },
 
+    
     login(login: string, password: string){
-        return instanceApi.post<LoginType>('login', {
+        return instanceApi.post<ResponseType<LoginType>>('login', {
             login,
             password
         })
@@ -70,7 +60,7 @@ export const authAPI = {
 //                                          ProfileAPI
 
 
-export type GetAccountType = {
+type GetAccountType = {
     username: string
     description: null
     email: string
@@ -85,6 +75,9 @@ export type GetAccountType = {
 
 export const profileAPI = {
     getAccount(){
-        return instanceApi.get<GetAccountType>('account')
+        return instanceApi.get<GetAccountType>('account').then(response => ({
+            data: response.data,
+            status: response.status
+        }))
     },
 }

@@ -19,10 +19,12 @@ type MapDispatchToPropsType = {
 
 const IdxSignUp: FC<ContainerSignUPType> = (props) => {
     return (
-        <SignUp
-            registration={props.registration}
-            isAuth={props.isAuth}
-        />
+        <div>
+            <SignUp
+                registration={props.registration}
+                isAuth={props.isAuth}
+            />
+        </div>
     );
 }
 

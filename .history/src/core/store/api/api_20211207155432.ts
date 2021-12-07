@@ -5,10 +5,6 @@ import axios from "axios";
 
 const instanceApi = axios.create({
     baseURL: "https://linkstagram-api.ga/",
-    headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-        'Accept': '*/*',
-      }
 })
 
 // instanceApi.interceptors.request.use(
@@ -42,18 +38,16 @@ type LoginType = {
     password : string
 }
 
-
-
 export const authAPI = {
     reg(username:string, login: string, password:string ){
-        console.log(username, login, password)
         return instanceApi.post('create-account', {
-            body: {
-                username, 
-                login, 
+            data: {
+                username,
+                login,
                 password
             }
-        })
+        }
+        )
     },
 
     login(login: string, password: string){

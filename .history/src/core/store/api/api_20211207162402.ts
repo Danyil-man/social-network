@@ -48,11 +48,11 @@ export const authAPI = {
     reg(username:string, login: string, password:string ){
         console.log(username, login, password)
         return instanceApi.post('create-account', {
-            body: {
+            body: JSON.stringify({
                 username, 
                 login, 
                 password
-            }
+            }) 
         })
     },
 

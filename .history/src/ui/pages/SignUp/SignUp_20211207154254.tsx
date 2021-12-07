@@ -17,11 +17,12 @@ const SignUp: FC<SignUpType> = ({ registration, isAuth }) => {
     const { t } = useTranslation();
 
     const submit = (values: any) => {
-        registration(values.username, values.login, values.password)
+        registration(values, values, values)
         console.log({ values }, isAuth)
     }
     return isAuth ? (
         <Redirect to='/' />
+
     ) : (
         <div className={style.wrapper}>
             <div className={style.content}>

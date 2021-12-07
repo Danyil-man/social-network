@@ -5,17 +5,17 @@ import { AppStateType, InfernActiontype } from "../redux/reduxStore";
 const SET_USER_DATA = "SET_USER_DATA";
 const GET_USER_DATA = "GET_USER_DATA";
 
-interface InitialStateType {
-    username?: string,
-    login?: string,
-    password?: string,
+type InitialStateType = {
+    username: string | null,
+    login: string | null,
+    password: string | null,
     isAuth: boolean
 }
 
 const initialState: InitialStateType = {
-    username: undefined,
-    login: undefined,
-    password: undefined,
+    username: null,
+    login: null,
+    password: null,
     isAuth: false
 }
 
@@ -26,17 +26,14 @@ const authReducer = (state = initialState, action:ActionCreatorsType):InitialSta
         case SET_USER_DATA: 
         return{
             ...state,
-            username: action.data.username,
-            login: action.data.login,
-            password: action.data.password,
-            isAuth: true,
+            ...action.data
         }
 
-        // case GET_USER_DATA: 
-        // return{
-        //     ...state,
-        //     ...action.data
-        // }
+        case GET_USER_DATA: 
+        return{
+            ...state,
+            ...action.data
+        }
 
         default:
             return state
@@ -74,6 +71,8 @@ export const registration = (username: string, login: string, password: string):
         let {username, login, password} = response.data.data
         dispatch(actions.setUserData(username, login, password, true))
     })
+        
+    
 }
 
 export const logIn = (login: string, password:string):ThunkType => async (dispatch) => {
