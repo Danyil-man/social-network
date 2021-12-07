@@ -16,7 +16,7 @@ type MapStateToPropsType = {
 const IdxHome: FC<ContainerHomeType> = (props) => {
 
 
-    return props.isAuth ? (
+    return ? (
         <div>
             <Home />
         </div>

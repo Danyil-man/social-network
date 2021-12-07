@@ -7,16 +7,17 @@ import { FC } from 'react';
 
 type ContainerHomeType = {
     isAuth: boolean
+    registration: (username: string, login: string, password: string) => void
 }
 
 type MapStateToPropsType = {
     isAuth: boolean
 }
 
-const IdxHome: FC<ContainerHomeType> = (props) => {
+const IdxHome: FC<ContainerHomeType> = () => {
 
 
-    return props.isAuth ? (
+    return ? (
         <div>
             <Home />
         </div>

@@ -43,7 +43,7 @@ const SignUp: FC<SignUpType> = ({ registration, isAuth }) => {
                         <div className={styleFormik.form__content}>
                             <h1 className={styleFormik.Htext}> {t('signup')} </h1>
                             <div className={styleFormik.form__item}>
-                                <label className={styleFormik.label}>Username</label>
+                                <label className={styleFormik.label}>Email</label>
                                 <div className={styleFormik.input}>
                                     <Field type="text" name="username" placeholder="john_doe" required />
                                 </div>

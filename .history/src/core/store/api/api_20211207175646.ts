@@ -25,7 +25,7 @@ const instanceApi = axios.create({
 //                                               AuthUserAPI
 type ResponseType<D = {}> = {
   data: D;
-  success: string;
+  messages: string;
 };
 
 type RegistrationType = {

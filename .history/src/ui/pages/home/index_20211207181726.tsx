@@ -2,21 +2,14 @@ import Home from './Home';
 import { Redirect } from "react-router";
 import { AppStateType } from 'core/store/redux/reduxStore';
 import { connect } from 'react-redux';
-import { FC } from 'react';
 //import { useAuth } from 'core/hooks/useAuth';
 
-type ContainerHomeType = {
-    isAuth: boolean
-}
-
-type MapStateToPropsType = {
-    isAuth: boolean
-}
-
-const IdxHome: FC<ContainerHomeType> = (props) => {
 
 
-    return props.isAuth ? (
+const IdxHome = () => {
+
+
+    return ? (
         <div>
             <Home />
         </div>
@@ -34,4 +27,4 @@ const mapStateToProps = (state: AppStateType) => ({
     isAuth: state.auth.isAuth
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(IdxHome);
+export default connect(mapStateToProps,)(IdxHome);

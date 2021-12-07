@@ -32,7 +32,7 @@ const authReducer = (
         username: action.data.username,
         login: action.data.login,
         password: action.data.password,
-        //isAuth: true,
+        isAuth: true,
       };
 
     // case GET_USER_DATA:
@@ -82,15 +82,17 @@ type ThunkType = ThunkAction<
   ActionCreatorsType
 >;
 
+// export const setAuth = ():ThunkType => async (dispatch) => {
+//     let response = await profileAPI.getAccount()
+//     let {username, login, password} = response.data
+//     dispatch(actions.setUserData(username, login, password, true))
+// }
+
 export const registration =
   (username: string, login: string, password: string): ThunkType =>
-  async (dispatch) =>
+  async () =>
     authAPI.reg(username, login, password).then((response) => {
       // TODO: Show alert with response.success and then redirect to '/login'
-      if(response.data.success === "Your account has been created"){
-        //alert('Accout Created')
-        dispatch(actions.setUserData(username, login, password, true))
-      }
     });
 
 export const logIn =

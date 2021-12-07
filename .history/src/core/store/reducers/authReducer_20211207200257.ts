@@ -88,7 +88,7 @@ export const registration =
     authAPI.reg(username, login, password).then((response) => {
       // TODO: Show alert with response.success and then redirect to '/login'
       if(response.data.success === "Your account has been created"){
-        //alert('Accout Created')
+        alert('Accout Created')
         dispatch(actions.setUserData(username, login, password, true))
       }
     });
