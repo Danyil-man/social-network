@@ -32,7 +32,7 @@ const authReducer = (
         username: action.data.username,
         login: action.data.login,
         password: action.data.password,
-        isAuth: true,
+        //isAuth: true,
       };
 
     case GET_USER_DATA:

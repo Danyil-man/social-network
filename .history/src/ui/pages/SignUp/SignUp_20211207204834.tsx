@@ -1,44 +1,53 @@
 import React, { FC } from "react";
-import style from "./LogIn.module.scss";
+import { Redirect } from "react-router";
 import welcome from "public/images/welcome.png";
-import styleFormik from "./Form.module.scss";
-import { Redirect, useHistory } from "react-router";
+import style from "./SignUp.module.scss";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import styleFormik from "./Form.module.scss";
 import { Field, Form, Formik } from "formik";
 
-type LogInType = {
-    isAuth: boolean;
-    logIn: (login: string, password: string) => void;
+type SignUpType = {
+    registration: (username: string, login: string, password: string) => void
+    isAuth: boolean
 }
 
-const LogIn: FC<LogInType> = ({ isAuth, logIn }) => {
+
+const SignUp: FC<SignUpType> = ({ registration, isAuth }) => {
     const { t } = useTranslation();
+
     const submit = (values: any) => {
-        logIn(values.login, values.password)
+        registration(values.username, values.login, values.password)
         console.log({ values }, isAuth)
     }
-
     return isAuth ? (
-        <Redirect to='/' />
+        <Redirect to='/login' />
     ) : (
         <div className={style.wrapper}>
-
             <div className={style.content}>
-
                 <div className={style.welcomeImg}>
                     <img src={welcome} alt="welcome" />
                 </div>
+
                 <Formik
                     initialValues={{
+                        username: '',
                         login: '',
                         password: ''
                     }}
+
                     onSubmit={submit}
+
                 >
                     <Form className={styleFormik.form}>
                         <div className={styleFormik.form__content}>
-                            <h1 className={styleFormik.Htext}>{t('login')} </h1>
+                            <h1 className={styleFormik.Htext}> {t('signup')} </h1>
+                            <div className={styleFormik.form__item}>
+                                <label className={styleFormik.label}>Username</label>
+                                <div className={styleFormik.input}>
+                                    <Field type="text" name="username" placeholder="john_doe" required />
+                                </div>
+                            </div>
                             <div className={styleFormik.form__item}>
                                 <label className={styleFormik.label}>Email</label>
                                 <div className={styleFormik.input}>
@@ -51,22 +60,22 @@ const LogIn: FC<LogInType> = ({ isAuth, logIn }) => {
                                     <Field type="password" name="password" placeholder="Type in..." required />
                                 </div>
                             </div>
-                        </div>
-                        <div className={styleFormik.mainfooter}>
-                            <button className={styleFormik.buttonContinue}>
-                                {t('login')}
-                            </button>
-                            <div className={styleFormik.questionBlock}>
-                                <p className={styleFormik.question}>{t('donthaveanacc?')} </p>
-                                <Link to='/signup'>{t('signup')}</Link>
+                            <div className={styleFormik.mainfooter}>
+                                <button type="submit" className={styleFormik.buttonContinue}>
+                                    {t('signup')}
+                                </button>
+                                <div className={styleFormik.questionBlock}>
+                                    <p className={styleFormik.question}>{t('haveaccount?')}</p>
+                                    <Link to='/login'>{t('login')}</Link>
+                                </div>
                             </div>
                         </div>
                     </Form>
                 </Formik>
             </div>
-
         </div >
     )
+
 }
 
-export default LogIn;
+export default SignUp;

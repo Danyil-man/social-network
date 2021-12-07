@@ -34,7 +34,9 @@ const LogIn: FC<LogInType> = ({ isAuth, logIn }) => {
                         login: '',
                         password: ''
                     }}
-                    onSubmit={submit}
+                    onSubmit={(values) => {
+                        console.log(values.login, values.password)
+                    }}
                 >
                     <Form className={styleFormik.form}>
                         <div className={styleFormik.form__content}>

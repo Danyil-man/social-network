@@ -10,20 +10,13 @@ type ContainerLogInType = {
     logIn: (login: string, password: string) => void;
 }
 
-type MapStateToPropsType = {
-    isAuth: boolean
-}
 
-type MapDispatchToPropsType = {
-    logIn: (login: string, password: string) => void;
-}
 
 const IdxLogIn: FC<ContainerLogInType> = (props) => {
     return (
         <div>
             <LogIn
                 isAuth={props.isAuth}
-                logIn={props.logIn}
             />
         </div>
     )
@@ -34,4 +27,4 @@ const mapStateToProps = (state: AppStateType) => ({
 })
 
 
-export default connect<MapStateToPropsType, MapDispatchToPropsType, ContainerLogInType, AppStateType>(mapStateToProps, { logIn })(IdxLogIn);
+export default connect(mapStateToProps, { logIn })(IdxLogIn);

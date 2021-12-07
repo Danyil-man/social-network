@@ -100,7 +100,7 @@ export const logIn =
   async (dispatch) => {
     let response = await authAPI.login(login, password);
     if(response.data.success === "You have been logged in"){
-      dispatch(actions.getUserData(login, password, true));
+      dispatch(actions.getUserData(login, password, false));
     }
     
   };

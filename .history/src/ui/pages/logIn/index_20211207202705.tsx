@@ -34,4 +34,4 @@ const mapStateToProps = (state: AppStateType) => ({
 })
 
 
-export default connect<MapStateToPropsType, MapDispatchToPropsType, ContainerLogInType, AppStateType>(mapStateToProps, { logIn })(IdxLogIn);
+export default connect(mapStateToProps, { logIn })(IdxLogIn);

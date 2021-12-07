@@ -32,7 +32,7 @@ const authReducer = (
         username: action.data.username,
         login: action.data.login,
         password: action.data.password,
-        isAuth: true,
+        //isAuth: true,
       };
 
     case GET_USER_DATA:
@@ -40,7 +40,6 @@ const authReducer = (
         ...state,
         login: action.data.login,
         password: action.data.password,
-        isAuth: true,
     };
 
     default:
@@ -100,6 +99,7 @@ export const logIn =
   async (dispatch) => {
     let response = await authAPI.login(login, password);
     if(response.data.success === "You have been logged in"){
+      alert("Logged In")
       dispatch(actions.getUserData(login, password, true));
     }
     

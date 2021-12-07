@@ -36,7 +36,7 @@ export const authAPI = {
   },
 
   login(login: string, password: string) {
-    return instanceApi.post<ResponseType<LoginType>>("/login", {
+    return instanceApi.post<LoginType>("login", {
       login,
       password,
     });

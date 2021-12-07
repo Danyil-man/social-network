@@ -32,16 +32,14 @@ const authReducer = (
         username: action.data.username,
         login: action.data.login,
         password: action.data.password,
-        isAuth: true,
+        //isAuth: true,
       };
 
-    case GET_USER_DATA:
-    return{
-        ...state,
-        login: action.data.login,
-        password: action.data.password,
-        isAuth: true,
-    };
+    // case GET_USER_DATA:
+    // return{
+    //     ...state,
+    //     ...action.data
+    // }
 
     default:
       return state;
@@ -65,8 +63,8 @@ export const actions = {
     } as const),
 
   getUserData: (
-    login: string,
-    password: string,
+    login: string | null,
+    password: string | null,
     isAuth: boolean
   ) =>
     ({
@@ -99,10 +97,8 @@ export const logIn =
   (login: string, password: string): ThunkType =>
   async (dispatch) => {
     let response = await authAPI.login(login, password);
-    if(response.data.success === "You have been logged in"){
-      dispatch(actions.getUserData(login, password, true));
-    }
-    
+    if(response.data.success === "You have been logged in")
+    dispatch(actions.getUserData(login, password, true));
   };
 
 export const logOut = (): ThunkType => async (dispatch) => {

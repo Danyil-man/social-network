@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import style from "./LogIn.module.scss";
 import welcome from "public/images/welcome.png";
 import styleFormik from "./Form.module.scss";
-import { Redirect, useHistory } from "react-router";
+import { useHistory } from "react-router";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Field, Form, Formik } from "formik";
@@ -13,15 +13,16 @@ type LogInType = {
 }
 
 const LogIn: FC<LogInType> = ({ isAuth, logIn }) => {
+
     const { t } = useTranslation();
-    const submit = (values: any) => {
-        logIn(values.login, values.password)
-        console.log({ values }, isAuth)
+
+
+    const submit = () => {
+        //push('/');
+        alert("logged in")
     }
 
     return isAuth ? (
-        <Redirect to='/' />
-    ) : (
         <div className={style.wrapper}>
 
             <div className={style.content}>
@@ -34,7 +35,9 @@ const LogIn: FC<LogInType> = ({ isAuth, logIn }) => {
                         login: '',
                         password: ''
                     }}
-                    onSubmit={submit}
+                    onSubmit={(values) => {
+                        console.log({ values })
+                    }}
                 >
                     <Form className={styleFormik.form}>
                         <div className={styleFormik.form__content}>
@@ -65,7 +68,9 @@ const LogIn: FC<LogInType> = ({ isAuth, logIn }) => {
                 </Formik>
             </div>
 
-        </div >
+        </div>
+    ) : (
+
     )
 }
 
