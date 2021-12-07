@@ -108,10 +108,8 @@ export const logIn =
   };
 
 export const logOut = (): ThunkType => async (dispatch) => {
-  await authAPI.logout().then(response => {
-    if(response.data.success === "Your account has been created")
-    dispatch(actions.getUserData(undefined, undefined, false));
-  })
+  let response = await authAPI.logout();
+  dispatch(actions.getUserData(undefined, undefined, false));
   
 };
 

@@ -10,6 +10,8 @@ type Homeprops = {
 
 const Home: FC<Homeprops> = ({ isAuth }) => {
 
+    const [check, setCheck] = useState(isAuth)
+
     return (
         <div className={style.wrapper}>
             <div className={style.content}>

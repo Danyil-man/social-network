@@ -5,7 +5,7 @@ import styleFormik from "./Form.module.scss";
 import { Redirect, useHistory } from "react-router";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 
 type LogInType = {
     isAuth: boolean;
@@ -14,13 +14,12 @@ type LogInType = {
 
 const LogIn: FC<LogInType> = ({ isAuth, logIn }) => {
     const { t } = useTranslation();
+    const [error, setError] = useState(false)
     const submit = (values: any) => {
+
         logIn(values.login, values.password)
-        console.log({ values })
-
+        console.log({ values }, isAuth)
     }
-
-
 
     return isAuth ? (
         <Redirect to='/' />

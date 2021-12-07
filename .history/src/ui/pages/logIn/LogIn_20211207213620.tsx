@@ -15,9 +15,10 @@ type LogInType = {
 const LogIn: FC<LogInType> = ({ isAuth, logIn }) => {
     const { t } = useTranslation();
     const submit = (values: any) => {
-        logIn(values.login, values.password)
-        console.log({ values })
-
+        if (isAuth === false) {
+            logIn(values.login, values.password)
+            console.log({ values })
+        }
     }
 
 

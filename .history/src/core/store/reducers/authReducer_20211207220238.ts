@@ -6,15 +6,15 @@ const SET_USER_DATA = "SET_USER_DATA";
 const GET_USER_DATA = "GET_USER_DATA";
 
 interface InitialStateType {
-  username?: string;
+  username: string;
   login?: string;
   password?: string;
   isAuth: boolean;
 }
 
 const initialState: InitialStateType = {
-  username: undefined,
-  login: undefined,
+  username: null,
+  login: null,
   password: undefined,
   isAuth: false,
 };
@@ -65,9 +65,9 @@ export const actions = {
     } as const),
 
   getUserData: (
-    login: string | undefined,
-    password: string | undefined,
-    isAuth: boolean | undefined
+    login: string | null,
+    password: string | null,
+    isAuth: boolean | null
   ) =>
     ({
       type: GET_USER_DATA,
@@ -108,11 +108,8 @@ export const logIn =
   };
 
 export const logOut = (): ThunkType => async (dispatch) => {
-  await authAPI.logout().then(response => {
-    if(response.data.success === "Your account has been created")
-    dispatch(actions.getUserData(undefined, undefined, false));
-  })
-  
+  let response = await authAPI.logout();
+  dispatch(actions.getUserData(null, null, false));
 };
 
 export default authReducer;

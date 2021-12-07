@@ -90,27 +90,27 @@ const Header: FC<HeaderType> = ({ logOut, isAuth }) => {
                             </div>
                         )}
                     </div>
-                    {isAuth && (
-                        <div className={style.status__content}>
-                            <div className={style.miniava} onClick={(e) => setIsStatus(!isStatus)}>
-                                <img width={40} src={headerAva} alt="ava" />
-                            </div>
-                            {isStatus && (
-                                <div className={style.status__dropdown}>
-                                    <p>{status}</p>
-                                    <div className={style.profile__navigation}>
-                                        <Link to='/profile'>Profile</Link>
-                                    </div>
-                                    <div className={style.profile__footer}>
-                                        <button onClick={logOut} className={style.btnLogOut} >
-                                            Log out
-                                        </button>
-                                    </div>
-                                </div>
-                            )}
+                    {/* {isAuth && ( */}
+                    <div className={style.status__content}>
+                        <div className={style.miniava} onClick={(e) => setIsStatus(!isStatus)}>
+                            <img width={40} src={headerAva} alt="ava" />
                         </div>
-                    )
-                    }
+                        {isStatus && (
+                            <div className={style.status__dropdown}>
+                                <p>{status}</p>
+                                <div className={style.profile__navigation}>
+                                    <Link to='/profile'>Profile</Link>
+                                </div>
+                                <div className={style.profile__footer}>
+                                    <button onClick={logOut} className={style.btnLogOut} >
+                                        Log out
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                    {/* )
+                    } */}
                 </div>
             </div>
         </div>

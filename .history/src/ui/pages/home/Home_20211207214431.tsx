@@ -10,10 +10,17 @@ type Homeprops = {
 
 const Home: FC<Homeprops> = ({ isAuth }) => {
 
+    const [check, setCheck] = useState(isAuth)
+
+    const Check = () => {
+        alert(check)
+    }
+
     return (
         <div className={style.wrapper}>
             <div className={style.content}>
                 <div className={style.lefside}>
+                    <div>IResult Check: <button onClick={Check}>Check</button> </div>
                     <Stories />
                     <Posts />
                 </div>

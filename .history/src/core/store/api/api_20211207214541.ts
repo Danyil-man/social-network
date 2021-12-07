@@ -42,7 +42,7 @@ export const authAPI = {
     });
   },
   logout() {
-    return instanceApi.delete<ResponseType>("/login");
+    return instanceApi.delete("/login");
   },
 };
 

@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { useState } from "react";
 import Stories from "./stories/Stories";
 import style from "./Home.module.scss";
 import Posts from "./posts/Posts";
@@ -8,8 +8,7 @@ type Homeprops = {
     isAuth: boolean
 }
 
-const Home: FC<Homeprops> = ({ isAuth }) => {
-
+const Home = (props: Homeprops) => {
     return (
         <div className={style.wrapper}>
             <div className={style.content}>

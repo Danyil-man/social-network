@@ -8,7 +8,6 @@ import { logOut } from 'core/store/reducers/authReducer';
 
 type ContainerHomeType = {
     isAuth: boolean
-    logOut: () => void
 }
 
 type MapStateToPropsType = {
@@ -33,4 +32,4 @@ const mapStateToProps = (state: AppStateType) => ({
     isAuth: state.auth.isAuth
 })
 
-export default connect(mapStateToProps)(IdxHome);
+export default connect(mapStateToProps, { logOut })(IdxHome);

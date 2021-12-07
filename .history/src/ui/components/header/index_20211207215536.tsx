@@ -43,11 +43,10 @@ i18next
     });
 
 type HeaderType = {
-    isAuth: boolean
-    logOut: () => void
+
 }
 
-const Header: FC<HeaderType> = ({ logOut, isAuth }) => {
+const Header: FC<HeaderType> = () => {
     const [isActive, setIsActive] = useState(false);
     const [isStatus, setIsStatus] = useState(false);
     const { t } = useTranslation();
@@ -90,27 +89,27 @@ const Header: FC<HeaderType> = ({ logOut, isAuth }) => {
                             </div>
                         )}
                     </div>
-                    {isAuth && (
-                        <div className={style.status__content}>
-                            <div className={style.miniava} onClick={(e) => setIsStatus(!isStatus)}>
-                                <img width={40} src={headerAva} alt="ava" />
-                            </div>
-                            {isStatus && (
-                                <div className={style.status__dropdown}>
-                                    <p>{status}</p>
-                                    <div className={style.profile__navigation}>
-                                        <Link to='/profile'>Profile</Link>
-                                    </div>
-                                    <div className={style.profile__footer}>
-                                        <button onClick={logOut} className={style.btnLogOut} >
-                                            Log out
-                                        </button>
-                                    </div>
-                                </div>
-                            )}
+                    {/* {isAuth && ( */}
+                    <div className={style.status__content}>
+                        <div className={style.miniava} onClick={(e) => setIsStatus(!isStatus)}>
+                            <img width={40} src={headerAva} alt="ava" />
                         </div>
-                    )
-                    }
+                        {isStatus && (
+                            <div className={style.status__dropdown}>
+                                <p>{status}</p>
+                                <div className={style.profile__navigation}>
+                                    <Link to='/profile'>Profile</Link>
+                                </div>
+                                <div className={style.profile__footer}>
+                                    <button className={style.btnLogOut} >
+                                        Log out
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                    {/* )
+                    } */}
                 </div>
             </div>
         </div>
@@ -119,7 +118,7 @@ const Header: FC<HeaderType> = ({ logOut, isAuth }) => {
 }
 
 const mapStateToProps = (state: AppStateType) => ({
-    isAuth: state.auth.isAuth
+
 })
 
 export default connect(mapStateToProps, { logOut })(Header);

@@ -6,6 +6,7 @@ import MiniProfile from "./miniProfile/MiniProfile";
 
 type Homeprops = {
     isAuth: boolean
+    logOut: () => void
 }
 
 const Home: FC<Homeprops> = ({ isAuth }) => {

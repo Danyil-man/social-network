@@ -108,11 +108,9 @@ export const logIn =
   };
 
 export const logOut = (): ThunkType => async (dispatch) => {
-  await authAPI.logout().then(response => {
-    if(response.data.success === "Your account has been created")
-    dispatch(actions.getUserData(undefined, undefined, false));
-  })
-  
+  let response = await authAPI.logout();
+  if(response.data.success === "You have been logged in" )
+  dispatch(actions.getUserData(undefined, undefined, false));
 };
 
 export default authReducer;

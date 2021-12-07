@@ -2,13 +2,11 @@ import Home from './Home';
 import { Redirect } from "react-router";
 import { AppStateType } from 'core/store/redux/reduxStore';
 import { connect } from 'react-redux';
-import { FC, useState } from 'react';
-import { logOut } from 'core/store/reducers/authReducer';
+import { FC } from 'react';
 //import { useAuth } from 'core/hooks/useAuth';
 
 type ContainerHomeType = {
     isAuth: boolean
-    logOut: () => void
 }
 
 type MapStateToPropsType = {
@@ -17,11 +15,10 @@ type MapStateToPropsType = {
 
 const IdxHome: FC<ContainerHomeType> = (props) => {
 
+
     return props.isAuth ? (
         <div>
-            <Home
-                isAuth={props.isAuth}
-            />
+            <Home />
         </div>
     )
         : (
@@ -29,8 +26,12 @@ const IdxHome: FC<ContainerHomeType> = (props) => {
         )
 }
 
+const mapDispatchToProps = (state: AppStateType) => ({
+
+})
+
 const mapStateToProps = (state: AppStateType) => ({
     isAuth: state.auth.isAuth
 })
 
-export default connect(mapStateToProps)(IdxHome);
+export default connect(mapStateToProps, mapDispatchToProps)(IdxHome);

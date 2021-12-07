@@ -65,9 +65,9 @@ export const actions = {
     } as const),
 
   getUserData: (
-    login: string | undefined,
-    password: string | undefined,
-    isAuth: boolean | undefined
+    login: string,
+    password: string,
+    isAuth: boolean
   ) =>
     ({
       type: GET_USER_DATA,
@@ -101,18 +101,19 @@ export const logIn =
   (login: string, password: string): ThunkType =>
   async (dispatch) => {
     let response = await authAPI.login(login, password);
-    let messageCheck = response.data.success === "You have been logged in" 
-    if(messageCheck){
+    if(response.data.success === "You have been logged in"){
       dispatch(actions.getUserData(login, password, true));
-    } 
+    } else if(response.data.success != "You have been logged in") {
+      console.log("Incorrect Email of Password")
+    }
+    
   };
 
 export const logOut = (): ThunkType => async (dispatch) => {
-  await authAPI.logout().then(response => {
-    if(response.data.success === "Your account has been created")
-    dispatch(actions.getUserData(undefined, undefined, false));
-  })
-  
+  let response = await authAPI.logout();
+  if (response.data === 0) {
+    dispatch(actions.setUserData(undefined, undefined, undefined, false));
+  } 
 };
 
 export default authReducer;

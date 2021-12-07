@@ -21,6 +21,7 @@ const IdxHome: FC<ContainerHomeType> = (props) => {
         <div>
             <Home
                 isAuth={props.isAuth}
+                logOut={props.logOut}
             />
         </div>
     )
@@ -33,4 +34,4 @@ const mapStateToProps = (state: AppStateType) => ({
     isAuth: state.auth.isAuth
 })
 
-export default connect(mapStateToProps)(IdxHome);
+export default connect(mapStateToProps, { logOut })(IdxHome);

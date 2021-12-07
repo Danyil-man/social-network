@@ -17,7 +17,9 @@ const LogIn: FC<LogInType> = ({ isAuth, logIn }) => {
     const submit = (values: any) => {
         logIn(values.login, values.password)
         console.log({ values })
-
+        if (values.login === '' && values.password === '') {
+            alert('Match Fields')
+        }
     }
 
 

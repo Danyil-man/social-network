@@ -14,13 +14,11 @@ type LogInType = {
 
 const LogIn: FC<LogInType> = ({ isAuth, logIn }) => {
     const { t } = useTranslation();
+    const [error, setError] = useState(false)
     const submit = (values: any) => {
         logIn(values.login, values.password)
         console.log({ values })
-
     }
-
-
 
     return isAuth ? (
         <Redirect to='/' />
