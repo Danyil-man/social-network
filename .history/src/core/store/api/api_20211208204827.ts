@@ -63,6 +63,16 @@ export type GetAccountType = {
 
 export const profileAPI = {
   getAccount() {
-    return instanceApi.get<GetAccountType>("/account");
+    return instanceApi.get<GetAccountType>("/account", {
+      username,
+    description,
+    email: string;
+  first_name: null;
+  followers: number;
+  following: number;
+  job_title: null;
+  last_name: null;
+  profile_photo_url: string;
+    });
   },
 };

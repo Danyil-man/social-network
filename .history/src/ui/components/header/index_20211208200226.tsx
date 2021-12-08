@@ -45,7 +45,7 @@ type HeaderType = {
     isAuth: boolean
     logOut: () => void
     getProfile: () => void
-    profile?: GetAccountType
+    profile: GetAccountType | null
 }
 
 
@@ -57,6 +57,9 @@ const Header: FC<HeaderType> = ({ logOut, getProfile, isAuth, profile }) => {
     const LogOutProfile = () => {
         logOut()
         console.log(isAuth)
+    }
+    const refreshProfile = () => {
+        getProfile()
     }
     let status = `${t('signedas')} ${profile?.username}`;
 
@@ -111,6 +114,7 @@ const Header: FC<HeaderType> = ({ logOut, getProfile, isAuth, profile }) => {
                                         <button onClick={LogOutProfile} className={style.btnLogOut} >
                                             Log out
                                         </button>
+                                        <button onClick={refreshProfile}>refresh</button>
                                     </div>
                                 </div>
                             )}

@@ -9,12 +9,14 @@ import { useState } from "react";
 import HttpApi from 'i18next-http-backend'
 //import { useAuth } from "core/hooks/useAuth";
 import { Link } from "react-router-dom";
+//import { useAppDispatch } from "core/hooks/redux-hooks";
+//import { auth } from "firebase";
+//import { removeUser } from "core/store/redux/slice/userSlice";
 import headerAva from "public/images/MiniProf/header__ava.png";
 import { connect } from "react-redux";
 import { AppStateType } from "core/store/redux/reduxStore";
 import { logOut } from "core/store/reducers/authReducer";
 import { getProfile } from "core/store/reducers/profileReducer";
-import { GetAccountType } from "core/store/api/api";
 
 
 i18next
@@ -44,13 +46,10 @@ i18next
 type HeaderType = {
     isAuth: boolean
     logOut: () => void
-    getProfile: () => void
-    profile?: GetAccountType
+    username?: string
 }
 
-
-
-const Header: FC<HeaderType> = ({ logOut, getProfile, isAuth, profile }) => {
+const Header: FC<HeaderType> = ({ logOut, isAuth, username }) => {
     const [isActive, setIsActive] = useState(false);
     const [isStatus, setIsStatus] = useState(false);
     const { t } = useTranslation();
@@ -58,7 +57,7 @@ const Header: FC<HeaderType> = ({ logOut, getProfile, isAuth, profile }) => {
         logOut()
         console.log(isAuth)
     }
-    let status = `${t('signedas')} ${profile?.username}`;
+    let status = `${t('signedas')} ${username}`;
 
     const languages = [
         {
@@ -125,8 +124,8 @@ const Header: FC<HeaderType> = ({ logOut, getProfile, isAuth, profile }) => {
 }
 
 const mapStateToProps = (state: AppStateType) => ({
-    isAuth: state.auth.isAuth,
-    profile: state.profile.profile
+    isAuth: state.auth,
+    username: state.profile.profile ?
 })
 
 export default connect(mapStateToProps, { logOut, getProfile })(Header);

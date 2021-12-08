@@ -60,6 +60,7 @@ const Header: FC<HeaderType> = ({ logOut, getProfile, isAuth, profile }) => {
     }
     let status = `${t('signedas')} ${profile?.username}`;
 
+    console.log(profile?.username)
     const languages = [
         {
             code: 'en',

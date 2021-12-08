@@ -58,7 +58,10 @@ const Header: FC<HeaderType> = ({ logOut, getProfile, isAuth, profile }) => {
         logOut()
         console.log(isAuth)
     }
-    let status = `${t('signedas')} ${profile?.username}`;
+    const refreshProfile = () => {
+        getProfile()
+    }
+    let status = `${t('signedas')} ${profile?.description}`;
 
     const languages = [
         {
@@ -111,6 +114,7 @@ const Header: FC<HeaderType> = ({ logOut, getProfile, isAuth, profile }) => {
                                         <button onClick={LogOutProfile} className={style.btnLogOut} >
                                             Log out
                                         </button>
+                                        <button onClick={refreshProfile}>refresh</button>
                                     </div>
                                 </div>
                             )}

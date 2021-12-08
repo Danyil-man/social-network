@@ -104,8 +104,7 @@ export const logIn =
     let response = await authAPI.login(login, password);
     if(response.data.success){
       dispatch(actions.getUserData(login, password, true));
-      dispatch(getProfile()) //Request to Set Profile Data
-      alert(response.data.success)
+     // alert(response.data.success)
     } else {
       alert('Incorrect Email or Password')
     }

@@ -9,6 +9,9 @@ import { useState } from "react";
 import HttpApi from 'i18next-http-backend'
 //import { useAuth } from "core/hooks/useAuth";
 import { Link } from "react-router-dom";
+//import { useAppDispatch } from "core/hooks/redux-hooks";
+//import { auth } from "firebase";
+//import { removeUser } from "core/store/redux/slice/userSlice";
 import headerAva from "public/images/MiniProf/header__ava.png";
 import { connect } from "react-redux";
 import { AppStateType } from "core/store/redux/reduxStore";
@@ -44,7 +47,7 @@ i18next
 type HeaderType = {
     isAuth: boolean
     logOut: () => void
-    getProfile: () => void
+    getProfile: any
     profile?: GetAccountType
 }
 
@@ -58,7 +61,10 @@ const Header: FC<HeaderType> = ({ logOut, getProfile, isAuth, profile }) => {
         logOut()
         console.log(isAuth)
     }
-    let status = `${t('signedas')} ${profile?.username}`;
+    const refreshProfile = () => {
+        getProfile()
+    }
+    let status = `${t('signedas')} ${profile}`;
 
     const languages = [
         {
@@ -111,6 +117,7 @@ const Header: FC<HeaderType> = ({ logOut, getProfile, isAuth, profile }) => {
                                         <button onClick={LogOutProfile} className={style.btnLogOut} >
                                             Log out
                                         </button>
+                                        <button onClick={refreshProfile}>refresh</button>
                                     </div>
                                 </div>
                             )}

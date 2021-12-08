@@ -60,6 +60,10 @@ const Header: FC<HeaderType> = ({ logOut, getProfile, isAuth, profile }) => {
     }
     let status = `${t('signedas')} ${profile?.username}`;
 
+    if (isAuth == true) {
+        alert(`Refresh Profile to Accept Data ${getProfile}`)
+    }
+
     const languages = [
         {
             code: 'en',

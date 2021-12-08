@@ -6,7 +6,6 @@ const instanceApi = axios.create({
   headers: {
     "Content-Type": "application/json; charset=utf-8",
     Accept: "application/json",
-    'Authorization': "eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjo1ODMwLCJhdXRoZW50aWNhdGVkX2J5IjpbInBhc3N3b3JkIl19.9dpWzAaiKjjL2BGttTl_0ImBI7UV5HriaSV19CRH_oA"
   },
 });
 
@@ -50,6 +49,7 @@ export const authAPI = {
 //                                          ProfileAPI
 
 export type GetAccountType = {
+  login: string;
   username: string;
   description: null;
   email: string;
@@ -63,6 +63,6 @@ export type GetAccountType = {
 
 export const profileAPI = {
   getAccount() {
-    return instanceApi.get<GetAccountType>("/account");
+    return instanceApi.get<ResponseType<GetAccountType>>("/account");
   },
 };

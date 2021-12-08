@@ -58,6 +58,10 @@ const Header: FC<HeaderType> = ({ logOut, getProfile, isAuth, profile }) => {
         logOut()
         console.log(isAuth)
     }
+    function Refresh() {
+        alert('refresh')
+    }
+
     let status = `${t('signedas')} ${profile?.username}`;
 
     const languages = [

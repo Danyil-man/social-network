@@ -63,6 +63,6 @@ export type GetAccountType = {
 
 export const profileAPI = {
   getAccount() {
-    return instanceApi.get<GetAccountType>("/account");
+    return instanceApi.get <ResponseType<GetAccountType>>("/account");
   },
 };
