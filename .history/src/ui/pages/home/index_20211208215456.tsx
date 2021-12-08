@@ -16,6 +16,7 @@ const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile }) => {
     return isAuth ? (
         <div>
             <Home
+                isAuth={isAuth}
                 profile={profile}
             />
         </div>

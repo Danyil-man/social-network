@@ -13,7 +13,6 @@ type MiniProfileType = {
 const MiniProfile: FC<MiniProfileType> = ({ profile }) => {
     const { t } = useTranslation();
     const [isModal, setIsModal] = useState(false)
-    console.log(profile?.profile_photo_url)
     return (
         <div className={style.wrapper}>
             <div className={style.media}>
@@ -23,7 +22,7 @@ const MiniProfile: FC<MiniProfileType> = ({ profile }) => {
                 </div>
 
                 <button className={style.avabtn}>
-                    <img width={88} src={avatar} alt="avatar" />
+                    <img width={88} src={profile?.profile_photo_url} alt="avatar" />
                 </button>
 
                 <div className={style.following}>

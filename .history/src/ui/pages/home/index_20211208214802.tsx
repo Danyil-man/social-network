@@ -12,11 +12,13 @@ type ContainerHomeType = {
     profile?: GetAccountType
 }
 
-const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile }) => {
-    return isAuth ? (
+const IdxHome: FC<ContainerHomeType> = (props) => {
+
+    return props.isAuth ? (
         <div>
             <Home
-                profile={profile}
+                isAuth={props.isAuth}
+                profile={props.profile}
             />
         </div>
     )
@@ -30,8 +32,4 @@ const mapStateToProps = (state: AppStateType) => ({
     profile: state.profile.profile
 })
 
-const mapDispatchToProps = (state: AppStateType) => ({
-
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(IdxHome);
+export default connect(mapStateToProps)(IdxHome);

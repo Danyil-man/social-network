@@ -4,17 +4,15 @@ import Profile from "./profileContent/Profile";
 import { connect } from "react-redux";
 import { AppStateType } from "core/store/redux/reduxStore";
 import { GetAccountType } from "core/store/api/api";
-import { Redirect } from "react-router";
 
 type ContainerProfileType = {
-    isAuth: boolean
     profile?: GetAccountType
 }
 
 
-const IdxProfile: FC<ContainerProfileType> = ({ isAuth, profile }) => {
+const IdxProfile: FC<ContainerProfileType> = ({ profile }) => {
 
-    return isAuth ? (
+    return (
         <div>
             <Profile
                 photo={headerAva} //must be import from api
@@ -22,13 +20,10 @@ const IdxProfile: FC<ContainerProfileType> = ({ isAuth, profile }) => {
             />
 
         </div>
-    ) : (
-        <Redirect to='/signup' />
     )
 }
 
 const mapStateToprops = (state: AppStateType) => ({
-    isAuth: state.auth.isAuth,
     profile: state.profile.profile
 })
 

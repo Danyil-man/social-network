@@ -3,13 +3,13 @@ import Stories from "./stories/Stories";
 import style from "./Home.module.scss";
 import Posts from "./posts/Posts";
 import MiniProfile from "./miniProfile/MiniProfile";
-import { GetAccountType } from "core/store/api/api";
 
 type Homeprops = {
+    isAuth: boolean
     profile?: GetAccountType
 }
 
-const Home: FC<Homeprops> = ({ profile }) => {
+const Home: FC<Homeprops> = ({ isAuth }) => {
 
     return (
         <div className={style.wrapper}>
@@ -19,9 +19,7 @@ const Home: FC<Homeprops> = ({ profile }) => {
                     <Posts />
                 </div>
                 <div className={style.rightside}>
-                    <MiniProfile
-                        profile={profile}
-                    />
+                    <MiniProfile />
                 </div>
             </div>
         </div>

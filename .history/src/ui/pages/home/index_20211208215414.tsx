@@ -13,9 +13,11 @@ type ContainerHomeType = {
 }
 
 const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile }) => {
-    return isAuth ? (
+    console.log(isAuth)
+    return props.isAuth ? (
         <div>
             <Home
+                isAuth={isAuth}
                 profile={profile}
             />
         </div>

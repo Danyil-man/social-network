@@ -11,7 +11,7 @@ import { GetAccountType } from "core/store/api/api";
 
 interface ProfileType {
     photo: string;
-    profile?: GetAccountType
+    profile: GetAccountType
 }
 
 let photos = [
@@ -49,7 +49,7 @@ const Profile: FC<ProfileType> = ({ profile, photo }) => {
                         </div>
                         <div className={style.description}>
                             <div className={style.headerDescription}>
-                                <h4>{profile?.username}</h4>
+                                <h4>Props Name</h4>
                                 <p>Photographer</p>{/* will be props  */}
                             </div>
                             <div className={style.lifeDescription}>
@@ -60,11 +60,11 @@ const Profile: FC<ProfileType> = ({ profile, photo }) => {
                     <div className={style.rightSide}>
                         <div className={style.mediasubscriptions}>
                             <div className={style.followersBlock}>
-                                <b>{profile?.followers}</b>
+                                <b>1,1K</b>
                                 <p>Followers</p>
                             </div>
                             <div className={style.followingBlock}>
-                                <b>{profile?.following}</b>
+                                <b>448</b>
                                 <p>Following</p>
                             </div>
                         </div>

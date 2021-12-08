@@ -23,7 +23,7 @@ const MiniProfile: FC<MiniProfileType> = ({ profile }) => {
                 </div>
 
                 <button className={style.avabtn}>
-                    <img width={88} src={avatar} alt="avatar" />
+                    <img width={88} src={profile?.profile_photo_url} alt="avatar" />
                 </button>
 
                 <div className={style.following}>

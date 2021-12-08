@@ -13,12 +13,14 @@ type MiniProfileType = {
 const MiniProfile: FC<MiniProfileType> = ({ profile }) => {
     const { t } = useTranslation();
     const [isModal, setIsModal] = useState(false)
-    console.log(profile?.profile_photo_url)
+    // const { email } = useAuth();
+    //const toggleModal = () => setIsModal(wasModal => !wasModal)
+    console.log(profile)
     return (
         <div className={style.wrapper}>
             <div className={style.media}>
                 <div className={style.followers}>
-                    <b>{profile?.followers}</b>
+                    <b>1,1K</b>
                     <p>Followers</p>
                 </div>
 
@@ -27,7 +29,7 @@ const MiniProfile: FC<MiniProfileType> = ({ profile }) => {
                 </button>
 
                 <div className={style.following}>
-                    <b>{profile?.following}</b>
+                    <b>448</b>
                     <p>Following</p>
                 </div>
             </div>

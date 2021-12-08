@@ -13,7 +13,6 @@ type MiniProfileType = {
 const MiniProfile: FC<MiniProfileType> = ({ profile }) => {
     const { t } = useTranslation();
     const [isModal, setIsModal] = useState(false)
-    console.log(profile?.profile_photo_url)
     return (
         <div className={style.wrapper}>
             <div className={style.media}>
