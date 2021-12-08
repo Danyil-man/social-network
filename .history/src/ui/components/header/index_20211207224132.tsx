@@ -53,7 +53,6 @@ const Header: FC<HeaderType> = ({ logOut, isAuth }) => {
     const { t } = useTranslation();
     const LogOutProfile = () => {
         logOut()
-        console.log(isAuth)
     }
     let status = `${t('signedas')}`;
 
@@ -105,7 +104,7 @@ const Header: FC<HeaderType> = ({ logOut, isAuth }) => {
                                         <Link to='/profile'>Profile</Link>
                                     </div>
                                     <div className={style.profile__footer}>
-                                        <button onClick={LogOutProfile} className={style.btnLogOut} >
+                                        <button onClick={logOut} className={style.btnLogOut} >
                                             Log out
                                         </button>
                                     </div>

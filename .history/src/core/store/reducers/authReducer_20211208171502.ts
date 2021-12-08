@@ -101,12 +101,10 @@ export const logIn =
   (login: string, password: string): ThunkType =>
   async (dispatch) => {
     let response = await authAPI.login(login, password);
-    if(response.data.success){
+    let messageCheck = response.data.success === "You have been logged in" 
+    if(messageCheck){
       dispatch(actions.getUserData(login, password, true));
-      alert(response.data.success)
-    } else {
-      alert('Incorrect Email or Password')
-    }
+    } 
   };
 
 export const logOut = (): ThunkType => async (dispatch) => {

@@ -9,7 +9,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 
 type LogInType = {
     isAuth: boolean;
-    logIn: (login: string, password: string) => void;
+    logIn: any//() => void;
 }
 
 const LogIn: FC<LogInType> = ({ isAuth, logIn }) => {

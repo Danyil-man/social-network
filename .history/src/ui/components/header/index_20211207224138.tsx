@@ -53,7 +53,6 @@ const Header: FC<HeaderType> = ({ logOut, isAuth }) => {
     const { t } = useTranslation();
     const LogOutProfile = () => {
         logOut()
-        console.log(isAuth)
     }
     let status = `${t('signedas')}`;
 

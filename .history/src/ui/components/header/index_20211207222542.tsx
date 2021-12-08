@@ -44,17 +44,14 @@ i18next
 
 type HeaderType = {
     isAuth: boolean
-    logOut: () => void
+    logOut: any//(login: string, password: string) => void
 }
 
 const Header: FC<HeaderType> = ({ logOut, isAuth }) => {
     const [isActive, setIsActive] = useState(false);
     const [isStatus, setIsStatus] = useState(false);
     const { t } = useTranslation();
-    const LogOutProfile = () => {
-        logOut()
-        console.log(isAuth)
-    }
+
     let status = `${t('signedas')}`;
 
     const languages = [
@@ -69,6 +66,10 @@ const Header: FC<HeaderType> = ({ logOut, isAuth }) => {
             country_code: 'ua',
         },
     ]
+    const LogOutFromProfile = () => {
+        logOut()
+        console.log(isAuth)
+    }
 
     return (
         <div className={style.header}>
@@ -105,7 +106,7 @@ const Header: FC<HeaderType> = ({ logOut, isAuth }) => {
                                         <Link to='/profile'>Profile</Link>
                                     </div>
                                     <div className={style.profile__footer}>
-                                        <button onClick={LogOutProfile} className={style.btnLogOut} >
+                                        <button onClick={logOut} className={style.btnLogOut} >
                                             Log out
                                         </button>
                                     </div>

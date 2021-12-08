@@ -8,6 +8,7 @@ import { logOut } from 'core/store/reducers/authReducer';
 
 type ContainerHomeType = {
     isAuth: boolean
+    logOut: any
 }
 
 type MapStateToPropsType = {

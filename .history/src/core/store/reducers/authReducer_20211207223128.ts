@@ -1,14 +1,14 @@
 import React from "react";
 import { ThunkAction } from "redux-thunk";
-import { authAPI } from "../api/api";
+import { authAPI, GetAccountType, profileAPI } from "../api/api";
 import { AppStateType, InfernActiontype } from "../redux/reduxStore";
 const SET_USER_DATA = "SET_USER_DATA";
 const GET_USER_DATA = "GET_USER_DATA";
 const DELETE_USER_DATA = "DELETE_USER_DATA";
 
 interface InitialStateType {
-  username?: string ;
-  login?: string ;
+  username?: string;
+  login?: string;
   password?: string;
   isAuth: boolean;
 }
@@ -43,6 +43,15 @@ const authReducer = (
         password: action.data.password,
         isAuth: true,
     };
+
+    case DELETE_USER_DATA:
+      return{
+        ...state,
+        login: action.data.login,
+        password: action.data.password,
+        isAuth: false,
+      }
+
     default:
       return state;
   }
@@ -65,9 +74,9 @@ export const actions = {
     } as const),
 
   getUserData: (
-    login: string | undefined ,
+    login: string | undefined,
     password: string | undefined,
-    isAuth: boolean | undefined
+    isAuth: boolean  | undefined
   ) =>
     ({
       type: GET_USER_DATA,
@@ -89,9 +98,9 @@ export const registration =
   async (dispatch) =>
     authAPI.reg(username, login, password).then((response) => {
       // TODO: Show alert with response.success and then redirect to '/login'
-      if(response.data.success){
+      if(response.data.success === "Your account has been created"){
+        //alert('Accout Created')
         dispatch(actions.setUserData(username, login, password, true))
-        alert(response.data.success)
       } else {
         alert("Incorrect Data")
       }
@@ -101,12 +110,10 @@ export const logIn =
   (login: string, password: string): ThunkType =>
   async (dispatch) => {
     let response = await authAPI.login(login, password);
-    if(response.data.success){
+    let messageCheck = response.data.success === "You have been logged in" 
+    if(messageCheck){
       dispatch(actions.getUserData(login, password, true));
-      alert(response.data.success)
-    } else {
-      alert('Incorrect Email or Password')
-    }
+    } 
   };
 
 export const logOut = (): ThunkType => async (dispatch) => {
@@ -114,6 +121,7 @@ export const logOut = (): ThunkType => async (dispatch) => {
     if(response.data.success === "Your account has been created"){
       dispatch(actions.getUserData(undefined, undefined, false))
     }
+    
   })
   
 };
