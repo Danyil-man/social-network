@@ -1,0 +1,70 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.container {
+  width: 100%;
+  max-width: 576px;
+  height: 672px;
+  background-color: #f7f4f4;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 48px 48px 70px 48px;
+  border-radius: 32px;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h4 {
+    font-size: 36px;
+    font-weight: 700;
+  }
+  button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #333;
+    opacity: 0.8;
+    cursor: pointer;
+  }
+  button:hover {
+    opacity: 1;
+    transition: 0.2s ease-in-out;
+  }
+}
+
+.formContainer {
+  width: 100%;
+  label {
+    font-size: 14px;
+    opacity: 0.6;
+    font-weight: 500;
+  }
+  input {
+    display: block;
+    width: 100%;
+    padding: 10px 14px;
+  }
+  .profilePhotoNameSide {
+    display: flex;
+    margin: 32px 0;
+    .imgBlock {
+      margin-right: 40px;
+    }
+    .NamseFields {
+      .NamseFieldItem {
+        width: 100%;
+      }
+    }
+  }
+}
