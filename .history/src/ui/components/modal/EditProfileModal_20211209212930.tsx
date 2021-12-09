@@ -10,8 +10,8 @@ type EditModalType = {
     profile?: GetAccountType
 }
 
-const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile, profile }) => {
-    const submit = (values: any) => {
+const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile }) => {
+    const submit = (values: AccountType) => {
         editProfile(values)
         console.log({ values })
     }

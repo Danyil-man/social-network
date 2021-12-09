@@ -1,6 +1,6 @@
 import React from "react";
 import { ThunkAction } from "redux-thunk";
-import { authAPI, instanceApi } from "../api/api";
+import { authAPI } from "../api/api";
 import { AppStateType, InfernActiontype } from "../redux/reduxStore";
 import { getProfile } from "./profileReducer";
 const SET_USER_DATA = "SET_USER_DATA";
@@ -107,7 +107,7 @@ export const logIn =
       dispatch(getProfile()) //Request to Set Profile Data
       alert(response.data.success)
     } else {
-      alert('Incorrect Email or Password')
+      alert(response.data.success)
     }
   };
 

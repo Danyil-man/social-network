@@ -2,17 +2,15 @@ import React, { FC } from "react";
 import style from './EditProfileModal.module.scss'
 import headerAva from "public/images/MiniProf/header__ava.png"
 import { Field, Form, Formik } from "formik";
-import { AccountType, GetAccountType } from "core/store/api/api";
+import { AccountType } from "core/store/api/api";
 
 type EditModalType = {
     closeModal: (setIsModalEdit: boolean) => void
     editProfile: (account: AccountType) => void
-    profile?: GetAccountType
 }
 
-const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile, profile }) => {
+const EditProfileModal: FC<EditModalType> = ({ closeModal }) => {
     const submit = (values: any) => {
-        editProfile(values)
         console.log({ values })
     }
     return (

@@ -93,16 +93,6 @@ export const profileAPI = {
   },
 
   editAccount(account: AccountType) {
-    return instanceApi.patch<GetAccountType>("/account", account)
+    return instanceApi.patch<GetAccountType>("/accounts", account)
   }
-  // editAccount(description:string, first_name:string, last_name:string, job_title:string) {
-  //   return instanceApi.patch<GetAccountType>("/account", {
-  //     accoutn:{
-  //       description,
-  //       first_name,
-  //       last_name,
-  //       job_title
-  //     }
-  //   })
-  // }
 };

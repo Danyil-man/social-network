@@ -52,8 +52,8 @@ export const getProfile = ():ThunkType => async (dispatch) => {
     dispatch(actions.setProfileData(response.data))
 }
 
-export const editProfile = (account: AccountType):ThunkType => async (dispatch) => {
-    let response = await profileAPI.editAccount(account)
+export const editProfile = (description:string, first_name:string, last_name:string, job_title:string):ThunkType => async (dispatch) => {
+    let response = await profileAPI.editAccount(description, first_name, last_name, job_title)
     dispatch(getProfile())
 }
 

@@ -53,6 +53,7 @@ export const getProfile = ():ThunkType => async (dispatch) => {
 }
 
 export const editProfile = (account: AccountType):ThunkType => async (dispatch) => {
+    debugger
     let response = await profileAPI.editAccount(account)
     dispatch(getProfile())
 }

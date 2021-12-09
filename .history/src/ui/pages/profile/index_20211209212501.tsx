@@ -14,7 +14,7 @@ type ContainerProfileType = {
 }
 
 
-const IdxProfile: FC<ContainerProfileType> = ({ isAuth, profile, editProfile }) => {
+const IdxProfile: FC<ContainerProfileType> = ({ isAuth, profile }) => {
 
     return isAuth ? (
         <div>

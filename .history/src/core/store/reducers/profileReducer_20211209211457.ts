@@ -54,7 +54,7 @@ export const getProfile = ():ThunkType => async (dispatch) => {
 
 export const editProfile = (account: AccountType):ThunkType => async (dispatch) => {
     let response = await profileAPI.editAccount(account)
-    dispatch(getProfile())
+    dispatch(actions.setProfileData(response.data))
 }
 
 export default profileReducer

@@ -10,11 +10,11 @@ import { editProfile } from "core/store/reducers/profileReducer";
 type ContainerProfileType = {
     isAuth: boolean
     profile?: GetAccountType
-    editProfile: (account: AccountType) => void
+    editProfile: (profile: GetAccountType) => void
 }
 
 
-const IdxProfile: FC<ContainerProfileType> = ({ isAuth, profile, editProfile }) => {
+const IdxProfile: FC<ContainerProfileType> = ({ isAuth, profile }) => {
 
     return isAuth ? (
         <div>

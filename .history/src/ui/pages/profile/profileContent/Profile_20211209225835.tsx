@@ -51,7 +51,7 @@ const Profile: FC<ProfileType> = ({ profile, photo, editProfile }) => {
                         </div>
                         <div className={style.description}>
                             <div className={style.headerDescription}>
-                                <h4>{profile?.first_name} {profile?.last_name} </h4>
+                                <h4>{profile?.first_name}</h4>
                                 <p>{profile?.job_title}</p>{/* will be props  */}
                             </div>
                             <div className={style.lifeDescription}>

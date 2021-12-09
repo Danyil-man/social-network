@@ -23,7 +23,7 @@ const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile, profile 
                 </div>
                 <Formik
                     initialValues={{
-                        description: '',
+                        profile: '',
                         first_name: '',
                         last_name: '',
                         job_title: ''
@@ -37,7 +37,7 @@ const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile, profile 
                             </div>
                             <div className={style.NamseFields}>
                                 <div className={style.formFieldItem}>
-                                    <label>First Name</label>
+                                    <label>First Name </label>
                                     <div className={style.formField}>
                                         <Field type="text" name="first_name" placeholder="Your first name" />
                                     </div>

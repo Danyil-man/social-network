@@ -6,13 +6,13 @@ import { AccountType, GetAccountType } from "core/store/api/api";
 
 type EditModalType = {
     closeModal: (setIsModalEdit: boolean) => void
-    editProfile: (account: AccountType) => void
+    editProfile: (description: string, first_name: string, last_name: string, job_title: string) => void
     profile?: GetAccountType
 }
 
 const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile, profile }) => {
     const submit = (values: any) => {
-        editProfile(values)
+        editProfile(values.description, values.first_name, values.last_name, values.job_title)
         console.log({ values })
     }
     return (

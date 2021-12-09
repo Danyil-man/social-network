@@ -6,7 +6,7 @@ import { AccountType, GetAccountType } from "core/store/api/api";
 
 type EditModalType = {
     closeModal: (setIsModalEdit: boolean) => void
-    editProfile: (account: AccountType) => void
+    editProfile: (profile: GetAccountType) => void
     profile?: GetAccountType
 }
 

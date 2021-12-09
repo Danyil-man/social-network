@@ -102,6 +102,7 @@ export const logIn =
   (login: string, password: string): ThunkType =>
   async (dispatch) => {
     let response = await authAPI.login(login, password);
+    //const token = instanceApi.defaults.headers.common.authorization = response.config.headers?.authorization as string
     if(response.data.success){
       dispatch(actions.getUserData(login, password, true));
       dispatch(getProfile()) //Request to Set Profile Data

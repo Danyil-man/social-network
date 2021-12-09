@@ -23,6 +23,7 @@ const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile, profile 
                 </div>
                 <Formik
                     initialValues={{
+                        profile,
                         description: '',
                         first_name: '',
                         last_name: '',

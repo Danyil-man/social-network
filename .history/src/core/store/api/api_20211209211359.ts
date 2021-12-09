@@ -1,17 +1,16 @@
 import axios from "axios";
 //import Cookies from "js-cookie";
 
-export const instanceApi = axios.create({
+const instanceApi = axios.create({
   baseURL: "https://linkstagram-api.ga",
   headers: {
     "Content-Type": "application/json; charset=utf-8",
     Accept: "application/json",
-    Authorization: "eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjo1ODMwLCJhdXRoZW50aWNhdGVkX2J5IjpbInBhc3N3b3JkIl19.9dpWzAaiKjjL2BGttTl_0ImBI7UV5HriaSV19CRH_oA" 
-
+    Authorization: "eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjo1ODMwLCJhdXRoZW50aWNhdGVkX2J5IjpbInBhc3N3b3JkIl19.9dpWzAaiKjjL2BGttTl_0ImBI7UV5HriaSV19CRH_oA"
   },
 });
 
-
+let accesToken ="eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjo1ODMwLCJhdXRoZW50aWNhdGVkX2J5IjpbInBhc3N3b3JkIl19.9dpWzAaiKjjL2BGttTl_0ImBI7UV5HriaSV19CRH_oA"
 
 
 //                                               AuthUserAPI
@@ -62,9 +61,9 @@ export type GetAccountType = {
   profile_photo_url: string;
 };
 
-// export type EditAccoutType = {
-//   account: AccountType
-// }
+export type EditAccoutType = {
+  account: AccountType
+}
 
 export type AccountType = {
   username: string;
@@ -95,14 +94,4 @@ export const profileAPI = {
   editAccount(account: AccountType) {
     return instanceApi.patch<GetAccountType>("/account", account)
   }
-  // editAccount(description:string, first_name:string, last_name:string, job_title:string) {
-  //   return instanceApi.patch<GetAccountType>("/account", {
-  //     accoutn:{
-  //       description,
-  //       first_name,
-  //       last_name,
-  //       job_title
-  //     }
-  //   })
-  // }
 };

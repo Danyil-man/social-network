@@ -1,6 +1,6 @@
 import React from "react"
 import { ThunkAction } from "redux-thunk";
-import { AccountType, GetAccountType, profileAPI } from "../api/api"
+import { AccountType, EditAccoutType, GetAccountType, profileAPI } from "../api/api"
 import { AppStateType, InfernActiontype } from "../redux/reduxStore";
 
 //                              TYPE
@@ -55,6 +55,7 @@ export const getProfile = ():ThunkType => async (dispatch) => {
 export const editProfile = (account: AccountType):ThunkType => async (dispatch) => {
     let response = await profileAPI.editAccount(account)
     dispatch(getProfile())
+    account.
 }
 
 export default profileReducer

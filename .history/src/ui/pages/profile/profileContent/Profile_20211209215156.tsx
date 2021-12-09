@@ -13,7 +13,7 @@ import EditProfileModal from "ui/components/modal/EditProfileModal";
 interface ProfileType {
     photo: string;
     profile?: GetAccountType
-    editProfile: (account: AccountType) => void
+    editProfile: (profile: GetAccountType) => void
 }
 
 let photos = [
@@ -51,11 +51,11 @@ const Profile: FC<ProfileType> = ({ profile, photo, editProfile }) => {
                         </div>
                         <div className={style.description}>
                             <div className={style.headerDescription}>
-                                <h4>{profile?.first_name} {profile?.last_name} </h4>
-                                <p>{profile?.job_title}</p>{/* will be props  */}
+                                <h4>{profile?.username}</h4>
+                                <p>Photographer</p>{/* will be props  */}
                             </div>
                             <div className={style.lifeDescription}>
-                                <p> {profile?.description}</p>
+                                <p> Quasi facere reiciendis rerum tempore ea magni dignissimos quia, quo neque. Lorem ipsum dolor sit amet consectetur adipisicing elit. At deserunt amet quos ipsum, eum incidunt.</p>
                             </div>
                         </div>
                     </div>
