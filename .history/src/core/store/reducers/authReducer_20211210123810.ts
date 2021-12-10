@@ -1,7 +1,7 @@
 import React from "react";
 import { ThunkAction } from "redux-thunk";
 import { authAPI, instanceApi } from "../api/api";
-import { AppStateType, InfernActiontype } from "../redux/reduxStore";
+import { InfernActiontype } from "../redux/reduxStore";
 import { getProfile } from "./profileReducer";
 const SET_USER_DATA = "SET_USER_DATA";
 const GET_USER_DATA = "GET_USER_DATA";
@@ -106,8 +106,6 @@ export const registration =
       authAPI.reg(username, login, password).then((response) => {
         if (response.data.success) {
           dispatch(actions.setUserData(username, login, password, true))
-          dispatch(actions.getUserData(login, password, true));
-          dispatch(getProfile())
           //alert(response.data.success)
           dispatch(actions.setIsLoading(false))
         } else {

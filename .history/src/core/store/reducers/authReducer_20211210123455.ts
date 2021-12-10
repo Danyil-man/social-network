@@ -106,8 +106,6 @@ export const registration =
       authAPI.reg(username, login, password).then((response) => {
         if (response.data.success) {
           dispatch(actions.setUserData(username, login, password, true))
-          dispatch(actions.getUserData(login, password, true));
-          dispatch(getProfile())
           //alert(response.data.success)
           dispatch(actions.setIsLoading(false))
         } else {

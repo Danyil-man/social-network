@@ -102,14 +102,11 @@ type ThunkType = ThunkAction<
 export const registration =
   (username: string, login: string, password: string): ThunkType =>
     async (dispatch) => {
-      dispatch(actions.setIsLoading(true))
       authAPI.reg(username, login, password).then((response) => {
+        // TODO: Show alert with response.success and then redirect to '/login'
         if (response.data.success) {
           dispatch(actions.setUserData(username, login, password, true))
-          dispatch(actions.getUserData(login, password, true));
-          dispatch(getProfile())
-          //alert(response.data.success)
-          dispatch(actions.setIsLoading(false))
+          alert(response.data.success)
         } else {
           alert("Incorrect Data")
         }
@@ -119,13 +116,11 @@ export const registration =
 export const logIn =
   (login: string, password: string): ThunkType =>
     async (dispatch) => {
-      dispatch(actions.setIsLoading(true))
       let response = await authAPI.login(login, password);
       if (response.data.success) {
         dispatch(actions.getUserData(login, password, true));
         dispatch(getProfile()) //Request to Set Profile Data
-        //alert(response.data.success)
-        dispatch(actions.setIsLoading(false))
+        alert(response.data.success)
       } else {
         alert('Incorrect Email or Password')
       }

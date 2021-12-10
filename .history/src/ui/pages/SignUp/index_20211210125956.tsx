@@ -24,7 +24,7 @@ type MapDispatchToPropsType = {
 
 const IdxSignUp: FC<ContainerSignUPType> = (props) => {
     return props.isAuth ? (
-        <Redirect to='/login' />
+        <Redirect to={'/login'} />
 
     ) : (
         <div>

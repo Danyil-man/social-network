@@ -5,17 +5,14 @@ import { FC } from "react";
 import { connect } from "react-redux";
 import LogIn from "./LogIn";
 import { getIsLoading } from "core/store/selectors";
-import Preloader from "ui/components/common/Preloader";
 
 type ContainerLogInType = {
     isAuth: boolean;
     logIn: (login: string, password: string) => void;
-    isLoading: boolean
 }
 
 type MapStateToPropsType = {
     isAuth: boolean
-    isLoading: boolean
 }
 
 type MapDispatchToPropsType = {
@@ -25,7 +22,6 @@ type MapDispatchToPropsType = {
 const IdxLogIn: FC<ContainerLogInType> = (props) => {
     return (
         <div>
-            {props.isLoading ? <Preloader /> : null}
             <LogIn
                 isAuth={props.isAuth}
                 logIn={props.logIn}

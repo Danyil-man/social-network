@@ -3,7 +3,6 @@ import { AppStateType } from "core/store/redux/reduxStore";
 import { getIsLoading } from "core/store/selectors";
 import { FC } from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
 import Preloader from "ui/components/common/Preloader";
 import SignUp from "./SignUp";
 
@@ -23,10 +22,7 @@ type MapDispatchToPropsType = {
 }
 
 const IdxSignUp: FC<ContainerSignUPType> = (props) => {
-    return props.isAuth ? (
-        <Redirect to='/login' />
-
-    ) : (
+    return (
         <div>
             {props.isLoading ? <Preloader /> : null}
             <SignUp
@@ -34,7 +30,8 @@ const IdxSignUp: FC<ContainerSignUPType> = (props) => {
                 isAuth={props.isAuth}
             />
         </div>
-    )
+
+    );
 }
 
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => ({
