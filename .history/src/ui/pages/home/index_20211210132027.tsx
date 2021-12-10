@@ -14,12 +14,11 @@ type ContainerHomeType = {
     isLoading: boolean
 }
 
-const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile, isLoading }) => {
+const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile }) => {
     return isAuth ? (
         <div>
             <Home
                 profile={profile}
-                isLoading={isLoading}
             />
         </div>
     )

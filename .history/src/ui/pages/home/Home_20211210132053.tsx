@@ -22,7 +22,6 @@ const Home: FC<Homeprops> = ({ profile, isLoading }) => {
                 <div className={style.rightside}>
                     <MiniProfile
                         profile={profile}
-                        isLoading={isLoading}
                     />
                 </div>
             </div>

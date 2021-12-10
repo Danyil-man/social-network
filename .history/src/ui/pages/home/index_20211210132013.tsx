@@ -11,15 +11,13 @@ import { getIsLoading } from 'core/store/selectors';
 type ContainerHomeType = {
     isAuth: boolean
     profile?: GetAccountType
-    isLoading: boolean
 }
 
-const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile, isLoading }) => {
+const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile }) => {
     return isAuth ? (
         <div>
             <Home
                 profile={profile}
-                isLoading={isLoading}
             />
         </div>
     )
@@ -30,7 +28,7 @@ const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile, isLoading }) => {
 
 const mapStateToProps = (state: AppStateType) => ({
     isAuth: state.auth.isAuth,
-    profile: state.profile.profile,
+    profile: state.profile.profile
     isLoading: getIsLoading(state)
 })
 

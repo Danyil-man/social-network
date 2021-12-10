@@ -39,7 +39,7 @@ let photos = [
 ]
 
 
-const Profile: FC<ProfileType> = ({ profile, photo, editProfile, isLoading }) => {
+const Profile: FC<ProfileType> = ({ profile, photo, editProfile }) => {
     const { t } = useTranslation();
     const [isModalEdit, setIsModalEdit] = useState(false)
     return (
@@ -90,7 +90,6 @@ const Profile: FC<ProfileType> = ({ profile, photo, editProfile, isLoading }) =>
                 closeModal={setIsModalEdit}
                 editProfile={editProfile}
                 profile={profile}
-                isLoading={isLoading}
             />}
 
         </div>

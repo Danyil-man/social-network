@@ -14,7 +14,7 @@ type InitialStateType = {
 }
 
 const initialState: InitialStateType = {
-    profile: undefined,
+    profile: undefined
     isLoading: false
 }
 
@@ -28,12 +28,6 @@ const profileReducer = (state = initialState, action: ActionCreatorsType): Initi
                 profile: action.profile
             }
         }
-
-        case SET_IS_LOADING:
-            return {
-                ...state,
-                isLoading: action.isLoading
-            }
 
 
         default:
@@ -49,10 +43,6 @@ export const actions = {
     setProfileData: (profile: GetAccountType) => ({
         type: SET_PROFILE,
         profile: profile
-    } as const),
-    setIsLoading: (isLoading: boolean) => ({
-        type: SET_IS_LOADING,
-        isLoading
     } as const)
 }
 
@@ -66,10 +56,8 @@ export const getProfile = (): ThunkType => async (dispatch) => {
 }
 
 export const editProfile = (account: AccountType): ThunkType => async (dispatch) => {
-    dispatch(actions.setIsLoading(true))
     let response = await profileAPI.editAccount(account)
     dispatch(getProfile())
-    dispatch(actions.setIsLoading(false))
 }
 
 export default profileReducer

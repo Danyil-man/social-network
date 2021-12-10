@@ -12,11 +12,10 @@ type ContainerProfileType = {
     isAuth: boolean
     profile?: GetAccountType
     editProfile: (account: AccountType) => void
-    isLoading: boolean
 }
 
 
-const IdxProfile: FC<ContainerProfileType> = ({ isAuth, profile, editProfile, isLoading }) => {
+const IdxProfile: FC<ContainerProfileType> = ({ isAuth, profile, editProfile }) => {
 
     return isAuth ? (
         <div>
@@ -24,7 +23,6 @@ const IdxProfile: FC<ContainerProfileType> = ({ isAuth, profile, editProfile, is
                 photo={headerAva} //must be import from api
                 profile={profile}
                 editProfile={editProfile}
-                isLoading={isLoading}
             />
 
         </div>
@@ -35,7 +33,7 @@ const IdxProfile: FC<ContainerProfileType> = ({ isAuth, profile, editProfile, is
 
 const mapStateToprops = (state: AppStateType) => ({
     isAuth: state.auth.isAuth,
-    profile: state.profile.profile,
+    profile: state.profile.profile
     isLoading: getIsLoading(state)
 })
 

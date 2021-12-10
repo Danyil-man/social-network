@@ -27,9 +27,9 @@ const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile, profile,
                 <Formik
                     initialValues={{
                         description: profile?.description,
-                        first_name: profile?.first_name,
-                        last_name: profile?.last_name,
-                        job_title: profile?.job_title
+                        first_name: '',
+                        last_name: '',
+                        job_title: ''
                     }}
                     onSubmit={submit}
                 >

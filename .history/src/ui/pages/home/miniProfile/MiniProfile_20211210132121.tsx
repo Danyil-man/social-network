@@ -50,7 +50,6 @@ const MiniProfile: FC<MiniProfileType> = ({ profile, isLoading }) => {
 
             {isModal && <NewPostModal
                 closeModal={setIsModal}
-                isLoading={isLoading}
             />}
 
 

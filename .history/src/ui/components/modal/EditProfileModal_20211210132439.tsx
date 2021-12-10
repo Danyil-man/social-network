@@ -3,7 +3,6 @@ import style from './EditProfileModal.module.scss'
 import headerAva from "public/images/MiniProf/header__ava.png"
 import { Field, Form, Formik } from "formik";
 import { AccountType, GetAccountType } from "core/store/api/api";
-import Preloader from "../common/Preloader";
 
 type EditModalType = {
     closeModal: (setIsModalEdit: boolean) => void
@@ -12,24 +11,23 @@ type EditModalType = {
     isLoading: boolean
 }
 
-const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile, profile, isLoading }) => {
+const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile, profile }) => {
     const submit = (values: any) => {
         editProfile(values)
         console.log({ values })
     }
     return (
         <div className={style.wrapper}>
-            {isLoading ? <Preloader /> : null}
             <div className={style.container}>
                 <div className={style.modalHeader}>
                     <h4 className={style.headerTitle}>Profile information</h4>
                 </div>
                 <Formik
                     initialValues={{
-                        description: profile?.description,
-                        first_name: profile?.first_name,
-                        last_name: profile?.last_name,
-                        job_title: profile?.job_title
+                        description: '',
+                        first_name: '',
+                        last_name: '',
+                        job_title: ''
                     }}
                     onSubmit={submit}
                 >

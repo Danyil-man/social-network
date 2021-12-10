@@ -19,7 +19,6 @@ const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile, isLoading }) => {
         <div>
             <Home
                 profile={profile}
-                isLoading={isLoading}
             />
         </div>
     )

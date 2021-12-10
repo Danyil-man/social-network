@@ -90,7 +90,6 @@ const Profile: FC<ProfileType> = ({ profile, photo, editProfile, isLoading }) =>
                 closeModal={setIsModalEdit}
                 editProfile={editProfile}
                 profile={profile}
-                isLoading={isLoading}
             />}
 
         </div>

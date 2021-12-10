@@ -71,7 +71,7 @@ const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile, profile,
 
                         <div className={style.editFormFooter}>
                             <button className={style.cancelBtn} onClick={() => closeModal(false)}>Cancel</button>
-                            <button className={style.saveBtn} type="submit">Save</button>
+                            <button className={style.saveBtn} type="submit" onClick={() => closeModal(false)}>Save</button>
                         </div>
                     </Form>
                 </Formik>
