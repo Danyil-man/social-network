@@ -7,10 +7,9 @@ export const getIsLoading = (state: AppStateType) => {
 
 const getUsers = (state: AppStateType) => {
     return state.users.users
+    debugger
 }
-
 
 export const getUsersSelector = createSelector(getUsers, (users) => {
     return users
-    
 })

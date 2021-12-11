@@ -14,15 +14,49 @@ type Storiestype = {
     getUsers: () => void
 }
 
+let storiesArr = [
+    {
+        img: item1
+    },
+    {
+        img: item2
+    },
+    {
+        img: item3
+    },
+    {
+        img: item4
+    },
+    {
+        img: item5
+    },
+    {
+        img: item2
+    },
+    {
+        img: item6
+    },
+    {
+        img: item3
+    },
+    {
+        img: item5
+    },
+]
+
 const Stories: FC<Storiestype> = ({ users, getUsers }) => {
     return (
         <>
             <div className={style.wrapper}>
                 {/* <button onClick={getUsers}>Get Users</button> */}
+
+                {storiesArr.map(story => <Story img={story.img} />)}
             </div>
             <div>
                 UserNames
-                {users.map(user => <Story user={user} />)}
+                {users.map(u => <div>
+                    <p>UserName {u.username} </p>
+                </div>)}
             </div>
         </>
     )

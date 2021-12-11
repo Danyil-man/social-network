@@ -109,7 +109,6 @@ export const registration =
         dispatch(actions.setUserData(username, login, password, true))
         dispatch(actions.getUserData(login, password, true));
         dispatch(getProfile())
-        dispatch(getUsers()) // Response Users List
         //alert(response.data.success)
         dispatch(actions.setIsLoading(false))
       } else {
@@ -125,7 +124,7 @@ export const logIn =
       if (response.data.success) {
         dispatch(actions.getUserData(login, password, true));
         dispatch(getProfile()) //Request to Set Profile Data
-        dispatch(getUsers()) // Response Users List
+        dispatch(getUsers())
         //alert(response.data.success)
         dispatch(actions.setIsLoading(false))
       } else {

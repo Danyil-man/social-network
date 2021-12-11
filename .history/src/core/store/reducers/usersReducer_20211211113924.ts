@@ -14,7 +14,7 @@ export type GetUserType = {
     following: number;
     job_title: null;
     last_name: null;
-    profile_photo_url: string | undefined;
+    profile_photo_url: null;
 };
 
 type initialStateType = {
@@ -68,7 +68,8 @@ type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionCreator
 export const getUsers = (): ThunkType => async (dispatch) => {
     dispatch(actions.isLoading(true))
     let response = await UsersAPI.getUsers()
-    dispatch(actions.setUsers(response.data))
+    debugger
+    dispatch(actions.setUsers(response.data.usersItem))
     dispatch(actions.isLoading(false))
 }
 

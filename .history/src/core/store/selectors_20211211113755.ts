@@ -12,5 +12,5 @@ const getUsers = (state: AppStateType) => {
 
 export const getUsersSelector = createSelector(getUsers, (users) => {
     return users
-    
+    debugger
 })

@@ -9,8 +9,6 @@ const getUsers = (state: AppStateType) => {
     return state.users.users
 }
 
-
 export const getUsersSelector = createSelector(getUsers, (users) => {
     return users
-    
 })

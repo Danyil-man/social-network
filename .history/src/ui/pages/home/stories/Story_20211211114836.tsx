@@ -3,15 +3,16 @@ import React, { FC } from "react";
 import style from "./Stories.module.scss";
 
 interface StoryProps {
-    user: GetUserType
+    img: string;
+    user: any
 }
 
 const Story: FC<StoryProps> = ({ user }) => {
     return (
         <div>
             <div className={style.item}>
-                <img width={64} src={user.profile_photo_url} alt="story" />
-                <p>UserName{user.username} </p>
+                <h4>UserName{user.username} </h4>
+                {/* <img width={64} src={img} alt="story" /> */}
             </div>
         </div>
 

@@ -14,7 +14,7 @@ export type GetUserType = {
     following: number;
     job_title: null;
     last_name: null;
-    profile_photo_url: string | undefined;
+    profile_photo_url: null;
 };
 
 type initialStateType = {

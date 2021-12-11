@@ -14,7 +14,7 @@ export type GetUserType = {
     following: number;
     job_title: null;
     last_name: null;
-    profile_photo_url: string | undefined;
+    profile_photo_url: null;
 };
 
 type initialStateType = {
@@ -53,7 +53,7 @@ export const actions = {
     setUsers: (users: Array<GetUserType>) => ({
         type: SET_USER,
         users
-    }  as const),
+    } as const),
 
     isLoading: (isLoading: boolean) => ({
         type: SET_IS_LOADING,
@@ -68,7 +68,7 @@ type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionCreator
 export const getUsers = (): ThunkType => async (dispatch) => {
     dispatch(actions.isLoading(true))
     let response = await UsersAPI.getUsers()
-    dispatch(actions.setUsers(response.data))
+    dispatch(actions.setUsers(response.data.usersItem))
     dispatch(actions.isLoading(false))
 }
 
