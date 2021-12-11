@@ -18,6 +18,7 @@ const Stories: FC<Storiestype> = ({ users, getUsers }) => {
     return (
         <>
             <div className={style.wrapper}>
+                UserNames
                 {users.map(user => <Story user={user} />)}
             </div>
         </>

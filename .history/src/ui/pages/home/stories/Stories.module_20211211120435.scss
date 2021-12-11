@@ -16,14 +16,12 @@
 }
 
 .item {
-  img {
-    border-radius: 12px;
-  }
   margin-right: 25px;
 }
 
 @media screen and (max-width: 600px) {
   .item {
+    border-radius: 12px;
     img {
       width: 44px;
     }
