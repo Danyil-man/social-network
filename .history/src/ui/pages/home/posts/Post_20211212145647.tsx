@@ -26,18 +26,13 @@ const Post: FC<PostType> = ({ user, profile, isLoading, getProfileUser, editProf
         alert('Edit')
     }
 
-    const TakeUser = () => {
-        getProfileUser(user.username)
-        console.log("Username:", user.username)
-    }
-
     const [isModal, setIsModal] = useState(false)
     const [openProfile, setOpenProfile] = useState(false)
     return (
         <div className={style.postItem}>
             <div className={style.header}>
                 <div className={style.leftHeader}>
-                    <img onClick={TakeUser} width={40} src={user.profile_photo_url != null ? user.profile_photo_url : UserPhoto} alt="postHeader" />
+                    <img onClick={getProfileUser(user.username)} width={40} src={user.profile_photo_url != null ? user.profile_photo_url : UserPhoto} alt="postHeader" />
                     <div className={style.content_info}>
                         <p className={style.username}> {user.username} </p>
                         <p className={style.status}>{user.description}</p>

@@ -26,7 +26,7 @@ const Post: FC<PostType> = ({ user, profile, isLoading, getProfileUser, editProf
         alert('Edit')
     }
 
-    const TakeUser = () => {
+    const TakeUser = (username: any) => {
         getProfileUser(user.username)
         console.log("Username:", user.username)
     }

@@ -15,16 +15,15 @@ type ContainerHomeType = {
     profile?: GetAccountType
     isLoading: boolean
     users: Array<GetUserType>
-    userName: any
+    userName: string
     editProfile: (account: AccountType) => void
     getUsers: () => void
     getProfileUser: (username: string) => void
 }
 
 
-const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile, isLoading, users, userName, editProfile, getUsers, getProfileUser }) => {
+const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile, isLoading, users, editProfile, getUsers, getProfileUser }) => {
     console.log(getProfileUser)
-
     return isAuth ? (
         <div>
             <Home

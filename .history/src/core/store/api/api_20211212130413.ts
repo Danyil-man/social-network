@@ -62,14 +62,14 @@ export type GetAccountType = {
   profile_photo_url: string | undefined;
 };
 
-export type AccountType = {
-  username: string;
-  profile_photo: AccountPhotoType;
-  description: string;
-  first_name: string;
-  last_name: string;
-  job_title: string
-}
+// export type AccountType = {
+//   username: string;
+//   profile_photo: AccountPhotoType;
+//   description: string;
+//   first_name: string;
+//   last_name: string;
+//   job_title: string
+// }
 
 type AccountPhotoType = {
   id: string;
