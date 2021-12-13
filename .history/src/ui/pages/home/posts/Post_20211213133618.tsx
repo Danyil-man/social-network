@@ -33,6 +33,7 @@ const Post: FC<PostType> = ({ user, profile, isLoading, getProfileUser, editProf
     }
 
     const [isModal, setIsModal] = useState(false)
+    const [openProfile, setOpenProfile] = useState(false)
     return (
         <div className={style.postItem}>
             <div className={style.header}>
@@ -85,6 +86,13 @@ const Post: FC<PostType> = ({ user, profile, isLoading, getProfileUser, editProf
 
                 />
             )}
+
+            {/* {openProfile && (
+                <Profile
+                    profile={profile}
+                    editProfile={editProfile}
+                    isLoading={isLoading} />
+            )} */}
 
         </div>
 

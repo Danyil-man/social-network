@@ -58,8 +58,8 @@ export type GetAccountType = {
   followers: number;
   following: number;
   job_title: null;
-  last_name: null;
-  profile_photo_url: string | null;
+  last_name: string;
+  profile_photo_url: string | undefined;
 };
 
 export type AccountType = {
@@ -109,28 +109,17 @@ export const UsersAPI = {
 type GetAllPostsType = {
   id: number
   author:AuthorType
-  comments_count: number
-  created_at: string
-  description: string
-  is_liked: boolean
-  likes_count: number
-  photos: Array<PostphotosType>
 }
 
 type AuthorType = {
   username: string,
-  description: null,
-  first_name: null,
+  description: string | undefined,
+  first_name: string | undefined,
   followers: number,
   following: number,
-  job_title:null,
-  last_name: null,
-  profile_photo_url: string | null
-}
-
-type PostphotosType = {
-  id: number
-  url: string
+  job_title: string | undefined,
+  last_name: string | undefined,
+  profile_photo_url: string | undefined
 }
 
 export const PostsAPI = {

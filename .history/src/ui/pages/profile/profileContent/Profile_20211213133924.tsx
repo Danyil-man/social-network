@@ -53,11 +53,11 @@ const Profile: FC<ProfileType> = ({ profile, editProfile, isLoading }) => {
                         </div>
                         <div className={style.description}>
                             <div className={style.headerDescription}>
-                                <h4>{profile?.first_name} {profile?.last_name} </h4>
-                                <p>{profile?.job_title !== null ? profile?.job_title : "No Job Description"}</p>{/* will be props  */}
+                                <h4>{profile?.first_name} a {profile?.last_name} </h4>
+                                <p>{profile?.job_title}</p>{/* will be props  */}
                             </div>
                             <div className={style.lifeDescription}>
-                                <p> {profile?.description !== null ? profile?.description : "No Description"}</p>
+                                <p> {profile?.description}</p>
                             </div>
                         </div>
                     </div>

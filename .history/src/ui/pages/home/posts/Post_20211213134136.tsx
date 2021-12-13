@@ -28,8 +28,8 @@ const Post: FC<PostType> = ({ user, profile, isLoading, getProfileUser, editProf
     }
 
     const TakeUser = () => {
-        getProfileUser(user.username)
-        console.log("Username:", user.username)
+        getProfileUser(profile.username)
+        console.log("Username:", profile.username)
     }
 
     const [isModal, setIsModal] = useState(false)

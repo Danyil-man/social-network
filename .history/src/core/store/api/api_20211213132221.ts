@@ -59,7 +59,7 @@ export type GetAccountType = {
   following: number;
   job_title: null;
   last_name: null;
-  profile_photo_url: string | null;
+  profile_photo_url: string | undefined;
 };
 
 export type AccountType = {
@@ -92,7 +92,7 @@ export const profileAPI = {
     return instanceApi.patch<GetAccountType>("/account", account)
   },
   getSingleProfile(username: string){
-    return instanceApi.get<GetAccountType>(`/profiles/${username}`)
+    return instanceApi.get(`/profiles/${username}`)
   }
 };
 
@@ -100,37 +100,14 @@ export const profileAPI = {
 
 export const UsersAPI = {
   getUsers() {
-    return instanceApi.get<Array<GetUserType>>('/profiles')
+    return instanceApi.get<GetUserType>('/profiles')
   },
 }
 
 //                              POSTS API
 
 type GetAllPostsType = {
-  id: number
-  author:AuthorType
-  comments_count: number
-  created_at: string
-  description: string
-  is_liked: boolean
-  likes_count: number
-  photos: Array<PostphotosType>
-}
 
-type AuthorType = {
-  username: string,
-  description: null,
-  first_name: null,
-  followers: number,
-  following: number,
-  job_title:null,
-  last_name: null,
-  profile_photo_url: string | null
-}
-
-type PostphotosType = {
-  id: number
-  url: string
 }
 
 export const PostsAPI = {

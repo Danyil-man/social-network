@@ -8,13 +8,13 @@ const SET_IS_LOADING = "SET_IS_LOADING";
 
 export type GetUserType = {
     username: string;
-    description: null ;
-    first_name: null;
+    description: string | undefined;
+    first_name: string | undefined;
     followers: number;
     following: number;
-    job_title: null;
-    last_name: null;
-    profile_photo_url: null;
+    job_title: string | undefined;
+    last_name: string | undefined;
+    profile_photo_url: string | undefined;
 };
 
 type initialStateType = {

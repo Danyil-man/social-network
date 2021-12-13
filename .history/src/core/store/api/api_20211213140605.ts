@@ -131,6 +131,7 @@ type AuthorType = {
 type PostphotosType = {
   id: number
   url: string
+  
 }
 
 export const PostsAPI = {

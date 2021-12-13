@@ -109,12 +109,6 @@ export const UsersAPI = {
 type GetAllPostsType = {
   id: number
   author:AuthorType
-  comments_count: number
-  created_at: string
-  description: string
-  is_liked: boolean
-  likes_count: number
-  photos: Array<PostphotosType>
 }
 
 type AuthorType = {
@@ -126,11 +120,6 @@ type AuthorType = {
   job_title:null,
   last_name: null,
   profile_photo_url: string | null
-}
-
-type PostphotosType = {
-  id: number
-  url: string
 }
 
 export const PostsAPI = {

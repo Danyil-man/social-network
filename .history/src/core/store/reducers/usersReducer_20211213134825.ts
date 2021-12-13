@@ -12,9 +12,9 @@ export type GetUserType = {
     first_name: null;
     followers: number;
     following: number;
-    job_title: null;
-    last_name: null;
-    profile_photo_url: null;
+    job_title: string;
+    last_name: string;
+    profile_photo_url: string | undefined;
 };
 
 type initialStateType = {
