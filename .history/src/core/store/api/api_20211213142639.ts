@@ -106,7 +106,7 @@ export const UsersAPI = {
 
 //                              POSTS API
 
-export type GetAllPostsType = {
+type GetAllPostsType = {
   id: number
   author:AuthorType
   comments_count: number
@@ -135,6 +135,6 @@ type PostphotosType = {
 
 export const PostsAPI = {
   getAllPosts() {
-    return instanceApi.get<Array<GetAllPostsType>>('/posts')
+    return instanceApi.get<GetAllPostsType>('/posts')
   }
 }

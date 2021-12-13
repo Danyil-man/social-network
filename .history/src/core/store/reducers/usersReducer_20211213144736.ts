@@ -47,7 +47,6 @@ const userReducer = (state = initialState, action: ActionCreatorType): initialSt
     }
 }
 type ActionCreatorType = InfernActiontype<typeof actions>
-
 //                                      ACTION CREATORS
 
 export const actions = {

@@ -106,7 +106,7 @@ export const UsersAPI = {
 
 //                              POSTS API
 
-export type GetAllPostsType = {
+type GetAllPostsType = {
   id: number
   author:AuthorType
   comments_count: number
