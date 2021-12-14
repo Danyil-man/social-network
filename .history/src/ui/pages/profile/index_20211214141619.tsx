@@ -18,6 +18,14 @@ type ContainerProfileType = {
 
 const IdxProfile: FC<ContainerProfileType> = ({ isAuth, profile, editProfile, getProfileUser, isLoading }) => {
 
+    const [profileState, setProfileState] = useState(null)
+
+    // useEffect(() => {
+    //     if (isAuth)
+    //         setProfileState(getProfileUser)
+    //     console.log('mounted Profile')
+    // }, [getProfileUser, isAuth, isLoading])
+
     return isAuth ? (
         <div>
             <Profile

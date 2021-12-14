@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import style from './EditProfileModal.module.scss'
 import headerAva from "public/images/MiniProf/header__ava.png"
 import { Field, Form, Formik } from "formik";
@@ -8,16 +8,21 @@ import { GetUserType } from "core/store/reducers/usersReducer";
 
 type EditModalType = {
     closeModal: (setIsModalEdit: boolean) => void
-    editProfile: (account: AccountType) => void
+    editProfile: any//(account: AccountType) => void
     profile?: GetAccountType | GetUserType
     isLoading: boolean
 }
 
 const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile, profile, isLoading }) => {
-    const submit = ((values: any) => {
+    const submit = (values: any) => {
         editProfile(values)
         console.log({ values })
-    })
+    }
+
+    const [editProfileState, setEditProfileState] = useState(null)
+    useEffect(() => {
+        setEditProfileState(editProfile)
+    }, [])
 
     return (
         <div className={style.wrapper}>
@@ -73,7 +78,7 @@ const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile, profile,
 
                         <div className={style.editFormFooter}>
                             <button className={style.cancelBtn} onClick={() => closeModal(false)}>Cancel</button>
-                            <button className={style.saveBtn} type="submit" >Save</button>
+                            <button className={style.saveBtn} type="submit">Save</button>
                         </div>
                     </Form>
                 </Formik>

@@ -33,10 +33,10 @@ const Post: FC<PostType> = ({ user, posts, isLoading, getProfileUser, editProfil
         console.log("Username:", user.username)
     }
 
-    // useEffect(() => {
-    //     setUserProfile(getProfileUser);
-    //     console.log('userProfile mounted')
-    // }, [getProfileUser])
+    useEffect(() => {
+        setUserProfile(getProfileUser);
+        console.log('userProfile mounted')
+    }, [getProfileUser])
 
 
     const [isModal, setIsModal] = useState(false)

@@ -26,7 +26,7 @@ type ContainerHomeType = {
 
 const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile, isLoading, users, posts, getProfile, getProfileUser, editProfile, getUsers }) => {
     const [usersState, setUsersState] = useState([])
-    const [profileState, setProfileState] = useState(null)
+    const [profileState, setProfileState] = useState([])
 
     useEffect(() => {
         if (isAuth)

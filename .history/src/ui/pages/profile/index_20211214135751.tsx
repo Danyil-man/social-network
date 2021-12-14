@@ -13,10 +13,17 @@ type ContainerProfileType = {
     profile?: GetAccountType
     editProfile: (account: AccountType) => void
     isLoading: boolean
-    getProfileUser: (username: string) => void
+    getProfileUser: any//(username: string) => void
 }
 
 const IdxProfile: FC<ContainerProfileType> = ({ isAuth, profile, editProfile, getProfileUser, isLoading }) => {
+
+    const [profileState, setProfileState] = useState([])
+
+    useEffect(() => {
+        setProfileState(getProfileUser)
+        console.log('mounted Profile')
+    }, [getProfileUser])
 
     return isAuth ? (
         <div>

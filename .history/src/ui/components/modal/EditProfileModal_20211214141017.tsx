@@ -19,9 +19,12 @@ const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile, profile,
         console.log({ values })
     })
 
+    const [editProfileState, setEditProfileState] = useState({})
+    useEffect(() => setEditProfileState(submit), [submit])
+
     return (
         <div className={style.wrapper}>
-            {isLoading ? <Preloader /> : null}
+            {/* {isLoading ? <Preloader /> : null} */}
             <div className={style.container}>
                 <div className={style.modalHeader}>
                     <h4 className={style.headerTitle}>Profile information</h4>
@@ -73,7 +76,7 @@ const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile, profile,
 
                         <div className={style.editFormFooter}>
                             <button className={style.cancelBtn} onClick={() => closeModal(false)}>Cancel</button>
-                            <button className={style.saveBtn} type="submit" >Save</button>
+                            <button className={style.saveBtn} type="submit">Save</button>
                         </div>
                     </Form>
                 </Formik>
