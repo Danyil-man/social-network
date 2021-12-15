@@ -29,8 +29,8 @@ const Post: FC<PostType> = ({ post, isLoading, getProfileUser, editProfile }) =>
 
     const TakeUser = () => {
         //const username = post.author.username;
-        getProfileUser(post.author.username)
-        console.log("Username:", post.author.username)
+        getProfileUser(username)
+        console.log("Username:", username)
     }
     console.log('PostItem', post)
     const [isModal, setIsModal] = useState(false)
@@ -39,9 +39,7 @@ const Post: FC<PostType> = ({ post, isLoading, getProfileUser, editProfile }) =>
             {isLoading ? <Preloader /> : null}
             <div className={style.header}>
                 <div className={style.leftHeader}>
-                    <Link to={`/profile/${post.author.username}`}>
-                        <img onClick={TakeUser} width={40} src={post.author.profile_photo_url !== null ? post.author.profile_photo_url : UserPhoto} alt="postHeader" />
-                    </Link>
+                    <img onClick={TakeUser} width={40} src={post.author.profile_photo_url !== null ? post.author.profile_photo_url : UserPhoto} alt="postHeader" />
                     <div className={style.content_info}>
                         <p className={style.username}> {post.author.username} </p>
                         <p className={style.status}>{post.created_at} </p>

@@ -17,7 +17,7 @@ const Routing = () => {
                     <Route exact path='/' component={IdxHome} />
                     <Route exact path='/login' component={IdxLogIn} />
                     <Route exact path='/signup' component={IdxSignUp} />
-                    <Route exact path='/profile/:username' component={IdxProfile} />
+                    <Route exact path='/profiles' component={IdxProfile} />
                 </Switch>
             </BrowserRouter>
         </>

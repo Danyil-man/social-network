@@ -28,7 +28,6 @@ const Post: FC<PostType> = ({ post, isLoading, getProfileUser, editProfile }) =>
     }
 
     const TakeUser = () => {
-        //const username = post.author.username;
         getProfileUser(post.author.username)
         console.log("Username:", post.author.username)
     }
@@ -39,7 +38,7 @@ const Post: FC<PostType> = ({ post, isLoading, getProfileUser, editProfile }) =>
             {isLoading ? <Preloader /> : null}
             <div className={style.header}>
                 <div className={style.leftHeader}>
-                    <Link to={`/profile/${post.author.username}`}>
+                    <Link to={`/profile`}>
                         <img onClick={TakeUser} width={40} src={post.author.profile_photo_url !== null ? post.author.profile_photo_url : UserPhoto} alt="postHeader" />
                     </Link>
                     <div className={style.content_info}>
@@ -58,18 +57,18 @@ const Post: FC<PostType> = ({ post, isLoading, getProfileUser, editProfile }) =>
 
             <div className={style.mainImg}>
 
-                <img key={post.photos.id} src={post.photos.url} width={560} onClick={() => setIsModal(true)} alt="post" />
+                {/* <img src={postsItem.photos.url} width={560} onClick={() => setIsModal(true)} alt="post" /> */}
             </div>
 
             <div className={style.interaction}>
                 <div className={style.leftInteracion}>
                     <div className={style.likes}>
                         <i className="far fa-heart"></i>
-                        <b>{post.likes_count}</b>
+                        <b>API Likes</b>
                     </div>
                     <div className={style.comments}>
                         <i className="far fa-comment"></i>
-                        <b>{post.comments_count}</b>
+                        <b>API Comments</b>
                     </div>
                 </div>
 

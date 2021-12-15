@@ -80,7 +80,7 @@ const Profile: FC<ProfileType> = ({ profile, editProfile, isLoading }) => {
                 </div>
                 <div className={style.photosCollageContent}>
                     <div className={style.photoItem}>
-                        <img width={358} height={358} alt="" />
+                        <img width={358} height={358} src={profile?.profile_photo_url} alt="" />
                     </div>
                 </div>
             </div>

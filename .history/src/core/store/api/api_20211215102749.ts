@@ -59,7 +59,7 @@ export type GetAccountType = {
   following: number;
   job_title: null;
   last_name: null;
-  profile_photo_url: string | undefined;
+  profile_photo_url: string | null;
 };
 
 export type AccountType = {
@@ -92,6 +92,7 @@ export const profileAPI = {
     return instanceApi.patch<GetAccountType>("/account", account)
   },
   getSingleProfile(username: string){
+    debugger
     return instanceApi.get<GetAccountType>(`/profiles/${username}`)
   }
 };
