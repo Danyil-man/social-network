@@ -36,11 +36,11 @@ const Post: FC<PostType> = ({ post, isLoading,
         console.log("Username:", username)
     }
 
-    const [like, setLike] = useState(post.is_liked)
+    const [Liker, setLiker] = useState(Number)
 
     useEffect(() => {
         console.log('render')
-    }, [like])
+    }, [])
 
     console.log('PostItem', post)
     const [isModal, setIsModal] = useState(false)
@@ -48,6 +48,7 @@ const Post: FC<PostType> = ({ post, isLoading,
         <div className={style.postItem}>
             {isLoading ? <Preloader /> : null}
             <div className={style.header}>
+                <p onClick={() => setLiker(Liker + 1)}>{Liker}</p>
                 <div className={style.leftHeader}>
                     <Link to={`/profile/${username}`}>
                         <img onClick={TakeUser} width={40} src={post.author.profile_photo_url !== null ? post.author.profile_photo_url : UserPhoto} alt="postHeader" />

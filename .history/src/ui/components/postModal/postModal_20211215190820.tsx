@@ -61,11 +61,7 @@ const PostModal: FC<PropsPostsModal> = ({ closeModal, post, likePost, removelike
                             </div>
                             <div className={style.commentfooter}>
                                 <div className={style.commentLikes}>
-                                    {post.is_liked ? (
-                                        <i onClick={() => removelikePost(post.id)} className={`${style.likeStyle} fas fa-heart`}></i>
-                                    ) : (
-                                        <i onClick={() => likePost(post.id)} className={`fas fa-heart`} ></i>
-                                    )}
+                                    <i className="far fa-heart"></i>
                                     <b>{post.likes_count}</b>
                                 </div>
                                 <div className={style.comment__input}>

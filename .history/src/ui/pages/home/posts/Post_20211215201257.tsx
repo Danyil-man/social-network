@@ -36,7 +36,7 @@ const Post: FC<PostType> = ({ post, isLoading,
         console.log("Username:", username)
     }
 
-    const [like, setLike] = useState(post.is_liked)
+    const [like, setLike] = useState(post.likes_count)
 
     useEffect(() => {
         console.log('render')

@@ -36,7 +36,7 @@ const Post: FC<PostType> = ({ post, isLoading,
         console.log("Username:", username)
     }
 
-    const [like, setLike] = useState(post.is_liked)
+    const [like, setLike] = useState(post.likes_count)
 
     useEffect(() => {
         console.log('render')
@@ -79,7 +79,7 @@ const Post: FC<PostType> = ({ post, isLoading,
                         ) : (
                             <i onClick={() => likePost(post.id)} className={`fas fa-heart`} ></i>
                         )}
-                        <b>{post.likes_count}</b>
+                        <b>{like}</b>
                     </div>
                     <div className={style.comments}>
                         <i className="far fa-comment"></i>

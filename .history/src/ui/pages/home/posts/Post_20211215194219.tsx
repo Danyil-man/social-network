@@ -36,12 +36,6 @@ const Post: FC<PostType> = ({ post, isLoading,
         console.log("Username:", username)
     }
 
-    const [like, setLike] = useState(post.is_liked)
-
-    useEffect(() => {
-        console.log('render')
-    }, [like])
-
     console.log('PostItem', post)
     const [isModal, setIsModal] = useState(false)
     return (

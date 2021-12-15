@@ -8,9 +8,7 @@ import UserPhoto from 'public/images/withoutphoto.png'
 
 type PropsPostsModal = {
     closeModal: any;
-    post: GetAllPostsType;
-    likePost: (postId: number) => void
-    removelikePost: (postId: number) => void
+    post: GetAllPostsType
 }
 
 type CommentBlockType = {
@@ -24,14 +22,14 @@ const Comment: FC<CommentBlockType> = ({ post }) => {
                 <img width={40} alt="comentarAva" />
             </div>
             <div className={style.commentUserInfo}>
-                <p className={style.commentMeesage}>Comment MEssage</p>
+                <p className={style.commentMeesage}>Comment Message</p>
                 <p className={style.commentStatus}>Comment Status</p>
             </div>
         </div>
     )
 }
 
-const PostModal: FC<PropsPostsModal> = ({ closeModal, post, likePost, removelikePost }) => {
+const PostModal: FC<PropsPostsModal> = ({ closeModal, post }) => {
     const [isModal, setIsModal] = useState(true);
 
     return (
@@ -40,7 +38,7 @@ const PostModal: FC<PropsPostsModal> = ({ closeModal, post, likePost, removelike
                 <div className={style.wrapper}>
                     <div className={style.container}>
                         <div className={style.postImgBlock}>
-                            <img src={post.photos.url} className={style.postImg} alt="postimage" />
+                            <img className={style.postImg} alt="postimage" />
                         </div>
                         <div className={style.interaction}>
                             <div className={style.header}>
@@ -61,11 +59,7 @@ const PostModal: FC<PropsPostsModal> = ({ closeModal, post, likePost, removelike
                             </div>
                             <div className={style.commentfooter}>
                                 <div className={style.commentLikes}>
-                                    {post.is_liked ? (
-                                        <i onClick={() => removelikePost(post.id)} className={`${style.likeStyle} fas fa-heart`}></i>
-                                    ) : (
-                                        <i onClick={() => likePost(post.id)} className={`fas fa-heart`} ></i>
-                                    )}
+                                    <i className="far fa-heart"></i>
                                     <b>{post.likes_count}</b>
                                 </div>
                                 <div className={style.comment__input}>

@@ -8,9 +8,7 @@ import UserPhoto from 'public/images/withoutphoto.png'
 
 type PropsPostsModal = {
     closeModal: any;
-    post: GetAllPostsType;
-    likePost: (postId: number) => void
-    removelikePost: (postId: number) => void
+    post: GetAllPostsType
 }
 
 type CommentBlockType = {
@@ -21,17 +19,17 @@ const Comment: FC<CommentBlockType> = ({ post }) => {
     return (
         <div className={style.commentsItems}>
             <div className={style.commentAvatar}>
-                <img width={40} alt="comentarAva" />
+                <img width={40} src={post.author.profile_photo_url !== null ? post.author.profile_photo_url : UserPhoto} alt="postHeader" />
             </div>
             <div className={style.commentUserInfo}>
-                <p className={style.commentMeesage}>Comment MEssage</p>
+                <p className={style.commentMeesage}>Comment Message</p>
                 <p className={style.commentStatus}>Comment Status</p>
             </div>
         </div>
     )
 }
 
-const PostModal: FC<PropsPostsModal> = ({ closeModal, post, likePost, removelikePost }) => {
+const PostModal: FC<PropsPostsModal> = ({ closeModal, post }) => {
     const [isModal, setIsModal] = useState(true);
 
     return (
@@ -40,13 +38,13 @@ const PostModal: FC<PropsPostsModal> = ({ closeModal, post, likePost, removelike
                 <div className={style.wrapper}>
                     <div className={style.container}>
                         <div className={style.postImgBlock}>
-                            <img src={post.photos.url} className={style.postImg} alt="postimage" />
+                            <img className={style.postImg} alt="postimage" />
                         </div>
                         <div className={style.interaction}>
                             <div className={style.header}>
                                 <div className={style.userInfo}>
-                                    <img src={post.author.profile_photo_url !== null ? post.author.profile_photo_url : UserPhoto} width={40} alt="avatar" />
-                                    <p>{post.author.username}</p>
+                                    <img width={40} alt="avatar" />
+                                    <p>API USERNAME</p>
                                 </div>
                                 <div className={style.CloseBtn}>
                                     <button className={style.titleCloseBtn} onClick={() => closeModal(false)}> <i className="far fa-times-circle"></i> </button>
@@ -61,12 +59,8 @@ const PostModal: FC<PropsPostsModal> = ({ closeModal, post, likePost, removelike
                             </div>
                             <div className={style.commentfooter}>
                                 <div className={style.commentLikes}>
-                                    {post.is_liked ? (
-                                        <i onClick={() => removelikePost(post.id)} className={`${style.likeStyle} fas fa-heart`}></i>
-                                    ) : (
-                                        <i onClick={() => likePost(post.id)} className={`fas fa-heart`} ></i>
-                                    )}
-                                    <b>{post.likes_count}</b>
+                                    <i className="far fa-heart"></i>
+                                    <b>Likes API</b>
                                 </div>
                                 <div className={style.comment__input}>
                                     <input placeholder="Add a comment..." />

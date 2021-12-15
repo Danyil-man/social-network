@@ -36,11 +36,19 @@ const Post: FC<PostType> = ({ post, isLoading,
         console.log("Username:", username)
     }
 
-    const [like, setLike] = useState(post.is_liked)
+    const [like, setLike] = useState(post.likes_count)
+    const [likeCheck, setLikeChecker] = useState(false)
 
-    useEffect(() => {
-        console.log('render')
-    }, [like])
+    function Like() {
+        if (likeCheck === false) {
+            setLikeChecker(true)
+            setLike(like + 1)
+        } else if (likeCheck === true) {
+            setLikeChecker(false)
+            setLike(like - 1)
+
+        }
+    }
 
     console.log('PostItem', post)
     const [isModal, setIsModal] = useState(false)
@@ -100,8 +108,6 @@ const Post: FC<PostType> = ({ post, isLoading,
                 <PostModal
                     closeModal={setIsModal}
                     post={post}
-                    likePost={likePost}
-                    removelikePost={removelikePost}
                 />
             )}
 
