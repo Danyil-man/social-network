@@ -150,7 +150,7 @@ type CommenterType = {
   profile_photo_url:null
 }
 
-export type GetAllComments = {
+export type GetAllComment = {
   id:number
   commenter: CommenterType
   created_at: string
@@ -162,6 +162,6 @@ export const PostsAPI = {
     return instanceApi.get<Array<GetAllPostsType>>('/posts')
   },
   getAllComments(postId: number) {
-    return instanceApi.get<Array<GetAllComments>>(`/posts/${postId}/comments`)
+    return instanceApi.get(`/posts/${postId}/comments`)
   }
 }

@@ -33,6 +33,7 @@ const Post: FC<PostType> = ({ post, isLoading,
         console.log("Username:", username)
     }
 
+    console.log(isModal)
     const [isModal, setIsModal] = useState(false)
     return (
         <div key={post.id} className={style.postItem}>
@@ -89,14 +90,17 @@ const Post: FC<PostType> = ({ post, isLoading,
             </div>
 
             {isModal && (
-                <PostModal
-                    getAllComments={getAllComments}
-                    closeModal={setIsModal}
-                    post={post}
-                    comments={comments}
-                    likePost={likePost}
-                    removelikePost={removelikePost}
-                />
+                <div>
+                    {comments.map(comment => <PostModal
+                        getAllComments={getAllComments}
+                        closeModal={setIsModal}
+                        post={post}
+                        comment={comment}
+                        likePost={likePost}
+                        removelikePost={removelikePost}
+                    />)}
+                </div>
+
             )}
 
         </div>

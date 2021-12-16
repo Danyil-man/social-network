@@ -24,7 +24,7 @@ const Home: FC<Homeprops> = ({ profile, isLoading,
     users, posts,
     editProfile, getProfileUser,
     likePost, removelikePost,
-    getAllComments, comments }) => {
+    getAllComments }) => {
     return (
         <div className={style.wrapper}>
             {isLoading ? <Preloader /> : null}
@@ -34,12 +34,11 @@ const Home: FC<Homeprops> = ({ profile, isLoading,
                         users={users}
                     />
                     <Posts
+                        getProfileUser={getProfileUser}
+                        profile={profile}
+                        editProfile={editProfile}
                         isLoading={isLoading}
                         posts={posts}
-                        comments={comments}
-                        profile={profile}
-                        getProfileUser={getProfileUser}
-                        editProfile={editProfile}
                         likePost={likePost}
                         removelikePost={removelikePost}
                         getAllComments={getAllComments}

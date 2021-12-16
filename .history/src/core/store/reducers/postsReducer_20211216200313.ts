@@ -61,12 +61,7 @@ const postsReducer = (state = initialState, action:ActionCreatorsType):initialSt
         case GET_ALL_COMMENTS:
             return{
                 ...state,
-                comments: state.comments.map( comment => {
-                    if(comment.id === action.postID){
-                        return{...comment}
-                    }
-                    return comment
-                } )
+                if()
             }
 
 
@@ -98,10 +93,9 @@ export const actions = {
         postID,
         count: like
     } as const),
-    getComments: (postID: number, comments: Array<GetAllComments>) => ({
+    getComments: (postID: number) => ({
         type: GET_ALL_COMMENTS,
-        postID,
-        comments
+        postID
     } as const)
 }
 
@@ -129,8 +123,8 @@ export const removelikePost = (postId:number, like: number):ThunkType => async (
 export const getAllComments = (postId:number):ThunkType => async (dispatch) => {
     dispatch(actions.isLoading(true))
     let response = await PostsAPI.getAllComments(postId)
-    dispatch(actions.getComments(postId, response.data))
-    debugger
+
+
     dispatch(actions.isLoading(false))
 }
 

@@ -34,12 +34,12 @@ const Home: FC<Homeprops> = ({ profile, isLoading,
                         users={users}
                     />
                     <Posts
+                        getProfileUser={getProfileUser}
+                        profile={profile}
+                        editProfile={editProfile}
                         isLoading={isLoading}
                         posts={posts}
                         comments={comments}
-                        profile={profile}
-                        getProfileUser={getProfileUser}
-                        editProfile={editProfile}
                         likePost={likePost}
                         removelikePost={removelikePost}
                         getAllComments={getAllComments}

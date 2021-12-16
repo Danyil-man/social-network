@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import style from "./PostModal.module.scss";
 import comment1 from "public/images/story/story2.png";
 import comment2 from "public/images/story/story3.png";
@@ -18,34 +18,27 @@ type PropsPostsModal = {
 type CommentBlockType = {
     post: GetAllPostsType
     comment: GetAllComments
-    getAllComments: (postId: number) => void
 }
 
-const Comment: FC<CommentBlockType> = ({ post, comment, getAllComments }) => {
-    useEffect(() => {
-        getAllComments(comment.id)
-        console.log(comment.id)
-    }, [comment.id, getAllComments])
+const Comment: FC<CommentBlockType> = ({ post, comment }) => {
     return (
         <div className={style.commentsItems}>
             <div className={style.commentAvatar}>
-                <img src={comment.commenter.profile_photo_url !== null ? comment.commenter.profile_photo_url : UserPhoto} width={40} alt="comentarAva" />
+                <img src={comment.commenter.profile_photo_url} width={40} alt="comentarAva" />
             </div>
             <div className={style.commentUserInfo}>
-                <p className={style.commentMeesage}>{comment.message}</p>
-                <p className={style.commentStatus}>{comment.created_at}</p>
+                <p className={style.commentMeesage}>Comment MEssage</p>
+                <p className={style.commentStatus}>Comment Status</p>
             </div>
         </div>
     )
 }
 
 const PostModal: FC<PropsPostsModal> = ({ closeModal, post,
-    likePost, removelikePost, getAllComments,
+    likePost, removelikePost,
     comments }) => {
-    useEffect(() => {
-        getAllComments(post.id)
-        console.log(post.id)
-    }, [post.id, getAllComments])
+    const [isModal, setIsModal] = useState(true);
+
     return (
         <div>
 
@@ -68,7 +61,6 @@ const PostModal: FC<PropsPostsModal> = ({ closeModal, post,
                         <div className={style.commentsBlock}>
                             {comments.map(comment => <Comment
                                 comment={comment}
-                                getAllComments={getAllComments}
                                 post={post}
                             />)}
 

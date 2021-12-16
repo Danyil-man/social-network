@@ -35,7 +35,6 @@ const Posts: FC<PostsType> = ({ profile, posts,
                 editProfile={editProfile}
                 likePost={likePost}
                 removelikePost={removelikePost}
-                getAllComments={getAllComments}
                 isLoading={isLoading}
             />)}
             {/* {users.map(user => <Post

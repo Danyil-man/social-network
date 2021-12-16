@@ -24,7 +24,6 @@ type CommentBlockType = {
 const Comment: FC<CommentBlockType> = ({ post, comment, getAllComments }) => {
     useEffect(() => {
         getAllComments(comment.id)
-        console.log(comment.id)
     }, [comment.id, getAllComments])
     return (
         <div className={style.commentsItems}>
@@ -32,8 +31,8 @@ const Comment: FC<CommentBlockType> = ({ post, comment, getAllComments }) => {
                 <img src={comment.commenter.profile_photo_url !== null ? comment.commenter.profile_photo_url : UserPhoto} width={40} alt="comentarAva" />
             </div>
             <div className={style.commentUserInfo}>
-                <p className={style.commentMeesage}>{comment.message}</p>
-                <p className={style.commentStatus}>{comment.created_at}</p>
+                <p className={style.commentMeesage}>Comment MEssage</p>
+                <p className={style.commentStatus}>Comment Status</p>
             </div>
         </div>
     )
@@ -42,10 +41,8 @@ const Comment: FC<CommentBlockType> = ({ post, comment, getAllComments }) => {
 const PostModal: FC<PropsPostsModal> = ({ closeModal, post,
     likePost, removelikePost, getAllComments,
     comments }) => {
-    useEffect(() => {
-        getAllComments(post.id)
-        console.log(post.id)
-    }, [post.id, getAllComments])
+    const [isModal, setIsModal] = useState(true);
+
     return (
         <div>
 

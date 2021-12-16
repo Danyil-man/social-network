@@ -112,6 +112,17 @@ export const UsersAPI = {
 
 //                              POSTS API
 
+export type GetAllPostsType = {
+  id: number
+  author:AuthorType
+  comments_count: number
+  created_at: string
+  description: string
+  is_liked: boolean
+  likes_count: number
+  photos: PostphotosType
+}
+
 type AuthorType = {
   username: string,
   description: null,
@@ -128,40 +139,11 @@ type PostphotosType = {
   url: string
 }
 
-export type GetAllPostsType = {
-  id: number
-  author:AuthorType
-  comments_count: number
-  created_at: string
-  description: string
-  is_liked: boolean
-  likes_count: number
-  photos: PostphotosType
-}
-
-type CommenterType = {
-  username: string
-  description: null
-  first_name: null
-  followers: number
-  following: number
-  job_title:null
-  last_name: null
-  profile_photo_url:null
-}
-
-export type GetAllComments = {
-  id:number
-  commenter: CommenterType
-  created_at: string
-  message: string
-}
-
 export const PostsAPI = {
   getAllPosts() {
     return instanceApi.get<Array<GetAllPostsType>>('/posts')
   },
-  getAllComments(postId: number) {
-    return instanceApi.get<Array<GetAllComments>>(`/posts/${postId}/comments`)
+  getAllComents(postId: number) {
+    return instanceApi.get(`/posts/:post_id/comments`)
   }
 }

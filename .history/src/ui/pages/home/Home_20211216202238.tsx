@@ -3,7 +3,7 @@ import Stories from "./stories/Stories";
 import style from "./Home.module.scss";
 import Posts from "./posts/Posts";
 import MiniProfile from "./miniProfile/MiniProfile";
-import { AccountType, GetAccountType, GetAllComments, GetAllPostsType } from "core/store/api/api";
+import { AccountType, GetAccountType, GetAllPostsType } from "core/store/api/api";
 import { GetUserType } from "core/store/reducers/usersReducer";
 import Preloader from "ui/components/common/Preloader";
 
@@ -12,7 +12,6 @@ type Homeprops = {
     isLoading: boolean
     users: Array<GetUserType>
     posts: Array<GetAllPostsType>
-    comments: Array<GetAllComments>
     editProfile: (account: AccountType) => void
     getProfileUser: (username: string) => void
     likePost: (postId: number, like: number) => void
@@ -23,8 +22,7 @@ type Homeprops = {
 const Home: FC<Homeprops> = ({ profile, isLoading,
     users, posts,
     editProfile, getProfileUser,
-    likePost, removelikePost,
-    getAllComments, comments }) => {
+    likePost, removelikePost }) => {
     return (
         <div className={style.wrapper}>
             {isLoading ? <Preloader /> : null}
@@ -34,15 +32,13 @@ const Home: FC<Homeprops> = ({ profile, isLoading,
                         users={users}
                     />
                     <Posts
+                        getProfileUser={getProfileUser}
+                        profile={profile}
+                        editProfile={editProfile}
                         isLoading={isLoading}
                         posts={posts}
-                        comments={comments}
-                        profile={profile}
-                        getProfileUser={getProfileUser}
-                        editProfile={editProfile}
                         likePost={likePost}
                         removelikePost={removelikePost}
-                        getAllComments={getAllComments}
                     />
                 </div>
                 <div className={style.rightside}>

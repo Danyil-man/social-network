@@ -34,6 +34,7 @@ const Post: FC<PostType> = ({ post, isLoading,
     }
 
     const [isModal, setIsModal] = useState(false)
+    console.log(isModal)
     return (
         <div key={post.id} className={style.postItem}>
             {isLoading ? <Preloader /> : null}
@@ -93,7 +94,7 @@ const Post: FC<PostType> = ({ post, isLoading,
                     getAllComments={getAllComments}
                     closeModal={setIsModal}
                     post={post}
-                    comments={comments}
+                    comment={comment}
                     likePost={likePost}
                     removelikePost={removelikePost}
                 />

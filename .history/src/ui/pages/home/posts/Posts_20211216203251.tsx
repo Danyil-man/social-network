@@ -21,8 +21,7 @@ interface PostsType {
 const Posts: FC<PostsType> = ({ profile, posts,
     getProfileUser, editProfile,
     isLoading, likePost,
-    removelikePost, getAllComments,
-    comments }) => {
+    removelikePost, getAllComments }) => {
 
     return (
         <div className={style.wrapper}>
@@ -30,12 +29,10 @@ const Posts: FC<PostsType> = ({ profile, posts,
             {posts.map(post => <Post
                 profile={profile}
                 post={post}
-                comments={comments}
                 getProfileUser={getProfileUser}
                 editProfile={editProfile}
                 likePost={likePost}
                 removelikePost={removelikePost}
-                getAllComments={getAllComments}
                 isLoading={isLoading}
             />)}
             {/* {users.map(user => <Post

@@ -4,7 +4,7 @@ import PostModal from "ui/components/postModal/postModal";
 import style from "./Post.module.scss";
 import UserPhoto from 'public/images/withoutphoto.png'
 import Profile from "ui/pages/profile/profileContent/Profile";
-import { AccountType, GetAccountType, GetAllComments, GetAllPostsType } from "core/store/api/api";
+import { AccountType, GetAccountType, GetAllPostsType } from "core/store/api/api";
 import { Link } from "react-router-dom";
 import Preloader from "ui/components/common/Preloader";
 
@@ -13,8 +13,6 @@ interface PostType {
     profile?: GetAccountType
     isLoading: boolean
     post: GetAllPostsType
-    comments: Array<GetAllComments>
-    getAllComments: (postId: number) => void
     editProfile: (account: AccountType) => void
     getProfileUser: (username: string) => void
     likePost: (postId: number, like: number) => void
@@ -23,10 +21,7 @@ interface PostType {
 
 const Post: FC<PostType> = ({ post, isLoading,
     profile, getProfileUser,
-    editProfile, likePost, removelikePost, comments, getAllComments
-}) => {
-
-
+    editProfile, likePost, removelikePost }) => {
     let username = post.author.username;
     const TakeUser = () => {
         getProfileUser(username)
@@ -90,10 +85,8 @@ const Post: FC<PostType> = ({ post, isLoading,
 
             {isModal && (
                 <PostModal
-                    getAllComments={getAllComments}
                     closeModal={setIsModal}
                     post={post}
-                    comments={comments}
                     likePost={likePost}
                     removelikePost={removelikePost}
                 />

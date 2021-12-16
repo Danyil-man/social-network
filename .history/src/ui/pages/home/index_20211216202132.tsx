@@ -4,7 +4,7 @@ import { AppStateType } from 'core/store/redux/reduxStore';
 import { connect } from 'react-redux';
 import { FC, useEffect, useState } from 'react';
 import { logOut } from 'core/store/reducers/authReducer';
-import { AccountType, GetAccountType, GetAllComments, GetAllPostsType } from 'core/store/api/api';
+import { AccountType, GetAccountType, GetAllPostsType } from 'core/store/api/api';
 import { getIsLoading, getUsersSelector } from 'core/store/selectors';
 import { editProfile, getProfile, getProfileUser, } from 'core/store/reducers/profileReducer';
 import { getUsers, GetUserType } from 'core/store/reducers/usersReducer';
@@ -16,7 +16,6 @@ type ContainerHomeType = {
     isLoading: boolean
     users: Array<GetUserType>
     posts: Array<GetAllPostsType>
-    comments: Array<GetAllComments>
     editProfile: (account: AccountType) => void
     getProfileUser: (username: string) => void
     likePost: (postId: number, like: number) => void
@@ -29,9 +28,7 @@ type ContainerHomeType = {
 const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile,
     isLoading, users,
     posts, editProfile,
-    getProfileUser, likePost,
-    removelikePost, getAllComments,
-    comments }) => {
+    getProfileUser, likePost, removelikePost }) => {
 
     return isAuth ? (
         <div>
@@ -40,12 +37,10 @@ const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile,
                 isLoading={isLoading}
                 users={users}
                 posts={posts}
-                comments={comments}
                 editProfile={editProfile}
                 getProfileUser={getProfileUser}
                 likePost={likePost}
                 removelikePost={removelikePost}
-                getAllComments={getAllComments}
             />
         </div>
     )
@@ -58,7 +53,7 @@ const mapStateToProps = (state: AppStateType) => ({
     isAuth: state.auth.isAuth,
     profile: state.profile.profile,
     posts: state.posts.posts,
-    comments: state.posts.comments,
+    //users: state.users.users,
     isLoading: getIsLoading(state),
     users: getUsersSelector(state),
 })

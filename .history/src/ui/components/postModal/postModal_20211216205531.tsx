@@ -33,7 +33,7 @@ const Comment: FC<CommentBlockType> = ({ post, comment, getAllComments }) => {
             </div>
             <div className={style.commentUserInfo}>
                 <p className={style.commentMeesage}>{comment.message}</p>
-                <p className={style.commentStatus}>{comment.created_at}</p>
+                <p className={style.commentStatus}>Comment Status</p>
             </div>
         </div>
     )
@@ -42,10 +42,7 @@ const Comment: FC<CommentBlockType> = ({ post, comment, getAllComments }) => {
 const PostModal: FC<PropsPostsModal> = ({ closeModal, post,
     likePost, removelikePost, getAllComments,
     comments }) => {
-    useEffect(() => {
-        getAllComments(post.id)
-        console.log(post.id)
-    }, [post.id, getAllComments])
+
     return (
         <div>
 

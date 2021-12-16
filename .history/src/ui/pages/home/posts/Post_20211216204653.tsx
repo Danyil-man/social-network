@@ -34,6 +34,7 @@ const Post: FC<PostType> = ({ post, isLoading,
     }
 
     const [isModal, setIsModal] = useState(false)
+    console.log(isModal)
     return (
         <div key={post.id} className={style.postItem}>
             {isLoading ? <Preloader /> : null}

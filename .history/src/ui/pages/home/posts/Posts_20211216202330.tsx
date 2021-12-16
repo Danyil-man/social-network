@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import Post from "./Post";
 import style from "./Posts.module.scss";
 import { GetUserType } from "core/store/reducers/usersReducer";
-import { AccountType, GetAccountType, GetAllComments, GetAllPostsType } from "core/store/api/api";
+import { AccountType, GetAccountType, GetAllPostsType } from "core/store/api/api";
 import { objectTraps } from "@reduxjs/toolkit/node_modules/immer/dist/internal";
 import Preloader from "ui/components/common/Preloader";
 
@@ -10,7 +10,6 @@ interface PostsType {
     profile?: GetAccountType
     posts: Array<GetAllPostsType>
     isLoading: boolean
-    comments: Array<GetAllComments>
     getProfileUser: (username: string) => void
     editProfile: (account: AccountType) => void
     likePost: (postId: number, like: number) => void
@@ -21,8 +20,7 @@ interface PostsType {
 const Posts: FC<PostsType> = ({ profile, posts,
     getProfileUser, editProfile,
     isLoading, likePost,
-    removelikePost, getAllComments,
-    comments }) => {
+    removelikePost, getAllComments }) => {
 
     return (
         <div className={style.wrapper}>
@@ -30,12 +28,10 @@ const Posts: FC<PostsType> = ({ profile, posts,
             {posts.map(post => <Post
                 profile={profile}
                 post={post}
-                comments={comments}
                 getProfileUser={getProfileUser}
                 editProfile={editProfile}
                 likePost={likePost}
                 removelikePost={removelikePost}
-                getAllComments={getAllComments}
                 isLoading={isLoading}
             />)}
             {/* {users.map(user => <Post

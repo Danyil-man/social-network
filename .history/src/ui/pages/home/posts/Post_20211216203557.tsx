@@ -90,10 +90,10 @@ const Post: FC<PostType> = ({ post, isLoading,
 
             {isModal && (
                 <PostModal
+                    comments={comments}
                     getAllComments={getAllComments}
                     closeModal={setIsModal}
                     post={post}
-                    comments={comments}
                     likePost={likePost}
                     removelikePost={removelikePost}
                 />

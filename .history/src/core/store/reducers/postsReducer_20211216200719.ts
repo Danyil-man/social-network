@@ -98,10 +98,9 @@ export const actions = {
         postID,
         count: like
     } as const),
-    getComments: (postID: number, comments: Array<GetAllComments>) => ({
+    getComments: (postID: number) => ({
         type: GET_ALL_COMMENTS,
-        postID,
-        comments
+        postID
     } as const)
 }
 
@@ -129,8 +128,7 @@ export const removelikePost = (postId:number, like: number):ThunkType => async (
 export const getAllComments = (postId:number):ThunkType => async (dispatch) => {
     dispatch(actions.isLoading(true))
     let response = await PostsAPI.getAllComments(postId)
-    dispatch(actions.getComments(postId, response.data))
-    debugger
+    dispatch(actions.getComments(postId))
     dispatch(actions.isLoading(false))
 }
 

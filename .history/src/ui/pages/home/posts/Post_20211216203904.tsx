@@ -89,14 +89,16 @@ const Post: FC<PostType> = ({ post, isLoading,
             </div>
 
             {isModal && (
-                <PostModal
-                    getAllComments={getAllComments}
-                    closeModal={setIsModal}
-                    post={post}
-                    comments={comments}
-                    likePost={likePost}
-                    removelikePost={removelikePost}
-                />
+                <>
+                    {comments.map(comment => <PostModal
+                        getAllComments={getAllComments}
+                        closeModal={setIsModal}
+                        post={post}
+                        likePost={likePost}
+                        removelikePost={removelikePost}
+                    />)}
+                </>
+
             )}
 
         </div>

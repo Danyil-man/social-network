@@ -30,8 +30,7 @@ const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile,
     isLoading, users,
     posts, editProfile,
     getProfileUser, likePost,
-    removelikePost, getAllComments,
-    comments }) => {
+    removelikePost, getAllComments }) => {
 
     return isAuth ? (
         <div>
@@ -40,7 +39,6 @@ const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile,
                 isLoading={isLoading}
                 users={users}
                 posts={posts}
-                comments={comments}
                 editProfile={editProfile}
                 getProfileUser={getProfileUser}
                 likePost={likePost}

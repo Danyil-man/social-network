@@ -30,8 +30,7 @@ const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile,
     isLoading, users,
     posts, editProfile,
     getProfileUser, likePost,
-    removelikePost, getAllComments,
-    comments }) => {
+    removelikePost, getAllComments }) => {
 
     return isAuth ? (
         <div>

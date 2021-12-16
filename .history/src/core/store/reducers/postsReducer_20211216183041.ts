@@ -1,22 +1,19 @@
 import { ThunkAction } from "redux-thunk";
-import { GetAllComments, GetAllPostsType, PostsAPI, UsersAPI } from "../api/api"
+import { GetAllPostsType, PostsAPI, UsersAPI } from "../api/api"
 import { AppStateType, InfernActiontype } from "../redux/reduxStore"
 
 const GET_POSTS = "GET_POSTS";
 const SET_LOADING = "SET_LOADING";
 const SET_LIKE = "SET_LIKE";
 const REMOVE_LIKE = "REMOVE_LIKE";
-const GET_ALL_COMMENTS = "GET_ALL_COMMENTS";
 
 type initialStateType = {
     posts: Array<GetAllPostsType>
     isLoading: boolean
-    comments: Array<GetAllComments>
 }
 
 let initialState:initialStateType = {
     posts: [],
-    comments: [],
     isLoading: false,
 }
 
@@ -58,17 +55,6 @@ const postsReducer = (state = initialState, action:ActionCreatorsType):initialSt
                 })
             }
 
-        case GET_ALL_COMMENTS:
-            return{
-                ...state,
-                comments: state.comments.map( comment => {
-                    if(comment.id === action.postID){
-                        return{...comment}
-                    }
-                    return comment
-                } )
-            }
-
 
             default: 
             return state
@@ -97,11 +83,6 @@ export const actions = {
         type: REMOVE_LIKE,
         postID,
         count: like
-    } as const),
-    getComments: (postID: number, comments: Array<GetAllComments>) => ({
-        type: GET_ALL_COMMENTS,
-        postID,
-        comments
     } as const)
 }
 
@@ -124,14 +105,6 @@ export const likePost = (postId:number, like: number):ThunkType => async (dispat
 export const removelikePost = (postId:number, like: number):ThunkType => async (dispatch) => {
     let response = await UsersAPI.removeLikePost(postId);
     dispatch(actions.removelikePostSuccess(postId, like));
-}
-
-export const getAllComments = (postId:number):ThunkType => async (dispatch) => {
-    dispatch(actions.isLoading(true))
-    let response = await PostsAPI.getAllComments(postId)
-    dispatch(actions.getComments(postId, response.data))
-    debugger
-    dispatch(actions.isLoading(false))
 }
 
 export default postsReducer;

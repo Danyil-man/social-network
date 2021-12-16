@@ -14,7 +14,6 @@ interface PostType {
     isLoading: boolean
     post: GetAllPostsType
     comments: Array<GetAllComments>
-    getAllComments: (postId: number) => void
     editProfile: (account: AccountType) => void
     getProfileUser: (username: string) => void
     likePost: (postId: number, like: number) => void
@@ -23,10 +22,7 @@ interface PostType {
 
 const Post: FC<PostType> = ({ post, isLoading,
     profile, getProfileUser,
-    editProfile, likePost, removelikePost, comments, getAllComments
-}) => {
-
-
+    editProfile, likePost, removelikePost }) => {
     let username = post.author.username;
     const TakeUser = () => {
         getProfileUser(username)
@@ -90,10 +86,8 @@ const Post: FC<PostType> = ({ post, isLoading,
 
             {isModal && (
                 <PostModal
-                    getAllComments={getAllComments}
                     closeModal={setIsModal}
                     post={post}
-                    comments={comments}
                     likePost={likePost}
                     removelikePost={removelikePost}
                 />

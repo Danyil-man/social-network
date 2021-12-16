@@ -42,10 +42,7 @@ const Comment: FC<CommentBlockType> = ({ post, comment, getAllComments }) => {
 const PostModal: FC<PropsPostsModal> = ({ closeModal, post,
     likePost, removelikePost, getAllComments,
     comments }) => {
-    useEffect(() => {
-        getAllComments(post.id)
-        console.log(post.id)
-    }, [post.id, getAllComments])
+
     return (
         <div>
 
