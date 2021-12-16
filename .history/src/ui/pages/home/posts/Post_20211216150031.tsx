@@ -65,11 +65,11 @@ const Post: FC<PostType> = ({ post, isLoading,
                     <div className={style.likes}>
                         {post.is_liked ? (<>
                             <i onClick={() => removelikePost(post.id)} className={`${style.likeStyle} fas fa-heart`}></i>
-                            <b>{like + 1}</b>
+                            <b>{like}</b>
                         </>
                         ) : (
                             <>
-                                <i onClick={() => likePost(post.id)} className={`fas fa-heart`} ></i>
+                                <i onClick={LikePost} className={`fas fa-heart`} ></i>
                                 <b>{like}</b>
                             </>
                         )}

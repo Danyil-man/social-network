@@ -22,7 +22,15 @@ interface PostType {
 const Post: FC<PostType> = ({ post, isLoading,
     profile, getProfileUser,
     editProfile, likePost, removelikePost }) => {
-    let username = post.author.username;
+
+    function Share() {
+        alert('Share with ...')
+    }
+
+    function Edit() {
+        alert('Edit')
+    }
+    const username = post.author.username;
     const TakeUser = () => {
         getProfileUser(username)
         console.log("Username:", username)
@@ -30,6 +38,10 @@ const Post: FC<PostType> = ({ post, isLoading,
 
     const [like, setLike] = useState(post.likes_count)
 
+    useEffect(() => {
+        if (post.is_liked)
+            console.log(`changed like count ${like}`)
+    }, [like, post.is_liked])
 
     console.log('PostItem', post)
     const [isModal, setIsModal] = useState(false)
@@ -48,7 +60,7 @@ const Post: FC<PostType> = ({ post, isLoading,
                 </div>
 
                 <div className={style.rightHeader}>
-                    <button className={style.btnedit}>
+                    <button className={style.btnedit} onClick={Edit}>
                         <i className="fas fa-ellipsis-v"></i>
                     </button>
                 </div>
@@ -63,16 +75,12 @@ const Post: FC<PostType> = ({ post, isLoading,
             <div className={style.interaction}>
                 <div className={style.leftInteracion}>
                     <div className={style.likes}>
-                        {post.is_liked ? (<>
+                        {post.is_liked ? (
                             <i onClick={() => removelikePost(post.id)} className={`${style.likeStyle} fas fa-heart`}></i>
-                            <b>{like + 1}</b>
-                        </>
                         ) : (
-                            <>
-                                <i onClick={() => likePost(post.id)} className={`fas fa-heart`} ></i>
-                                <b>{like}</b>
-                            </>
+                            <i onClick={() => likePost(post.id)} className={`fas fa-heart`} ></i>
                         )}
+                        <b>{like}</b>
                     </div>
                     <div className={style.comments}>
                         <i className="far fa-comment"></i>
@@ -81,7 +89,7 @@ const Post: FC<PostType> = ({ post, isLoading,
                 </div>
 
                 <div className={style.rightIneraction}>
-                    <button  >Share<i className="sharearrow fas fa-arrow-right"></i></button>
+                    <button onClick={Share} >Share<i className="sharearrow fas fa-arrow-right"></i></button>
                 </div>
             </div>
 

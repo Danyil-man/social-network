@@ -30,6 +30,11 @@ const Post: FC<PostType> = ({ post, isLoading,
 
     const [like, setLike] = useState(post.likes_count)
 
+    useEffect(() => {
+        if (post.is_liked) {
+            setLike(like)
+        }
+    }, [like, post.is_liked])
 
     console.log('PostItem', post)
     const [isModal, setIsModal] = useState(false)
@@ -65,7 +70,7 @@ const Post: FC<PostType> = ({ post, isLoading,
                     <div className={style.likes}>
                         {post.is_liked ? (<>
                             <i onClick={() => removelikePost(post.id)} className={`${style.likeStyle} fas fa-heart`}></i>
-                            <b>{like + 1}</b>
+                            <b>{like}</b>
                         </>
                         ) : (
                             <>

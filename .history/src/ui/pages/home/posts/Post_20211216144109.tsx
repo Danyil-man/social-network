@@ -28,9 +28,6 @@ const Post: FC<PostType> = ({ post, isLoading,
         console.log("Username:", username)
     }
 
-    const [like, setLike] = useState(post.likes_count)
-
-
     console.log('PostItem', post)
     const [isModal, setIsModal] = useState(false)
     return (
@@ -65,12 +62,12 @@ const Post: FC<PostType> = ({ post, isLoading,
                     <div className={style.likes}>
                         {post.is_liked ? (<>
                             <i onClick={() => removelikePost(post.id)} className={`${style.likeStyle} fas fa-heart`}></i>
-                            <b>{like + 1}</b>
+                            <b>{post.likes_count}</b>
                         </>
                         ) : (
                             <>
                                 <i onClick={() => likePost(post.id)} className={`fas fa-heart`} ></i>
-                                <b>{like}</b>
+                                <b>{post.likes_count + 1}</b>
                             </>
                         )}
                     </div>
