@@ -100,13 +100,11 @@ export const getAllPosts = ():ThunkType => async (dispatch) => {
 export const likePost = (postId:number, like: number):ThunkType => async (dispatch) => {
     let response = await UsersAPI.likePost(postId);
     dispatch(actions.likePostSuccess(postId, like));
-    debugger
 }
 
 export const removelikePost = (postId:number, like: number):ThunkType => async (dispatch) => {
     let response = await UsersAPI.removeLikePost(postId);
     dispatch(actions.removelikePostSuccess(postId, like));
-    debugger
 }
 
 export default postsReducer;

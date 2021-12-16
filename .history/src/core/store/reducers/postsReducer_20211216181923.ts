@@ -38,7 +38,7 @@ const postsReducer = (state = initialState, action:ActionCreatorsType):initialSt
                 ...state,
                 posts: state.posts.map( post => {
                     if(post.id === action.postID){
-                        return {...post, is_liked: true, likes_count: action.count + 1}
+                        return {...post, is_liked: true, likes_count: action.count}
                     }
                     return post
                 })
@@ -49,7 +49,7 @@ const postsReducer = (state = initialState, action:ActionCreatorsType):initialSt
                 ...state,
                 posts: state.posts.map( post => {
                     if(post.id === action.postID){
-                        return {...post, is_liked: false, likes_count: action.count - 1}
+                        return {...post, is_liked: false, likes_count: action.count}
                     }
                     return post
                 })
@@ -100,13 +100,11 @@ export const getAllPosts = ():ThunkType => async (dispatch) => {
 export const likePost = (postId:number, like: number):ThunkType => async (dispatch) => {
     let response = await UsersAPI.likePost(postId);
     dispatch(actions.likePostSuccess(postId, like));
-    debugger
 }
 
 export const removelikePost = (postId:number, like: number):ThunkType => async (dispatch) => {
     let response = await UsersAPI.removeLikePost(postId);
     dispatch(actions.removelikePostSuccess(postId, like));
-    debugger
 }
 
 export default postsReducer;

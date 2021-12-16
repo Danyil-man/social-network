@@ -15,8 +15,8 @@ interface PostType {
     post: GetAllPostsType
     editProfile: (account: AccountType) => void
     getProfileUser: (username: string) => void
-    likePost: (postId: number, like: number) => void
-    removelikePost: (postId: number, like: number) => void
+    likePost: (postId: number) => void
+    removelikePost: (postId: number) => void
 }
 
 const Post: FC<PostType> = ({ post, isLoading,
@@ -27,6 +27,8 @@ const Post: FC<PostType> = ({ post, isLoading,
         getProfileUser(username)
         console.log("Username:", username)
     }
+
+    const [like, setLike] = useState(post.likes_count)
 
     const [isModal, setIsModal] = useState(false)
     return (
@@ -59,14 +61,15 @@ const Post: FC<PostType> = ({ post, isLoading,
                 <div className={style.leftInteracion}>
                     <div className={style.likes}>
                         {post.is_liked ? (<>
-                            <i onClick={() => removelikePost(post.id, post.likes_count)} className={`${style.likeStyle} fas fa-heart`}></i>
+                            <i onClick={() => removelikePost(post.id)} className={`${style.likeStyle} fas fa-heart`}></i>
+                            <b>{like + 1}</b>
                         </>
                         ) : (
                             <>
-                                <i onClick={() => likePost(post.id, post.likes_count)} className={`fas fa-heart`} ></i>
+                                <i onClick={() => likePost(post.id)} className={`fas fa-heart`} ></i>
+                                <b>{like - 1}</b>
                             </>
                         )}
-                        <b>{post.likes_count}</b>
                     </div>
                     <div className={style.comments}>
                         <i className="far fa-comment"></i>

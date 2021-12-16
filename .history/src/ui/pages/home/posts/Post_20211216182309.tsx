@@ -27,7 +27,7 @@ const Post: FC<PostType> = ({ post, isLoading,
         getProfileUser(username)
         console.log("Username:", username)
     }
-
+    console.log(post.likes_count)
     const [isModal, setIsModal] = useState(false)
     return (
         <div key={post.author.username} className={style.postItem}>

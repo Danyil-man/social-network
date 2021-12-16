@@ -38,7 +38,7 @@ const postsReducer = (state = initialState, action:ActionCreatorsType):initialSt
                 ...state,
                 posts: state.posts.map( post => {
                     if(post.id === action.postID){
-                        return {...post, is_liked: true, likes_count: action.count + 1}
+                        return {...post, is_liked: true, likes_count: action.like}
                     }
                     return post
                 })
@@ -49,7 +49,7 @@ const postsReducer = (state = initialState, action:ActionCreatorsType):initialSt
                 ...state,
                 posts: state.posts.map( post => {
                     if(post.id === action.postID){
-                        return {...post, is_liked: false, likes_count: action.count - 1}
+                        return {...post, is_liked: false, likes_count: action.payload}
                     }
                     return post
                 })
@@ -77,12 +77,12 @@ export const actions = {
     likePostSuccess: (postID: number,  like:number) => ({
         type: SET_LIKE,
         postID,
-        count: like
+        like
     } as const),
     removelikePostSuccess: (postID: number, like: number) => ({
         type: REMOVE_LIKE,
         postID,
-        count: like
+        payload: 
     } as const)
 }
 

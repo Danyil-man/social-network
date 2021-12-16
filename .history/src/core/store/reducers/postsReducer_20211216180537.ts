@@ -10,11 +10,13 @@ const REMOVE_LIKE = "REMOVE_LIKE";
 type initialStateType = {
     posts: Array<GetAllPostsType>
     isLoading: boolean
+    like: number
 }
 
 let initialState:initialStateType = {
     posts: [],
     isLoading: false,
+    like: 0
 }
 
 //                                              REDUCER
@@ -38,7 +40,7 @@ const postsReducer = (state = initialState, action:ActionCreatorsType):initialSt
                 ...state,
                 posts: state.posts.map( post => {
                     if(post.id === action.postID){
-                        return {...post, is_liked: true, likes_count: action.count + 1}
+                        return {...post, is_liked: true, likes_count: action.count}
                     }
                     return post
                 })
@@ -49,7 +51,7 @@ const postsReducer = (state = initialState, action:ActionCreatorsType):initialSt
                 ...state,
                 posts: state.posts.map( post => {
                     if(post.id === action.postID){
-                        return {...post, is_liked: false, likes_count: action.count - 1}
+                        return {...post, is_liked: false, likes_count: action.count}
                     }
                     return post
                 })

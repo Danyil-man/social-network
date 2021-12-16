@@ -15,8 +15,8 @@ interface PostType {
     post: GetAllPostsType
     editProfile: (account: AccountType) => void
     getProfileUser: (username: string) => void
-    likePost: (postId: number, like: number) => void
-    removelikePost: (postId: number, like: number) => void
+    likePost: (postId: number) => void
+    removelikePost: (postId: number) => void
 }
 
 const Post: FC<PostType> = ({ post, isLoading,
@@ -28,9 +28,18 @@ const Post: FC<PostType> = ({ post, isLoading,
         console.log("Username:", username)
     }
 
+    const [like, setLike] = useState(post.likes_count)
+
+    useEffect(() => {
+        if (post.is_liked)
+            setLike(like)
+        console.log(`count ${like}`)
+    }, [like, post.is_liked])
+
+    console.log('PostItem', post)
     const [isModal, setIsModal] = useState(false)
     return (
-        <div key={post.author.username} className={style.postItem}>
+        <div className={style.postItem}>
             {isLoading ? <Preloader /> : null}
             <div className={style.header}>
                 <div className={style.leftHeader}>
@@ -52,21 +61,23 @@ const Post: FC<PostType> = ({ post, isLoading,
             </div>
 
             <div className={style.mainImg}>
-                <img src={post.photos.url} width={560} onClick={() => setIsModal(true)} alt="post" />
+
+                <img key={post.photos.id} src={post.photos.url} width={560} onClick={() => setIsModal(true)} alt="post" />
             </div>
 
             <div className={style.interaction}>
                 <div className={style.leftInteracion}>
                     <div className={style.likes}>
                         {post.is_liked ? (<>
-                            <i onClick={() => removelikePost(post.id, post.likes_count)} className={`${style.likeStyle} fas fa-heart`}></i>
+                            <i onClick={() => removelikePost(post.id)} className={`${style.likeStyle} fas fa-heart`}></i>
+                            <b>{like}</b>
                         </>
                         ) : (
                             <>
-                                <i onClick={() => likePost(post.id, post.likes_count)} className={`fas fa-heart`} ></i>
+                                <i onClick={() => likePost(post.id)} className={`fas fa-heart`} ></i>
+                                <b>{like}</b>
                             </>
                         )}
-                        <b>{post.likes_count}</b>
                     </div>
                     <div className={style.comments}>
                         <i className="far fa-comment"></i>
