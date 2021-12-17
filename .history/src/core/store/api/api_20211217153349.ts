@@ -157,17 +157,6 @@ export type GetAllComments = {
   message: string
 }
 
-export type GetSinglePostType = {
-  id: number
-  author:AuthorType
-  comments_count: number
-  created_at: string
-  description: string
-  is_liked: boolean
-  likes_count: number
-  photos: Array<PostphotosType>
-}
-
 export const PostsAPI = {
   getAllPosts() {
     return instanceApi.get<Array<GetAllPostsType>>('/posts')
@@ -176,6 +165,6 @@ export const PostsAPI = {
     return instanceApi.get<Array<GetAllComments>>(`/posts/${postId}/comments`)
   },
   getPostsOfSingleUser(username: string){
-    return instanceApi.get<Array<GetSinglePostType>>(`/profiles/${username}/posts`)
+    return instanceApi.get(`/profiles/${username}/posts`)
   }
 }

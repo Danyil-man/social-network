@@ -47,10 +47,11 @@ const PostModal: FC<PropsPostsModal> = ({ closeModal, post,
     console.log('Comments ARray', comments)
     return (
         <div>
+
             <div className={style.wrapper}>
                 <div className={style.container}>
                     <div className={style.postImgBlock}>
-                        {post.photos.map(photo => <img key={photo.id} src={photo.url} className={style.postImg} alt="postimage" />)}
+                        <img className={style.postImg} alt="postimage" />
                     </div>
                     <div className={style.interaction}>
                         <div className={style.header}>

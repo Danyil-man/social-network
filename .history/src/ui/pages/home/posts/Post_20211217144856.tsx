@@ -56,7 +56,7 @@ const Post: FC<PostType> = ({ post, isLoading,
             </div>
 
             <div className={style.mainImg}>
-                {post.photos.map(photo => <img src={photo.url} width={560} onClick={() => setIsModal(true)} alt="post" />)}
+                <img width={560} onClick={() => setIsModal(true)} alt="post" />
             </div>
 
             <div className={style.interaction}>

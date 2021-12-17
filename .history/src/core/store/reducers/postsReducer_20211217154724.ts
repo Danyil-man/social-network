@@ -100,8 +100,7 @@ export const actions = {
         comments
     } as const),
     getSinglePost: (username: string) => ({
-        type: GET_SINGLE_POST,
-        username
+
     } as const)
 }
 

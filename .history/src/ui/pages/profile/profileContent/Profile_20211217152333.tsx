@@ -80,7 +80,9 @@ const Profile: FC<ProfileType> = ({ profile, posts, editProfile, isLoading }) =>
                     </div>
                 </div>
                 <div className={style.photosCollageContent}>
-                    {posts.map(post => <CollagePhotosProfile post={post} />)}
+                    <div className={style.photoItem}>
+                        <img width={358} height={358} alt="profilePosts" />
+                    </div>
                 </div>
             </div>
 
@@ -92,21 +94,6 @@ const Profile: FC<ProfileType> = ({ profile, posts, editProfile, isLoading }) =>
             />}
 
         </div>
-    )
-}
-
-type CollageType = {
-    post: GetAllPostsType
-}
-
-const CollagePhotosProfile: FC<CollageType> = ({ post }) => {
-    return (<>
-        {
-            post.photos.map(photo => <div className={style.photoItem}>
-                <img key={photo.id} src={photo.url} width={358} height={358} alt="profilePosts" />
-            </div>)
-        }
-    </>
     )
 }
 

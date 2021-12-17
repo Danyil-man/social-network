@@ -176,6 +176,6 @@ export const PostsAPI = {
     return instanceApi.get<Array<GetAllComments>>(`/posts/${postId}/comments`)
   },
   getPostsOfSingleUser(username: string){
-    return instanceApi.get<Array<GetSinglePostType>>(`/profiles/${username}/posts`)
+    return instanceApi.get(`/profiles/${username}/posts`)
   }
 }

@@ -7,7 +7,6 @@ const SET_LOADING = "SET_LOADING";
 const SET_LIKE = "SET_LIKE";
 const REMOVE_LIKE = "REMOVE_LIKE";
 const GET_ALL_COMMENTS = "GET_ALL_COMMENTS";
-const GET_SINGLE_POST = "GET_SINGLE_POST";
 
 type initialStateType = {
     posts: Array<GetAllPostsType>
@@ -98,10 +97,6 @@ export const actions = {
         type: GET_ALL_COMMENTS,
         postID,
         comments
-    } as const),
-    getSinglePost: (username: string) => ({
-        type: GET_SINGLE_POST,
-        username
     } as const)
 }
 
@@ -114,11 +109,6 @@ export const getAllPosts = ():ThunkType => async (dispatch) => {
     let response = await PostsAPI.getAllPosts()
     dispatch(actions.getPosts(response.data))
     dispatch(actions.isLoading(false))
-}
-
-export const getPostOfSingleUser = (username: string):ThunkType => async (dispatch) => {
-    let response = await PostsAPI.getPostsOfSingleUser(username)
-    dispatch(actions.getSinglePost(username))
 }
 
 export const likePost = (postId:number, like: number):ThunkType => async (dispatch) => {

@@ -32,6 +32,7 @@ const Post: FC<PostType> = ({ post, isLoading,
         getProfileUser(username)
         console.log("Username:", username)
     }
+    console.log(post.photos)
     const [isModal, setIsModal] = useState(false)
     return (
         <div key={post.id} className={style.postItem}>
@@ -56,7 +57,7 @@ const Post: FC<PostType> = ({ post, isLoading,
             </div>
 
             <div className={style.mainImg}>
-                {post.photos.map(photo => <img src={photo.url} width={560} onClick={() => setIsModal(true)} alt="post" />)}
+                <img src={post.photos.url} width={560} onClick={() => setIsModal(true)} alt="post" />
             </div>
 
             <div className={style.interaction}>
