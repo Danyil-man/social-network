@@ -29,11 +29,11 @@ const Post: FC<PostType> = ({ post, isLoading,
     getAllComments, getPost
 }) => {
 
-    const OpenPost = () => {
+    function OpenPost() {
         setIsModal(true);
         getPost(post.id)
-        console.log('POST ID', post.id)
     }
+
     let username = post.author.username;
     const TakeUser = () => {
         getProfileUser(username)

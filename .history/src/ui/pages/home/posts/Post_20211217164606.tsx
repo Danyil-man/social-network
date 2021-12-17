@@ -29,11 +29,11 @@ const Post: FC<PostType> = ({ post, isLoading,
     getAllComments, getPost
 }) => {
 
-    const OpenPost = () => {
+    function OpenPost() {
         setIsModal(true);
         getPost(post.id)
-        console.log('POST ID', post.id)
     }
+    console.log('Post ID', getPost(post.id))
     let username = post.author.username;
     const TakeUser = () => {
         getProfileUser(username)
@@ -63,7 +63,7 @@ const Post: FC<PostType> = ({ post, isLoading,
             </div>
 
             <div className={style.mainImg}>
-                {post.photos.map(photo => <img src={photo.url} width={560} onClick={OpenPost} alt="post" />)}
+                {post.photos.map(photo => <img src={photo.url} width={560} onClick={() => OpenPost} alt="post" />)}
             </div>
 
             <div className={style.interaction}>

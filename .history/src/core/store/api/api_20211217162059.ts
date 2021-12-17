@@ -172,9 +172,7 @@ export const PostsAPI = {
   getAllPosts() {
     return instanceApi.get<Array<GetAllPostsType>>('/posts')
   },
-  getPost(postId: number) {
-    return instanceApi.get(`/posts/${postId}`)
-  },
+
   getPostsOfSingleUser(username: string){
     return instanceApi.get<Array<GetSinglePostType>>(`/profiles/${username}/posts`)
   },

@@ -23,7 +23,7 @@ type CommentBlockType = {
 const Comment: FC<CommentBlockType> = ({ comment, getAllComments }) => {
 
     return (
-        <div key={comment.id} className={style.commentsItems}>
+        <div className={style.commentsItems}>
             <div className={style.commentAvatar}>
                 <img src={comment.commenter.profile_photo_url !== null ? comment.commenter.profile_photo_url : UserPhoto} width={40} alt="comentarAva" />
             </div>

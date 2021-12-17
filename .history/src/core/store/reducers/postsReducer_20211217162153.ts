@@ -7,8 +7,7 @@ const SET_LOADING = "SET_LOADING";
 const SET_LIKE = "SET_LIKE";
 const REMOVE_LIKE = "REMOVE_LIKE";
 const GET_ALL_COMMENTS = "GET_ALL_COMMENTS";
-const GET_POST = "GET_POST";
-const GET_USER_POSTS = "GET_SINGLE_POST";
+const GET_USERS_POST = "GET_SINGLE_POST";
 
 type initialStateType = {
     posts: Array<GetAllPostsType>
@@ -64,20 +63,9 @@ const postsReducer = (state = initialState, action:ActionCreatorsType):initialSt
             return{
                 ...state,
                 comments: action.comments
-            } 
+                } 
 
-        case GET_POST:
-            return{
-                ...state,
-                posts: state.posts.map( post => {
-                    if(post.id === action.postID){
-                        return {...post}
-                    }
-                    return post
-                })
-            }
-
-        case GET_USER_POSTS: 
+        case GET_USERS_POST: 
         return{
             ...state,
             posts: state.posts.map( post => {
@@ -120,14 +108,10 @@ export const actions = {
         postID,
         comments
     } as const),
-    getPost: (postID: number) => ({
-        type: GET_POST,
-        postID
-    } as const),
     getSinglePost: (username: string) => ({
-        type: GET_USER_POSTS,
+        type: GET_USERS_POST,
         username
-    } as const),
+    } as const)
 }
 
 //                                          THUNKS
@@ -139,10 +123,6 @@ export const getAllPosts = ():ThunkType => async (dispatch) => {
     let response = await PostsAPI.getAllPosts()
     dispatch(actions.getPosts(response.data))
     dispatch(actions.isLoading(false))
-}
-export const getPost = (postId: number):ThunkType => async (dispatch) => {
-    let response = await PostsAPI.getPost(postId)
-    dispatch(actions.getPost(response.data))
 }
 
 export const getPostOfSingleUser = (username: string):ThunkType => async (dispatch) => {

@@ -140,10 +140,6 @@ export const getAllPosts = ():ThunkType => async (dispatch) => {
     dispatch(actions.getPosts(response.data))
     dispatch(actions.isLoading(false))
 }
-export const getPost = (postId: number):ThunkType => async (dispatch) => {
-    let response = await PostsAPI.getPost(postId)
-    dispatch(actions.getPost(response.data))
-}
 
 export const getPostOfSingleUser = (username: string):ThunkType => async (dispatch) => {
     let response = await PostsAPI.getPostsOfSingleUser(username)

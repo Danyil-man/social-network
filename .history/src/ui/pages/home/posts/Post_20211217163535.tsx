@@ -19,21 +19,14 @@ interface PostType {
     getProfileUser: (username: string) => void
     likePost: (postId: number, like: number) => void
     removelikePost: (postId: number, like: number) => void
-    getPost: (postId: number) => void
 }
 
 const Post: FC<PostType> = ({ post, isLoading,
     profile, getProfileUser,
-    editProfile, likePost,
-    removelikePost, comments,
-    getAllComments, getPost
+    editProfile, likePost, removelikePost, comments, getAllComments
 }) => {
 
-    const OpenPost = () => {
-        setIsModal(true);
-        getPost(post.id)
-        console.log('POST ID', post.id)
-    }
+
     let username = post.author.username;
     const TakeUser = () => {
         getProfileUser(username)
@@ -63,7 +56,7 @@ const Post: FC<PostType> = ({ post, isLoading,
             </div>
 
             <div className={style.mainImg}>
-                {post.photos.map(photo => <img src={photo.url} width={560} onClick={OpenPost} alt="post" />)}
+                {post.photos.map(photo => <img src={photo.url} width={560} onClick={() => setIsModal(true)} alt="post" />)}
             </div>
 
             <div className={style.interaction}>

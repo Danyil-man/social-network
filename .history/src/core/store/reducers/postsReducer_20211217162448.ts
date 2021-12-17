@@ -64,18 +64,7 @@ const postsReducer = (state = initialState, action:ActionCreatorsType):initialSt
             return{
                 ...state,
                 comments: action.comments
-            } 
-
-        case GET_POST:
-            return{
-                ...state,
-                posts: state.posts.map( post => {
-                    if(post.id === action.postID){
-                        return {...post}
-                    }
-                    return post
-                })
-            }
+                } 
 
         case GET_USER_POSTS: 
         return{
@@ -121,8 +110,7 @@ export const actions = {
         comments
     } as const),
     getPost: (postID: number) => ({
-        type: GET_POST,
-        postID
+
     } as const),
     getSinglePost: (username: string) => ({
         type: GET_USER_POSTS,
@@ -139,10 +127,6 @@ export const getAllPosts = ():ThunkType => async (dispatch) => {
     let response = await PostsAPI.getAllPosts()
     dispatch(actions.getPosts(response.data))
     dispatch(actions.isLoading(false))
-}
-export const getPost = (postId: number):ThunkType => async (dispatch) => {
-    let response = await PostsAPI.getPost(postId)
-    dispatch(actions.getPost(response.data))
 }
 
 export const getPostOfSingleUser = (username: string):ThunkType => async (dispatch) => {

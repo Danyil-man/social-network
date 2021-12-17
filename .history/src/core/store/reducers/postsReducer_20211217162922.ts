@@ -143,6 +143,7 @@ export const getAllPosts = ():ThunkType => async (dispatch) => {
 export const getPost = (postId: number):ThunkType => async (dispatch) => {
     let response = await PostsAPI.getPost(postId)
     dispatch(actions.getPost(response.data))
+    debugger
 }
 
 export const getPostOfSingleUser = (username: string):ThunkType => async (dispatch) => {

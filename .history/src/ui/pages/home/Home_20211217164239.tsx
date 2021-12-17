@@ -45,7 +45,6 @@ const Home: FC<Homeprops> = ({ profile, isLoading,
                         likePost={likePost}
                         removelikePost={removelikePost}
                         getAllComments={getAllComments}
-                        getPost={getPost}
                     />
                 </div>
                 <div className={style.rightside}>

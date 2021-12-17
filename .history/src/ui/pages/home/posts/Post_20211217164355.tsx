@@ -24,16 +24,15 @@ interface PostType {
 
 const Post: FC<PostType> = ({ post, isLoading,
     profile, getProfileUser,
-    editProfile, likePost,
-    removelikePost, comments,
-    getAllComments, getPost
+    editProfile, likePost, removelikePost, comments, getAllComments,
+    getPost
 }) => {
 
-    const OpenPost = () => {
+    function OpenPost() {
         setIsModal(true);
         getPost(post.id)
-        console.log('POST ID', post.id)
     }
+
     let username = post.author.username;
     const TakeUser = () => {
         getProfileUser(username)
