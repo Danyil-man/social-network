@@ -124,10 +124,10 @@ export const actions = {
         type: GET_POST,
         postID
     } as const),
-    getSinglePost: (username: string, singlePost: Array<GetSinglePostType>) => ({
+    getSinglePost: (username: string, post: GetSinglePostType) => ({
         type: GET_USER_POSTS,
         username,
-        singlePost
+        post
     } as const),
 }
 

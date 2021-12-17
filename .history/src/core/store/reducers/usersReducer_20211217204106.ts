@@ -113,6 +113,7 @@ export const getProfileUser=(username: string):ThunkType => async (dispatch) => 
     dispatch(actions.isLoading(true))
     let response = await UsersAPI.getSingleProfile(username)
     dispatch(actions.setUserData(username, response.data))
+    debugger
     dispatch(actions.isLoading(false))
 }
 

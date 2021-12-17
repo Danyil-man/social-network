@@ -18,7 +18,6 @@ type ContainerHomeType = {
     posts: Array<GetAllPostsType>
     comments: Array<GetAllComments>
     editProfile: (account: AccountType) => void
-    getProfileUser: (username: string) => void
     likePost: (postId: number, like: number) => void
     removelikePost: (postId: number, like: number) => void
     getAllComments: (postId: number) => void
@@ -31,7 +30,7 @@ type ContainerHomeType = {
 const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile,
     isLoading, users,
     posts, comments,
-    editProfile, getProfileUser,
+    editProfile,
     likePost, removelikePost,
     getAllComments, getPost,
     getPostsOfSingleUser,
@@ -47,7 +46,6 @@ const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile,
                 posts={posts}
                 comments={comments}
                 editProfile={editProfile}
-                getProfileUser={getProfileUser}
                 likePost={likePost}
                 removelikePost={removelikePost}
                 getAllComments={getAllComments}

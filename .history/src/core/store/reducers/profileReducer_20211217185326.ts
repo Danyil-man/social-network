@@ -12,11 +12,13 @@ const SET_USER_DATA = "SET_USER_DATA"
 
 type InitialStateType = {
     profile?: GetAccountType
+    //userData?: GetUserType
     isLoading: boolean
 }
 
 const initialState: InitialStateType = {
     profile: undefined,
+    //userData: undefined ,
     isLoading: false
 }
 
@@ -36,6 +38,14 @@ const profileReducer = (state = initialState, action: ActionCreatorsType): Initi
                 ...state,
                 isLoading: action.isLoading
             }
+
+            // case SET_USER_DATA:
+            //     return{
+            //         ...state,
+            //         userData: action.userData
+            //     }
+
+
 
         default:
             return state
@@ -74,6 +84,13 @@ export const editProfile = (account: AccountType): ThunkType => async (dispatch)
     dispatch(actions.setIsLoading(true))
     let response = await profileAPI.editAccount(account)
     dispatch(getProfile())
+    dispatch(actions.setIsLoading(false))
+}
+
+export const getProfileUser=(username: string):ThunkType => async (dispatch) => {
+    dispatch(actions.setIsLoading(true))
+    let response = await profileAPI.getSingleProfile(username)
+    dispatch(actions.setProfileData(response.data))
     dispatch(actions.setIsLoading(false))
 }
 

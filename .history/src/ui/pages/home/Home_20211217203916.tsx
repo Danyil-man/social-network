@@ -19,12 +19,11 @@ type Homeprops = {
     getAllComments: (postId: number) => void
     getPost: (postId: number) => void
     getPostsOfSingleUser: (username: string) => void
-    getProfileUser: (username: string) => void
 }
 
 const Home: FC<Homeprops> = ({ profile, isLoading,
     users, posts,
-    editProfile, getProfileUser,
+    editProfile,
     likePost, removelikePost,
     getAllComments, comments,
     getPost, getPostsOfSingleUser }) => {
@@ -41,7 +40,6 @@ const Home: FC<Homeprops> = ({ profile, isLoading,
                         posts={posts}
                         comments={comments}
                         profile={profile}
-                        getProfileUser={getProfileUser}
                         editProfile={editProfile}
                         likePost={likePost}
                         removelikePost={removelikePost}

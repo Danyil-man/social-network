@@ -24,9 +24,9 @@ interface PostType {
 }
 
 const Post: FC<PostType> = ({ post, isLoading,
-    profile, comments,
+    profile, comments, getProfileUser,
     editProfile, likePost,
-    removelikePost, getProfileUser,
+    removelikePost,
     getAllComments, getPost,
     getPostsOfSingleUser
 }) => {

@@ -26,7 +26,7 @@ interface PostType {
 const Post: FC<PostType> = ({ post, isLoading,
     profile, comments,
     editProfile, likePost,
-    removelikePost, getProfileUser,
+    removelikePost,
     getAllComments, getPost,
     getPostsOfSingleUser
 }) => {
@@ -40,7 +40,7 @@ const Post: FC<PostType> = ({ post, isLoading,
 
     let username = post.author.username;
     const TakeUser = () => {
-        getProfileUser(username)
+        //getProfileUser(username)
         getPostsOfSingleUser(username)
         console.log("Username:", username, 'Posts: ', post)
     }

@@ -14,12 +14,12 @@ type Homeprops = {
     posts: Array<GetAllPostsType>
     comments: Array<GetAllComments>
     editProfile: (account: AccountType) => void
+    getProfileUser: (username: string) => void
     likePost: (postId: number, like: number) => void
     removelikePost: (postId: number, like: number) => void
     getAllComments: (postId: number) => void
     getPost: (postId: number) => void
     getPostsOfSingleUser: (username: string) => void
-    getProfileUser: (username: string) => void
 }
 
 const Home: FC<Homeprops> = ({ profile, isLoading,

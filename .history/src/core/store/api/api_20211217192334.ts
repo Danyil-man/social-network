@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GetSingleUserType, GetUserType } from "../reducers/usersReducer";
+import { GetUserType } from "../reducers/usersReducer";
 //import Cookies from "js-cookie";
 
 
@@ -101,7 +101,7 @@ export const UsersAPI = {
     return instanceApi.get<Array<GetUserType>>('/profiles')
   },
   getSingleProfile(username: string){
-    return instanceApi.get<GetSingleUserType>(`/profiles/${username}`)
+    return instanceApi.get<GetAccountType>(`/profiles/${username}`)
   },
   likePost(postId: number) {
     return instanceApi.post(`/posts/${postId}/like`)

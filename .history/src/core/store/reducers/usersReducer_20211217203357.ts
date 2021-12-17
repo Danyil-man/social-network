@@ -8,17 +8,6 @@ const SET_IS_LOADING = "SET_IS_LOADING";
 const SET_SINGLE_USER = "SET_SINGLE_USER";
 
 export type GetUserType = {
-    username: string;
-    description: null ;
-    first_name: null;
-    followers: number;
-    following: number;
-    job_title: null;
-    last_name: null;
-    profile_photo_url: null;
-};
-
-export type GetSingleUserType = {
     username?: string;
     description?: null ;
     first_name?: null;
@@ -27,12 +16,12 @@ export type GetSingleUserType = {
     job_title?: null;
     last_name?: null;
     profile_photo_url?: null;
-}
+};
 
 type initialStateType = {
     users: Array<GetUserType>
     isLoading: boolean
-    singleUser: GetSingleUserType
+    singleUser: GetUserType
 }
 
 let initialState: initialStateType = {
@@ -86,7 +75,7 @@ export const actions = {
         users
     }  as const),
 
-    setUserData: (username: string, singleUser:GetSingleUserType) => ({
+    setUserData: (username: string, singleUser:GetUserType) => ({
         type:SET_SINGLE_USER,
         username,
         singleUser
@@ -112,7 +101,7 @@ export const getUsers = (): ThunkType => async (dispatch) => {
 export const getProfileUser=(username: string):ThunkType => async (dispatch) => {
     dispatch(actions.isLoading(true))
     let response = await UsersAPI.getSingleProfile(username)
-    dispatch(actions.setUserData(username, response.data))
+    dispatch(actions.setUserData(response.data))
     dispatch(actions.isLoading(false))
 }
 

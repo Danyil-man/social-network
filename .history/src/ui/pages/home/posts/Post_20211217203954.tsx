@@ -16,7 +16,6 @@ interface PostType {
     comments: Array<GetAllComments>
     getAllComments: (postId: number) => void
     editProfile: (account: AccountType) => void
-    getProfileUser: (username: string) => void
     likePost: (postId: number, like: number) => void
     removelikePost: (postId: number, like: number) => void
     getPost: (postId: number) => void
@@ -26,7 +25,7 @@ interface PostType {
 const Post: FC<PostType> = ({ post, isLoading,
     profile, comments,
     editProfile, likePost,
-    removelikePost, getProfileUser,
+    removelikePost,
     getAllComments, getPost,
     getPostsOfSingleUser
 }) => {
@@ -40,7 +39,7 @@ const Post: FC<PostType> = ({ post, isLoading,
 
     let username = post.author.username;
     const TakeUser = () => {
-        getProfileUser(username)
+        //getProfileUser(username)
         getPostsOfSingleUser(username)
         console.log("Username:", username, 'Posts: ', post)
     }

@@ -149,6 +149,7 @@ export const getPost = (postId: number):ThunkType => async (dispatch) => {
 export const getPostsOfSingleUser = (username: string):ThunkType => async (dispatch) => {
     let response = await PostsAPI.getPostsOfSingleUser(username)
     dispatch(actions.getSinglePost(username, response.data))
+    debugger
 }
 
 export const likePost = (postId:number, like: number):ThunkType => async (dispatch) => {

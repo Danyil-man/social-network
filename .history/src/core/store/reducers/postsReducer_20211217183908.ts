@@ -1,5 +1,5 @@
 import { ThunkAction } from "redux-thunk";
-import { GetAllComments, GetAllPostsType, GetSinglePostType, PostsAPI, UsersAPI } from "../api/api"
+import { GetAllComments, GetAllPostsType, PostsAPI, UsersAPI } from "../api/api"
 import { AppStateType, InfernActiontype } from "../redux/reduxStore"
 
 const GET_POSTS = "GET_POSTS";
@@ -124,10 +124,10 @@ export const actions = {
         type: GET_POST,
         postID
     } as const),
-    getSinglePost: (username: string, singlePost: Array<GetSinglePostType>) => ({
+    getSinglePost: (username: string, post: GetAllPostsType) => ({
         type: GET_USER_POSTS,
         username,
-        singlePost
+        post
     } as const),
 }
 
@@ -148,7 +148,7 @@ export const getPost = (postId: number):ThunkType => async (dispatch) => {
 
 export const getPostsOfSingleUser = (username: string):ThunkType => async (dispatch) => {
     let response = await PostsAPI.getPostsOfSingleUser(username)
-    dispatch(actions.getSinglePost(username, response.data))
+    dispatch(actions.getSinglePost(response.data))
 }
 
 export const likePost = (postId:number, like: number):ThunkType => async (dispatch) => {

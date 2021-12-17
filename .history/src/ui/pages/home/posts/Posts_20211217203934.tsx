@@ -17,12 +17,11 @@ interface PostsType {
     getAllComments: (postId: number) => void
     getPost: (postId: number) => void
     getPostsOfSingleUser: (username: string) => void
-    getProfileUser: (username: string) => void
 }
 
 const Posts: FC<PostsType> = ({ profile, posts,
     isLoading, comments,
-    editProfile, getProfileUser,
+    editProfile,
     likePost, removelikePost,
     getAllComments, getPost,
     getPostsOfSingleUser, }) => {
@@ -35,7 +34,6 @@ const Posts: FC<PostsType> = ({ profile, posts,
                 post={post}
                 comments={comments}
                 editProfile={editProfile}
-                getProfileUser={getProfileUser}
                 likePost={likePost}
                 removelikePost={removelikePost}
                 getAllComments={getAllComments}

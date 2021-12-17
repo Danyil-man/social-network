@@ -86,7 +86,7 @@ export const actions = {
         users
     }  as const),
 
-    setUserData: (username: string, singleUser:GetSingleUserType) => ({
+    setUserData: (username: string, singleUser:GetUserType) => ({
         type:SET_SINGLE_USER,
         username,
         singleUser

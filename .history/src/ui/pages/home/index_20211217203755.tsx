@@ -7,7 +7,7 @@ import { logOut } from 'core/store/reducers/authReducer';
 import { AccountType, GetAccountType, GetAllComments, GetAllPostsType } from 'core/store/api/api';
 import { getIsLoading, getUsersSelector } from 'core/store/selectors';
 import { editProfile, getProfile, } from 'core/store/reducers/profileReducer';
-import { getProfileUser, getUsers, GetUserType } from 'core/store/reducers/usersReducer';
+import { getUsers, GetUserType } from 'core/store/reducers/usersReducer';
 import { getAllComments, getAllPosts, getPost, getPostsOfSingleUser, likePost, removelikePost } from 'core/store/reducers/postsReducer';
 
 type ContainerHomeType = {

@@ -6,8 +6,8 @@ import { FC, useEffect, useState } from 'react';
 import { logOut } from 'core/store/reducers/authReducer';
 import { AccountType, GetAccountType, GetAllComments, GetAllPostsType } from 'core/store/api/api';
 import { getIsLoading, getUsersSelector } from 'core/store/selectors';
-import { editProfile, getProfile, } from 'core/store/reducers/profileReducer';
-import { getProfileUser, getUsers, GetUserType } from 'core/store/reducers/usersReducer';
+import { editProfile, getProfile, getProfileUser, } from 'core/store/reducers/profileReducer';
+import { getUsers, GetUserType } from 'core/store/reducers/usersReducer';
 import { getAllComments, getAllPosts, getPost, getPostsOfSingleUser, likePost, removelikePost } from 'core/store/reducers/postsReducer';
 
 type ContainerHomeType = {
@@ -30,11 +30,10 @@ type ContainerHomeType = {
 
 const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile,
     isLoading, users,
-    posts, comments,
-    editProfile, getProfileUser,
-    likePost, removelikePost,
-    getAllComments, getPost,
-    getPostsOfSingleUser,
+    posts, editProfile,
+    getProfileUser, likePost,
+    removelikePost, getAllComments,
+    getPost, comments
 
 }) => {
 
@@ -52,7 +51,6 @@ const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile,
                 removelikePost={removelikePost}
                 getAllComments={getAllComments}
                 getPost={getPost}
-                getPostsOfSingleUser={getPostsOfSingleUser}
             />
         </div>
     )

@@ -24,9 +24,9 @@ interface PostType {
 }
 
 const Post: FC<PostType> = ({ post, isLoading,
-    profile, comments,
+    profile, comments, getProfileUser,
     editProfile, likePost,
-    removelikePost, getProfileUser,
+    removelikePost,
     getAllComments, getPost,
     getPostsOfSingleUser
 }) => {
@@ -36,13 +36,10 @@ const Post: FC<PostType> = ({ post, isLoading,
         getPost(post.id)
         console.log('POST ID', post.id)
     }
-
-
     let username = post.author.username;
     const TakeUser = () => {
         getProfileUser(username)
-        getPostsOfSingleUser(username)
-        console.log("Username:", username, 'Posts: ', post)
+        console.log("Username:", username)
     }
     const [isModal, setIsModal] = useState(false)
     return (

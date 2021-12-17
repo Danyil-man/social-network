@@ -11,21 +11,20 @@ interface PostsType {
     posts: Array<GetAllPostsType>
     isLoading: boolean
     comments: Array<GetAllComments>
+    getProfileUser: (username: string) => void
     editProfile: (account: AccountType) => void
     likePost: (postId: number, like: number) => void
     removelikePost: (postId: number, like: number) => void
     getAllComments: (postId: number) => void
     getPost: (postId: number) => void
     getPostsOfSingleUser: (username: string) => void
-    getProfileUser: (username: string) => void
 }
 
 const Posts: FC<PostsType> = ({ profile, posts,
-    isLoading, comments,
-    editProfile, getProfileUser,
-    likePost, removelikePost,
-    getAllComments, getPost,
-    getPostsOfSingleUser, }) => {
+    getProfileUser, editProfile,
+    isLoading, likePost,
+    removelikePost, getAllComments,
+    getPost, comments }) => {
 
     return (
         <div className={style.wrapper}>
@@ -34,13 +33,12 @@ const Posts: FC<PostsType> = ({ profile, posts,
                 profile={profile}
                 post={post}
                 comments={comments}
-                editProfile={editProfile}
                 getProfileUser={getProfileUser}
+                editProfile={editProfile}
                 likePost={likePost}
                 removelikePost={removelikePost}
                 getAllComments={getAllComments}
                 getPost={getPost}
-                getPostsOfSingleUser={getPostsOfSingleUser}
                 isLoading={isLoading}
             />)}
             {/* {users.map(user => <Post

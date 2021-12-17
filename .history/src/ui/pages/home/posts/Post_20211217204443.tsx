@@ -40,7 +40,7 @@ const Post: FC<PostType> = ({ post, isLoading,
 
     let username = post.author.username;
     const TakeUser = () => {
-        getProfileUser(username)
+        //getProfileUser(username)
         getPostsOfSingleUser(username)
         console.log("Username:", username, 'Posts: ', post)
     }

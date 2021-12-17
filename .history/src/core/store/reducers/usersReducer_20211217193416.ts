@@ -5,7 +5,6 @@ import { AppStateType, InfernActiontype } from "../redux/reduxStore";
 
 const SET_USER = "SET_USER";
 const SET_IS_LOADING = "SET_IS_LOADING";
-const SET_SINGLE_USER = "SET_SINGLE_USER";
 
 export type GetUserType = {
     username: string;
@@ -18,35 +17,24 @@ export type GetUserType = {
     profile_photo_url: null;
 };
 
-export type GetSingleUserType = {
-    username?: string;
-    description?: null ;
-    first_name?: null;
-    followers?: number;
-    following?: number;
-    job_title?: null;
-    last_name?: null;
-    profile_photo_url?: null;
-}
-
 type initialStateType = {
     users: Array<GetUserType>
     isLoading: boolean
-    singleUser: GetSingleUserType
+    singleUser: GetUserType
 }
 
 let initialState: initialStateType = {
     users: [],
     isLoading: false,
     singleUser: {
-        username: undefined,
-        description: undefined,
-        first_name: undefined,
-        followers: undefined,
-        following: undefined,
-        job_title: undefined,
-        last_name: undefined,
-        profile_photo_url: undefined
+        username,
+    description,
+    first_name,
+    followers,
+    following,
+    job_title,
+    last_name,
+    profile_photo_url
     }
 }
 
@@ -65,13 +53,6 @@ const userReducer = (state = initialState, action: ActionCreatorType): initialSt
                 ...state,
                 isLoading: action.isLoading
             }
-
-        case SET_SINGLE_USER:
-            return{
-                ...state,
-                singleUser: action.singleUser
-            }
-        
         default:
             return state
     }
@@ -86,11 +67,9 @@ export const actions = {
         users
     }  as const),
 
-    setUserData: (username: string, singleUser:GetSingleUserType) => ({
-        type:SET_SINGLE_USER,
-        username,
-        singleUser
-    } as const),
+    setUserData: () => ({
+
+    }),
     isLoading: (isLoading: boolean) => ({
         type: SET_IS_LOADING,
         isLoading
@@ -112,7 +91,7 @@ export const getUsers = (): ThunkType => async (dispatch) => {
 export const getProfileUser=(username: string):ThunkType => async (dispatch) => {
     dispatch(actions.isLoading(true))
     let response = await UsersAPI.getSingleProfile(username)
-    dispatch(actions.setUserData(username, response.data))
+    dispatch(actions.setUserData(response.data))
     dispatch(actions.isLoading(false))
 }
 
