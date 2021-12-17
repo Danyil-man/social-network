@@ -21,7 +21,10 @@ type CommentBlockType = {
 }
 
 const Comment: FC<CommentBlockType> = ({ comment, getAllComments }) => {
-
+    useEffect(() => {
+        getAllComments(comment.id)
+        console.log(comment.id)
+    }, [comment.id, getAllComments])
     console.log('Comment', comment.message)
     return (
         <div className={style.commentsItems}>
@@ -44,7 +47,6 @@ const PostModal: FC<PropsPostsModal> = ({ closeModal, post,
         getAllComments(post.id)
         console.log(post.id)
     }, [post.id, getAllComments])
-    console.log('Comments ARray', comments)
     return (
         <div>
 

@@ -44,7 +44,6 @@ const PostModal: FC<PropsPostsModal> = ({ closeModal, post,
         getAllComments(post.id)
         console.log(post.id)
     }, [post.id, getAllComments])
-    console.log('Comments ARray', comments)
     return (
         <div>
 

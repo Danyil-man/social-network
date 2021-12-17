@@ -61,8 +61,13 @@ const postsReducer = (state = initialState, action:ActionCreatorsType):initialSt
         case GET_ALL_COMMENTS:
             return{
                 ...state,
-                comments: action.comments
-                } 
+                comments: state.comments.map( comment => {
+                    if(comment.id === action.postID){
+                        return{...comment}
+                    }
+                    return comment
+                } )
+            }
 
 
             default: 
@@ -125,6 +130,7 @@ export const getAllComments = (postId:number):ThunkType => async (dispatch) => {
     dispatch(actions.isLoading(true))
     let response = await PostsAPI.getAllComments(postId)
     dispatch(actions.getComments(postId, response.data))
+    debugger
     dispatch(actions.isLoading(false))
 }
 

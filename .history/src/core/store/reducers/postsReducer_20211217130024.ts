@@ -125,6 +125,7 @@ export const getAllComments = (postId:number):ThunkType => async (dispatch) => {
     dispatch(actions.isLoading(true))
     let response = await PostsAPI.getAllComments(postId)
     dispatch(actions.getComments(postId, response.data))
+    debugger
     dispatch(actions.isLoading(false))
 }
 
