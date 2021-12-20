@@ -128,7 +128,7 @@ export const actions = {
         type: GET_POST,
         postID
     } as const),
-    getSinglePost: (username: string | undefined, singlePost: Array<GetSinglePostType>) => ({
+    getSinglePost: (username: string, singlePost: Array<GetSinglePostType>) => ({
         type: GET_USER_POSTS,
         username,
         singlePost
@@ -147,13 +147,11 @@ export const getAllPosts = ():ThunkType => async (dispatch) => {
     dispatch(actions.isLoading(false))
 }
 export const getPost = (postId: number):ThunkType => async (dispatch) => {
-    dispatch(actions.isLoading(true))
     let response = await PostsAPI.getPost(postId)
     dispatch(actions.getPost(response.data))
-    dispatch(actions.isLoading(false))
 }
 
-export const getPostsOfSingleUser = (username: string | undefined):ThunkType => async (dispatch) => {
+export const getPostsOfSingleUser = (username: string):ThunkType => async (dispatch) => {
     dispatch(actions.isLoading(true))
     let response = await PostsAPI.getPostsOfSingleUser(username)
     dispatch(actions.getSinglePost(username, response.data))

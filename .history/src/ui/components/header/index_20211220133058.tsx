@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import style from "./Header.module.scss";
 import logo from "public/images/logo.png";
 import ProfilePhoto from 'public/images/withoutphoto.png';
@@ -44,7 +44,7 @@ type HeaderType = {
     isAuth: boolean
     logOut: () => void
     getProfile: () => void
-    profile: GetAccountType
+    profile?: GetAccountType
 }
 
 
@@ -57,7 +57,7 @@ const Header: FC<HeaderType> = ({ logOut, getProfile, isAuth, profile }) => {
         logOut()
         console.log(isAuth)
     }
-    let status = `${t('signedas')} ${profile.username}`;
+    let status = `${t('signedas')} ${profile?.username}`;
 
     const languages = [
         {
@@ -98,13 +98,13 @@ const Header: FC<HeaderType> = ({ logOut, getProfile, isAuth, profile }) => {
                     {isAuth && (
                         <div className={style.status__content}>
                             <div className={style.miniava} onClick={(e) => setIsStatus(!isStatus)}>
-                                <img width={40} src={profile.profile_photo_url != null ? profile.profile_photo_url : ProfilePhoto} alt="ava" />
+                                <img width={40} src={profile?.profile_photo_url != null ? profile?.profile_photo_url : ProfilePhoto} alt="ava" />
                             </div>
                             {isStatus && (
                                 <div className={style.status__dropdown}>
                                     <p>{status}</p>
                                     <div className={style.profile__navigation}>
-                                        <Link key={profile.username} to={`/profile/${profile.username}`}>Profile</Link>
+                                        <Link key={profile?.username} to={`/profile/${profile?.username}`}>Profile</Link>
                                     </div>
                                     <div className={style.profile__footer}>
                                         <button onClick={LogOutProfile} className={style.btnLogOut} >

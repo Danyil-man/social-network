@@ -3,25 +3,21 @@ import { GetSingleUserType } from "core/store/reducers/usersReducer";
 import { AppStateType } from "core/store/redux/reduxStore";
 import React, { FC } from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
 import UserProfile from "./UserProfile";
 
 type ContainerUserType = {
     user: GetSingleUserType
     userPosts: Array<GetSinglePostType>
-    isAuth: boolean
 }
 
-const IdxUserProfile: FC<ContainerUserType> = ({ user, userPosts, isAuth }) => {
-    return isAuth ? (
+const IdxUserProfile: FC<ContainerUserType> = ({ user, userPosts }) => {
+    return (
         <>
             <UserProfile
                 user={user}
                 userPosts={userPosts}
             />
         </>
-    ) : (
-        <Redirect to='/signup' />
     )
 }
 

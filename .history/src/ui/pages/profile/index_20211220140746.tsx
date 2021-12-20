@@ -27,7 +27,7 @@ const IdxProfile: FC<ContainerProfileType> = ({ isAuth, profile,
     useEffect(() => {
         getPostsOfSingleUser(username)
         console.log('user: ', username)
-    }, [getPostsOfSingleUser, username])
+    }, [username])
 
     return isAuth ? (
         <div>
@@ -51,4 +51,4 @@ const mapStateToprops = (state: AppStateType) => ({
     isLoading: getIsLoading(state),
 })
 
-export default connect(mapStateToprops, { editProfile, getPostsOfSingleUser })(IdxProfile);
+export default connect(mapStateToprops, { editProfile })(IdxProfile);

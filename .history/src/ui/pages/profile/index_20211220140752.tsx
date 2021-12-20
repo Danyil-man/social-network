@@ -51,4 +51,4 @@ const mapStateToprops = (state: AppStateType) => ({
     isLoading: getIsLoading(state),
 })
 
-export default connect(mapStateToprops, { editProfile, getPostsOfSingleUser })(IdxProfile);
+export default connect(mapStateToprops, { editProfile })(IdxProfile);

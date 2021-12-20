@@ -176,7 +176,7 @@ export const PostsAPI = {
   getPost(postId: number) {
     return instanceApi.get(`/posts/${postId}`)
   },
-  getPostsOfSingleUser(username: string | undefined){
+  getPostsOfSingleUser(username: string){
     return instanceApi.get<Array<GetSinglePostType>>(`/profiles/${username}/posts`)
   },
   getAllComments(postId: number) {

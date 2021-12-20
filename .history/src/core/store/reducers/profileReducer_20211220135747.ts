@@ -17,15 +17,15 @@ type InitialStateType = {
 
 const initialState: InitialStateType = {
     profile: {
-        username: undefined,
-        description: undefined,
-        email: undefined,
-        first_name: undefined,
-        followers: undefined,
-        following: undefined,
-        job_title: undefined,
-        last_name: undefined,
-        profile_photo_url: undefined,
+        username: string;
+  description: null;
+  email: string;
+  first_name: null;
+  followers: number;
+  following: number;
+  job_title: null;
+  last_name: null;
+  profile_photo_url: string | undefined;
     },
     isLoading: false
 }

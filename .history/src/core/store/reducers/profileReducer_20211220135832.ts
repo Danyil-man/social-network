@@ -18,14 +18,14 @@ type InitialStateType = {
 const initialState: InitialStateType = {
     profile: {
         username: undefined,
-        description: undefined,
-        email: undefined,
-        first_name: undefined,
-        followers: undefined,
-        following: undefined,
-        job_title: undefined,
-        last_name: undefined,
-        profile_photo_url: undefined,
+  description: undefined,
+  email: undefined,
+  first_name: undefined,
+  followers: undefined,
+  following: undefined,
+  job_title: undefined,
+  last_name: undefined,
+  profile_photo_url: undefined,
     },
     isLoading: false
 }

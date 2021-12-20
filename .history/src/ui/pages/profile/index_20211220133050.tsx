@@ -7,27 +7,19 @@ import { AccountType, GetAccountType, GetAllPostsType, GetSinglePostType } from 
 import { Redirect } from "react-router";
 import { editProfile } from "core/store/reducers/profileReducer";
 import { getIsLoading } from "core/store/selectors";
-import { getPostsOfSingleUser } from "core/store/reducers/postsReducer";
 
 type ContainerProfileType = {
     isAuth: boolean
-    profile: GetAccountType
+    profile?: GetAccountType
     profilePosts: Array<GetSinglePostType>
     isLoading: boolean
     editProfile: (account: AccountType) => void
     getProfileUser: (username: string) => void
-    getPostsOfSingleUser: (username: string | undefined) => void
 }
 
 const IdxProfile: FC<ContainerProfileType> = ({ isAuth, profile,
-    profilePosts, editProfile, getPostsOfSingleUser,
+    profilePosts, editProfile,
     isLoading }) => {
-
-    let username = profile.username
-    useEffect(() => {
-        getPostsOfSingleUser(username)
-        console.log('user: ', username)
-    }, [getPostsOfSingleUser, username])
 
     return isAuth ? (
         <div>
@@ -51,4 +43,4 @@ const mapStateToprops = (state: AppStateType) => ({
     isLoading: getIsLoading(state),
 })
 
-export default connect(mapStateToprops, { editProfile, getPostsOfSingleUser })(IdxProfile);
+export default connect(mapStateToprops, { editProfile })(IdxProfile);

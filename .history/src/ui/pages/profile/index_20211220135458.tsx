@@ -11,23 +11,22 @@ import { getPostsOfSingleUser } from "core/store/reducers/postsReducer";
 
 type ContainerProfileType = {
     isAuth: boolean
-    profile: GetAccountType
+    profile?: GetAccountType
     profilePosts: Array<GetSinglePostType>
     isLoading: boolean
     editProfile: (account: AccountType) => void
     getProfileUser: (username: string) => void
-    getPostsOfSingleUser: (username: string | undefined) => void
+    getPostsOfSingleUser: (username: string) => void
 }
 
 const IdxProfile: FC<ContainerProfileType> = ({ isAuth, profile,
-    profilePosts, editProfile, getPostsOfSingleUser,
+    profilePosts, editProfile,
     isLoading }) => {
 
-    let username = profile.username
+    let username = profile?.username
     useEffect(() => {
         getPostsOfSingleUser(username)
-        console.log('user: ', username)
-    }, [getPostsOfSingleUser, username])
+    }, [username])
 
     return isAuth ? (
         <div>
@@ -51,4 +50,4 @@ const mapStateToprops = (state: AppStateType) => ({
     isLoading: getIsLoading(state),
 })
 
-export default connect(mapStateToprops, { editProfile, getPostsOfSingleUser })(IdxProfile);
+export default connect(mapStateToprops, { editProfile })(IdxProfile);

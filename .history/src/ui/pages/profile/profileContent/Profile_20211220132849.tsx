@@ -13,9 +13,8 @@ interface ProfileType {
     isLoading: boolean
 }
 
-const Profile: FC<ProfileType> = ({ profile, editProfile, isLoading, profilePosts }) => {
+const Profile: FC<ProfileType> = ({ profile, editProfile, isLoading }) => {
     const { t } = useTranslation();
-    console.log('ProPosts:', profilePosts)
     const [isModalEdit, setIsModalEdit] = useState(false)
     return (
         <div className={style.wrapper}>
@@ -53,7 +52,7 @@ const Profile: FC<ProfileType> = ({ profile, editProfile, isLoading, profilePost
                     </div>
                 </div>
                 <div className={style.photosCollageContent}>
-                    {profilePosts.map(post => <CollagePhotosProfile post={post} />)}
+                    {/* {posts.map(post => <CollagePhotosProfile post={post} />)} */}
                 </div>
             </div>
 

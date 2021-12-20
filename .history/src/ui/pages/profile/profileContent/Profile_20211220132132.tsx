@@ -1,21 +1,47 @@
 import React, { FC, useState } from "react";
 import { useTranslation } from "react-i18next";
 import style from "./Profile.module.scss";
+import pic1 from "public/images/profile_photos/photo1.png";
+import pic2 from "public/images/profile_photos/photo2.png";
+import pic3 from "public/images/profile_photos/photo3.png";
+import pic4 from "public/images/profile_photos/photo4.png";
+import pic5 from "public/images/profile_photos/photo5.png";
+import pic6 from "public/images/profile_photos/photo6.png";
 import ProfilePhoto from "public/images/withoutphoto.png";
-import { AccountType, GetAccountType, GetAllPostsType, GetSinglePostType } from "core/store/api/api";
+import { AccountType, GetAccountType, GetAllPostsType } from "core/store/api/api";
 import EditProfileModal from "ui/components/modal/EditProfileModal";
 import { GetUserType } from "core/store/reducers/usersReducer";
 
 interface ProfileType {
     profile?: GetAccountType
-    profilePosts: Array<GetSinglePostType>
     editProfile: (account: AccountType) => void
     isLoading: boolean
 }
 
-const Profile: FC<ProfileType> = ({ profile, editProfile, isLoading, profilePosts }) => {
+let photos = [
+    {
+        img: pic1
+    },
+    {
+        img: pic2
+    },
+    {
+        img: pic3
+    },
+    {
+        img: pic4
+    },
+    {
+        img: pic5
+    },
+    {
+        img: pic6
+    },
+]
+
+
+const Profile: FC<ProfileType> = ({ profile, editProfile, isLoading }) => {
     const { t } = useTranslation();
-    console.log('ProPosts:', profilePosts)
     const [isModalEdit, setIsModalEdit] = useState(false)
     return (
         <div className={style.wrapper}>
@@ -53,7 +79,7 @@ const Profile: FC<ProfileType> = ({ profile, editProfile, isLoading, profilePost
                     </div>
                 </div>
                 <div className={style.photosCollageContent}>
-                    {profilePosts.map(post => <CollagePhotosProfile post={post} />)}
+                    {posts.map(post => <CollagePhotosProfile post={post} />)}
                 </div>
             </div>
 

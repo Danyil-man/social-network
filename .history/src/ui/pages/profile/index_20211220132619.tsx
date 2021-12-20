@@ -3,37 +3,25 @@ import headerAva from "public/images/MiniProf/header__ava.png";
 import Profile from "./profileContent/Profile";
 import { connect } from "react-redux";
 import { AppStateType } from "core/store/redux/reduxStore";
-import { AccountType, GetAccountType, GetAllPostsType, GetSinglePostType } from "core/store/api/api";
+import { AccountType, GetAccountType, GetAllPostsType } from "core/store/api/api";
 import { Redirect } from "react-router";
 import { editProfile } from "core/store/reducers/profileReducer";
 import { getIsLoading } from "core/store/selectors";
-import { getPostsOfSingleUser } from "core/store/reducers/postsReducer";
 
 type ContainerProfileType = {
     isAuth: boolean
-    profile: GetAccountType
-    profilePosts: Array<GetSinglePostType>
+    profile?: GetAccountType
     isLoading: boolean
     editProfile: (account: AccountType) => void
     getProfileUser: (username: string) => void
-    getPostsOfSingleUser: (username: string | undefined) => void
 }
 
-const IdxProfile: FC<ContainerProfileType> = ({ isAuth, profile,
-    profilePosts, editProfile, getPostsOfSingleUser,
-    isLoading }) => {
-
-    let username = profile.username
-    useEffect(() => {
-        getPostsOfSingleUser(username)
-        console.log('user: ', username)
-    }, [getPostsOfSingleUser, username])
+const IdxProfile: FC<ContainerProfileType> = ({ isAuth, profile, editProfile, isLoading }) => {
 
     return isAuth ? (
         <div>
             <Profile
                 profile={profile}
-                profilePosts={profilePosts}
                 editProfile={editProfile}
                 isLoading={isLoading}
             />
@@ -51,4 +39,4 @@ const mapStateToprops = (state: AppStateType) => ({
     isLoading: getIsLoading(state),
 })
 
-export default connect(mapStateToprops, { editProfile, getPostsOfSingleUser })(IdxProfile);
+export default connect(mapStateToprops, { editProfile })(IdxProfile);

@@ -41,6 +41,10 @@ const UserProfile: FC<UserProfileType> = ({ user, userPosts }) => {
                                 <p>Following</p>
                             </div>
                         </div>
+                        {/* <div className={style.navigation}>
+                            <button onClick={() => setIsModalEdit(true)} className={style.editProf}>{t('editProf')}</button>
+                            <button className={style.NewPost}>{t('newPost')}</button>
+                        </div> */}
                     </div>
                 </div>
                 <div className={style.photosCollageContent}>

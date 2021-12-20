@@ -53,7 +53,7 @@ const Profile: FC<ProfileType> = ({ profile, editProfile, isLoading, profilePost
                     </div>
                 </div>
                 <div className={style.photosCollageContent}>
-                    {profilePosts.map(post => <CollagePhotosProfile post={post} />)}
+                    {/* {posts.map(post => <CollagePhotosProfile post={post} />)} */}
                 </div>
             </div>
 
