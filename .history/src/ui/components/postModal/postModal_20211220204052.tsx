@@ -49,7 +49,7 @@ const PostModal: FC<PropsPostsModal> = ({ closeModal, post,
     console.log('Comments ARray', comments)
 
     const submit = (values: any) => {
-        setComment(values.message, values.postId)
+        setComment(values.message)
         console.log({ values })
     }
 

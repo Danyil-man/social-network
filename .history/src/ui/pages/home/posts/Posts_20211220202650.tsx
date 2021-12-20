@@ -27,7 +27,7 @@ const Posts: FC<PostsType> = ({ profile, posts,
     editProfile, getProfileUser,
     likePost, removelikePost,
     getAllComments, getPost,
-    getPostsOfSingleUser, setComment }) => {
+    getPostsOfSingleUser, }) => {
 
     return (
         <div className={style.wrapper}>
@@ -44,7 +44,6 @@ const Posts: FC<PostsType> = ({ profile, posts,
                 getAllComments={getAllComments}
                 getPost={getPost}
                 getPostsOfSingleUser={getPostsOfSingleUser}
-                setComment={setComment}
                 isLoading={isLoading}
             />)}
             {/* {users.map(user => <Post

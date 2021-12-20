@@ -110,7 +110,6 @@ const Post: FC<PostType> = ({ post, isLoading,
                     comments={comments}
                     likePost={likePost}
                     removelikePost={removelikePost}
-                    setComment={setComment}
                 />
             )}
 

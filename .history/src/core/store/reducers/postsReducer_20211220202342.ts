@@ -218,8 +218,6 @@ export const setComment = (postId:number, message:string):ThunkType => async (di
     dispatch(actions.isLoading(true))
     let response = await PostsAPI.sendComment(postId, message)
     dispatch(actions.setComment(postId, message))
-debugger    
-    dispatch(actions.isLoading(false))
 }
 
 export default postsReducer;

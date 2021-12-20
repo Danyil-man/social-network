@@ -18,7 +18,7 @@ type initialStateType = {
     isLoading: boolean
     comments: Array<GetAllComments>
     singlePosts: Array<GetSinglePostType>
-    message: string
+    comment: string
     pageSize: number
     postsCount: number
     currentPage: number
@@ -29,7 +29,7 @@ let initialState:initialStateType = {
     comments: [],
     singlePosts: [],
     isLoading: false,
-    message: '',
+    comment: '',
     pageSize: 10,
     postsCount: 0,
     currentPage: 1
@@ -89,13 +89,7 @@ const postsReducer = (state = initialState, action:ActionCreatorsType):initialSt
             return{
                 ...state,
                 comments: action.comments
-            }
-            
-        case SET_COMMENT:
-            return{
-                ...state,
-                message: action.message
-            }
+            } 
 
         case GET_POST:
             return{
@@ -154,11 +148,6 @@ export const actions = {
         postID,
         comments
     } as const),
-    setComment: (postID: number, message: string) => ({
-        type: SET_COMMENT,
-        postID,
-        message
-    } as const),
     getPost: (postID: number) => ({
         type: GET_POST,
         postID
@@ -214,12 +203,6 @@ export const getAllComments = (postId:number):ThunkType => async (dispatch) => {
     dispatch(actions.isLoading(false))
 }
 
-export const setComment = (postId:number, message:string):ThunkType => async (dispatch) => {
-    dispatch(actions.isLoading(true))
-    let response = await PostsAPI.sendComment(postId, message)
-    dispatch(actions.setComment(postId, message))
-debugger    
-    dispatch(actions.isLoading(false))
-}
+
 
 export default postsReducer;
