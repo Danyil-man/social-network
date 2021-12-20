@@ -19,7 +19,6 @@ type ContainerHomeType = {
     comments: Array<GetAllComments>
     singlePosts: Array<GetSinglePostType>
     currentPage: number
-    pageSize: number
     editProfile: (account: AccountType) => void
     getProfileUser: (username: string) => void
     likePost: (postId: number, like: number) => void
@@ -45,12 +44,7 @@ const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile,
 
     useEffect(() => {
         getAllPosts(currentPage)
-        console.log('posts mounted, page:', currentPage)
     }, [currentPage, getAllPosts])
-
-    // const onPageChange = () => {
-    //     const {pageSize} = 
-    // }
 
     return isAuth ? (
         <div>
@@ -82,8 +76,6 @@ const mapStateToProps = (state: AppStateType) => ({
     posts: state.posts.posts,
     comments: state.posts.comments,
     singlePosts: state.posts.singlePosts,
-    pageSize: state.posts.pageSize,
-    postsCount: state.posts.postsCount,
     currentPage: state.posts.currentPage,
     isLoading: getIsLoading(state),
     users: getUsersSelector(state),

@@ -9,8 +9,6 @@ const REMOVE_LIKE = "REMOVE_LIKE";
 const GET_ALL_COMMENTS = "GET_ALL_COMMENTS";
 const GET_POST = "GET_POST";
 const GET_USER_POSTS = "GET_SINGLE_POST";
-const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
-const SET_POSTS_COUNT = "SET_POSTS_COUNT";
 
 type initialStateType = {
     posts: Array<GetAllPostsType>
@@ -27,7 +25,7 @@ let initialState:initialStateType = {
     comments: [],
     singlePosts: [],
     isLoading: false,
-    pageSize: 10,
+    pageSize: 5,
     postsCount: 0,
     currentPage: 1
 }
@@ -46,18 +44,6 @@ const postsReducer = (state = initialState, action:ActionCreatorsType):initialSt
             return{
                 ...state,
                 isLoading: action.isLoading
-            }
-
-        case SET_CURRENT_PAGE:
-            return{
-                ...state,
-                currentPage: action.currentPage
-            }
-
-        case SET_POSTS_COUNT:
-            return{
-                ...state,
-                postsCount: action.count
             }
 
         case SET_LIKE:
@@ -103,6 +89,13 @@ const postsReducer = (state = initialState, action:ActionCreatorsType):initialSt
         return{
             ...state,
             singlePosts: action.singlePost
+            // singlePosts: state.singlePosts.map( post => {
+            //     if( post.author.username === action.username){
+            //         return {...post}
+            //     }
+            //     return post
+                
+            // })
         }
             default: 
             return state
@@ -121,14 +114,6 @@ export const actions = {
     isLoading: (isLoading: boolean) => ({
         type: SET_LOADING,
         isLoading
-    } as const),
-    setCurrentPage: (currentPage: number) => ({
-        type: SET_CURRENT_PAGE,
-        currentPage
-    } as const),
-    setPostsCount: (postsCount: number)=> ({
-        type: SET_POSTS_COUNT,
-        count: postsCount
     } as const),
     likePostSuccess: (postID: number,  like:number) => ({
         type: SET_LIKE,
@@ -161,12 +146,10 @@ export const actions = {
 
 type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionCreatorsType>
 
-export const getAllPosts = (currentPage:number):ThunkType => async (dispatch) => {
+export const getAllPosts = ():ThunkType => async (dispatch) => {
     dispatch(actions.isLoading(true))
-    dispatch(actions.setCurrentPage(currentPage))
-    let response = await PostsAPI.getAllPosts(currentPage)
+    let response = await PostsAPI.getAllPosts()
     dispatch(actions.getPosts(response.data))
-    //dispatch(actions.setPostsCount(response.data)
     dispatch(actions.isLoading(false))
 }
 export const getPost = (postId: number):ThunkType => async (dispatch) => {

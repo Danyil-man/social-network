@@ -167,6 +167,7 @@ export const getAllPosts = (currentPage:number):ThunkType => async (dispatch) =>
     let response = await PostsAPI.getAllPosts(currentPage)
     dispatch(actions.getPosts(response.data))
     //dispatch(actions.setPostsCount(response.data)
+    debugger
     dispatch(actions.isLoading(false))
 }
 export const getPost = (postId: number):ThunkType => async (dispatch) => {

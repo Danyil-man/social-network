@@ -18,15 +18,12 @@ type ContainerHomeType = {
     posts: Array<GetAllPostsType>
     comments: Array<GetAllComments>
     singlePosts: Array<GetSinglePostType>
-    currentPage: number
-    pageSize: number
     editProfile: (account: AccountType) => void
     getProfileUser: (username: string) => void
     likePost: (postId: number, like: number) => void
     removelikePost: (postId: number, like: number) => void
     getAllComments: (postId: number) => void
     getPost: (postId: number) => void
-    getAllPosts: (currentPage: number) => void
     getPostsOfSingleUser: (username: string) => void
 }
 
@@ -35,22 +32,17 @@ type ContainerHomeType = {
 const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile,
     isLoading, users,
     posts, comments,
-    singlePosts, currentPage,
+    singlePosts,
     editProfile, getProfileUser,
     likePost, removelikePost,
     getAllComments, getPost,
-    getPostsOfSingleUser, getAllPosts
+    getPostsOfSingleUser,
 
 }) => {
 
     useEffect(() => {
-        getAllPosts(currentPage)
-        console.log('posts mounted, page:', currentPage)
-    }, [currentPage, getAllPosts])
-
-    // const onPageChange = () => {
-    //     const {pageSize} = 
-    // }
+        getAllPosts(currentPage: number)
+    }, [])
 
     return isAuth ? (
         <div>
@@ -82,8 +74,6 @@ const mapStateToProps = (state: AppStateType) => ({
     posts: state.posts.posts,
     comments: state.posts.comments,
     singlePosts: state.posts.singlePosts,
-    pageSize: state.posts.pageSize,
-    postsCount: state.posts.postsCount,
     currentPage: state.posts.currentPage,
     isLoading: getIsLoading(state),
     users: getUsersSelector(state),

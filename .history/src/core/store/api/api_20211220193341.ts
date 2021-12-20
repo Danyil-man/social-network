@@ -169,7 +169,10 @@ export type GetSinglePostType = {
   photos: Array<PostphotosType>
 }
 
-
+type ResponseUsers = {
+  items: Array<GetAllPostsType>
+  totalCount: number
+}
 
 export const PostsAPI = {
   getAllPosts(currentPage=1) {
@@ -184,7 +187,4 @@ export const PostsAPI = {
   getAllComments(postId: number) {
     return instanceApi.get<Array<GetAllComments>>(`/posts/${postId}/comments`)
   },
-  sendComment(postId: number) {
-    return instanceApi.post(`/posts/${postId}/comments`)
-  }
 }

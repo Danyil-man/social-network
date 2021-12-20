@@ -184,7 +184,4 @@ export const PostsAPI = {
   getAllComments(postId: number) {
     return instanceApi.get<Array<GetAllComments>>(`/posts/${postId}/comments`)
   },
-  sendComment(postId: number) {
-    return instanceApi.post(`/posts/${postId}/comments`)
-  }
 }

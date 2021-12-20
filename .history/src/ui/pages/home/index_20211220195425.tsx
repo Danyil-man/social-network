@@ -48,9 +48,9 @@ const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile,
         console.log('posts mounted, page:', currentPage)
     }, [currentPage, getAllPosts])
 
-    // const onPageChange = () => {
-    //     const {pageSize} = 
-    // }
+    const onPageChange = () => {
+        //const {pageSize} = 
+    }
 
     return isAuth ? (
         <div>

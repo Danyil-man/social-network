@@ -26,7 +26,7 @@ type ContainerHomeType = {
     removelikePost: (postId: number, like: number) => void
     getAllComments: (postId: number) => void
     getPost: (postId: number) => void
-    getAllPosts: (currentPage: number) => void
+    getAllPosts: (currentPage: number, pageSize: number) => void
     getPostsOfSingleUser: (username: string) => void
 }
 
@@ -35,7 +35,7 @@ type ContainerHomeType = {
 const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile,
     isLoading, users,
     posts, comments,
-    singlePosts, currentPage,
+    singlePosts, currentPage, pageSize,
     editProfile, getProfileUser,
     likePost, removelikePost,
     getAllComments, getPost,
@@ -44,13 +44,13 @@ const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile,
 }) => {
 
     useEffect(() => {
-        getAllPosts(currentPage)
+        getAllPosts(currentPage, pageSize)
         console.log('posts mounted, page:', currentPage)
     }, [currentPage, getAllPosts])
 
-    // const onPageChange = () => {
-    //     const {pageSize} = 
-    // }
+    const onPageChange = () => {
+        //const {pageSize} = 
+    }
 
     return isAuth ? (
         <div>

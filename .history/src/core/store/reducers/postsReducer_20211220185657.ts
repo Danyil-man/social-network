@@ -103,6 +103,13 @@ const postsReducer = (state = initialState, action:ActionCreatorsType):initialSt
         return{
             ...state,
             singlePosts: action.singlePost
+            // singlePosts: state.singlePosts.map( post => {
+            //     if( post.author.username === action.username){
+            //         return {...post}
+            //     }
+            //     return post
+                
+            // })
         }
             default: 
             return state
@@ -161,12 +168,11 @@ export const actions = {
 
 type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionCreatorsType>
 
-export const getAllPosts = (currentPage:number):ThunkType => async (dispatch) => {
+export const getAllPosts = (currentPage:number, pageSize:number):ThunkType => async (dispatch) => {
     dispatch(actions.isLoading(true))
     dispatch(actions.setCurrentPage(currentPage))
     let response = await PostsAPI.getAllPosts(currentPage)
     dispatch(actions.getPosts(response.data))
-    //dispatch(actions.setPostsCount(response.data)
     dispatch(actions.isLoading(false))
 }
 export const getPost = (postId: number):ThunkType => async (dispatch) => {

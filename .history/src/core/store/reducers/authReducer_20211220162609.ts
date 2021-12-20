@@ -128,7 +128,7 @@ export const logIn =
         dispatch(actions.getUserData(login, password, true));
         dispatch(getProfile()) //Request to Set Profile Data
         dispatch(getUsers()) // Response Users List
-        //dispatch(getAllPosts()) //Set Posts 
+        dispatch(getAllPosts()) //Set Posts 
         //alert(response.data.success)
         dispatch(actions.setIsLoading(false))
       } else {

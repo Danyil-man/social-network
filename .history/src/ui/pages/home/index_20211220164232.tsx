@@ -19,7 +19,6 @@ type ContainerHomeType = {
     comments: Array<GetAllComments>
     singlePosts: Array<GetSinglePostType>
     currentPage: number
-    pageSize: number
     editProfile: (account: AccountType) => void
     getProfileUser: (username: string) => void
     likePost: (postId: number, like: number) => void
@@ -47,10 +46,6 @@ const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile,
         getAllPosts(currentPage)
         console.log('posts mounted, page:', currentPage)
     }, [currentPage, getAllPosts])
-
-    // const onPageChange = () => {
-    //     const {pageSize} = 
-    // }
 
     return isAuth ? (
         <div>
