@@ -82,14 +82,12 @@ const postsReducer = (state = initialState, action:ActionCreatorsType):initialSt
         case GET_USER_POSTS: 
         return{
             ...state,
-            singlePosts: action.singlePost
-            // singlePosts: state.singlePosts.map( post => {
-            //     if( post.author.username === action.username){
-            //         return {...post}
-            //     }
-            //     return post
-                
-            // })
+            singlePosts: state.singlePosts.map( post => {
+                if( post.author.username === action.username){
+                    return {...post}
+                }
+                return post
+            })
         }
             default: 
             return state
@@ -133,7 +131,6 @@ export const actions = {
         username,
         singlePost
     } as const),
-    
 }
 
 //                                          THUNKS

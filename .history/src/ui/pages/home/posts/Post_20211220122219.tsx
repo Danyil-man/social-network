@@ -52,7 +52,7 @@ const Post: FC<PostType> = ({ post, isLoading,
             {isLoading ? <Preloader /> : null}
             <div className={style.header}>
                 <div className={style.leftHeader}>
-                    <Link to={`/user/${username}`}>
+                    <Link to={`/profile/${username}`}>
                         <img onClick={TakeUser} width={40} src={post.author.profile_photo_url !== null ? post.author.profile_photo_url : UserPhoto} alt="postHeader" />
                     </Link>
                     <div className={style.content_info}>

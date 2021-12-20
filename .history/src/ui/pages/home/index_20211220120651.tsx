@@ -4,7 +4,7 @@ import { AppStateType } from 'core/store/redux/reduxStore';
 import { connect } from 'react-redux';
 import { FC, useEffect, useState } from 'react';
 import { logOut } from 'core/store/reducers/authReducer';
-import { AccountType, GetAccountType, GetAllComments, GetAllPostsType, GetSinglePostType } from 'core/store/api/api';
+import { AccountType, GetAccountType, GetAllComments, GetAllPostsType } from 'core/store/api/api';
 import { getIsLoading, getUsersSelector } from 'core/store/selectors';
 import { editProfile, getProfile, } from 'core/store/reducers/profileReducer';
 import { getProfileUser, getUsers, GetUserType } from 'core/store/reducers/usersReducer';
@@ -17,7 +17,6 @@ type ContainerHomeType = {
     users: Array<GetUserType>
     posts: Array<GetAllPostsType>
     comments: Array<GetAllComments>
-    singlePosts: Array<GetSinglePostType>
     editProfile: (account: AccountType) => void
     getProfileUser: (username: string) => void
     likePost: (postId: number, like: number) => void
@@ -32,7 +31,6 @@ type ContainerHomeType = {
 const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile,
     isLoading, users,
     posts, comments,
-    singlePosts,
     editProfile, getProfileUser,
     likePost, removelikePost,
     getAllComments, getPost,
@@ -48,7 +46,6 @@ const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile,
                 users={users}
                 posts={posts}
                 comments={comments}
-                singlePosts={singlePosts}
                 editProfile={editProfile}
                 getProfileUser={getProfileUser}
                 likePost={likePost}
@@ -69,8 +66,8 @@ const mapStateToProps = (state: AppStateType) => ({
     profile: state.profile.profile,
     posts: state.posts.posts,
     comments: state.posts.comments,
-    singlePosts: state.posts.singlePosts,
-    isLoading: getIsLoading(state),
+    singlePosts:
+        isLoading: getIsLoading(state),
     users: getUsersSelector(state),
 })
 

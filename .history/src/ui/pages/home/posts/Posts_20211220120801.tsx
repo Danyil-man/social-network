@@ -22,7 +22,7 @@ interface PostsType {
 }
 
 const Posts: FC<PostsType> = ({ profile, posts,
-    isLoading, comments, singlePosts,
+    isLoading, comments,
     editProfile, getProfileUser,
     likePost, removelikePost,
     getAllComments, getPost,
@@ -35,7 +35,6 @@ const Posts: FC<PostsType> = ({ profile, posts,
                 profile={profile}
                 post={post}
                 comments={comments}
-                singlePosts={singlePosts}
                 editProfile={editProfile}
                 getProfileUser={getProfileUser}
                 likePost={likePost}

@@ -14,14 +14,12 @@ type initialStateType = {
     posts: Array<GetAllPostsType>
     isLoading: boolean
     comments: Array<GetAllComments>
-    singlePosts: Array<GetSinglePostType>
 }
 
 let initialState:initialStateType = {
     posts: [],
     comments: [],
     isLoading: false,
-    singlePosts: []
 }
 
 //                                              REDUCER
@@ -82,14 +80,12 @@ const postsReducer = (state = initialState, action:ActionCreatorsType):initialSt
         case GET_USER_POSTS: 
         return{
             ...state,
-            singlePosts: action.singlePost
-            // singlePosts: state.singlePosts.map( post => {
-            //     if( post.author.username === action.username){
-            //         return {...post}
-            //     }
-            //     return post
-                
-            // })
+            posts: state.posts.map( post => {
+                if( post.author.username === action.username){
+                    return {...post}
+                }
+                return post
+            })
         }
             default: 
             return state
@@ -133,7 +129,6 @@ export const actions = {
         username,
         singlePost
     } as const),
-    
 }
 
 //                                          THUNKS

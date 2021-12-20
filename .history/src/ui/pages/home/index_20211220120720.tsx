@@ -32,7 +32,6 @@ type ContainerHomeType = {
 const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile,
     isLoading, users,
     posts, comments,
-    singlePosts,
     editProfile, getProfileUser,
     likePost, removelikePost,
     getAllComments, getPost,
@@ -48,7 +47,6 @@ const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile,
                 users={users}
                 posts={posts}
                 comments={comments}
-                singlePosts={singlePosts}
                 editProfile={editProfile}
                 getProfileUser={getProfileUser}
                 likePost={likePost}

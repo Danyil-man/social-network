@@ -44,15 +44,15 @@ const Post: FC<PostType> = ({ post, isLoading,
         getProfileUser(username)
         getPostsOfSingleUser(username)
         console.log("Username:", username)
-        console.log('SinglePost:', singlePosts)
     }
+    console.log('Posts: ', post)
     const [isModal, setIsModal] = useState(false)
     return (
         <div key={post.id} className={style.postItem}>
             {isLoading ? <Preloader /> : null}
             <div className={style.header}>
                 <div className={style.leftHeader}>
-                    <Link to={`/user/${username}`}>
+                    <Link to={`/profile/${username}`}>
                         <img onClick={TakeUser} width={40} src={post.author.profile_photo_url !== null ? post.author.profile_photo_url : UserPhoto} alt="postHeader" />
                     </Link>
                     <div className={style.content_info}>

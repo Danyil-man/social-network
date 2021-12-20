@@ -24,7 +24,7 @@ type Homeprops = {
 }
 
 const Home: FC<Homeprops> = ({ profile, isLoading,
-    users, posts, singlePosts,
+    users, posts,
     editProfile, getProfileUser,
     likePost, removelikePost,
     getAllComments, comments,
@@ -42,7 +42,6 @@ const Home: FC<Homeprops> = ({ profile, isLoading,
                         posts={posts}
                         comments={comments}
                         profile={profile}
-                        singlePosts={singlePosts}
                         getProfileUser={getProfileUser}
                         editProfile={editProfile}
                         likePost={likePost}

@@ -25,7 +25,7 @@ interface PostType {
 }
 
 const Post: FC<PostType> = ({ post, isLoading,
-    profile, comments, singlePosts,
+    profile, comments,
     editProfile, likePost,
     removelikePost, getProfileUser,
     getAllComments, getPost,
@@ -43,8 +43,7 @@ const Post: FC<PostType> = ({ post, isLoading,
     const TakeUser = () => {
         getProfileUser(username)
         getPostsOfSingleUser(username)
-        console.log("Username:", username)
-        console.log('SinglePost:', singlePosts)
+        console.log("Username:", username, 'Posts: ')
     }
     const [isModal, setIsModal] = useState(false)
     return (
@@ -52,7 +51,7 @@ const Post: FC<PostType> = ({ post, isLoading,
             {isLoading ? <Preloader /> : null}
             <div className={style.header}>
                 <div className={style.leftHeader}>
-                    <Link to={`/user/${username}`}>
+                    <Link to={`/profile/${username}`}>
                         <img onClick={TakeUser} width={40} src={post.author.profile_photo_url !== null ? post.author.profile_photo_url : UserPhoto} alt="postHeader" />
                     </Link>
                     <div className={style.content_info}>
