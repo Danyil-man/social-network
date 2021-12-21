@@ -42,13 +42,13 @@ const PostModal: FC<PropsPostsModal> = ({ closeModal, post,
     likePost, removelikePost, getAllComments, setComment,
     comments }) => {
 
-    useEffect(() => {
-        getAllComments(post.id)
-        console.log('postId', post.id)
-        return () => {
-            getAllComments(post.id)
-        }
-    }, [post.id, getAllComments])
+    // useEffect(() => {
+    //     getAllComments(post.id)
+    //     console.log('postId', post.id)
+    //     return () => {
+    //         getAllComments(post.id)
+    //     }
+    // }, [post.id, getAllComments])
 
     const submit = (values: any) => {
         setComment(values.postId, values.message)

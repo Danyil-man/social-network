@@ -44,20 +44,18 @@ const PostModal: FC<PropsPostsModal> = ({ closeModal, post,
 
     useEffect(() => {
         getAllComments(post.id)
-        console.log('postId', post.id)
-        return () => {
-            getAllComments(post.id)
-        }
+        console.log(post.id)
     }, [post.id, getAllComments])
 
     const submit = (values: any) => {
-        setComment(values.postId, values.message)
+        setComment(values.message, values.post.id)
+        console.log({ values })
         console.log({ values })
     }
 
     return (
         <div className={style.wrapper}>
-            <div key={post.id} className={style.container}>
+            <div className={style.container}>
                 <div className={style.postImgBlock}>
                     {post.photos.map(photo => <img key={photo.id} src={photo.url} className={style.postImg} alt="postimage" />)}
                 </div>
@@ -90,8 +88,7 @@ const PostModal: FC<PropsPostsModal> = ({ closeModal, post,
                         </div>
                         <Formik
                             initialValues={{
-                                postId: post.id,
-                                message: '',
+                                message: ''
                             }}
                             onSubmit={submit}>
                             <Form className={style.comment__input}>

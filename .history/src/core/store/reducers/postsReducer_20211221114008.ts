@@ -218,7 +218,8 @@ export const getAllComments = (postId:number):ThunkType => async (dispatch) => {
 export const setComment = (postId:number, message:string):ThunkType => async (dispatch) => {
     dispatch(actions.isLoading(true))
     let response = await PostsAPI.sendComment(postId, message)
-    dispatch(actions.setComment(postId, message, response.data)) 
+    dispatch(actions.setComment(postId, message))
+    debugger    
     dispatch(actions.isLoading(false))
 }
 

@@ -154,9 +154,9 @@ export const actions = {
         postID,
         comments
     } as const),
-    setComment: (postID: number, message: string, commenter: GetAllComments) => ({
+    setComment: (message: string, commenter: GetAllComments) => ({
         type: SET_COMMENT,
-        postID,
+        //postID,
         message,
         commenter
     } as const),
@@ -218,7 +218,8 @@ export const getAllComments = (postId:number):ThunkType => async (dispatch) => {
 export const setComment = (postId:number, message:string):ThunkType => async (dispatch) => {
     dispatch(actions.isLoading(true))
     let response = await PostsAPI.sendComment(postId, message)
-    dispatch(actions.setComment(postId, message, response.data)) 
+    debugger
+    dispatch(actions.setComment(message, response.data))    
     dispatch(actions.isLoading(false))
 }
 

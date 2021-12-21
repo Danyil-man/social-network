@@ -22,7 +22,7 @@ interface PostType {
     removelikePost: (postId: number, like: number) => void
     getPost: (postId: number) => void
     getPostsOfSingleUser: (username: string) => void
-    setComment: (postId: number, message: string) => void
+    setComment: (message: string) => void
 }
 
 const Post: FC<PostType> = ({ post, isLoading,

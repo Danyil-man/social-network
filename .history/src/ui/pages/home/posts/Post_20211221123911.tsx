@@ -33,6 +33,14 @@ const Post: FC<PostType> = ({ post, isLoading,
     getPostsOfSingleUser, setComment
 }) => {
 
+    useEffect(() => {
+        getAllComments(post.id)
+        console.log('postId', post.id)
+        return () => {
+            getAllComments(post.id)
+        }
+    }, [post.id, getAllComments])
+
     const OpenPost = () => {
         setIsModal(true);
         getPost(post.id)

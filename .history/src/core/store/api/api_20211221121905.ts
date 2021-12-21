@@ -185,6 +185,7 @@ export const PostsAPI = {
     return instanceApi.get<Array<GetAllComments>>(`/posts/${postId}/comments`)
   },
   sendComment(postId: number, message: string) {
+    debugger
     return instanceApi.post<GetAllComments>(`/posts/${postId}/comments`, {message: message})
   }
 }
