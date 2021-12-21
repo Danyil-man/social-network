@@ -1,6 +1,6 @@
 import { ThunkAction } from "redux-thunk";
 import { CreatePostType, GetAllComments, 
-    GetAllPostsType, GetSinglePostType, PostAuthor, PostsAPI, UsersAPI } from "../api/api"
+    GetAllPostsType, GetSinglePostType, PostsAPI, UsersAPI } from "../api/api"
 import { AppStateType, InfernActiontype } from "../redux/reduxStore"
 
 const GET_POSTS = "GET_POSTS";
@@ -182,7 +182,7 @@ export const actions = {
         username,
         singlePost
     } as const),
-    createPost: (postItem: CreatePostType, author: PostAuthor) => ({
+    createPost: (postItem: CreatePostType) => ({
         type: CREATE_POST,
         postItem
     } as const)
@@ -210,7 +210,7 @@ export const getPost = (postId: number):ThunkType => async (dispatch) => {
 export const createPosts = (postItem: CreatePostType):ThunkType => async (dispatch) => {
     dispatch(actions.isLoading(true))
     let response = await PostsAPI.createPost(postItem)
-    dispatch(actions.createPost(postItem, response.data))
+    dispatch(actions.createPost(postItem))
     dispatch(actions.isLoading(false))
 }
 

@@ -38,7 +38,7 @@ const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile, profile,
                     <Form className={style.formContainer}>
                         <div className={style.profilePhotoNameSide}>
                             <div className={style.imgBlock}>
-                                <img width={148} src={profile.profile_photo_url !== null ? profile.profile_photo_url : UserPhoto} alt="" />
+                                <img width={148} src={profile.profile_photo_url !== null ? profile.profile_photo_url :  } alt="" />
                             </div>
                             <div className={style.NamseFields}>
                                 <div className={style.formFieldItem}>

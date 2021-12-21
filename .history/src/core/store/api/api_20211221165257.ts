@@ -184,17 +184,6 @@ type ImageData = {
   metadata: MetaDataType
 }
 
-export type PostAuthor = {
-  id: number
-  author:AuthorType
-  comments_count: number
-  created_at: string
-  description: string
-  is_liked: boolean
-  likes_count: number
-  photos: Array<PostphotosType>
-}
-
 export const PostsAPI = {
   getAllPosts(currentPage=1) {
     return instanceApi.get<Array<GetAllPostsType>>(`/posts?page=${currentPage}`)
@@ -202,8 +191,8 @@ export const PostsAPI = {
   getPost(postId: number) {
     return instanceApi.get(`/posts/${postId}`)
   },
-  createPost(postItem: CreatePostType) {
-    return instanceApi.post<PostAuthor>('/posts', postItem)
+  createPost() {
+    return instanceApi.post('/posts')
   },
   getPostsOfSingleUser(username: string | undefined){
     return instanceApi.get<Array<GetSinglePostType>>(`/profiles/${username}/posts`)

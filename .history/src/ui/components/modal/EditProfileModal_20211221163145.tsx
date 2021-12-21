@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
 import style from './EditProfileModal.module.scss'
-import UserPhoto from '../../../public/images/withoutphoto.png';
+import headerAva from "public/images/MiniProf/header__ava.png"
 import { Field, Form, Formik } from "formik";
 import { AccountType, GetAccountType } from "core/store/api/api";
 import Preloader from "../common/Preloader";
@@ -38,7 +38,7 @@ const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile, profile,
                     <Form className={style.formContainer}>
                         <div className={style.profilePhotoNameSide}>
                             <div className={style.imgBlock}>
-                                <img width={148} src={profile.profile_photo_url !== null ? profile.profile_photo_url : UserPhoto} alt="" />
+                                <img width={148} src={headerAva} alt="" />
                             </div>
                             <div className={style.NamseFields}>
                                 <div className={style.formFieldItem}>

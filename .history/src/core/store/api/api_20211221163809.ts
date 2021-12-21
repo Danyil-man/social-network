@@ -169,31 +169,7 @@ export type GetSinglePostType = {
   photos: Array<PostphotosType>
 }
 
-export type CreatePostType = {
-  description: string
-  photos_attributes: Array<ImagePhotoType>
-}
 
-type ImagePhotoType = {
-  image: ImageData
-}
-
-type ImageData = {
-  id: string
-  storage: string
-  metadata: MetaDataType
-}
-
-export type PostAuthor = {
-  id: number
-  author:AuthorType
-  comments_count: number
-  created_at: string
-  description: string
-  is_liked: boolean
-  likes_count: number
-  photos: Array<PostphotosType>
-}
 
 export const PostsAPI = {
   getAllPosts(currentPage=1) {
@@ -201,9 +177,6 @@ export const PostsAPI = {
   },
   getPost(postId: number) {
     return instanceApi.get(`/posts/${postId}`)
-  },
-  createPost(postItem: CreatePostType) {
-    return instanceApi.post<PostAuthor>('/posts', postItem)
   },
   getPostsOfSingleUser(username: string | undefined){
     return instanceApi.get<Array<GetSinglePostType>>(`/profiles/${username}/posts`)

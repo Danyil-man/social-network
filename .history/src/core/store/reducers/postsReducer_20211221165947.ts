@@ -1,6 +1,5 @@
 import { ThunkAction } from "redux-thunk";
-import { CreatePostType, GetAllComments, 
-    GetAllPostsType, GetSinglePostType, PostAuthor, PostsAPI, UsersAPI } from "../api/api"
+import { CreatePostType, GetAllComments, GetAllPostsType, GetSinglePostType, PostsAPI, UsersAPI } from "../api/api"
 import { AppStateType, InfernActiontype } from "../redux/reduxStore"
 
 const GET_POSTS = "GET_POSTS";
@@ -33,10 +32,7 @@ let initialState:initialStateType = {
     singlePosts: [],
     isLoading: false,
     message: '',
-    postItem: {
-        description: '',
-        photos_attributes: []
-    },
+    postItem: [],
     pageSize: 10,
     postsCount: 0,
     currentPage: 1
@@ -118,7 +114,7 @@ const postsReducer = (state = initialState, action:ActionCreatorsType):initialSt
         case CREATE_POST:
             return{
                 ...state,
-                postItem: action.postItem as CreatePostType
+
             }
 
         case GET_USER_POSTS: 
@@ -182,10 +178,7 @@ export const actions = {
         username,
         singlePost
     } as const),
-    createPost: (postItem: CreatePostType, author: PostAuthor) => ({
-        type: CREATE_POST,
-        postItem
-    } as const)
+    
 }
 
 //                                          THUNKS
@@ -204,13 +197,6 @@ export const getPost = (postId: number):ThunkType => async (dispatch) => {
     dispatch(actions.isLoading(true))
     let response = await PostsAPI.getPost(postId)
     dispatch(actions.getPost(response.data))
-    dispatch(actions.isLoading(false))
-}
-
-export const createPosts = (postItem: CreatePostType):ThunkType => async (dispatch) => {
-    dispatch(actions.isLoading(true))
-    let response = await PostsAPI.createPost(postItem)
-    dispatch(actions.createPost(postItem, response.data))
     dispatch(actions.isLoading(false))
 }
 

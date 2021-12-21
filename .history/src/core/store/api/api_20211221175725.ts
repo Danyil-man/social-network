@@ -203,7 +203,7 @@ export const PostsAPI = {
     return instanceApi.get(`/posts/${postId}`)
   },
   createPost(postItem: CreatePostType) {
-    return instanceApi.post<PostAuthor>('/posts', postItem)
+    return instanceApi.post('/posts', postItem)
   },
   getPostsOfSingleUser(username: string | undefined){
     return instanceApi.get<Array<GetSinglePostType>>(`/profiles/${username}/posts`)

@@ -40,7 +40,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, isLoading }) => {
                                         >
                                             Upload Post
                                         </button>
-                                        {/* <h4>Uploaded</h4> */}
+                                        <h4>Uploaded</h4>
                                     </div>
                                 </div>
                             </div>
