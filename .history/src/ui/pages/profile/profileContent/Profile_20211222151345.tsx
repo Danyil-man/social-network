@@ -2,28 +2,22 @@ import React, { FC, useState } from "react";
 import { useTranslation } from "react-i18next";
 import style from "./Profile.module.scss";
 import ProfilePhoto from "public/images/withoutphoto.png";
-import { AccountType, CreatePostType, GetAccountType, GetAllPostsType, GetSinglePostType } from "core/store/api/api";
+import { AccountType, GetAccountType, GetAllPostsType, GetSinglePostType } from "core/store/api/api";
 import EditProfileModal from "ui/components/modal/EditProfileModal";
 import { GetUserType } from "core/store/reducers/usersReducer";
-import NewPostModal from "ui/components/modal/NewPostModal";
-import noPhoto from 'public/images/posts/noPost.jpg'
 
 interface ProfileType {
     profile: GetAccountType
     profilePosts: Array<GetSinglePostType>
-    postItem: CreatePostType
     editProfile: (account: AccountType) => void
-    createPosts: (postItem: CreatePostType) => void
     isLoading: boolean
 }
 
-const Profile: FC<ProfileType> = ({ profile, editProfile, createPosts,
-    isLoading, profilePosts,
-    postItem }) => {
+const Profile: FC<ProfileType> = ({ profile, editProfile, isLoading, profilePosts }) => {
     const { t } = useTranslation();
     console.log('ProPosts:', profilePosts)
     const [isModalEdit, setIsModalEdit] = useState(false)
-    const [isNewPostModal, setIsNewPostModal] = useState(false)
+    const [isNewPostModal, setisNewPostModa] = useState(false)
     return (
         <div className={style.wrapper}>
             <div className={style.content}>
@@ -55,7 +49,7 @@ const Profile: FC<ProfileType> = ({ profile, editProfile, createPosts,
                         </div>
                         <div className={style.navigation}>
                             <button onClick={() => setIsModalEdit(true)} className={style.editProf}>{t('editProf')}</button>
-                            <button onClick={() => setIsNewPostModal(true)} className={style.NewPost}>{t('newPost')}</button>
+                            <button className={style.NewPost}>{t('newPost')}</button>
                         </div>
                     </div>
                 </div>
@@ -71,12 +65,6 @@ const Profile: FC<ProfileType> = ({ profile, editProfile, createPosts,
                 isLoading={isLoading}
             />}
 
-            {isNewPostModal && <NewPostModal
-                closeModal={setIsNewPostModal}
-                createPosts={createPosts}
-                isLoading={isLoading}
-                postItem={postItem} />}
-
         </div>
     )
 }
@@ -89,7 +77,7 @@ const CollagePhotosProfile: FC<CollageType> = ({ post }) => {
     return (<>
         {
             post.photos.map(photo => <div className={style.photoItem}>
-                <img key={photo.id} src={photo.url !== null ? photo.url : noPhoto} width={358} height={358} alt="profilePosts" />
+                <img key={photo.id} src={photo.url} width={358} height={358} alt="profilePosts" />
             </div>)
         }
     </>

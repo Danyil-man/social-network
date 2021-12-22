@@ -18,11 +18,10 @@ type ContainerProfileType = {
     editProfile: (account: AccountType) => void
     getProfileUser: (username: string) => void
     getPostsOfSingleUser: (username: string | undefined) => void
-    createPosts: (postItem: CreatePostType) => void
 }
 
 const IdxProfile: FC<ContainerProfileType> = ({ isAuth, profile,
-    profilePosts, editProfile, getPostsOfSingleUser, createPosts,
+    profilePosts, editProfile, getPostsOfSingleUser,
     isLoading, postItem }) => {
 
     let username = profile.username
@@ -38,7 +37,6 @@ const IdxProfile: FC<ContainerProfileType> = ({ isAuth, profile,
                 profilePosts={profilePosts}
                 postItem={postItem}
                 editProfile={editProfile}
-                createPosts={createPosts}
                 isLoading={isLoading}
             />
 
@@ -56,5 +54,4 @@ const mapStateToprops = (state: AppStateType) => ({
     isLoading: getIsLoading(state),
 })
 
-export default connect(mapStateToprops,
-    { editProfile, getPostsOfSingleUser, createPosts })(IdxProfile);
+export default connect(mapStateToprops, { editProfile, getPostsOfSingleUser, createPosts })(IdxProfile);

@@ -15,8 +15,7 @@ type MiniProfileType = {
     createPosts: (postItem: CreatePostType) => void
 }
 
-const MiniProfile: FC<MiniProfileType> = ({ profile, isLoading,
-    postItem, editProfile, createPosts }) => {
+const MiniProfile: FC<MiniProfileType> = ({ profile, isLoading, postItem, editProfile }) => {
     const { t } = useTranslation();
     const [isNewPostModal, SetisNewPostModal] = useState(false)
     const [isModalEdit, setIsModalEdit] = useState(false)
@@ -55,7 +54,6 @@ const MiniProfile: FC<MiniProfileType> = ({ profile, isLoading,
 
             {isNewPostModal && <NewPostModal
                 closeModal={SetisNewPostModal}
-                createPosts={createPosts}
                 isLoading={isLoading}
                 postItem={postItem}
             />}

@@ -32,7 +32,7 @@ const Home: FC<Homeprops> = ({ profile, isLoading,
     likePost, removelikePost,
     getAllComments, comments,
     getPost, getPostsOfSingleUser,
-    setComment, createPosts }) => {
+    setComment }) => {
     return (
         <div className={style.wrapper}>
             {isLoading ? <Preloader /> : null}

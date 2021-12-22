@@ -71,7 +71,6 @@ const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile,
                 getPost={getPost}
                 getPostsOfSingleUser={getPostsOfSingleUser}
                 setComment={setComment}
-                createPosts={createPosts}
             />
         </div>
     )

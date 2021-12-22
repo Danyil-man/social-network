@@ -6,7 +6,6 @@ import { AccountType, CreatePostType, GetAccountType, GetAllPostsType, GetSingle
 import EditProfileModal from "ui/components/modal/EditProfileModal";
 import { GetUserType } from "core/store/reducers/usersReducer";
 import NewPostModal from "ui/components/modal/NewPostModal";
-import noPhoto from 'public/images/posts/noPost.jpg'
 
 interface ProfileType {
     profile: GetAccountType
@@ -17,7 +16,7 @@ interface ProfileType {
     isLoading: boolean
 }
 
-const Profile: FC<ProfileType> = ({ profile, editProfile, createPosts,
+const Profile: FC<ProfileType> = ({ profile, editProfile,
     isLoading, profilePosts,
     postItem }) => {
     const { t } = useTranslation();
@@ -73,7 +72,6 @@ const Profile: FC<ProfileType> = ({ profile, editProfile, createPosts,
 
             {isNewPostModal && <NewPostModal
                 closeModal={setIsNewPostModal}
-                createPosts={createPosts}
                 isLoading={isLoading}
                 postItem={postItem} />}
 
@@ -89,7 +87,7 @@ const CollagePhotosProfile: FC<CollageType> = ({ post }) => {
     return (<>
         {
             post.photos.map(photo => <div className={style.photoItem}>
-                <img key={photo.id} src={photo.url !== null ? photo.url : noPhoto} width={358} height={358} alt="profilePosts" />
+                <img key={photo.id} src={photo.url} width={358} height={358} alt="profilePosts" />
             </div>)
         }
     </>

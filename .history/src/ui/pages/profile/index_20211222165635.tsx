@@ -38,7 +38,6 @@ const IdxProfile: FC<ContainerProfileType> = ({ isAuth, profile,
                 profilePosts={profilePosts}
                 postItem={postItem}
                 editProfile={editProfile}
-                createPosts={createPosts}
                 isLoading={isLoading}
             />
 

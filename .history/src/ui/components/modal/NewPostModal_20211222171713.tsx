@@ -34,7 +34,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                         </div>
                         <Formik
                             initialValues={{
-                                description: postItem.description,
+                                description: '',
                                 photo: postItem.photos_attributes
                             }}
                             onSubmit={submit}

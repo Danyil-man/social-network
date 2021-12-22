@@ -55,7 +55,6 @@ const MiniProfile: FC<MiniProfileType> = ({ profile, isLoading,
 
             {isNewPostModal && <NewPostModal
                 closeModal={SetisNewPostModal}
-                createPosts={createPosts}
                 isLoading={isLoading}
                 postItem={postItem}
             />}

@@ -12,14 +12,12 @@ interface PropsModal {
     postItem: CreatePostType
 }
 
-const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
-    isLoading, createPosts }) => {
+const NewPostModal: FC<PropsModal> = ({ closeModal, postItem, isLoading }) => {
     const [isModal, setIsModal] = useState(true);
     const files = postItem.photos_attributes.map(file => (
         <p>Id: {file.image.id} - {file.image.metadata.size} </p>
     ))
     const submit = (values: any) => {
-        createPosts(values)
         console.log({ values })
         console.log('PostItem', postItem)
     }
@@ -34,7 +32,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                         </div>
                         <Formik
                             initialValues={{
-                                description: postItem.description,
+                                description: '',
                                 photo: postItem.photos_attributes
                             }}
                             onSubmit={submit}

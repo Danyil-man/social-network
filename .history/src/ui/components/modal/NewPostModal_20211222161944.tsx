@@ -1,27 +1,22 @@
+import { addDoc, collection, doc, serverTimestamp, updateDoc } from "@firebase/firestore";
+import { ref, getDownloadURL, uploadString, uploadBytesResumable } from "@firebase/storage";
 import { CreatePostType } from "core/store/api/api";
 import { Field, Form, Formik } from "formik";
-import React, { FC, useState } from "react";
-import aws, { S3 } from 'aws-sdk';
+import React, { FC, useRef, useState } from "react";
 import Preloader from "../common/Preloader";
 import style from "./Modal.module.scss"
 
 interface PropsModal {
     closeModal: (setIsModal: boolean) => void;
-    createPosts: (postItem: CreatePostType) => void
     isLoading: boolean
     postItem: CreatePostType
 }
 
-const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
-    isLoading, createPosts }) => {
+const NewPostModal: FC<PropsModal> = ({ closeModal, postItem, isLoading }) => {
     const [isModal, setIsModal] = useState(true);
-    const files = postItem.photos_attributes.map(file => (
-        <p>Id: {file.image.id} - {file.image.metadata.size} </p>
-    ))
     const submit = (values: any) => {
-        createPosts(values)
-        console.log({ values })
-        console.log('PostItem', postItem)
+        console.log(values)
+        console.log(postItem)
     }
     return (
         <div>
@@ -42,7 +37,6 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                             <Form className={style.body}>
                                 <div className={style.fileblock}>
                                     <Field type="file" name="photo" />
-                                    {files}
                                 </div>
                                 <div className={style.footer}>
                                     <div className={style.descriptionblock}>
