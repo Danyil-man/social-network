@@ -49,6 +49,7 @@ const Home: FC<Homeprops> = ({ profile, isLoading,
                         comments={comments}
                         profile={profile}
                         singlePosts={singlePosts}
+                        postItem={postItem}
                         getProfileUser={getProfileUser}
                         editProfile={editProfile}
                         likePost={likePost}
@@ -63,7 +64,6 @@ const Home: FC<Homeprops> = ({ profile, isLoading,
                     <MiniProfile
                         profile={profile}
                         isLoading={isLoading}
-                        postItem={postItem}
                         editProfile={editProfile}
                     />
                 </div>

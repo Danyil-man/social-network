@@ -26,7 +26,7 @@ type Homeprops = {
 }
 
 const Home: FC<Homeprops> = ({ profile, isLoading,
-    users, posts, singlePosts, postItem,
+    users, posts, singlePosts,
     editProfile, getProfileUser,
     likePost, removelikePost,
     getAllComments, comments,
@@ -63,7 +63,6 @@ const Home: FC<Homeprops> = ({ profile, isLoading,
                     <MiniProfile
                         profile={profile}
                         isLoading={isLoading}
-                        postItem={postItem}
                         editProfile={editProfile}
                     />
                 </div>

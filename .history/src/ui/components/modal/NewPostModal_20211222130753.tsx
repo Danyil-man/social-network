@@ -16,7 +16,6 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem, isLoading }) => {
     const [isModal, setIsModal] = useState(true);
     const submit = (values: any) => {
         console.log(values)
-        console.log(postItem)
     }
     return (
         <div>
@@ -39,11 +38,10 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem, isLoading }) => {
                                 </div>
                                 <div className={style.footer}>
                                     <div className={style.descriptionblock}>
-                                        <label>Description</label>
-                                        <Field as='textarea'
+                                        <Field
                                             type="text"
                                             name="description"
-                                            placeholder="Description..."
+                                            placeholder="Description"
                                         />
                                         <div className={style.modalFooter}>
                                             <button onClick={() => closeModal(false)} className={style.cancelBtn}>

@@ -1,7 +1,6 @@
 import { addDoc, collection, doc, serverTimestamp, updateDoc } from "@firebase/firestore";
 import { ref, getDownloadURL, uploadString, uploadBytesResumable } from "@firebase/storage";
-import { CreatePostType } from "core/store/api/api";
-import { Field, Form, Formik } from "formik";
+import { Formik } from "formik";
 import React, { FC, useRef, useState } from "react";
 import Preloader from "../common/Preloader";
 import style from "./Modal.module.scss"
@@ -9,15 +8,11 @@ import style from "./Modal.module.scss"
 interface PropsModal {
     closeModal: (setIsModal: boolean) => void;
     isLoading: boolean
-    postItem: CreatePostType
 }
 
-const NewPostModal: FC<PropsModal> = ({ closeModal, postItem, isLoading }) => {
+const NewPostModal: FC<PropsModal> = ({ closeModal, isLoading }) => {
     const [isModal, setIsModal] = useState(true);
-    const submit = (values: any) => {
-        console.log(values)
-        console.log(postItem)
-    }
+
     return (
         <div>
             {isLoading ? <Preloader /> : null}
@@ -27,23 +22,16 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem, isLoading }) => {
                         <div className={style.title}>
                             <h1>Upload a photo</h1>
                         </div>
-                        <Formik
-                            initialValues={{
-                                description: postItem.description
-                            }}
-                            onSubmit={submit}
-                        >
-                            <Form className={style.body}>
+                        <Formik>
+                            <div className={style.body}>
                                 <div className={style.fileblock}>
 
                                 </div>
                                 <div className={style.footer}>
                                     <div className={style.descriptionblock}>
-                                        <label>Description</label>
-                                        <Field as='textarea'
+                                        <input
                                             type="text"
-                                            name="description"
-                                            placeholder="Description..."
+                                            placeholder="Enter description of post..."
                                         />
                                         <div className={style.modalFooter}>
                                             <button onClick={() => closeModal(false)} className={style.cancelBtn}>
@@ -55,7 +43,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem, isLoading }) => {
                                         </div>
                                     </div>
                                 </div>
-                            </Form>
+                            </div>
                         </Formik>
                     </div>
                 </div>

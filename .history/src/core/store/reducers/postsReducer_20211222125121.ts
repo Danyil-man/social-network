@@ -184,8 +184,7 @@ export const actions = {
     } as const),
     createPost: (postItem: CreatePostType, author: PostAuthor) => ({
         type: CREATE_POST,
-        postItem,
-        author
+        postItem
     } as const)
 }
 

@@ -3,7 +3,7 @@ import style from "./MiniProfile.module.scss";
 import ProfilePhoto from "public/images/withoutphoto.png"
 import { useTranslation } from "react-i18next";
 import NewPostModal from "ui/components/modal/NewPostModal";
-import { AccountType, CreatePostType, GetAccountType } from "core/store/api/api";
+import { AccountType, GetAccountType } from "core/store/api/api";
 import EditProfileModal from "ui/components/modal/EditProfileModal";
 import { GetUserType } from "core/store/reducers/usersReducer";
 
@@ -14,7 +14,7 @@ type MiniProfileType = {
     editProfile: (account: AccountType) => void
 }
 
-const MiniProfile: FC<MiniProfileType> = ({ profile, isLoading, postItem, editProfile }) => {
+const MiniProfile: FC<MiniProfileType> = ({ profile, isLoading, editProfile }) => {
     const { t } = useTranslation();
     const [isNewPostModal, SetisNewPostModal] = useState(false)
     const [isModalEdit, setIsModalEdit] = useState(false)
@@ -54,7 +54,6 @@ const MiniProfile: FC<MiniProfileType> = ({ profile, isLoading, postItem, editPr
             {isNewPostModal && <NewPostModal
                 closeModal={SetisNewPostModal}
                 isLoading={isLoading}
-                postItem={postItem}
             />}
 
             {isModalEdit && <EditProfileModal

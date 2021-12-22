@@ -43,7 +43,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem, isLoading }) => {
                                         <Field as='textarea'
                                             type="text"
                                             name="description"
-                                            placeholder="Description..."
+                                            placeholder="Description"
                                         />
                                         <div className={style.modalFooter}>
                                             <button onClick={() => closeModal(false)} className={style.cancelBtn}>
