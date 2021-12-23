@@ -27,7 +27,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
     }
     const handleSubmit = async (files: any) => {
         const file = files[0]
-        console.log(file)
+        console.log(file['files'])
         const response = await axios({
             method: 'GET',
             url: '/s3/params'

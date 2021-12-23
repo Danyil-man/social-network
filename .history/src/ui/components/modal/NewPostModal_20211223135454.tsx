@@ -6,7 +6,6 @@ import style from "./Modal.module.scss"
 import Dropzone from "react-dropzone-uploader"
 import 'react-dropzone-uploader/dist/styles.css'
 import dropImg from 'public/images/dropBackground.png';
-import axios from "axios";
 
 interface PropsModal {
     closeModal: (setIsModal: boolean) => void;
@@ -25,14 +24,9 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
     const handleChange = ({ meta, remove }: any, status: any) => {
         console.log(status, meta)
     }
-    const handleSubmit = async (files: any) => {
+    const handleSubmit = async (files) => {
         const file = files[0]
         console.log(file)
-        const response = await axios({
-            method: 'GET',
-            url: '/s3/params'
-        })
-        console.log('response:', response)
     }
     return (
         <div>

@@ -6,7 +6,7 @@ import style from "./Modal.module.scss"
 import Dropzone from "react-dropzone-uploader"
 import 'react-dropzone-uploader/dist/styles.css'
 import dropImg from 'public/images/dropBackground.png';
-import axios from "axios";
+import random from '../../../public/images/posts/post1.jpg'
 
 interface PropsModal {
     closeModal: (setIsModal: boolean) => void;
@@ -21,18 +21,6 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
     const submit = (values: any) => {
         createPosts(values)
         console.log({ values })
-    }
-    const handleChange = ({ meta, remove }: any, status: any) => {
-        console.log(status, meta)
-    }
-    const handleSubmit = async (files: any) => {
-        const file = files[0]
-        console.log(file)
-        const response = await axios({
-            method: 'GET',
-            url: '/s3/params'
-        })
-        console.log('response:', response)
     }
     return (
         <div>
@@ -53,16 +41,8 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                             <Form className={style.body}>
                                 <div className={style.fileblock}>
                                     <Dropzone
-                                        onChangeStatus={handleChange}
-                                        onSubmit={handleSubmit}
-                                        inputContent='Choose any photo from your library'
-                                        maxFiles={2}
                                         styles={{
-                                            dropzone: {
-                                                width: 480, height: 345,
-                                                backgroundImage: dropImg, backgroundColor: 'lightgrey',
-                                                color: 'white'
-                                            },
+                                            dropzone: { width: 480, height: 345, backgroundColor: 'lightgrey' },
                                             dropzoneActive: { borderColor: 'blue' },
 
                                         }}

@@ -1,12 +1,10 @@
 import { CreatePostType } from "core/store/api/api";
 import { Field, Form, Formik } from "formik";
 import React, { FC, useState } from "react";
+import aws, { S3 } from 'aws-sdk';
 import Preloader from "../common/Preloader";
 import style from "./Modal.module.scss"
-import Dropzone from "react-dropzone-uploader"
-import 'react-dropzone-uploader/dist/styles.css'
-import dropImg from 'public/images/dropBackground.png';
-import axios from "axios";
+import Dropzone from "react-dropzone";
 
 interface PropsModal {
     closeModal: (setIsModal: boolean) => void;
@@ -22,18 +20,6 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         createPosts(values)
         console.log({ values })
     }
-    const handleChange = ({ meta, remove }: any, status: any) => {
-        console.log(status, meta)
-    }
-    const handleSubmit = async (files: any) => {
-        const file = files[0]
-        console.log(file)
-        const response = await axios({
-            method: 'GET',
-            url: '/s3/params'
-        })
-        console.log('response:', response)
-    }
     return (
         <div>
             {isLoading ? <Preloader /> : null}
@@ -41,7 +27,9 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                 <div className={style.wrapper}>
                     <div className={style.container}>
                         <div className={style.title}>
-                            <h1>Upload a photo</h1>
+                            <Dropzone
+
+                            />
                         </div>
                         <Formik
                             initialValues={{
@@ -52,22 +40,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                         >
                             <Form className={style.body}>
                                 <div className={style.fileblock}>
-                                    <Dropzone
-                                        onChangeStatus={handleChange}
-                                        onSubmit={handleSubmit}
-                                        inputContent='Choose any photo from your library'
-                                        maxFiles={2}
-                                        styles={{
-                                            dropzone: {
-                                                width: 480, height: 345,
-                                                backgroundImage: dropImg, backgroundColor: 'lightgrey',
-                                                color: 'white'
-                                            },
-                                            dropzoneActive: { borderColor: 'blue' },
-
-                                        }}
-                                    />
-                                    {/* <Field type="file" name="photo" /> */}
+                                    <Field type="file" name="photo" />
                                 </div>
                                 <div className={style.footer}>
                                     <div className={style.descriptionblock}>
