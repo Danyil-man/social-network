@@ -1,4 +1,4 @@
-import { CreatePostType, ImagePhotoType } from "core/store/api/api";
+import { CreatePostType } from "core/store/api/api";
 import { Field, Form, Formik } from "formik";
 import React, { FC, useState } from "react";
 import Preloader from "../common/Preloader";
@@ -18,12 +18,14 @@ interface PropsModal {
 const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
     isLoading, createPosts }) => {
     const [isModal, setIsModal] = useState(true);
-    const handleChange = ({ meta }: any, status: any) => {
-        console.log({ meta }, status)
+    const submit = (values: any) => {
+        createPosts(values)
+        console.log({ values })
     }
-    let files = postItem.photos_attributes
-    const handleSubmit = async (files: Array<ImagePhotoType>) => {
-
+    const handleChange = ({ meta, remove }: any, status: any) => {
+        console.log(status, meta)
+    }
+    const handleSubmit = async (files: any) => {
         const file = files[0]
         console.log(file)
         //get
@@ -33,17 +35,12 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         })
         console.log('response:', response)
         //post
-        const result = await fetch(response.data, {
+        const result = await fetch(response.data.uploadURL, {
             method: 'POST',
             headers: { "Content-Type": "image/jpeg" },
-            //body: file
+            body: file
         })
         console.log('result', result)
-    }
-    const submit = (values: any) => {
-        createPosts(values)
-        handleSubmit(files)
-        console.log({ values })
     }
     return (
         <div>
@@ -65,7 +62,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                                 <div className={style.fileblock}>
                                     <Dropzone
                                         onChangeStatus={handleChange}
-                                        //onSubmit={handleSubmit}
+                                        onSubmit={handleSubmit}
                                         inputContent='Choose any photo from your library'
                                         maxFiles={2}
                                         styles={{

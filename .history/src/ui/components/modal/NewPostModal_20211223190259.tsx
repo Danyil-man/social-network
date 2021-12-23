@@ -24,7 +24,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
     let files = postItem.photos_attributes
     const handleSubmit = async (files: Array<ImagePhotoType>) => {
 
-        const file = files[0]
+        const file = postItem.photos_attributes[0]
         console.log(file)
         //get
         const response = await axios({
@@ -33,7 +33,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         })
         console.log('response:', response)
         //post
-        const result = await fetch(response.data, {
+        const result = await fetch(response.data.uploadURL, {
             method: 'POST',
             headers: { "Content-Type": "image/jpeg" },
             //body: file
@@ -42,7 +42,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
     }
     const submit = (values: any) => {
         createPosts(values)
-        handleSubmit(files)
+        handleSubmit(postItem)
         console.log({ values })
     }
     return (

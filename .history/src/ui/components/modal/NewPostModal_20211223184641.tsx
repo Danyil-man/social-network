@@ -1,4 +1,4 @@
-import { CreatePostType, ImagePhotoType } from "core/store/api/api";
+import { CreatePostType } from "core/store/api/api";
 import { Field, Form, Formik } from "formik";
 import React, { FC, useState } from "react";
 import Preloader from "../common/Preloader";
@@ -18,13 +18,17 @@ interface PropsModal {
 const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
     isLoading, createPosts }) => {
     const [isModal, setIsModal] = useState(true);
-    const handleChange = ({ meta }: any, status: any) => {
-        console.log({ meta }, status)
-    }
-    let files = postItem.photos_attributes
-    const handleSubmit = async (files: Array<ImagePhotoType>) => {
+    const submit = (values: any) => {
+        createPosts(values)
 
-        const file = files[0]
+        handleSubmit(postItem)
+        console.log({ values })
+    }
+    const handleChange = ({ meta, remove }: any, status: any) => {
+        console.log(status, meta)
+    }
+    const handleSubmit = async (postItem: CreatePostType) => {
+        const file = postItem.photos_attributes[0]
         console.log(file)
         //get
         const response = await axios({
@@ -33,17 +37,12 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         })
         console.log('response:', response)
         //post
-        const result = await fetch(response.data, {
+        const result = await fetch(response.data.uploadURL, {
             method: 'POST',
             headers: { "Content-Type": "image/jpeg" },
             //body: file
         })
         console.log('result', result)
-    }
-    const submit = (values: any) => {
-        createPosts(values)
-        handleSubmit(files)
-        console.log({ values })
     }
     return (
         <div>
@@ -64,7 +63,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                             <Form className={style.body}>
                                 <div className={style.fileblock}>
                                     <Dropzone
-                                        onChangeStatus={handleChange}
+                                        //onChangeStatus={handleChange}
                                         //onSubmit={handleSubmit}
                                         inputContent='Choose any photo from your library'
                                         maxFiles={2}
