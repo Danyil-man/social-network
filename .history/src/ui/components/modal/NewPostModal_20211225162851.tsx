@@ -56,7 +56,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                             onSubmit={submit}
                         >
                             <Form className={style.body}>
-                                <div className={style.dropzoneBox}>
+                                <div className={style.fileblock}>
                                     <Dropzone
                                         onChangeStatus={handleChange}
                                         //onSubmit={handleSubmit}
@@ -65,35 +65,33 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                                         styles={{
                                             dropzone: {
                                                 width: 480, height: 345,
-                                                margin: 0,
-                                                padding: 0,
                                                 backgroundImage: dropImg, backgroundColor: 'lightgrey',
                                                 color: 'white'
                                             },
                                             dropzoneActive: { borderColor: 'blue' },
 
-
                                         }}
                                     />
+                                    {/* <Field type="file" name="photo" /> */}
                                 </div>
-                                <div className={style.descriptionBlock}>
+                                <div className={style.footer}>
+
                                     <label>Description</label>
                                     <Field as='textarea'
                                         type="text"
                                         name="description"
                                         placeholder="Description..."
                                     />
-                                </div>
-                                <div className={style.modalFooter}>
-                                    <button onClick={() => closeModal(false)} className={style.cancelBtn}>
-                                        Cancel
-                                    </button>
-                                    <button className={style.saveBtn} type="submit">
-                                        Post
-                                    </button>
-                                </div>
+                                    <div className={style.modalFooter}>
+                                        <button onClick={() => closeModal(false)} className={style.cancelBtn}>
+                                            Cancel
+                                        </button>
+                                        <button className={style.saveBtn} type="submit">
+                                            Post
+                                        </button>
+                                    </div>
 
-
+                                </div>
                             </Form>
                         </Formik>
                     </div>

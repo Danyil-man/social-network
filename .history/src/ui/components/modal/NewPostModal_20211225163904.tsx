@@ -76,7 +76,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                                         }}
                                     />
                                 </div>
-                                <div className={style.descriptionBlock}>
+                                <div>
                                     <label>Description</label>
                                     <Field as='textarea'
                                         type="text"
@@ -84,6 +84,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                                         placeholder="Description..."
                                     />
                                 </div>
+
                                 <div className={style.modalFooter}>
                                     <button onClick={() => closeModal(false)} className={style.cancelBtn}>
                                         Cancel

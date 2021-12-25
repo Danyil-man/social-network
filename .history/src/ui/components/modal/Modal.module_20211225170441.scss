@@ -55,6 +55,7 @@
     display: flex;
     justify-content: space-around;
     margin-top: 50px;
+    font-weight: 600;
     .cancelBtn {
       width: 235px;
       height: 50px;
@@ -64,7 +65,7 @@
       color: #333;
       border-radius: 8px;
       font-size: 20px;
-      font-weight: 600;
+      font-weight: 500;
       cursor: pointer;
       &:hover {
         background-color: #333;
@@ -82,7 +83,6 @@
       border-radius: 8px;
       font-size: 20px;
       cursor: pointer;
-      font-weight: 600;
       &:hover {
         background-color: #fff;
         color: #0087ff;
@@ -111,7 +111,7 @@
     border-radius: 0px;
     background-color: #f7f4f4;
     box-shadow: none;
-    padding-top: 88px;
+    padding: 88px 15px 0px 15px;
     .dropzoneBox {
       display: flex;
       justify-content: center;
@@ -137,7 +137,7 @@
         background: none;
         border-radius: 12px;
         padding: 14px;
-        font-size: 14px;
+        font-size: 16px;
         color: #808080;
         font-weight: 500;
         outline: none;
@@ -155,11 +155,9 @@
 
       .cancelBtn {
         width: 100%;
-        font-size: 16px;
       }
       .saveBtn {
         width: 100%;
-        font-size: 16px;
         margin-bottom: 10px;
       }
     }

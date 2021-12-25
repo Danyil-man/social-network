@@ -76,7 +76,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                                         }}
                                     />
                                 </div>
-                                <div className={style.descriptionBlock}>
+                                <div>
                                     <label>Description</label>
                                     <Field as='textarea'
                                         type="text"
