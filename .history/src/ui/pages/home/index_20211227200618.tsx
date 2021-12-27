@@ -50,14 +50,13 @@ const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile,
 }) => {
 
     useEffect(() => {
-        let axs = axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
         getAllPosts(currentPage)
-        console.log('axs: ', axs)
         console.log('posts mounted, page:', currentPage)
     }, [currentPage, getAllPosts])
 
     return isAuth ? (
-        <div >
+        <div div >
             <Home
                 profile={profile}
                 isLoading={isLoading}

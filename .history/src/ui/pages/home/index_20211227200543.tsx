@@ -50,37 +50,36 @@ const IdxHome: FC<ContainerHomeType> = ({ isAuth, profile,
 }) => {
 
     useEffect(() => {
-        let axs = axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
         getAllPosts(currentPage)
-        console.log('axs: ', axs)
         console.log('posts mounted, page:', currentPage)
     }, [currentPage, getAllPosts])
 
     return isAuth ? (
-        <div >
-            <Home
-                profile={profile}
-                isLoading={isLoading}
-                users={users}
-                posts={posts}
-                comments={comments}
-                singlePosts={singlePosts}
-                postItem={postItem}
-                editProfile={editProfile}
-                getProfileUser={getProfileUser}
-                likePost={likePost}
-                removelikePost={removelikePost}
-                getAllComments={getAllComments}
-                getPost={getPost}
-                getPostsOfSingleUser={getPostsOfSingleUser}
-                setComment={setComment}
-                createPosts={createPosts}
-            />
-        </div>
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
+        < div >
+        <Home
+            profile={profile}
+            isLoading={isLoading}
+            users={users}
+            posts={posts}
+            comments={comments}
+            singlePosts={singlePosts}
+            postItem={postItem}
+            editProfile={editProfile}
+            getProfileUser={getProfileUser}
+            likePost={likePost}
+            removelikePost={removelikePost}
+            getAllComments={getAllComments}
+            getPost={getPost}
+            getPostsOfSingleUser={getPostsOfSingleUser}
+            setComment={setComment}
+            createPosts={createPosts}
+        />
+        </div >
     )
         : (
-            <Redirect to="/signup" />
-        )
+    <Redirect to="/signup" />
+)
 }
 
 const mapStateToProps = (state: AppStateType) => ({
