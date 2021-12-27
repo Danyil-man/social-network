@@ -3,18 +3,17 @@ import { GetSingleUserType, GetUserType } from "../reducers/usersReducer";
 //import Cookies from "js-cookie";
 
 
-
 export const instanceApi = axios.create({
   baseURL: "https://linkstagram-api.ga",
   headers: {
     "Content-Type": "application/json; charset=utf-8",
     Accept: "application/json",
-    //authorization: "eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjo1ODMwLCJhdXRoZW50aWNhdGVkX2J5IjpbInBhc3N3b3JkIl19.9dpWzAaiKjjL2BGttTl_0ImBI7UV5HriaSV19CRH_oA"
-    authorization: 'Bearer ' + localStorage.getItem('token')
+    //Authorization: "eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjo1ODMwLCJhdXRoZW50aWNhdGVkX2J5IjpbInBhc3N3b3JkIl19.9dpWzAaiKjjL2BGttTl_0ImBI7UV5HriaSV19CRH_oA"
+    Authorization: 'Bearer ' + localStorage.getItem('token')
   },
 });
 
-//let auth = axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
+
 
 //                                               AuthUserAPI
 type ResponseType<D = {}> = {
@@ -48,7 +47,6 @@ export const authAPI = {
       password,
     });
   },
-
 };
 
 //                                          ProfileAPI

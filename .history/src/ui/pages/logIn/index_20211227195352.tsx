@@ -26,7 +26,6 @@ type MapDispatchToPropsType = {
 const IdxLogIn: FC<ContainerLogInType> = (props) => {
     useEffect(() => {
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
-        console.log(localStorage.getItem('token'))
     }, [])
     return (
         <div>

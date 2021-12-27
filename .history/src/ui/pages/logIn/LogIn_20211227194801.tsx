@@ -24,7 +24,7 @@ const LogIn: FC<LogInType> = ({ isAuth, logIn }) => {
         const submit = (values: any) => {
             logIn(values.login, values.password)
             console.log({ values }, isAuth)
-            console.log('Log Effect')
+
         }
     }, [isAuth, logIn])
 

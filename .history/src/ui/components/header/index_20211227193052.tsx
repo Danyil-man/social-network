@@ -106,7 +106,7 @@ const Header: FC<HeaderType> = ({ logOut, getProfile, isAuth, profile }) => {
                                         <Link key={profile.username} to={`/profile/${profile.username}`}>Profile</Link>
                                     </div>
                                     <div className={style.profile__footer}>
-                                        <button onClick={LogOutProfile} className={style.btnLogOut} >
+                                        <button onClick={() => LogOutProfile} className={style.btnLogOut} >
                                             Log out
                                         </button>
                                     </div>

@@ -50,14 +50,6 @@ const authReducer = (
         password: action.data.password,
         isAuth: true,
       };
-    
-    case DELETE_USER_DATA:
-      return{
-        ...state,
-        login: action.data.login,
-        password: action.data.password,
-        isAuth: false,
-      }
 
     case SET_IS_LOADING:
       return {
@@ -94,13 +86,6 @@ export const actions = {
   ({
     type: GET_USER_DATA,
     data: { login, password, isAuth },
-  } as const),
-
-  deleteUserData: (login: string | undefined,
-    password: string | undefined,
-    isAuth: boolean | undefined) => ({
-    type: DELETE_USER_DATA,
-    data: { login, password, isAuth}
   } as const),
 
   setIsLoading: (isLoading: boolean) => ({
@@ -164,7 +149,7 @@ export const logIn =
 
 export const logOut = (): ThunkType => async (dispatch) => {
   localStorage.removeItem('token')
-  dispatch(actions.deleteUserData(undefined, undefined, false))
+  dispatch(actions.getUserData(undefined, undefined, false))
   debugger
 };
 

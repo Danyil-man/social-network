@@ -13,7 +13,6 @@ import { connect } from "react-redux";
 import { AppStateType } from "core/store/redux/reduxStore";
 import { getProfile } from "core/store/reducers/profileReducer";
 import { GetAccountType } from "core/store/api/api";
-import { logOut } from "core/store/reducers/authReducer";
 
 
 i18next
@@ -53,11 +52,12 @@ const Header: FC<HeaderType> = ({ logOut, getProfile, isAuth, profile }) => {
     const [isActive, setIsActive] = useState(false);
     const [isStatus, setIsStatus] = useState(false);
     const { t } = useTranslation();
-    let status = `${t('signedas')} ${profile.username}`;
     const LogOutProfile = () => {
         logOut()
-        console.log(isAuth, profile.email, profile.username)
+        console.log(isAuth)
     }
+    let status = `${t('signedas')} ${profile.username}`;
+
     const languages = [
         {
             code: 'en',
@@ -127,4 +127,4 @@ const mapStateToProps = (state: AppStateType) => ({
     profile: state.profile.profile
 })
 
-export default connect(mapStateToProps, { getProfile, logOut })(Header);
+export default connect(mapStateToProps, log { getProfile })(Header);

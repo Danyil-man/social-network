@@ -42,7 +42,7 @@ i18next
 
 type HeaderType = {
     isAuth: boolean
-    logOut: () => void
+    logOut: (login: string | undefined, username: string | undefined) => void
     getProfile: () => void
     profile: GetAccountType
 }
@@ -53,11 +53,15 @@ const Header: FC<HeaderType> = ({ logOut, getProfile, isAuth, profile }) => {
     const [isActive, setIsActive] = useState(false);
     const [isStatus, setIsStatus] = useState(false);
     const { t } = useTranslation();
+    useEffect(() => {
+        const LogOutProfile = () => {
+            logOut(profile.email, profile.username)
+            console.log(isAuth, profile.email, profile.username)
+        }
+        return () => { getProfile() }
+    }, [getProfile, isAuth, logOut, profile])
     let status = `${t('signedas')} ${profile.username}`;
-    const LogOutProfile = () => {
-        logOut()
-        console.log(isAuth, profile.email, profile.username)
-    }
+
     const languages = [
         {
             code: 'en',

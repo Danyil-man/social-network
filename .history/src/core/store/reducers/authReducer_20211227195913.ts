@@ -150,7 +150,7 @@ export const logIn =
         //let token = response.config.headers.Authorization
         //localStorage.setItem('token', token)
         //axios.defaults.headers.common['Authorization'] = 'Bearer ' + 
-        localStorage.setItem('token', response.headers.authorization)
+        localStorage.setItem('token', response.config.data.headers.authorization)
         debugger
         dispatch(getProfile()) //Request to Set Profile Data
         dispatch(getUsers()) // Response Users List
