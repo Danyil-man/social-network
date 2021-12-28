@@ -39,15 +39,14 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         uppy.use(Tus, { endpoint: 'https://linkstagram-api.ga/posts' })
 
         uppy.on('complete', (result) => {
-            const url = result.successful[0].uploadURL
-            console.log('url', url)
-            console.log('Upload complete! We have uploaded these files:', result.successful)
+            console.log('Upload complete! Weve uploaded these files:', result.successful)
         })
 
         console.log(fileState)
         //get
-        const response = await axios.get('/s3/params')
+        const response = await PostsAPI.getParams();
         console.log('response:', response)
+        //post
         const result = await fetch(response.data, {
             method: 'POST',
             headers: { "Content-Type": "image/jpeg" },

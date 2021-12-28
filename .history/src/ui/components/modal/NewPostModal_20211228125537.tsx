@@ -40,7 +40,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
 
         uppy.on('complete', (result) => {
             const url = result.successful[0].uploadURL
-            console.log('url', url)
+
             console.log('Upload complete! We have uploaded these files:', result.successful)
         })
 
@@ -50,7 +50,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         console.log('response:', response)
         const result = await fetch(response.data, {
             method: 'POST',
-            headers: { "Content-Type": "image/jpeg" },
+            headers: { "Content-Type": "multipart/form-data" },
             body: fileState
         })
         console.log('result', result)

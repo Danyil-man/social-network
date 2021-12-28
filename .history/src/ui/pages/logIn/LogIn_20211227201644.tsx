@@ -21,6 +21,11 @@ const LogIn: FC<LogInType> = ({ isAuth, logIn }) => {
 
     }
 
+    useEffect(() => {
+        let axs = axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
+        console.log('axsLog: ', axs)
+    }, [])
+
     return isAuth ? (
         <Redirect to='/' />
     ) : (

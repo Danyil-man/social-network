@@ -6,7 +6,6 @@ import { Redirect, useHistory } from "react-router";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import axios from "axios";
 
 type LogInType = {
     isAuth: boolean;

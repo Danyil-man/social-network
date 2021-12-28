@@ -206,6 +206,7 @@ export const PostsAPI = {
     return instanceApi.get(`/posts/${postId}`)
   },
   createPost(postItem: CreatePostType) {
+    debugger
     return instanceApi.post<PostAuthor>('/posts', postItem)
   },
   getParams() {

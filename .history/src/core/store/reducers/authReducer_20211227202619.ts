@@ -50,9 +50,9 @@ const authReducer = (
         password: action.data.password,
         isAuth: true,
       };
-
+    
     case DELETE_USER_DATA:
-      return {
+      return{
         ...state,
         login: action.data.login,
         password: action.data.password,
@@ -99,9 +99,9 @@ export const actions = {
   deleteUserData: (login: string | undefined,
     password: string | undefined,
     isAuth: boolean | undefined) => ({
-      type: DELETE_USER_DATA,
-      data: { login, password, isAuth }
-    } as const),
+    type: DELETE_USER_DATA,
+    data: { login, password, isAuth}
+  } as const),
 
   setIsLoading: (isLoading: boolean) => ({
     type: SET_IS_LOADING,
@@ -128,7 +128,7 @@ export const registration =
         dispatch(actions.setUserData(username, login, password, true))
         localStorage.setItem('token', response.headers.authorization)
         dispatch(actions.getUserData(login, password, true));
-
+        debugger
         //localStorage.setItem('token', token)
         dispatch(getProfile())
         dispatch(getUsers()) //Set Users
@@ -151,7 +151,7 @@ export const logIn =
         //localStorage.setItem('token', token)
         //axios.defaults.headers.common['Authorization'] = 'Bearer ' + 
         localStorage.setItem('token', response.headers.authorization)
-
+        debugger
         dispatch(getProfile()) //Request to Set Profile Data
         dispatch(getUsers()) // Response Users List
         //dispatch(getAllPosts()) //Set Posts 

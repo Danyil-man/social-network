@@ -213,8 +213,8 @@ export const getPost = (postId: number): ThunkType => async (dispatch) => {
 export const createPosts = (postItem: CreatePostType): ThunkType => async (dispatch) => {
     dispatch(actions.isLoading(true))
     let response = await PostsAPI.createPost(postItem)
-    debugger
     dispatch(actions.createPost(postItem, response.data))
+    debugger
     dispatch(actions.isLoading(false))
 }
 

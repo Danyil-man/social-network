@@ -206,11 +206,12 @@ export const PostsAPI = {
     return instanceApi.get(`/posts/${postId}`)
   },
   createPost(postItem: CreatePostType) {
+    debugger
     return instanceApi.post<PostAuthor>('/posts', postItem)
   },
-  getParams() {
-    return instanceApi.get('/s3/params')
-  },
+  // getParams() {
+  //   return instanceApi.get('/s3/params')
+  // },
   getPostsOfSingleUser(username: string | undefined) {
     return instanceApi.get<Array<GetSinglePostType>>(`/profiles/${username}/posts`)
   },

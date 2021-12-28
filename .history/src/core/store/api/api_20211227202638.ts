@@ -103,13 +103,13 @@ export const UsersAPI = {
   getUsers() {
     return instanceApi.get<Array<GetUserType>>('/profiles')
   },
-  getSingleProfile(username: string) {
+  getSingleProfile(username: string){
     return instanceApi.get<GetSingleUserType>(`/profiles/${username}`)
   },
   likePost(postId: number) {
     return instanceApi.post(`/posts/${postId}/like`)
   },
-  removeLikePost(postId: number) {
+  removeLikePost(postId: number){
     return instanceApi.delete(`/posts/${postId}/like`)
   }
 }
@@ -122,7 +122,7 @@ type AuthorType = {
   first_name: null,
   followers: number,
   following: number,
-  job_title: null,
+  job_title:null,
   last_name: null,
   profile_photo_url: string | null
 }
@@ -134,7 +134,7 @@ type PostphotosType = {
 
 export type GetAllPostsType = {
   id: number
-  author: AuthorType
+  author:AuthorType
   comments_count: number
   created_at: string
   description: string
@@ -149,13 +149,13 @@ type CommenterType = {
   first_name: null
   followers: number
   following: number
-  job_title: null
+  job_title:null
   last_name: null
-  profile_photo_url: null
+  profile_photo_url:null
 }
 
 export type GetAllComments = {
-  id: number
+  id:number
   commenter: CommenterType
   created_at: string
   message: string
@@ -163,7 +163,7 @@ export type GetAllComments = {
 
 export type GetSinglePostType = {
   id: number
-  author: AuthorType
+  author:AuthorType
   comments_count: number
   created_at: string
   description: string
@@ -189,7 +189,7 @@ export type ImageData = {
 
 export type PostAuthor = {
   id: number
-  author: AuthorType
+  author:AuthorType
   comments_count: number
   created_at: string
   description: string
@@ -199,25 +199,26 @@ export type PostAuthor = {
 }
 
 export const PostsAPI = {
-  getAllPosts(currentPage = 1) {
+  getAllPosts(currentPage=1) {
     return instanceApi.get<Array<GetAllPostsType>>(`/posts?page=${currentPage}`)
   },
   getPost(postId: number) {
     return instanceApi.get(`/posts/${postId}`)
   },
   createPost(postItem: CreatePostType) {
+    debugger
     return instanceApi.post<PostAuthor>('/posts', postItem)
   },
   getParams() {
     return instanceApi.get('/s3/params')
   },
-  getPostsOfSingleUser(username: string | undefined) {
+  getPostsOfSingleUser(username: string | undefined){
     return instanceApi.get<Array<GetSinglePostType>>(`/profiles/${username}/posts`)
   },
   getAllComments(postId: number) {
     return instanceApi.get<Array<GetAllComments>>(`/posts/${postId}/comments`)
   },
   sendComment(postId: number, message: string) {
-    return instanceApi.post<GetAllComments>(`/posts/${postId}/comments`, { message: message })
+    return instanceApi.post<GetAllComments>(`/posts/${postId}/comments`, {message: message})
   }
 }

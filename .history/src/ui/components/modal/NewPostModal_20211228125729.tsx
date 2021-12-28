@@ -40,7 +40,6 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
 
         uppy.on('complete', (result) => {
             const url = result.successful[0].uploadURL
-            console.log('url', url)
             console.log('Upload complete! We have uploaded these files:', result.successful)
         })
 

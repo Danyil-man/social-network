@@ -40,20 +40,21 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
 
         uppy.on('complete', (result) => {
             const url = result.successful[0].uploadURL
-            console.log('url', url)
+
             console.log('Upload complete! We have uploaded these files:', result.successful)
         })
 
         console.log(fileState)
         //get
-        const response = await axios.get('/s3/params')
-        console.log('response:', response)
-        const result = await fetch(response.data, {
-            method: 'POST',
-            headers: { "Content-Type": "image/jpeg" },
-            body: fileState
-        })
-        console.log('result', result)
+        // const response = await axios.get('/s3/params')
+        // console.log('response:', response)
+        //post
+        // const result = await fetch(response.data, {
+        //     method: 'POST',
+        //     headers: { "Content-Type": "image/jpeg" },
+        //     body: fileState
+        // })
+        // console.log('result', result)
     }
     const submit = (values: any) => {
         handleSubmit()
