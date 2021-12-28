@@ -45,7 +45,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
 
         console.log(fileState)
         //get
-        const response = await PostsAPI.getParams()
+        const response = await axios.get('/s3/params')
         console.log('response:', response)
         const result = await fetch(response.data, {
             method: 'POST',

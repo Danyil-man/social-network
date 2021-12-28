@@ -9,7 +9,6 @@ import dropImg from 'public/images/dropBackground.png';
 import axios from "axios";
 import Uppy from "@uppy/core";
 import Tus from '@uppy/tus'
-import { AwsS3 } from "uppy";
 
 
 interface PropsModal {
@@ -28,32 +27,33 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
     }
     const handleSubmit = async () => {
 
-        let uppy = new Uppy()
+        //     let uppy = new Uppy({
+        //         restrictions: { maxNumberOfFiles: 2 },
+        //         autoProceed: true
+        //     });
+        //     // uppy.use(Uppy.Dashboard, {
+        //     //     inline: true,
+        //     //     //target: '#'
+        //     // }).use(Uppy.Tus, { endpoint: 'https://linkstagram-api.ga/posts' })
 
-        // uppy.use(Uppy.Dashboard, {
-        //     inline: true,
-        //     //target: '#'
-        // }).use(Uppy.Tus, { endpoint: 'https://linkstagram-api.ga/posts' })
+        //     uppy.use(Tus, { endpoint: 'https://linkstagram-api.ga/s3/params' })
 
-        uppy.use(Tus, { endpoint: 'https://linkstagram-api.ga/posts' })
+        //     uppy.on('complete', (result) => {
+        //         const url = result.successful[0].uploadURL
+        //         console.log('url', url)
+        //         console.log('Upload complete! We have uploaded these files:', result.successful)
+        //     })
 
-        uppy.on('complete', (result) => {
-            const url = result.successful[0].uploadURL
-            console.log('url', url)
-            console.log('Upload complete! We have uploaded these files:', result.successful)
-        })
-
-        console.log(fileState)
-        //get
-        const response = await PostsAPI.getParams()
-        console.log('response:', response)
-        const result = await fetch(response.data, {
-            method: 'POST',
-            headers: { "Content-Type": "image/jpeg" },
-            body: fileState
-        })
-        console.log('result', result)
-
+        //     console.log(fileState)
+        //     //get
+        //     const response = await axios.get('/s3/params')
+        //     console.log('response:', response)
+        //     const result = await fetch(response.data, {
+        //         method: 'POST',
+        //         headers: { "Content-Type": "image/jpeg" },
+        //         body: fileState
+        //     })
+        //     console.log('result', result)
     }
 
     const submit = (values: any) => {
@@ -124,7 +124,3 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
 }
 
 export default NewPostModal;
-
-function ms(arg0: string): number | undefined {
-    throw new Error("Function not implemented.");
-}

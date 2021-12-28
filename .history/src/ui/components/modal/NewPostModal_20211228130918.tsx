@@ -28,32 +28,63 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
     }
     const handleSubmit = async () => {
 
-        let uppy = new Uppy()
+        let uppy = new Uppy({
+            restrictions: { maxNumberOfFiles: 2 },
+        });
+        //     // uppy.use(Uppy.Dashboard, {
+        //     //     inline: true,
+        //     //     //target: '#'
+        //     // }).use(Uppy.Tus, { endpoint: 'https://linkstagram-api.ga/posts' })
 
-        // uppy.use(Uppy.Dashboard, {
-        //     inline: true,
-        //     //target: '#'
-        // }).use(Uppy.Tus, { endpoint: 'https://linkstagram-api.ga/posts' })
+        //     uppy.use(Tus, { endpoint: 'https://linkstagram-api.ga/s3/params' })
 
-        uppy.use(Tus, { endpoint: 'https://linkstagram-api.ga/posts' })
+        //     uppy.on('complete', (result) => {
+        //         const url = result.successful[0].uploadURL
+        //         console.log('url', url)
+        //         console.log('Upload complete! We have uploaded these files:', result.successful)
+        //     })
 
-        uppy.on('complete', (result) => {
-            const url = result.successful[0].uploadURL
-            console.log('url', url)
-            console.log('Upload complete! We have uploaded these files:', result.successful)
+        //     console.log(fileState)
+        //     //get
+        //     const response = await axios.get('/s3/params')
+        //     console.log('response:', response)
+        //     const result = await fetch(response.data, {
+        //         method: 'POST',
+        //         headers: { "Content-Type": "image/jpeg" },
+        //         body: fileState
+        //     })
+        //     console.log('result', result)
+        uppy.use(AwsS3, {
+            getUploadParameters(file) {
+                // Send a request to our PHP signing endpoint.
+                return fetch('/s3-sign.php', {
+                    method: 'post',
+                    // Send and receive JSON.
+                    headers: {
+                        accept: 'application/json',
+                        'content-type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        filename: file.name,
+                        contentType: file.type,
+                    }),
+                }).then((response) => {
+                    // Parse the JSON response.
+                    return response.json()
+                }).then((data) => {
+                    // Return an object in the correct shape.
+                    return {
+                        method: data.method,
+                        url: data.url,
+                        fields: data.fields,
+                        // Provide content type header required by S3
+                        headers: {
+                            'Content-Type': file.type,
+                        },
+                    }
+                })
+            },
         })
-
-        console.log(fileState)
-        //get
-        const response = await PostsAPI.getParams()
-        console.log('response:', response)
-        const result = await fetch(response.data, {
-            method: 'POST',
-            headers: { "Content-Type": "image/jpeg" },
-            body: fileState
-        })
-        console.log('result', result)
-
     }
 
     const submit = (values: any) => {
@@ -124,7 +155,3 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
 }
 
 export default NewPostModal;
-
-function ms(arg0: string): number | undefined {
-    throw new Error("Function not implemented.");
-}
