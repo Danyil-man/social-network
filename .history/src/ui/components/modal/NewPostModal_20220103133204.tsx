@@ -10,7 +10,6 @@ import axios from "axios";
 import Uppy from "@uppy/core";
 import Tus from '@uppy/tus'
 import { S3 } from 'aws-sdk'
-import { Dashboard } from "uppy";
 
 
 interface PropsModal {
@@ -31,10 +30,10 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
 
         let uppy = new Uppy()
 
-        // uppy.use(Dashboard, {
-        //     inline: true,
-        //     //target: '#'
-        // }).use(Tus, { endpoint: 'https://linkstagram-api.ga/posts' })
+        uppy.use(Uppy.Dashboard, {
+            inline: true,
+            //target: '#'
+        }).use(Uppy.Tus, { endpoint: 'https://linkstagram-api.ga/posts' })
 
         uppy.use(Tus, { endpoint: 'https://linkstagram-api.ga/posts' })
 

@@ -9,8 +9,7 @@ import dropImg from 'public/images/dropBackground.png';
 import axios from "axios";
 import Uppy from "@uppy/core";
 import Tus from '@uppy/tus'
-import { S3 } from 'aws-sdk'
-import { Dashboard } from "uppy";
+import { AwsS3 } from "uppy";
 
 
 interface PropsModal {
@@ -31,12 +30,12 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
 
         let uppy = new Uppy()
 
-        // uppy.use(Dashboard, {
+        // uppy.use(Uppy.Dashboard, {
         //     inline: true,
         //     //target: '#'
-        // }).use(Tus, { endpoint: 'https://linkstagram-api.ga/posts' })
+        // }).use(Uppy.Tus, { endpoint: 'https://linkstagram-api.ga/posts' })
 
-        uppy.use(Tus, { endpoint: 'https://linkstagram-api.ga/posts' })
+        //uppy.use(Tus, { endpoint: 'https://linkstagram-api.ga/posts' })
 
         uppy.on('complete', (result) => {
             const url = result.successful[0].uploadURL
@@ -51,48 +50,11 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         const result = await fetch(response.data, {
             method: 'POST',
             headers: { "Content-Type": "image/jpeg" },
-            //body: fileState
+            body: fileState
         })
-        console.log('result', result, 'response:', response)
-        // function handler(field: any, file: any, filename: any, encoding: any, mimetype: any) {
-        //     if (mimetype && mimetype.match(/^image\/(.*)/)) {
-        //         const imageType = mimetype.match(/^image\/(.*)/)[1];
-        //         const s3Stream = new S3({
-        //             accessKeyId: 'minio',
-        //             secretAccessKey: 'minio123',
-        //             endpoint: 'https://linkstagram-api.ga/posts',
-        //             s3ForcePathStyle: true, // needed with minio?
-        //             signatureVersion: 'v4',
-        //         });
-        //         const promise = s3Stream
-        //             .upload(
-        //                 {
-        //                     Bucket: 'test',
-        //                     Key: `200x200_${filename}`,
-        //                     Body: file
-        //                 }
-        //             )
-        //             .promise();
-        //         //promises.push(promise);
-        //     }
-        //     const s3Stream = new S3({
-        //         accessKeyId: 'minio',
-        //         secretAccessKey: 'minio123',
-        //         endpoint: 'https://linkstagram-api.ga/posts',
-        //         s3ForcePathStyle: true, // needed with minio?
-        //         signatureVersion: 'v4',
-        //     });
-        //     const promise = s3Stream
-        //         .upload({ Bucket: 'test', Key: filename, Body: file })
-        //         .promise();
-        //     //promises.push(promise);
-        // }
-    };
-    // .pipe(
-    //     sharp()
-    //         .resize(200, 200)
-    //     [imageType](),
-    // ),
+        console.log('result', result)
+
+    }
 
     const submit = (values: any) => {
         handleSubmit()
@@ -108,7 +70,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                         <Formik
                             initialValues={{
                                 description: postItem.description,
-                                photos_attributes: postItem.photos_attributes
+                                photo: fileState
                             }}
                             onSubmit={submit}
                         >
@@ -163,3 +125,6 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
 
 export default NewPostModal;
 
+function ms(arg0: string): number | undefined {
+    throw new Error("Function not implemented.");
+}

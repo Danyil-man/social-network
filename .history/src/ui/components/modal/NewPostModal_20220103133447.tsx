@@ -31,10 +31,10 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
 
         let uppy = new Uppy()
 
-        // uppy.use(Dashboard, {
-        //     inline: true,
-        //     //target: '#'
-        // }).use(Tus, { endpoint: 'https://linkstagram-api.ga/posts' })
+        uppy.use(Dashboard, {
+            inline: true,
+            //target: '#'
+        }).use(Tus, { endpoint: 'https://linkstagram-api.ga/posts' })
 
         uppy.use(Tus, { endpoint: 'https://linkstagram-api.ga/posts' })
 
