@@ -12,7 +12,6 @@ import Axios from 'axios';
 import { DashboardModal } from '@uppy/react'
 import '@uppy/core/dist/style.css';
 import '@uppy/dashboard/dist/style.css'
-import { XHRUpload } from "uppy";
 
 
 type PropsModal = {
@@ -35,17 +34,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
 
 
     const handleSubmit = async () => {
-        console.log("FILE:", fileState)
-        //get
-        const response = await PostsAPI.getParams()
-        console.log('response:', response)
-        const result = (response.data, {
-            method: 'POST',
-            headers: { "Content-Type": "image/jpeg" },
-            //body: fileState
-        })
-        console.log('result', result)
-        console.log('result', result, 'response:', response)
+
         let uppy = new Uppy()
             .use(XHRUpload, {
                 endpoint: 'https://linkstagram-api.ga/posts',
@@ -86,7 +75,17 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         //     }
         // })
     }
-
+    // console.log("FILE:", fileState)
+    // //get
+    // const response = await PostsAPI.getParams()
+    // console.log('response:', response)
+    // const result = (response.data, {
+    //     method: 'POST',
+    //     headers: { "Content-Type": "image/jpeg" },
+    //     //body: fileState
+    // })
+    // console.log('result', result)
+    // console.log('result', result, 'response:', response)       
 
 
 

@@ -1,6 +1,6 @@
 import { CreatePostType, ImagePhotoType, PostsAPI } from "core/store/api/api";
 import { Field, Form, Formik } from "formik";
-import React, { Component, FC, useState } from "react";
+import React, { FC, useState } from "react";
 import Preloader from "../common/Preloader";
 import style from "./Modal.module.scss"
 import Dropzone from "react-dropzone-uploader"
@@ -12,7 +12,6 @@ import Axios from 'axios';
 import { DashboardModal } from '@uppy/react'
 import '@uppy/core/dist/style.css';
 import '@uppy/dashboard/dist/style.css'
-import { XHRUpload } from "uppy";
 
 
 type PropsModal = {
@@ -31,62 +30,61 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         setFileState(file)
     }
 
+    // let uppy = new Uppy()
+    //     .use(XHRUpload, {
+    //         endpoint: 'https://linkstagram-api.ga/posts',
+    //         formData: true
+    //     })
 
+    //     .on('complete', (result) => {
+    //         const url = result.successful[0].uploadURL
+    //         //console.log('url', url)
+    //         //console.log('Upload complete! We have uploaded these files:', result.successful)
+    //     })
 
 
     const handleSubmit = async () => {
-        console.log("FILE:", fileState)
-        //get
-        const response = await PostsAPI.getParams()
-        console.log('response:', response)
-        const result = (response.data, {
-            method: 'POST',
-            headers: { "Content-Type": "image/jpeg" },
-            //body: fileState
-        })
-        console.log('result', result)
-        console.log('result', result, 'response:', response)
-        let uppy = new Uppy()
-            .use(XHRUpload, {
-                endpoint: 'https://linkstagram-api.ga/posts',
-                formData: true
-            })
 
-            .on('complete', (result) => {
-                const url = result.successful[0].uploadURL
-                //console.log('url', url)
-                //console.log('Upload complete! We have uploaded these files:', result.successful)
-            })
-        // let uppy = new Uppy({
-        //     id: 'uppy',
-        //     restrictions: {
-        //         maxFileSize: 10000000, //10MB
-        //         allowedFileTypes: ['image/*'],
-        //         maxNumberOfFiles: 1,
-        //     },
-        //     autoProceed: false,
-        //     debug: true
-        // })
+        let uppy = new Uppy({
+            id: 'uppy',
+            restrictions: {
+                maxFileSize: 10000000, //10MB
+                allowedFileTypes: ['image/*'],
+                maxNumberOfFiles: 1,
+            },
+            autoProceed: false,
+            debug: true
+        })
 
         // Tell it to use their AWS S3 plugin
         // Will get pre-signed URL from server API
-        // uppy.use(AwsS3, {
-        //     getUploadParameters(file) {
-        //         console.log('file: ', file);
-        //         return Axios(`/api/signurl/put/${file.name}`)
-        //             .then(response => {
-        //                 console.log('response: ', response);
-        //                 // Return an object in the correct shape.
-        //                 return {
-        //                     method: 'PUT',
-        //                     url: response.data.url,
-        //                     fields: []
-        //                 }
-        //             });
-        //     }
-        // })
+        uppy.use(AwsS3, {
+            getUploadParameters(file) {
+                console.log('file: ', file);
+                return Axios(`/api/signurl/put/${file.name}`)
+                    .then(response => {
+                        console.log('response: ', response);
+                        // Return an object in the correct shape.
+                        return {
+                            method: 'PUT',
+                            url: response.data.url,
+                            fields: []
+                        }
+                    });
+            }
+        })
     }
-
+    // console.log("FILE:", fileState)
+    // //get
+    // const response = await PostsAPI.getParams()
+    // console.log('response:', response)
+    // const result = (response.data, {
+    //     method: 'POST',
+    //     headers: { "Content-Type": "image/jpeg" },
+    //     //body: fileState
+    // })
+    // console.log('result', result)
+    // console.log('result', result, 'response:', response)       
 
 
 

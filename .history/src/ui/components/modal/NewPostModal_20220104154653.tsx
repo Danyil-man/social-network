@@ -12,7 +12,6 @@ import Axios from 'axios';
 import { DashboardModal } from '@uppy/react'
 import '@uppy/core/dist/style.css';
 import '@uppy/dashboard/dist/style.css'
-import { XHRUpload } from "uppy";
 
 
 type PropsModal = {

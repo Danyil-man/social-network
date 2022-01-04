@@ -211,7 +211,7 @@ export const PostsAPI = {
     
   },
   getParams() {
-    return instanceApi.get('/s3/params')
+    return axios.get('/s3/params')
   },
   getPostsOfSingleUser(username: string | undefined) {
     return instanceApi.get<Array<GetSinglePostType>>(`/profiles/${username}/posts`)
