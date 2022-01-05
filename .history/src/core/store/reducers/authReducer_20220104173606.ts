@@ -166,6 +166,7 @@ export const logIn =
 export const logOut = (): ThunkType => async (dispatch) => {
   localStorage.removeItem('token')
   dispatch(actions.deleteUserData(undefined, undefined, false))
+  debugger
 };
 
 export default authReducer;

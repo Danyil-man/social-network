@@ -29,7 +29,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         console.log(file)
     }
 
-    const HandleSubmit = (values: any) => {
+    const handleSubmit = (values: any) => {
         const uppy = new Uppy({
             meta: { type: 'avatar' },
             restrictions: { maxNumberOfFiles: 2 },
@@ -125,7 +125,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
 
 
     const submit = (values: any) => {
-        //handleSubmit(values)
+        handleSubmit(values)
         createPosts(values)
         console.log({ values })
     }
@@ -138,13 +138,12 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                         <Formik
                             initialValues={{
                                 description: postItem.description,
-                                photos_attributes: fileState
+                                photos_attributes: postItem.photos_attributes
                             }}
                             onSubmit={submit}
                         >
                             <Form className={style.body}>
                                 <div className={style.dropzoneBox}>
-                                    <HandleSubmit />
                                     {/* <Dropzone
 
                                         onChangeStatus={handleChange}

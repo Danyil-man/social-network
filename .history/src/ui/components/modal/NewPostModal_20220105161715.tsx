@@ -8,7 +8,6 @@ import 'react-dropzone-uploader/dist/styles.css'
 import dropImg from 'public/images/dropBackground.png';
 import Uppy from '@uppy/core';
 import AwsS3 from "@uppy/aws-s3";
-import { DragDrop } from "@uppy/react";
 
 
 
@@ -29,7 +28,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         console.log(file)
     }
 
-    const HandleSubmit = (values: any) => {
+    const handleSubmit = async () => {
         const uppy = new Uppy({
             meta: { type: 'avatar' },
             restrictions: { maxNumberOfFiles: 2 },
@@ -41,7 +40,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         uppy.on('complete', (result) => {
             const data = result.successful
 
-            const values: Array<ImagePhotoType> = data.map(item => {
+            const obj: Array<ImagePhotoType> = data.map(item => {
                 let key = '';
 
                 if (item.meta.key) {
@@ -62,70 +61,65 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                     }
                 }
             })
-            console.log('Obj', values)
-            createPosts(values)
+            createPosts(obj)
         })
-        return (
-            <DragDrop uppy={uppy} />
-        )
+        // console.log("FILE:", fileState)
+        // //get
+        // const response = await PostsAPI.getParams()
+        // console.log('response:', response)
+        // const result = (response.data, {
+        //     method: 'POST',
+        //     headers: { "Content-Type": "image/jpeg" },
+        //     //body: fileState
+        // })
+        // console.log('result', result)
+        // console.log('result', result, 'response:', response)
+        // let uppy = new Uppy()
+        //     .use(XHRUpload, {
+        //         endpoint: 'https://linkstagram-api.ga/posts',
+        //         formData: true
+        //     })
+
+        //     .on('complete', (result) => {
+        //         const url = result.successful[0].uploadURL
+        //         //console.log('url', url)
+        //         //console.log('Upload complete! We have uploaded these files:', result.successful)
+        //     })
+        // let uppy = new Uppy({
+        //     id: 'uppy',
+        //     restrictions: {
+        //         maxFileSize: 10000000, //10MB
+        //         allowedFileTypes: ['image/*'],
+        //         maxNumberOfFiles: 1,
+        //     },
+        //     autoProceed: false,
+        //     debug: true
+        // })
+
+        // Tell it to use their AWS S3 plugin
+        // Will get pre-signed URL from server API
+        // uppy.use(AwsS3, {
+        //     getUploadParameters(file) {
+        //         console.log('file: ', file);
+        //         return Axios(`/api/signurl/put/${file.name}`)
+        //             .then(response => {
+        //                 console.log('response: ', response);
+        //                 // Return an object in the correct shape.
+        //                 return {
+        //                     method: 'PUT',
+        //                     url: response.data.url,
+        //                     fields: []
+        //                 }
+        //             });
+        //     }
+        // })
     }
-    // console.log("FILE:", fileState)
-    // //get
-    // const response = await PostsAPI.getParams()
-    // console.log('response:', response)
-    // const result = (response.data, {
-    //     method: 'POST',
-    //     headers: { "Content-Type": "image/jpeg" },
-    //     //body: fileState
-    // })
-    // console.log('result', result)
-    // console.log('result', result, 'response:', response)
-    // let uppy = new Uppy()
-    //     .use(XHRUpload, {
-    //         endpoint: 'https://linkstagram-api.ga/posts',
-    //         formData: true
-    //     })
-
-    //     .on('complete', (result) => {
-    //         const url = result.successful[0].uploadURL
-    //         //console.log('url', url)
-    //         //console.log('Upload complete! We have uploaded these files:', result.successful)
-    //     })
-    // let uppy = new Uppy({
-    //     id: 'uppy',
-    //     restrictions: {
-    //         maxFileSize: 10000000, //10MB
-    //         allowedFileTypes: ['image/*'],
-    //         maxNumberOfFiles: 1,
-    //     },
-    //     autoProceed: false,
-    //     debug: true
-    // })
-
-    // Tell it to use their AWS S3 plugin
-    // Will get pre-signed URL from server API
-    // uppy.use(AwsS3, {
-    //     getUploadParameters(file) {
-    //         console.log('file: ', file);
-    //         return Axios(`/api/signurl/put/${file.name}`)
-    //             .then(response => {
-    //                 console.log('response: ', response);
-    //                 // Return an object in the correct shape.
-    //                 return {
-    //                     method: 'PUT',
-    //                     url: response.data.url,
-    //                     fields: []
-    //                 }
-    //             });
-    //     }
-    // })
-
 
 
 
 
     const submit = (values: any) => {
-        //handleSubmit(values)
+        handleSubmit()
         createPosts(values)
         console.log({ values })
     }
@@ -138,17 +132,16 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                         <Formik
                             initialValues={{
                                 description: postItem.description,
-                                photos_attributes: fileState
+                                photos_attributes: postItem.photos_attributes
                             }}
                             onSubmit={submit}
                         >
                             <Form className={style.body}>
                                 <div className={style.dropzoneBox}>
-                                    <HandleSubmit />
-                                    {/* <Dropzone
+
+                                    <Dropzone
 
                                         onChangeStatus={handleChange}
-                                        //onSubmit={handleSubmit}
                                         inputContent='Choose any photo from your library'
                                         maxFiles={2}
 
@@ -162,7 +155,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                                             },
                                             dropzoneActive: { borderColor: 'blue' },
                                         }}
-                                    /> */}
+                                    />
                                 </div>
                                 <div className={style.descriptionBlock}>
                                     <label>Description</label>

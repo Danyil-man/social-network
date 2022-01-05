@@ -8,7 +8,6 @@ import 'react-dropzone-uploader/dist/styles.css'
 import dropImg from 'public/images/dropBackground.png';
 import Uppy from '@uppy/core';
 import AwsS3 from "@uppy/aws-s3";
-import { DragDrop } from "@uppy/react";
 
 
 
@@ -29,7 +28,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         console.log(file)
     }
 
-    const HandleSubmit = (values: any) => {
+    const handleSubmit = ({ values }: any) => {
         const uppy = new Uppy({
             meta: { type: 'avatar' },
             restrictions: { maxNumberOfFiles: 2 },
@@ -65,9 +64,6 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
             console.log('Obj', values)
             createPosts(values)
         })
-        return (
-            <DragDrop uppy={uppy} />
-        )
     }
     // console.log("FILE:", fileState)
     // //get
@@ -125,8 +121,8 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
 
 
     const submit = (values: any) => {
-        //handleSubmit(values)
-        createPosts(values)
+        handleSubmit(values)
+        //createPosts(values)
         console.log({ values })
     }
     return (
@@ -138,14 +134,14 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                         <Formik
                             initialValues={{
                                 description: postItem.description,
-                                photos_attributes: fileState
+                                //photos_attributes: postItem.photos_attributes
                             }}
                             onSubmit={submit}
                         >
                             <Form className={style.body}>
                                 <div className={style.dropzoneBox}>
-                                    <HandleSubmit />
-                                    {/* <Dropzone
+
+                                    <Dropzone
 
                                         onChangeStatus={handleChange}
                                         //onSubmit={handleSubmit}
@@ -162,7 +158,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                                             },
                                             dropzoneActive: { borderColor: 'blue' },
                                         }}
-                                    /> */}
+                                    />
                                 </div>
                                 <div className={style.descriptionBlock}>
                                     <label>Description</label>

@@ -9,9 +9,9 @@ export const instanceApi = axios.create({
   headers: {
     "Content-Type": "application/json; charset=utf-8",
     Accept: "application/json",
-    //Authorization: "eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjo1ODMwLCJhdXRoZW50aWNhdGVkX2J5IjpbInBhc3N3b3JkIl19.9dpWzAaiKjjL2BGttTl_0ImBI7UV5HriaSV19CRH_oA"
+    Authorization: "eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjo1ODMwLCJhdXRoZW50aWNhdGVkX2J5IjpbInBhc3N3b3JkIl19.9dpWzAaiKjjL2BGttTl_0ImBI7UV5HriaSV19CRH_oA"
     //authorization: 'Bearer ' + localStorage.getItem('token')
-    Authorization: `${token}`
+    //Authorization: `Bearer ${token}`
   },
 });
 
@@ -207,9 +207,8 @@ export const PostsAPI = {
     return instanceApi.get(`/posts/${postId}`)
   },
   createPost(postItem: CreatePostType) {
-   // debugger
     return instanceApi.post<PostAuthor>('/posts', postItem)
-    
+
   },
   getParams() {
     return instanceApi.get('/s3/params')

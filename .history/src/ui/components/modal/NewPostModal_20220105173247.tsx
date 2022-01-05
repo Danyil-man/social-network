@@ -8,7 +8,6 @@ import 'react-dropzone-uploader/dist/styles.css'
 import dropImg from 'public/images/dropBackground.png';
 import Uppy from '@uppy/core';
 import AwsS3 from "@uppy/aws-s3";
-import { DragDrop } from "@uppy/react";
 
 
 
@@ -29,7 +28,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         console.log(file)
     }
 
-    const HandleSubmit = (values: any) => {
+    const handleSubmit = (values: any) => {
         const uppy = new Uppy({
             meta: { type: 'avatar' },
             restrictions: { maxNumberOfFiles: 2 },
@@ -65,68 +64,64 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
             console.log('Obj', values)
             createPosts(values)
         })
-        return (
-            <DragDrop uppy={uppy} />
-        )
+        // console.log("FILE:", fileState)
+        // //get
+        // const response = await PostsAPI.getParams()
+        // console.log('response:', response)
+        // const result = (response.data, {
+        //     method: 'POST',
+        //     headers: { "Content-Type": "image/jpeg" },
+        //     //body: fileState
+        // })
+        // console.log('result', result)
+        // console.log('result', result, 'response:', response)
+        // let uppy = new Uppy()
+        //     .use(XHRUpload, {
+        //         endpoint: 'https://linkstagram-api.ga/posts',
+        //         formData: true
+        //     })
+
+        //     .on('complete', (result) => {
+        //         const url = result.successful[0].uploadURL
+        //         //console.log('url', url)
+        //         //console.log('Upload complete! We have uploaded these files:', result.successful)
+        //     })
+        // let uppy = new Uppy({
+        //     id: 'uppy',
+        //     restrictions: {
+        //         maxFileSize: 10000000, //10MB
+        //         allowedFileTypes: ['image/*'],
+        //         maxNumberOfFiles: 1,
+        //     },
+        //     autoProceed: false,
+        //     debug: true
+        // })
+
+        // Tell it to use their AWS S3 plugin
+        // Will get pre-signed URL from server API
+        // uppy.use(AwsS3, {
+        //     getUploadParameters(file) {
+        //         console.log('file: ', file);
+        //         return Axios(`/api/signurl/put/${file.name}`)
+        //             .then(response => {
+        //                 console.log('response: ', response);
+        //                 // Return an object in the correct shape.
+        //                 return {
+        //                     method: 'PUT',
+        //                     url: response.data.url,
+        //                     fields: []
+        //                 }
+        //             });
+        //     }
+        // })
     }
-    // console.log("FILE:", fileState)
-    // //get
-    // const response = await PostsAPI.getParams()
-    // console.log('response:', response)
-    // const result = (response.data, {
-    //     method: 'POST',
-    //     headers: { "Content-Type": "image/jpeg" },
-    //     //body: fileState
-    // })
-    // console.log('result', result)
-    // console.log('result', result, 'response:', response)
-    // let uppy = new Uppy()
-    //     .use(XHRUpload, {
-    //         endpoint: 'https://linkstagram-api.ga/posts',
-    //         formData: true
-    //     })
-
-    //     .on('complete', (result) => {
-    //         const url = result.successful[0].uploadURL
-    //         //console.log('url', url)
-    //         //console.log('Upload complete! We have uploaded these files:', result.successful)
-    //     })
-    // let uppy = new Uppy({
-    //     id: 'uppy',
-    //     restrictions: {
-    //         maxFileSize: 10000000, //10MB
-    //         allowedFileTypes: ['image/*'],
-    //         maxNumberOfFiles: 1,
-    //     },
-    //     autoProceed: false,
-    //     debug: true
-    // })
-
-    // Tell it to use their AWS S3 plugin
-    // Will get pre-signed URL from server API
-    // uppy.use(AwsS3, {
-    //     getUploadParameters(file) {
-    //         console.log('file: ', file);
-    //         return Axios(`/api/signurl/put/${file.name}`)
-    //             .then(response => {
-    //                 console.log('response: ', response);
-    //                 // Return an object in the correct shape.
-    //                 return {
-    //                     method: 'PUT',
-    //                     url: response.data.url,
-    //                     fields: []
-    //                 }
-    //             });
-    //     }
-    // })
-
 
 
 
 
     const submit = (values: any) => {
-        //handleSubmit(values)
-        createPosts(values)
+        handleSubmit(values)
+        //createPosts(values)
         console.log({ values })
     }
     return (
@@ -138,14 +133,14 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                         <Formik
                             initialValues={{
                                 description: postItem.description,
-                                photos_attributes: fileState
+                                //photos_attributes: postItem.photos_attributes
                             }}
                             onSubmit={submit}
                         >
                             <Form className={style.body}>
                                 <div className={style.dropzoneBox}>
-                                    <HandleSubmit />
-                                    {/* <Dropzone
+
+                                    <Dropzone
 
                                         onChangeStatus={handleChange}
                                         //onSubmit={handleSubmit}
@@ -162,7 +157,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                                             },
                                             dropzoneActive: { borderColor: 'blue' },
                                         }}
-                                    /> */}
+                                    />
                                 </div>
                                 <div className={style.descriptionBlock}>
                                     <label>Description</label>

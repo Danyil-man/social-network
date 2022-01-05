@@ -138,7 +138,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                         <Formik
                             initialValues={{
                                 description: postItem.description,
-                                photos_attributes: fileState
+                                photos_attributes: postItem.photos_attributes
                             }}
                             onSubmit={submit}
                         >

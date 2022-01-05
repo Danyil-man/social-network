@@ -125,9 +125,8 @@ export const registration =
       let response = await authAPI.reg(username, login, password)
       if (response.data.success) {
         //let token = response.config.headers.Authorization
-        localStorage.setItem('token', response.headers.authorization)
         dispatch(actions.setUserData(username, login, password, true))
-
+        localStorage.setItem('token', response.headers.authorization)
         dispatch(actions.getUserData(login, password, true));
 
         //localStorage.setItem('token', token)
@@ -147,11 +146,11 @@ export const logIn =
       dispatch(actions.setIsLoading(true))
       let response = await authAPI.login(login, password)
       if (response) {
-        localStorage.setItem('token', response.headers.authorization)
         dispatch(actions.getUserData(login, password, true));
         //let token = response.config.headers.Authorization
         //localStorage.setItem('token', token)
         //axios.defaults.headers.common['Authorization'] = 'Bearer ' + 
+        localStorage.setItem('token', response.headers.authorization)
 
         dispatch(getProfile()) //Request to Set Profile Data
         dispatch(getUsers()) // Response Users List
@@ -166,6 +165,7 @@ export const logIn =
 export const logOut = (): ThunkType => async (dispatch) => {
   localStorage.removeItem('token')
   dispatch(actions.deleteUserData(undefined, undefined, false))
+  debugger
 };
 
 export default authReducer;
