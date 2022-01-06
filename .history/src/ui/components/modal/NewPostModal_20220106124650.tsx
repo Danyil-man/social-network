@@ -22,7 +22,7 @@ type PropsModal = {
 const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
     isLoading, createPosts }) => {
     const [isModal, setIsModal] = useState(true);
-    const [fileState, setFileState] = useState(null)
+    //const [fileState, setFileState] = useState(postItem.photos_attributes)
 
     // const handleChange = ({ file }: any) => {
     //     setFileState(file)
@@ -30,9 +30,9 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
     // }
 
 
-    const UploadPhoto = () => {
+    const handleSubmit = (values: any) => {
         const uppy = new Uppy({
-            meta: { type: 'photos' },
+            meta: { type: 'photos_attributes' },
             restrictions: { maxNumberOfFiles: 2 },
             autoProceed: true
         })
@@ -42,11 +42,10 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
             const data = result.successful
 
             const obj: Array<ImagePhotoType> = data.map(item => {
-
                 let key = '';
 
                 if (item.meta.key) {
-                    key = item.meta.key as string;
+                    key = item.meta.key as string
                 }
 
                 const [storage, id] = key.split('/')
@@ -61,27 +60,19 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                             mime_type: item.meta.type || ''
                         }
                     }
-
                 }
             })
-            console.log('Photo', obj)
+            console.log('Obj', obj)
+            values = obj
+            createPosts(values)
         })
         return (
-            <>
-
-                <DragDrop uppy={uppy} />
-
-
-
-            </>
-
-
+            <DragDrop uppy={uppy} />
         )
     }
 
     const submit = (values: any) => {
-        //handleSubmit()
-        //uploadPhoto(values.photo)
+        handleSubmit(values)
         createPosts(values)
         console.log({ values })
     }
@@ -94,14 +85,33 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                         <Formik
                             initialValues={{
                                 description: postItem.description,
-                                photo: postItem.photos_attributes
+                                photos_attributes: ''
                             }}
                             onSubmit={submit}
                         >
-
                             <Form className={style.body}>
-                                {/* <UploadPhoto /> */}
-                                <UploadPhoto />
+                                <div className={style.dropzoneBox}>
+                                    <Field name='photos_attributes' type='file' />
+                                    {/* <HandleSubmit /> */}
+                                    {/* <Dropzone
+
+                                        onChangeStatus={handleChange}
+                                        //onSubmit={handleSubmit}
+                                        inputContent='Choose any photo from your library'
+                                        maxFiles={2}
+
+                                        styles={{
+                                            dropzone: {
+                                                width: 480, height: 345,
+                                                margin: 0,
+                                                padding: 0,
+                                                backgroundImage: dropImg, backgroundColor: 'lightgrey',
+                                                color: 'white'
+                                            },
+                                            dropzoneActive: { borderColor: 'blue' },
+                                        }}
+                                    /> */}
+                                </div>
                                 <div className={style.descriptionBlock}>
                                     <label>Description</label>
                                     <Field as='textarea'
@@ -120,7 +130,6 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                                 </div>
 
                             </Form>
-
                         </Formik>
                     </div>
                 </div>

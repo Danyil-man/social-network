@@ -23,7 +23,7 @@ type initialStateType = {
     comments: Array<GetAllComments>
     singlePosts: Array<GetSinglePostType>
     message: string
-    postItem: CreatePostType
+    postItem: CreatePostType | Array<ImagePhotoType>
     pageSize: number
     postsCount: number
     currentPage: number

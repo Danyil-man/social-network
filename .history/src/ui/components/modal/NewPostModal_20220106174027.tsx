@@ -41,7 +41,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         uppy.on('complete', (result) => {
             const data = result.successful
 
-            const obj: Array<ImagePhotoType> = data.map(item => {
+            const obj: CreatePostType = postItem.photos_attributes.map(item => {
 
                 let key = '';
 
@@ -65,13 +65,42 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                 }
             })
             console.log('Photo', obj)
+            createPosts(obj)
         })
         return (
             <>
 
                 <DragDrop uppy={uppy} />
 
-
+                {/* <Formik
+                    initialValues={{
+                        description: postItem.description,
+                        
+                    }}
+                    onSubmit={submit}
+                >
+                    <Form className={style.body}>
+                        <div className={style.dropzoneBox}>
+                            <UploadPhoto />
+                        </div>
+                        <div className={style.descriptionBlock}>
+                            <label>Description</label>
+                            <Field as='textarea'
+                                type="text"
+                                name="description"
+                                placeholder="Description..."
+                            />
+                        </div>
+                        <div className={style.modalFooter}>
+                            <button onClick={() => closeModal(false)} className={style.cancelBtn}>
+                                Cancel
+                            </button>
+                            <button className={style.saveBtn} type="submit">
+                                Post
+                            </button>
+                        </div>
+                    </Form>
+                </Formik> */}
 
             </>
 

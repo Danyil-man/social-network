@@ -14,7 +14,7 @@ import { DragDrop } from "@uppy/react";
 
 type PropsModal = {
     closeModal: (setIsModal: boolean) => void;
-    createPosts: (postItem: CreatePostType) => void
+    createPosts: (postItem: CreatePostType | Array<ImagePhotoType>) => void
     isLoading: boolean
     postItem: CreatePostType
 }
@@ -32,7 +32,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
 
     const UploadPhoto = () => {
         const uppy = new Uppy({
-            meta: { type: 'photos' },
+            meta: { type: 'photos_attributes' },
             restrictions: { maxNumberOfFiles: 2 },
             autoProceed: true
         })
@@ -41,12 +41,11 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         uppy.on('complete', (result) => {
             const data = result.successful
 
-            const obj: Array<ImagePhotoType> = data.map(item => {
-
+            const obj: CreatePostType = obj.photos_attributes.map(item => {
                 let key = '';
 
-                if (item.meta.key) {
-                    key = item.meta.key as string;
+                if (item.image.metadata.filename) {
+                    key = item.image.metadata.filename as string
                 }
 
                 const [storage, id] = key.split('/')
@@ -61,27 +60,19 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                             mime_type: item.meta.type || ''
                         }
                     }
-
                 }
             })
-            console.log('Photo', obj)
+            console.log('Obj', obj)
+            createPosts(obj)
         })
         return (
-            <>
-
-                <DragDrop uppy={uppy} />
-
-
-
-            </>
-
-
+            <DragDrop uppy={uppy} />
         )
     }
 
     const submit = (values: any) => {
         //handleSubmit()
-        //uploadPhoto(values.photo)
+
         createPosts(values)
         console.log({ values })
     }
@@ -94,14 +85,32 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                         <Formik
                             initialValues={{
                                 description: postItem.description,
-                                photo: postItem.photos_attributes
+                                file: fileState
                             }}
                             onSubmit={submit}
                         >
-
                             <Form className={style.body}>
-                                {/* <UploadPhoto /> */}
-                                <UploadPhoto />
+                                <div className={style.dropzoneBox}>
+                                    <UploadPhoto />
+                                    {/* <Dropzone
+
+                                        onChangeStatus={handleChange}
+                                        //onSubmit={handleSubmit}
+                                        inputContent='Choose any photo from your library'
+                                        maxFiles={2}
+
+                                        styles={{
+                                            dropzone: {
+                                                width: 480, height: 345,
+                                                margin: 0,
+                                                padding: 0,
+                                                backgroundImage: dropImg, backgroundColor: 'lightgrey',
+                                                color: 'white'
+                                            },
+                                            dropzoneActive: { borderColor: 'blue' },
+                                        }}
+                                    /> */}
+                                </div>
                                 <div className={style.descriptionBlock}>
                                     <label>Description</label>
                                     <Field as='textarea'
@@ -120,7 +129,6 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                                 </div>
 
                             </Form>
-
                         </Formik>
                     </div>
                 </div>
@@ -131,4 +139,8 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
 }
 
 export default NewPostModal;
+
+function setFieldValue(arg0: string, arg1: any) {
+    throw new Error("Function not implemented.");
+}
 

@@ -12,7 +12,7 @@ type MiniProfileType = {
     isLoading: boolean
     postItem: CreatePostType
     editProfile: (account: AccountType) => void
-    createPosts: (postItem: CreatePostType) => void
+    createPosts: (postItem: CreatePostType | Array<ImagePhotoType>) => void
 }
 
 const MiniProfile: FC<MiniProfileType> = ({ profile, isLoading,

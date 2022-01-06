@@ -1,7 +1,7 @@
 import { ThunkAction } from "redux-thunk";
 import {
     CreatePostType, GetAllComments,
-    GetAllPostsType, GetSinglePostType, ImagePhotoType, PostAuthor, PostsAPI, UsersAPI
+    GetAllPostsType, GetSinglePostType, PostAuthor, PostsAPI, UsersAPI
 } from "../api/api"
 import { AppStateType, InfernActiontype } from "../redux/reduxStore"
 
@@ -120,7 +120,7 @@ const postsReducer = (state = initialState, action: ActionCreatorsType): initial
         case CREATE_POST:
             return {
                 ...state,
-                postItem: action.postItem 
+                postItem: action.postItem as CreatePostType
             }
 
         case GET_USER_POSTS:

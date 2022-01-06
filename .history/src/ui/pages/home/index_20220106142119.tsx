@@ -31,7 +31,7 @@ type ContainerHomeType = {
     getAllPosts: (currentPage: number) => void
     getPostsOfSingleUser: (username: string) => void
     setComment: (postId: number, message: string) => void
-    createPosts: (postItem: CreatePostType) => void
+    createPosts: (postItem: CreatePostType | Array<ImagePhotoType>) => void
 }
 
 

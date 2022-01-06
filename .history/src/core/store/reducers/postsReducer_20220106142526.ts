@@ -23,7 +23,7 @@ type initialStateType = {
     comments: Array<GetAllComments>
     singlePosts: Array<GetSinglePostType>
     message: string
-    postItem: CreatePostType
+    postItem: CreatePostType | Array<ImagePhotoType>
     pageSize: number
     postsCount: number
     currentPage: number
@@ -120,7 +120,7 @@ const postsReducer = (state = initialState, action: ActionCreatorsType): initial
         case CREATE_POST:
             return {
                 ...state,
-                postItem: action.postItem 
+                postItem: action.postItem
             }
 
         case GET_USER_POSTS:
@@ -210,7 +210,7 @@ export const getPost = (postId: number): ThunkType => async (dispatch) => {
     dispatch(actions.isLoading(false))
 }
 
-export const createPosts = (postItem: CreatePostType): ThunkType => async (dispatch) => {
+export const createPosts = (postItem: CreatePostType | Array<ImagePhotoType>): ThunkType => async (dispatch) => {
     dispatch(actions.isLoading(true))
     debugger
     let response = await PostsAPI.createPost(postItem)

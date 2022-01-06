@@ -23,7 +23,7 @@ type Homeprops = {
     getPostsOfSingleUser: (username: string) => void
     getProfileUser: (username: string) => void
     setComment: (postId: number, message: string) => void
-    createPosts: (postItem: CreatePostType) => void
+    createPosts: (postItem: CreatePostType | Array<ImagePhotoType>) => void
 }
 
 const Home: FC<Homeprops> = ({ profile, isLoading,
