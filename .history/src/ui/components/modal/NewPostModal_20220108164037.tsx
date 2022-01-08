@@ -74,6 +74,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         })
         return (
             <>
+
                 <DragDrop uppy={uppy} />
             </>
 

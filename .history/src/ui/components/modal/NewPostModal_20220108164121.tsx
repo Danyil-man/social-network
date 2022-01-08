@@ -74,6 +74,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         })
         return (
             <>
+                <Field name='photo' type='file' />
                 <DragDrop uppy={uppy} />
             </>
 

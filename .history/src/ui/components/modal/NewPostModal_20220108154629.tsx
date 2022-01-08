@@ -1,6 +1,6 @@
 import { CreatePostType, ImagePhotoType, PostsAPI } from "core/store/api/api";
 import { Field, Form, Formik } from "formik";
-import React, { Component, FC, useEffect, useRef, useState } from "react";
+import React, { Component, FC, useEffect, useState } from "react";
 import Preloader from "../common/Preloader";
 import style from "./Modal.module.scss"
 import Dropzone from "react-dropzone-uploader"
@@ -30,10 +30,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
     // }
 
 
-    type UploadPhotoType = {
-        obj: Array<ImagePhotoType>
-    }
-    const UploadPhoto: FC<UploadPhotoType> = ({ obj }) => {
+    const UploadPhoto = () => {
         const uppy = new Uppy({
             meta: { type: 'photos' },
             restrictions: { maxNumberOfFiles: 2 },
@@ -44,7 +41,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         uppy.on('complete', (result) => {
             const data = result.successful
 
-            obj = data.map(item => {
+            const obj: Array<ImagePhotoType> = data.map(item => {
 
                 let key = '';
 
@@ -54,6 +51,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                 const [storage, id] = key.split('/')
 
                 return {
+
                     image: {
                         id,
                         storage,
@@ -64,13 +62,12 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                         }
                     }
 
-
                 }
 
             })
 
             console.log('data:', data, 'Photo', obj)
-            //createPosts(obj)
+            createPosts(obj)
         })
         return (
             <>
@@ -80,14 +77,13 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
 
         )
     }
-    const obj: Array<ImagePhotoType> = postItem.photos_attributes
-    console.log('obj', obj)
 
     const submit = (values: any) => {
+        //handleSubmit()
+        //uploadPhoto(values.photo)
         createPosts(values)
         console.log({ values })
     }
-
     return (
         <div>
             {isLoading ? <Preloader /> : null}
@@ -97,15 +93,14 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                         <Formik
                             initialValues={{
                                 description: postItem.description,
-                                photo: obj
+                                photo: fileState
                             }}
                             onSubmit={submit}
                         >
 
                             <Form className={style.body}>
-                                <UploadPhoto obj={obj} />
-
-
+                                {/* <UploadPhoto /> */}
+                                <UploadPhoto />
                                 <div className={style.descriptionBlock}>
                                     <label>Description</label>
                                     <Field as='textarea'

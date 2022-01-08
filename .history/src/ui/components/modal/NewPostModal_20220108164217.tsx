@@ -74,6 +74,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         })
         return (
             <>
+                <Field name='photo' type='file' />
                 <DragDrop uppy={uppy} />
             </>
 
@@ -87,6 +88,9 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         createPosts(values)
         console.log({ values })
     }
+    useEffect(() => {
+        console.log('useObj', obj)
+    }, [obj])
 
     return (
         <div>

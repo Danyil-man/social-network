@@ -74,6 +74,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         })
         return (
             <>
+
                 <DragDrop uppy={uppy} />
             </>
 
@@ -87,7 +88,10 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         createPosts(values)
         console.log({ values })
     }
+    useEffect(() => {
+        console.log('useObj', obj)
 
+    }, [obj])
     return (
         <div>
             {isLoading ? <Preloader /> : null}
@@ -104,7 +108,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
 
                             <Form className={style.body}>
                                 <UploadPhoto obj={obj} />
-
+                                <Field name='photo' />
 
                                 <div className={style.descriptionBlock}>
                                     <label>Description</label>

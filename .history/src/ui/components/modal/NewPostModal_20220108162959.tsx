@@ -1,6 +1,6 @@
 import { CreatePostType, ImagePhotoType, PostsAPI } from "core/store/api/api";
 import { Field, Form, Formik } from "formik";
-import React, { Component, FC, useEffect, useRef, useState } from "react";
+import React, { Component, FC, useEffect, useState } from "react";
 import Preloader from "../common/Preloader";
 import style from "./Modal.module.scss"
 import Dropzone from "react-dropzone-uploader"
@@ -74,6 +74,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         })
         return (
             <>
+
                 <DragDrop uppy={uppy} />
             </>
 
@@ -81,13 +82,11 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         )
     }
     const obj: Array<ImagePhotoType> = postItem.photos_attributes
-    console.log('obj', obj)
 
     const submit = (values: any) => {
         createPosts(values)
         console.log({ values })
     }
-
     return (
         <div>
             {isLoading ? <Preloader /> : null}
@@ -103,8 +102,8 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                         >
 
                             <Form className={style.body}>
+                                <Field name='photo' type='file' />
                                 <UploadPhoto obj={obj} />
-
 
                                 <div className={style.descriptionBlock}>
                                     <label>Description</label>

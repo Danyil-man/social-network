@@ -74,6 +74,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         })
         return (
             <>
+
                 <DragDrop uppy={uppy} />
             </>
 
@@ -81,13 +82,15 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
         )
     }
     const obj: Array<ImagePhotoType> = postItem.photos_attributes
-    console.log('obj', obj)
 
     const submit = (values: any) => {
         createPosts(values)
         console.log({ values })
     }
-
+    useEffect(() => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        return () => { obj }
+    }, [obj])
     return (
         <div>
             {isLoading ? <Preloader /> : null}
@@ -104,7 +107,6 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
 
                             <Form className={style.body}>
                                 <UploadPhoto obj={obj} />
-
 
                                 <div className={style.descriptionBlock}>
                                     <label>Description</label>
