@@ -166,31 +166,35 @@ export const LoadImage = () => {
     uppy.on('complete', (result) => {
         const data = result.successful
 
-        const obj: CreatePostType = {
-            description: '',
-            photos_attributes: data.map(m => {
-                let key = '';
 
-                if (m.meta.key) {
-                    key = m.meta.key as string;
-                }
+        const obj: CreatePostType = data.map(m => {
+            let key = '';
 
-                const [storage, id] = key.split("/");
+            if (m.meta.key) {
+                key = m.meta.key as string;
+            }
 
-                return {
-                    image: {
-                        id,
-                        storage,
-                        metadata: {
-                            filename: m.name,
-                            size: m.size,
-                            mime_type: m.meta.type || ''
+            const [storage, id] = key.split("/");
+
+            return {
+                postItem: {
+                    description: '',
+                    photos_attributes: [
+                        {
+                            image: {
+                                id,
+                                storage,
+                                metadata: {
+                                    filename: m.name,
+                                    size: m.size,
+                                    mime_type: m.meta.type || ''
+                                }
+                            }
                         }
-                    }
+                    ]
                 }
-            })
-        }
-
+            }
+        })
         console.log('OBJ', obj)
         createPosts(obj)
     })

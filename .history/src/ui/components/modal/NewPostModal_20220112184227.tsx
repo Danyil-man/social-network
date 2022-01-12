@@ -191,6 +191,9 @@ export const LoadImage = () => {
             })
         }
 
+
+
+
         console.log('OBJ', obj)
         createPosts(obj)
     })

@@ -166,33 +166,29 @@ export const LoadImage = () => {
     uppy.on('complete', (result) => {
         const data = result.successful
 
-        const obj: CreatePostType = {
-            description: '',
-            photos_attributes: data.map(m => {
-                let key = '';
+        const obj: Array<ImagePhotoType> = data.map(m => {
+            let key = '';
 
-                if (m.meta.key) {
-                    key = m.meta.key as string;
-                }
+            if (m.meta.key) {
+                key = m.meta.key as string;
+            }
 
-                const [storage, id] = key.split("/");
+            const [storage, id] = key.split("/");
 
-                return {
-                    image: {
-                        id,
-                        storage,
-                        metadata: {
-                            filename: m.name,
-                            size: m.size,
-                            mime_type: m.meta.type || ''
-                        }
+            return {
+                image: {
+                    id,
+                    storage,
+                    metadata: {
+                        filename: m.name,
+                        size: m.size,
+                        mime_type: m.meta.type || ''
                     }
                 }
-            })
-        }
-
+            }
+        })
         console.log('OBJ', obj)
-        createPosts(obj)
+        //createPosts(obj)
     })
 
     return (
@@ -205,6 +201,10 @@ export const LoadImage = () => {
 const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
     isLoading, createPosts }) => {
     const [isModal, setIsModal] = useState(true);
+
+
+    const obj: Array<ImagePhotoType> = postItem.photos_attributes
+    console.log('obj', obj)
     const submit = (values: any) => {
 
         createPosts(values)
@@ -217,15 +217,15 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
             {isModal && (
                 <div className={style.wrapper}>
                     <div className={style.container}>
+                        <LoadImage />
                         <Formik
                             initialValues={{
                                 description: postItem.description,
-                                photos_attributes: postItem.photos_attributes
+                                photos_attributes: obj
                             }}
                             onSubmit={submit}
                         >
                             <Form className={style.body}>
-                                <LoadImage />
                                 {/* <UploadPhoto name='photos_attributes' /> */}
                                 {/* <input type='file' name="photos_attributes" /> */}
                                 {/* <GetUppy /> */}

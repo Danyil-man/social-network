@@ -120,6 +120,7 @@ type CollageType = {
 
 const CollagePhotosProfile: FC<CollageType> = ({ post }) => {
     return (<>
+
         {
             post.photos.map(photo => <div className={style.photoItem}>
                 <img key={photo.id} src={photo.url !== null ? photo.url : noPhoto} width={358} height={358} alt="profilePosts" />

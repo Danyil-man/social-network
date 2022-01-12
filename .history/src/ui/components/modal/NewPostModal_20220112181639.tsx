@@ -9,7 +9,6 @@ import dropImg from 'public/images/dropBackground.png';
 import Uppy, { UploadedUppyFile } from '@uppy/core';
 import AwsS3 from "@uppy/aws-s3";
 import { DragDrop } from "@uppy/react";
-import { createPosts } from "core/store/reducers/postsReducer";
 
 
 type PropsModal = {
@@ -154,57 +153,119 @@ export const transformFileData = (files: UploadedUppyFile<any, any>[]): ImagePho
 //     //return (<DragDrop uppy={uppy} />)
 // }
 
-export const LoadImage = () => {
-    const uppy = new Uppy({
-        meta: { type: 'avatar' },
-        restrictions: { maxNumberOfFiles: 2 },
-        autoProceed: true,
-    })
-
-    uppy.use(AwsS3, { companionUrl: 'https://linkstagram-api.ga/' })
-
-    uppy.on('complete', (result) => {
-        const data = result.successful
-
-        const obj: CreatePostType = {
-            description: '',
-            photos_attributes: data.map(m => {
-                let key = '';
-
-                if (m.meta.key) {
-                    key = m.meta.key as string;
-                }
-
-                const [storage, id] = key.split("/");
-
-                return {
-                    image: {
-                        id,
-                        storage,
-                        metadata: {
-                            filename: m.name,
-                            size: m.size,
-                            mime_type: m.meta.type || ''
-                        }
-                    }
-                }
-            })
-        }
-
-        console.log('OBJ', obj)
-        createPosts(obj)
-    })
-
-    return (
-        <DragDrop
-            uppy={uppy}
-        />
-    );
-};
-
 const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
     isLoading, createPosts }) => {
     const [isModal, setIsModal] = useState(true);
+
+    // const [files, setFiles] = useState([])
+    // const uppy = new Uppy({
+    //     meta: { type: "avatar" },
+    //     restrictions: {
+    //         maxNumberOfFiles: 2,
+    //         allowedFileTypes: ["image/*"],
+    //     },
+    //     autoProceed: true,
+    // });
+    // function uploadFiles() {
+    //     files.forEach((file: any) => {
+    //         const { name, type } = file;
+    //         uppy.addFile({
+    //             name,
+    //             type,
+    //             data: file,
+    //             source: "cache",
+    //         });
+    //     });
+
+    //     uppy.upload().then((x: any) => {
+    //         let data = x.successful;
+    //         let result: Array<ImagePhotoType> = data.map((img: any) => {
+    //             const { key, name, type } = img.meta;
+    //             let id = key.split("/")[1];
+
+    //             return {
+    //                 image: {
+    //                     id,
+    //                     storage: "cache",
+    //                     metadata: {
+    //                         size: img.size,
+    //                         mime_type: type,
+    //                         filename: name
+    //                     }
+    //                 }
+    //             };
+
+    //         });
+    //         console.log('data', data, 'result', result, 'files', files)
+    //         //onReady(result);
+    //         //uppy.cancelAll();
+    //     });
+    //     setFiles(files)
+    //    }
+
+    // const UploadPhoto = ({ name }: { name: string }) => {
+    //     // const [_, __, helpers] = useField(name)
+    //     // const [files, setFiles] = useState<UploadableFile[]>([])
+    //     // setFiles((curr) => [...curr])
+    //     // useEffect(() => {
+    //     //     helpers.setValue(files)
+    //     // }, [files])
+
+    //     // function onUpload(file: File) {
+    //     //     setFiles((curr) =>
+    //     //         curr.map((fw) => {
+    //     //             if (fw.file === file) {
+    //     //                 return { ...fw };
+    //     //             }
+    //     //             return fw;
+    //     //         })
+    //     //     );
+    //     // }
+
+
+    //     const uppy = new Uppy({
+    //         meta: { type: 'photos' },
+    //         restrictions: { maxNumberOfFiles: 2 },
+    //         autoProceed: true
+    //     })
+    //     uppy.use(AwsS3, { companionUrl: 'https://linkstagram-api.ga' })
+    //     uppy.on('upload-success', (result) => {
+    //         // const data = result.successful
+
+    //         // let obj: Array<ImagePhotoType> = data.map(item => {
+
+    //         //     let key = '';
+
+    //         //     if (item.meta.key) {
+    //         //         key = item.meta.key as string;
+    //         //     }
+    //         //     const [storage, id] = key.split('/')
+
+    //         //     return {
+    //         //         image: {
+    //         //             id,
+    //         //             storage,
+    //         //             metadata: {
+    //         //                 filename: item.name,
+    //         //                 size: item.size,
+    //         //                 mime_type: item.meta.type || ''
+    //         //             }
+    //         //         }
+    //         //     }
+
+    //         // })
+    //         console.log('Photo', 'result:', result)
+    //         //createPosts(obj)
+    //     })
+    //     return (
+    //         <>
+    //             <DragDrop uppy={uppy} />
+    //         </>
+    //     )
+    // }
+
+    const obj: Array<ImagePhotoType> = postItem.photos_attributes
+    console.log('obj', obj)
     const submit = (values: any) => {
 
         createPosts(values)
@@ -220,12 +281,11 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                         <Formik
                             initialValues={{
                                 description: postItem.description,
-                                photos_attributes: postItem.photos_attributes
+                                photos_attributes: obj
                             }}
                             onSubmit={submit}
                         >
                             <Form className={style.body}>
-                                <LoadImage />
                                 {/* <UploadPhoto name='photos_attributes' /> */}
                                 {/* <input type='file' name="photos_attributes" /> */}
                                 {/* <GetUppy /> */}
