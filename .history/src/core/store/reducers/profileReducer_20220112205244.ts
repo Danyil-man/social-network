@@ -15,7 +15,7 @@ type InitialStateType = {
     isLoading: boolean
 }
 
-export const initialState: InitialStateType = {
+const initialState: InitialStateType = {
     profile: {
         username: undefined,
         description: undefined,
@@ -25,7 +25,7 @@ export const initialState: InitialStateType = {
         following: undefined,
         job_title: undefined,
         last_name: undefined,
-        profile_photo_url: null,
+        profile_photo_url: undefined,
     },
     isLoading: false
 }

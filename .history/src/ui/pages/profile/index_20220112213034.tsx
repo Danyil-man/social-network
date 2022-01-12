@@ -23,7 +23,7 @@ type ContainerProfileType = {
 }
 
 const IdxProfile: FC<ContainerProfileType> = ({ isAuth, profile,
-    profilePosts, editProfile, getPostsOfSingleUser, createPosts, deletePost,
+    profilePosts, editProfile, getPostsOfSingleUser, createPosts,
     isLoading, postItem }) => {
 
     let username = profile.username
@@ -40,7 +40,6 @@ const IdxProfile: FC<ContainerProfileType> = ({ isAuth, profile,
                 postItem={postItem}
                 editProfile={editProfile}
                 createPosts={createPosts}
-                deletePost={deletePost}
                 isLoading={isLoading}
             />
 

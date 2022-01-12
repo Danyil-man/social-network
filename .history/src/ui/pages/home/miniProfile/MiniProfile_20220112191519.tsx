@@ -18,7 +18,56 @@ type MiniProfileType = {
     editProfile: (account: AccountType) => void
     createPosts: (postItem: CreatePostType) => void
 }
+type Image = {
+    createPosts: (postItem: CreatePostType) => void
+}
+export const LoadImage: FC<Image> = ({ createPosts }) => {
 
+    const uppy = new Uppy({
+        meta: { type: 'avatar' },
+        restrictions: { maxNumberOfFiles: 2 },
+        autoProceed: true,
+    })
+
+    uppy.use(AwsS3, { companionUrl: 'https://linkstagram-api.ga' })
+
+    uppy.on('complete', (result) => {
+        const data = result.successful
+
+        let obj: CreatePostType = {
+            description: '',
+            photos_attributes: data.map(m => {
+                let key = '';
+
+                if (m.meta.key) {
+                    key = m.meta.key as string;
+                }
+
+                const [storage, id] = key.split("/");
+
+                return {
+                    image: {
+                        id,
+                        storage,
+                        metadata: {
+                            filename: m.name,
+                            size: m.size,
+                            mime_type: m.meta.type || ''
+                        }
+                    }
+                }
+            })
+        }
+        console.log('OBJ', obj)
+        createPosts(obj)
+    })
+
+    return (
+        <DragDrop
+            uppy={uppy}
+        />
+    );
+};
 
 const MiniProfile: FC<MiniProfileType> = ({ profile, isLoading,
     postItem, editProfile, createPosts }) => {
@@ -71,6 +120,7 @@ const MiniProfile: FC<MiniProfileType> = ({ profile, isLoading,
                 profile={profile}
                 isLoading={isLoading}
             />}
+
 
         </div>
     )

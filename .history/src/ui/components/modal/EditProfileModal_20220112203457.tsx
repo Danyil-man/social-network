@@ -5,6 +5,7 @@ import { Field, Form, Formik } from "formik";
 import { AccountType, GetAccountType } from "core/store/api/api";
 import Preloader from "../common/Preloader";
 import { GetUserType } from "core/store/reducers/usersReducer";
+import ProfilePhoto2 from 'public/images/profile_photos/5777995.png'
 import AwsS3 from "@uppy/aws-s3";
 import { Uppy } from "@uppy/core";
 import { editProfile } from "core/store/reducers/profileReducer";
@@ -94,8 +95,8 @@ const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile, profile,
                 >
                     <Form className={style.formContainer}>
                         <div className={style.profilePhotoNameSide}>
-                            <div className={style.imgBlock} onClick={() => setEdit(true)}>
-                                <img width={148} src={profile.profile_photo_url !== null ? profile.profile_photo_url : UserPhoto} alt="" />
+                            <div className={style.imgBlock}>
+                                <img width={148} src={profile.profile_photo_url !== null ? profile.profile_photo_url : ProfilePhoto2} alt="" />
                             </div>
                             <div className={style.NamseFields}>
                                 <div className={style.formFieldItem}>
@@ -135,8 +136,7 @@ const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile, profile,
                     </Form>
                 </Formik>
             </div>
-            {edit && (<div className={style.loadImageModal} >
-                <div onClick={() => setEdit(false)}>X</div>
+            {edit && (<div>
                 <LoadImage editProfile={editProfile} profile={profile} />
             </div>)}
         </div>

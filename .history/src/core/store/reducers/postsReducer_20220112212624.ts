@@ -101,45 +101,46 @@ const postsReducer = (state = initialState, action: ActionCreatorsType): initial
                 ...state,
                 posts: state.posts.filter((post, i) => i !== action.postID)
 
-            }
+            })
+    }
 
         case GET_ALL_COMMENTS:
-            return {
-                ...state,
-                comments: action.comments
-            }
+return {
+    ...state,
+    comments: action.comments
+}
 
         case SET_COMMENT:
-            return {
-                ...state,
-                message: action.message
+return {
+    ...state,
+    message: action.message
 
-            }
+}
 
         case GET_POST:
-            return {
-                ...state,
-                posts: state.posts.map(post => {
-                    if (post.id === action.postID) {
-                        return { ...post }
-                    }
-                    return post
-                })
-            }
+return {
+    ...state,
+    posts: state.posts.map(post => {
+        if (post.id === action.postID) {
+            return { ...post }
+        }
+        return post
+    })
+}
 
         case CREATE_POST:
-            return {
-                ...state,
-                postItem: action.postItem
-            }
+return {
+    ...state,
+    postItem: action.postItem
+}
 
         case GET_USER_POSTS:
-            return {
-                ...state,
-                singlePosts: action.singlePost
-            }
+return {
+    ...state,
+    singlePosts: action.singlePost
+}
         default:
-            return state
+return state
     }
 }
 
@@ -229,12 +230,6 @@ export const createPosts = (postItem: CreatePostType): ThunkType => async (dispa
     let response = await PostsAPI.createPost(postItem)
     dispatch(actions.createPost(postItem, response.data))
     dispatch(actions.isLoading(false))
-}
-
-export const deletePost = (postId: number): ThunkType => async (dispatch) => {
-    let response = await PostsAPI.deletePost(postId)
-    debugger
-    dispatch(actions.deletePost(postId))
 }
 
 export const getPostsOfSingleUser = (username: string | undefined): ThunkType => async (dispatch) => {

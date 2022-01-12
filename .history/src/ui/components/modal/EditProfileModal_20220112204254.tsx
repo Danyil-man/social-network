@@ -136,7 +136,6 @@ const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile, profile,
                 </Formik>
             </div>
             {edit && (<div className={style.loadImageModal} >
-                <div onClick={() => setEdit(false)}>X</div>
                 <LoadImage editProfile={editProfile} profile={profile} />
             </div>)}
         </div>

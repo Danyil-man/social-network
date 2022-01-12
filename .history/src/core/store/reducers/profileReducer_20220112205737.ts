@@ -15,7 +15,7 @@ type InitialStateType = {
     isLoading: boolean
 }
 
-export const initialState: InitialStateType = {
+const initialState: InitialStateType = {
     profile: {
         username: undefined,
         description: undefined,

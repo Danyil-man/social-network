@@ -231,12 +231,6 @@ export const createPosts = (postItem: CreatePostType): ThunkType => async (dispa
     dispatch(actions.isLoading(false))
 }
 
-export const deletePost = (postId: number): ThunkType => async (dispatch) => {
-    let response = await PostsAPI.deletePost(postId)
-    debugger
-    dispatch(actions.deletePost(postId))
-}
-
 export const getPostsOfSingleUser = (username: string | undefined): ThunkType => async (dispatch) => {
     dispatch(actions.isLoading(true))
     let response = await PostsAPI.getPostsOfSingleUser(username)

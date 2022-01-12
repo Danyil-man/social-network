@@ -5,6 +5,7 @@ import { Field, Form, Formik } from "formik";
 import { AccountType, GetAccountType } from "core/store/api/api";
 import Preloader from "../common/Preloader";
 import { GetUserType } from "core/store/reducers/usersReducer";
+import ProfilePhoto2 from 'public/images/profile_photos/5777995.png'
 import AwsS3 from "@uppy/aws-s3";
 import { Uppy } from "@uppy/core";
 import { editProfile } from "core/store/reducers/profileReducer";
@@ -21,7 +22,7 @@ type Image = {
     profile: GetAccountType
 }
 export const LoadImage: FC<Image> = ({ editProfile, profile }) => {
-    let obj: AccountType
+
     const uppy = new Uppy({
         meta: { type: 'avatar' },
         restrictions: { maxNumberOfFiles: 2 },
@@ -32,21 +33,24 @@ export const LoadImage: FC<Image> = ({ editProfile, profile }) => {
 
     uppy.on('complete', (result) => {
         const data = result.successful
-        data.map(m => {
-            let key = '';
 
-            if (m.meta.key) {
-                key = m.meta.key as string;
-            }
+        let obj: AccountType = {
+            username: profile.username,
+            description: profile.description,
+            first_name: profile.first_name,
+            last_name: profile.last_name,
+            job_title: profile.job_title,
+            profile_photo: data.map(m => {
+                let key = '';
 
-            const [storage, id] = key.split("/");
-            obj = {
-                username: profile.username,
-                description: profile.description,
-                first_name: profile.first_name,
-                last_name: profile.last_name,
-                job_title: profile.job_title,
-                profile_photo: {
+                if (m.meta.key) {
+                    key = m.meta.key as string;
+                }
+
+                const [storage, id] = key.split("/");
+
+                return {
+
                     id,
                     storage,
                     metadata: {
@@ -56,8 +60,8 @@ export const LoadImage: FC<Image> = ({ editProfile, profile }) => {
                     }
 
                 }
-            }
-        })
+            })
+        }
         console.log('OBJ', obj)
         editProfile(obj)
     })
@@ -94,8 +98,8 @@ const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile, profile,
                 >
                     <Form className={style.formContainer}>
                         <div className={style.profilePhotoNameSide}>
-                            <div className={style.imgBlock} onClick={() => setEdit(true)}>
-                                <img width={148} src={profile.profile_photo_url !== null ? profile.profile_photo_url : UserPhoto} alt="" />
+                            <div className={style.imgBlock}>
+                                <img width={148} src={profile.profile_photo_url !== null ? profile.profile_photo_url : ProfilePhoto2} alt="" />
                             </div>
                             <div className={style.NamseFields}>
                                 <div className={style.formFieldItem}>
@@ -135,8 +139,7 @@ const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile, profile,
                     </Form>
                 </Formik>
             </div>
-            {edit && (<div className={style.loadImageModal} >
-                <div onClick={() => setEdit(false)}>X</div>
+            {edit && (<div>
                 <LoadImage editProfile={editProfile} profile={profile} />
             </div>)}
         </div>

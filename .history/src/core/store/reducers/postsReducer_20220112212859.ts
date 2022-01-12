@@ -233,7 +233,6 @@ export const createPosts = (postItem: CreatePostType): ThunkType => async (dispa
 
 export const deletePost = (postId: number): ThunkType => async (dispatch) => {
     let response = await PostsAPI.deletePost(postId)
-    debugger
     dispatch(actions.deletePost(postId))
 }
 

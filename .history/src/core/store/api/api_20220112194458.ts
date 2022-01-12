@@ -56,14 +56,14 @@ export const authAPI = {
 
 export type GetAccountType = {
   username?: string;
-  description?: string;
+  description?: null;
   email?: string;
-  first_name?: string;
+  first_name?: null;
   followers?: number;
   following?: number;
-  job_title?: string;
-  last_name?: string;
-  profile_photo_url: string | null;
+  job_title?: null;
+  last_name?: null;
+  profile_photo_url?: string;
 };
 
 export type AccountType = {
@@ -81,7 +81,7 @@ export type AccountPhotoType = {
   metadata: MetaDataType
 }
 
-export type MetaDataType = {
+type MetaDataType = {
   filename: string;
   size: number;
   mime_type: string
@@ -207,10 +207,9 @@ export const PostsAPI = {
     return instanceApi.get(`/posts/${postId}`)
   },
   createPost(postItem: CreatePostType) {
+    debugger
     return instanceApi.post<PostAuthor>('/posts', postItem)
-  },
-  deletePost(postId: number) {
-    return instanceApi.delete(`/posts/${postId}`)
+
   },
   getParams() {
     return instanceApi.get('/s3/params')

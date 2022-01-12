@@ -94,7 +94,7 @@ const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile, profile,
                 >
                     <Form className={style.formContainer}>
                         <div className={style.profilePhotoNameSide}>
-                            <div className={style.imgBlock} onClick={() => setEdit(true)}>
+                            <div className={style.imgBlock}>
                                 <img width={148} src={profile.profile_photo_url !== null ? profile.profile_photo_url : UserPhoto} alt="" />
                             </div>
                             <div className={style.NamseFields}>
@@ -135,8 +135,7 @@ const EditProfileModal: FC<EditModalType> = ({ closeModal, editProfile, profile,
                     </Form>
                 </Formik>
             </div>
-            {edit && (<div className={style.loadImageModal} >
-                <div onClick={() => setEdit(false)}>X</div>
+            {edit && (<div>
                 <LoadImage editProfile={editProfile} profile={profile} />
             </div>)}
         </div>

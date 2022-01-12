@@ -15,12 +15,11 @@ interface ProfileType {
     postItem: CreatePostType
     editProfile: (account: AccountType) => void
     createPosts: (postItem: CreatePostType) => void
-    deletePost: (postId: number) => void
     isLoading: boolean
 }
 
 const Profile: FC<ProfileType> = ({ profile, editProfile, createPosts,
-    deletePost, isLoading, profilePosts,
+    isLoading, profilePosts,
     postItem }) => {
     const { t } = useTranslation();
     console.log('ProPosts:', profilePosts)
@@ -62,7 +61,7 @@ const Profile: FC<ProfileType> = ({ profile, editProfile, createPosts,
                     </div>
                 </div>
                 <div className={style.photosCollageContent}>
-                    {profilePosts.map(post => <CollagePhotosProfile deletePost={deletePost} post={post} />)}
+                    {profilePosts.map(post => <CollagePhotosProfile post={post} />)}
                 </div>
             </div>
 
@@ -78,34 +77,21 @@ const Profile: FC<ProfileType> = ({ profile, editProfile, createPosts,
                 createPosts={createPosts}
                 isLoading={isLoading}
                 postItem={postItem} />}
-        </div>
 
+        </div>
     )
 }
 
 type CollageType = {
     post: GetAllPostsType
-    deletePost: (postId: number) => void
 }
 
-const CollagePhotosProfile: FC<CollageType> = ({ post, deletePost }) => {
-    const [isdeletePost, setDeletePost] = useState(false)
+const CollagePhotosProfile: FC<CollageType> = ({ post }) => {
     return (<>
         {
-            post.photos.map(photo => <div onClick={() => setDeletePost(true)} className={style.photoItem}>
+            post.photos.map(photo => <div className={style.photoItem}>
                 <img key={photo.id} src={photo.url !== null ? photo.url : noPhoto} width={358} height={358} alt="profilePosts" />
-
-                {isdeletePost && (
-                    <>
-                        <div>Delete Post {post.id} ?</div>
-                        <button onClick={() => deletePost(post.id)}>Yes</button>
-                        <button onClick={() => setDeletePost(false)}>No</button>
-                    </>
-
-                )}
-
-            </div>
-            )
+            </div>)
         }
     </>
     )

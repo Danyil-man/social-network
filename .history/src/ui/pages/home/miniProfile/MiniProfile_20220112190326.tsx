@@ -7,9 +7,6 @@ import { AccountType, CreatePostType, GetAccountType, ImagePhotoType } from "cor
 import EditProfileModal from "ui/components/modal/EditProfileModal";
 
 import { GetUserType } from "core/store/reducers/usersReducer";
-import { Uppy } from "@uppy/core";
-import AwsS3 from "@uppy/aws-s3";
-import { DragDrop } from "@uppy/react";
 
 type MiniProfileType = {
     profile: GetAccountType
@@ -18,7 +15,6 @@ type MiniProfileType = {
     editProfile: (account: AccountType) => void
     createPosts: (postItem: CreatePostType) => void
 }
-
 
 const MiniProfile: FC<MiniProfileType> = ({ profile, isLoading,
     postItem, editProfile, createPosts }) => {
@@ -71,6 +67,7 @@ const MiniProfile: FC<MiniProfileType> = ({ profile, isLoading,
                 profile={profile}
                 isLoading={isLoading}
             />}
+
 
         </div>
     )

@@ -1,6 +1,6 @@
 import { ThunkAction } from "redux-thunk";
 import {
-    CreatePostType, GetAccountType, GetAllComments,
+    CreatePostType, GetAllComments,
     GetAllPostsType, GetSinglePostType, ImagePhotoType, PostAuthor, PostsAPI, UsersAPI
 } from "../api/api"
 import { AppStateType, InfernActiontype } from "../redux/reduxStore"
@@ -28,7 +28,6 @@ type initialStateType = {
     pageSize: number
     postsCount: number
     currentPage: number
-    profname?: string
 }
 
 let initialState: initialStateType = {
@@ -99,8 +98,9 @@ const postsReducer = (state = initialState, action: ActionCreatorsType): initial
         case DELETE_POST:
             return {
                 ...state,
-                posts: state.posts.filter((post, i) => i !== action.postID)
-
+                posts: state.posts.map(post => {
+                    post.author.username === state.
+                })
             }
 
         case GET_ALL_COMMENTS:
@@ -229,12 +229,6 @@ export const createPosts = (postItem: CreatePostType): ThunkType => async (dispa
     let response = await PostsAPI.createPost(postItem)
     dispatch(actions.createPost(postItem, response.data))
     dispatch(actions.isLoading(false))
-}
-
-export const deletePost = (postId: number): ThunkType => async (dispatch) => {
-    let response = await PostsAPI.deletePost(postId)
-    debugger
-    dispatch(actions.deletePost(postId))
 }
 
 export const getPostsOfSingleUser = (username: string | undefined): ThunkType => async (dispatch) => {
