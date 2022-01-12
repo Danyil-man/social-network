@@ -11,6 +11,7 @@ import AwsS3 from "@uppy/aws-s3";
 import { DragDrop } from "@uppy/react";
 import { createPosts } from "core/store/reducers/postsReducer";
 
+
 type PropsModal = {
     closeModal: (setIsModal: boolean) => void;
     createPosts: (postItem: CreatePostType) => void
@@ -21,73 +22,73 @@ type PropsModal = {
 
 
 // let file = new File([''], 'filename');
-// let files: File[] = [];
-// export const GetUppy = () => {
-//     const uppy = new Uppy({
-//         meta: { type: 'avatar' },
-//         restrictions: {
-//             maxNumberOfFiles: 2,
-//             allowedFileTypes: ["image/png", "image/jpg", "image/jpeg"],
-//         },
-//         autoProceed: false,
-//     })
-//     uppy.use(AwsS3, {
-//         companionUrl: 'https://linkstagram-api.ga',
-//     });
-//     console.log('uppy', uppy)
-//     return <DragDrop uppy={uppy} />;
-// }
+let files: File[] = [];
+export const GetUppy = () => {
+    const uppy = new Uppy({
+        meta: { type: 'avatar' },
+        restrictions: {
+            maxNumberOfFiles: 2,
+            allowedFileTypes: ["image/png", "image/jpg", "image/jpeg"],
+        },
+        autoProceed: false,
+    })
+    uppy.use(AwsS3, {
+        companionUrl: 'https://linkstagram-api.ga',
+    });
+    console.log('uppy', uppy)
+    return <DragDrop uppy={uppy} />;
+}
 
-// const addFile = (uppy: Uppy, file: File) => {
-//     return uppy.addFile({
-//         name: file.name,
-//         type: file.type,
-//         data: file,
-//         source: 'Local'
-//     })
-// }
+const addFile = (uppy: Uppy, file: File) => {
+    return uppy.addFile({
+        name: file.name,
+        type: file.type,
+        data: file,
+        source: 'Local'
+    })
+}
 
-// const uploadFiles = async (files: File[]) => {
-//     //const uppy = getUppy();
-//     const uppy = new Uppy({
-//         meta: { type: 'avatar' },
-//         restrictions: {
-//             maxNumberOfFiles: 2,
-//             allowedFileTypes: ["image/png", "image/jpg", "image/jpeg"],
-//         },
-//         autoProceed: true,
-//     })
-//     files.forEach(file => addFile(uppy, file));
+const uploadFiles = async (files: File[]) => {
+    //const uppy = getUppy();
+    const uppy = new Uppy({
+        meta: { type: 'avatar' },
+        restrictions: {
+            maxNumberOfFiles: 2,
+            allowedFileTypes: ["image/png", "image/jpg", "image/jpeg"],
+        },
+        autoProceed: true,
+    })
+    files.forEach(file => addFile(uppy, file));
 
-//     const result = await uppy.upload();
-//     if (result.failed.length) {
-//         return result.failed;
-//     }
-//     if (result.successful.length) {
-//         return transformFileData(result.successful);
-//     }
-//     console.log('resUp', result)
-//     return [];
-// }
+    const result = await uppy.upload();
+    if (result.failed.length) {
+        return result.failed;
+    }
+    if (result.successful.length) {
+        return transformFileData(result.successful);
+    }
+    console.log('resUp', result)
+    return [];
+}
 
-// export const transformFileData = (files: UploadedUppyFile<any, any>[]): ImagePhotoType[] => {
-//     return files.map(file => {
-//         const key: string = (file.meta as any).key;
-//         const [storage, id] = key.split("/");
-//         const params: ImagePhotoType = {
-//             image: {
-//                 id,
-//                 storage,
-//                 metadata: {
-//                     filename: file.meta.name,
-//                     size: file.data.size,
-//                     mime_type: file.data.type
-//                 }
-//             }
-//         }
-//         return params;
-//     });
-// }
+export const transformFileData = (files: UploadedUppyFile<any, any>[]): ImagePhotoType[] => {
+    return files.map(file => {
+        const key: string = (file.meta as any).key;
+        const [storage, id] = key.split("/");
+        const params: ImagePhotoType = {
+            image: {
+                id,
+                storage,
+                metadata: {
+                    filename: file.meta.name,
+                    size: file.data.size,
+                    mime_type: file.data.type
+                }
+            }
+        }
+        return params;
+    });
+}
 
 // export interface UploadableFile {
 //     file: File;
@@ -152,19 +153,15 @@ type PropsModal = {
 //     });
 //     //return (<DragDrop uppy={uppy} />)
 // }
-type Image = {
-    createPosts: (postItem: CreatePostType) => void
-}
 
-export const LoadImage: FC<Image> = ({ createPosts }) => {
-
+export const LoadImage = () => {
     const uppy = new Uppy({
         meta: { type: 'avatar' },
         restrictions: { maxNumberOfFiles: 2 },
         autoProceed: true,
     })
 
-    uppy.use(AwsS3, { companionUrl: 'https://linkstagram-api.ga' })
+    uppy.use(AwsS3, { companionUrl: 'https://linkstagram-api.ga/' })
 
     uppy.on('complete', (result) => {
         const data = result.successful
@@ -193,6 +190,7 @@ export const LoadImage: FC<Image> = ({ createPosts }) => {
                 }
             })
         }
+
         console.log('OBJ', obj)
         createPosts(obj)
     })
@@ -227,7 +225,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                             onSubmit={submit}
                         >
                             <Form className={style.body}>
-                                <LoadImage createPosts={createPosts} />
+                                <LoadImage />
                                 {/* <UploadPhoto name='photos_attributes' /> */}
                                 {/* <input type='file' name="photos_attributes" /> */}
                                 {/* <GetUppy /> */}

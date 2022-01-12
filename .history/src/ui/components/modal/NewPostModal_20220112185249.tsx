@@ -152,11 +152,8 @@ type PropsModal = {
 //     });
 //     //return (<DragDrop uppy={uppy} />)
 // }
-type Image = {
-    createPosts: (postItem: CreatePostType) => void
-}
 
-export const LoadImage: FC<Image> = ({ createPosts }) => {
+export const LoadImage = () => {
 
     const uppy = new Uppy({
         meta: { type: 'avatar' },
@@ -227,7 +224,7 @@ const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
                             onSubmit={submit}
                         >
                             <Form className={style.body}>
-                                <LoadImage createPosts={createPosts} />
+                                <LoadImage />
                                 {/* <UploadPhoto name='photos_attributes' /> */}
                                 {/* <input type='file' name="photos_attributes" /> */}
                                 {/* <GetUppy /> */}
