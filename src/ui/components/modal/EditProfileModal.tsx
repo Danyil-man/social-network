@@ -2,7 +2,7 @@ import React, { FC, useCallback, useEffect, useState } from "react";
 import style from './EditProfileModal.module.scss'
 import UserPhoto from '../../../public/images/withoutphoto.png';
 import { Field, Form, Formik } from "formik";
-import { AccountType, GetAccountType } from "core/store/api/api";
+import { AccountPhotoType, AccountType, GetAccountType } from "core/store/api/api";
 import Preloader from "../common/Preloader";
 import { GetUserType } from "core/store/reducers/usersReducer";
 import AwsS3 from "@uppy/aws-s3";
@@ -32,6 +32,7 @@ export const LoadImage: FC<Image> = ({ editProfile, profile }) => {
 
     uppy.on('complete', (result) => {
         const data = result.successful
+
         data.map(m => {
             let key = '';
 

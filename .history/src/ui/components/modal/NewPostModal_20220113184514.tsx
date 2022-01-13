@@ -22,13 +22,12 @@ type Image = {
 }
 
 export const LoadImage: FC<Image> = ({ createPosts, closeModal }) => {
-
-    const [descriptions, setDescription] = useState("")
-    const [photo, setPhoto] = useState<ImagePhotoType[]>([])
-    let obj: CreatePostType = {
-        description: descriptions,
-        photos_attributes: photo
+    let obj: CreatePostType
+    function Submit() {
+        createPosts(obj)
+        console.log(obj)
     }
+    const [descriptions, setDescription] = useState("")
     const uppy = new Uppy({
         meta: { type: 'avatar' },
         restrictions: { maxNumberOfFiles: 2 },
@@ -63,29 +62,23 @@ export const LoadImage: FC<Image> = ({ createPosts, closeModal }) => {
                     }
                 }
             })
-
         }
-        setPhoto(obj.photos_attributes)
         console.log('OBJ', obj)
 
     })
 
-    function Submit() {
-        createPosts(obj)
-        console.log('SUbmitObj', obj)
-    }
 
     return (<>
         <DragDrop
             width="100%"
-            height="350px"
+            height="400px"
 
             uppy={uppy}
         />
-        <form className={style.body}>
+        <form onSubmit={Submit} className={style.body}>
             <div className={style.descriptionBlock}>
                 <label>Description</label>
-                <textarea
+                <input
                     placeholder="Description..."
                     onChange={(e) => setDescription(e.target.value)}
                 />
@@ -94,7 +87,7 @@ export const LoadImage: FC<Image> = ({ createPosts, closeModal }) => {
                 <button onClick={() => closeModal(false)} className={style.cancelBtn}>
                     Cancel
                 </button>
-                <button onClick={Submit} className={style.saveBtn} type="submit">
+                <button className={style.saveBtn} type="submit">
                     Post
                 </button>
             </div>

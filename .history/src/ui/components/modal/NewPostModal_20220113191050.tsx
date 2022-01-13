@@ -82,7 +82,7 @@ export const LoadImage: FC<Image> = ({ createPosts, closeModal }) => {
 
             uppy={uppy}
         />
-        <form className={style.body}>
+        <form onSubmit={Submit} className={style.body}>
             <div className={style.descriptionBlock}>
                 <label>Description</label>
                 <textarea
@@ -94,7 +94,7 @@ export const LoadImage: FC<Image> = ({ createPosts, closeModal }) => {
                 <button onClick={() => closeModal(false)} className={style.cancelBtn}>
                     Cancel
                 </button>
-                <button onClick={Submit} className={style.saveBtn} type="submit">
+                <button className={style.saveBtn} type="submit">
                     Post
                 </button>
             </div>

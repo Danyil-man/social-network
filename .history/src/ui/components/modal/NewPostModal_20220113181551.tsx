@@ -1,10 +1,12 @@
 import { CreatePostType, ImagePhotoType, PostsAPI } from "core/store/api/api";
-import React, { FC, useEffect, useState } from "react";
+import { Field, FieldArray, Form, Formik, useField } from "formik";
+import React, { Component, FC, useEffect, useRef, useState } from "react";
 import Preloader from "../common/Preloader";
 import style from "./Modal.module.scss"
+import Dropzone from "react-dropzone-uploader"
 import 'react-dropzone-uploader/dist/styles.css'
 import dropImg from 'public/images/dropBackground.png';
-import Uppy from '@uppy/core';
+import Uppy, { UploadedUppyFile } from '@uppy/core';
 import AwsS3 from "@uppy/aws-s3";
 import { DragDrop } from "@uppy/react";
 import { createPosts } from "core/store/reducers/postsReducer";
@@ -22,13 +24,8 @@ type Image = {
 }
 
 export const LoadImage: FC<Image> = ({ createPosts, closeModal }) => {
-
-    const [descriptions, setDescription] = useState("")
-    const [photo, setPhoto] = useState<ImagePhotoType[]>([])
-    let obj: CreatePostType = {
-        description: descriptions,
-        photos_attributes: photo
-    }
+    let obj: CreatePostType
+    const [descriptions, setDescription] = useState('')
     const uppy = new Uppy({
         meta: { type: 'avatar' },
         restrictions: { maxNumberOfFiles: 2 },
@@ -63,29 +60,20 @@ export const LoadImage: FC<Image> = ({ createPosts, closeModal }) => {
                     }
                 }
             })
-
         }
-        setPhoto(obj.photos_attributes)
         console.log('OBJ', obj)
-
-    })
-
-    function Submit() {
         createPosts(obj)
-        console.log('SUbmitObj', obj)
-    }
+    })
 
     return (<>
         <DragDrop
-            width="100%"
-            height="350px"
-
             uppy={uppy}
         />
         <form className={style.body}>
             <div className={style.descriptionBlock}>
                 <label>Description</label>
-                <textarea
+                <input
+                    name='description'
                     placeholder="Description..."
                     onChange={(e) => setDescription(e.target.value)}
                 />
@@ -94,7 +82,7 @@ export const LoadImage: FC<Image> = ({ createPosts, closeModal }) => {
                 <button onClick={() => closeModal(false)} className={style.cancelBtn}>
                     Cancel
                 </button>
-                <button onClick={Submit} className={style.saveBtn} type="submit">
+                <button className={style.saveBtn} type="submit">
                     Post
                 </button>
             </div>
@@ -104,9 +92,13 @@ export const LoadImage: FC<Image> = ({ createPosts, closeModal }) => {
     );
 };
 
-const NewPostModal: FC<PropsModal> = ({ closeModal,
+const NewPostModal: FC<PropsModal> = ({ closeModal, postItem,
     isLoading, createPosts }) => {
     const [isModal, setIsModal] = useState(true);
+    const submit = () => {
+        //createPosts()
+        console.log()
+    }
 
     return (
         <div>
