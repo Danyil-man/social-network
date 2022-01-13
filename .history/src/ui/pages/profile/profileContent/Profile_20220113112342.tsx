@@ -90,29 +90,25 @@ type CollageType = {
 
 const CollagePhotosProfile: FC<CollageType> = ({ post, deletePost }) => {
     const [isdeletePost, setDeletePost] = useState(false)
-    console.log(isdeletePost)
     return (<>
         {
             post.photos.map(photo => <div onClick={() => setDeletePost(true)} className={style.photoItem}>
                 <img key={photo.id} src={photo.url !== null ? photo.url : noPhoto} width={358} height={358} alt="profilePosts" />
-            </div>
-            )
 
-        }
-        {isdeletePost && (
-            <div className={style.deletePostBlock}>
-                <div className={style.deleteContainer}>
-                    <p>Delete this post?</p>
-                    <div className={style.buttonBlock}>
-                        <button className={style.cancelButton} onClick={() => setDeletePost(false)}>No</button>
-                        <button className={style.deleteButton} onClick={() => deletePost(post.id)}>Yes</button>
-
+                {isdeletePost && (
+                    <div className={style.deletePostBlock}>
+                        <div className={style.deleteContainer}>
+                            <div>Are you sure that you want to delete this post?</div>
+                            <button onClick={() => deletePost(post.id)}>Yes</button>
+                            <button onClick={() => setDeletePost(false)}>No</button>
+                        </div>
                     </div>
 
-                </div>
-            </div>
+                )}
 
-        )}
+            </div>
+            )
+        }
     </>
     )
 }

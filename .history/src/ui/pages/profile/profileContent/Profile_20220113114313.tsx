@@ -103,12 +103,9 @@ const CollagePhotosProfile: FC<CollageType> = ({ post, deletePost }) => {
             <div className={style.deletePostBlock}>
                 <div className={style.deleteContainer}>
                     <p>Delete this post?</p>
-                    <div className={style.buttonBlock}>
-                        <button className={style.cancelButton} onClick={() => setDeletePost(false)}>No</button>
-                        <button className={style.deleteButton} onClick={() => deletePost(post.id)}>Yes</button>
-
-                    </div>
-
+                    <div className={style.buttonBlock}></div>
+                    <button className={style.deleteButton} onClick={() => deletePost(post.id)}>Yes</button>
+                    <button className={style.cancelButton} onClick={() => setDeletePost(false)}>No</button>
                 </div>
             </div>
 
