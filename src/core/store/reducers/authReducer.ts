@@ -29,10 +29,7 @@ const initialState: InitialStateType = {
 
 //                                         REDUCER
 
-const authReducer = (
-  state = initialState,
-  action: ActionCreatorsType
-): InitialStateType => {
+const authReducer = (state = initialState, action: ActionCreatorsType): InitialStateType => {
   switch (action.type) {
     case SET_USER_DATA:
       return {

@@ -27,6 +27,9 @@ const Profile: FC<ProfileType> = ({ profile, editProfile, createPosts,
     const [isModalEdit, setIsModalEdit] = useState(false)
     const [isNewPostModal, setIsNewPostModal] = useState(false)
 
+    useEffect(() => {
+        return () => { profilePosts }
+    }, [profilePosts])
     return (
         <div className={style.wrapper}>
             <div className={style.content}>

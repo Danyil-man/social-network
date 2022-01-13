@@ -40,7 +40,8 @@ export const LoadImage: FC<Image> = ({ editProfile, profile }) => {
             }
 
             const [storage, id] = key.split("/");
-            obj = {
+
+            return {
                 username: profile.username,
                 description: profile.description,
                 first_name: profile.first_name,
@@ -54,11 +55,7 @@ export const LoadImage: FC<Image> = ({ editProfile, profile }) => {
                         size: m.size,
                         mime_type: m.meta.type || ''
                     }
-
                 }
-            }
-            return {
-                obj
             }
         })
         console.log('OBJ', obj)

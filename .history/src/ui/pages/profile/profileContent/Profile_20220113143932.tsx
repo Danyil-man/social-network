@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import { useTranslation } from "react-i18next";
 import style from "./Profile.module.scss";
 import ProfilePhoto from "public/images/withoutphoto.png";
@@ -26,7 +26,6 @@ const Profile: FC<ProfileType> = ({ profile, editProfile, createPosts,
     console.log('ProPosts:', profilePosts)
     const [isModalEdit, setIsModalEdit] = useState(false)
     const [isNewPostModal, setIsNewPostModal] = useState(false)
-
     return (
         <div className={style.wrapper}>
             <div className={style.content}>
@@ -109,7 +108,7 @@ const CollagePhotosProfile: FC<CollageType> = ({ post, deletePost }) => {
                     <p>Delete this post?</p>
                     <div className={style.buttonBlock}>
                         <button className={style.cancelButton} onClick={() => setDeletePost(false)}>No</button>
-                        <button className={style.deleteButton} onClick={deletePostSucces}>Yes</button>
+                        <button className={style.deleteButton} onClick={deltePost}>Yes</button>
 
                     </div>
 

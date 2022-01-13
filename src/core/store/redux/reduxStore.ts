@@ -6,7 +6,6 @@ import postsReducer from "../reducers/postsReducer";
 import profileReducer from "../reducers/profileReducer";
 import userReducer from "../reducers/usersReducer";
 
-
 const reducerPack = combineReducers({
     auth: authReducer,
     profile: profileReducer,
@@ -14,10 +13,8 @@ const reducerPack = combineReducers({
     posts: postsReducer
 })
 
-
 type reducerPackType = typeof reducerPack;
 export type AppStateType = ReturnType<reducerPackType>;
-
 
 export type InfernActiontype<T> = T extends { [key: string]: (...args: any[]) => infer U } ? U : never
 //@ts-ignore

@@ -1,12 +1,14 @@
+import axios from "axios";
 import React from "react";
 import { ThunkAction } from "redux-thunk";
-import { authAPI, instanceApi } from "../api/api";
+import { authAPI, instanceApi, profileAPI } from "../api/api";
 import { AppStateType, InfernActiontype } from "../redux/reduxStore";
-import { getAllPosts } from "./postsReducer";
-import { getProfile, getProfileUser } from "./profileReducer";
+import { getAllComments, getAllPosts } from "./postsReducer";
+import { getProfile } from "./profileReducer";
 import { getUsers } from "./usersReducer";
 const SET_USER_DATA = "SET_USER_DATA";
 const GET_USER_DATA = "GET_USER_DATA";
+const DELETE_USER_DATA = "DELETE_USER_DATA";
 const SET_IS_LOADING = "IS_LOADING"
 
 interface InitialStateType {
@@ -27,10 +29,7 @@ const initialState: InitialStateType = {
 
 //                                         REDUCER
 
-const authReducer = (
-  state = initialState,
-  action: ActionCreatorsType
-): InitialStateType => {
+const authReducer = (state = initialState, action: ActionCreatorsType): InitialStateType => {
   switch (action.type) {
     case SET_USER_DATA:
       return {
@@ -48,6 +47,14 @@ const authReducer = (
         password: action.data.password,
         isAuth: true,
       };
+
+    case DELETE_USER_DATA:
+      return {
+        ...state,
+        login: action.data.login,
+        password: action.data.password,
+        isAuth: false,
+      }
 
     case SET_IS_LOADING:
       return {
@@ -86,6 +93,13 @@ export const actions = {
     data: { login, password, isAuth },
   } as const),
 
+  deleteUserData: (login: string | undefined,
+    password: string | undefined,
+    isAuth: boolean | undefined) => ({
+      type: DELETE_USER_DATA,
+      data: { login, password, isAuth }
+    } as const),
+
   setIsLoading: (isLoading: boolean) => ({
     type: SET_IS_LOADING,
     isLoading
@@ -107,11 +121,16 @@ export const registration =
       dispatch(actions.setIsLoading(true))
       let response = await authAPI.reg(username, login, password)
       if (response.data.success) {
+        //let token = response.config.headers.Authorization
+        localStorage.setItem('token', response.headers.authorization)
         dispatch(actions.setUserData(username, login, password, true))
+
         dispatch(actions.getUserData(login, password, true));
-        //dispatch(getProfile())
+
+        //localStorage.setItem('token', token)
+        dispatch(getProfile())
         dispatch(getUsers()) //Set Users
-        dispatch(getAllPosts()) //Set Posts 
+        //dispatch(getAllPosts()) //Set Posts 
         //alert(response.data.success)
         dispatch(actions.setIsLoading(false))
       } else {
@@ -124,11 +143,16 @@ export const logIn =
     async (dispatch) => {
       dispatch(actions.setIsLoading(true))
       let response = await authAPI.login(login, password)
-      if (response.data.success) {
+      if (response) {
+        localStorage.setItem('token', response.headers.authorization)
         dispatch(actions.getUserData(login, password, true));
-        //dispatch(getProfile()) //Request to Set Profile Data
+        //let token = response.config.headers.Authorization
+        //localStorage.setItem('token', token)
+        //axios.defaults.headers.common['Authorization'] = 'Bearer ' + 
+
+        dispatch(getProfile()) //Request to Set Profile Data
         dispatch(getUsers()) // Response Users List
-        dispatch(getAllPosts()) //Set Posts 
+        //dispatch(getAllPosts()) //Set Posts 
         //alert(response.data.success)
         dispatch(actions.setIsLoading(false))
       } else {
@@ -137,7 +161,8 @@ export const logIn =
     };
 
 export const logOut = (): ThunkType => async (dispatch) => {
-
+  //localStorage.removeItem('token')
+  dispatch(actions.deleteUserData(undefined, undefined, false))
 };
 
 export default authReducer;
