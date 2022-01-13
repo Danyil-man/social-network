@@ -28,10 +28,9 @@ const IdxProfile: FC<ContainerProfileType> = ({ isAuth, profile,
 
     let username = profile.username
     useEffect(() => {
-        getPostsOfSingleUser(username)
+        //getPostsOfSingleUser(username)
 
-        return () => { getPostsOfSingleUser(username) }
-    }, [getPostsOfSingleUser])
+    }, [profilePosts])
 
     return isAuth ? (
         <div>

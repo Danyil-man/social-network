@@ -42,7 +42,7 @@ const PostModal: FC<PropsPostsModal> = ({ closeModal, post,
     useEffect(() => {
         getAllComments(post.id)
         console.log('postId', post.id)
-    }, [post.id, getAllComments])
+    }, [post.id, comments, getAllComments])
 
     const submit = (values: any) => {
         setComment(values.postId, values.message)

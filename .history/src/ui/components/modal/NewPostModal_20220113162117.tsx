@@ -24,7 +24,6 @@ type Image = {
 
 export const LoadImage: FC<Image> = ({ createPosts }) => {
     let obj: CreatePostType
-    const [descriptions, setDescription] = useState('')
     const uppy = new Uppy({
         meta: { type: 'avatar' },
         restrictions: { maxNumberOfFiles: 2 },
@@ -37,7 +36,7 @@ export const LoadImage: FC<Image> = ({ createPosts }) => {
         const data = result.successful
 
         obj = {
-            description: descriptions,
+            description: '',
             photos_attributes: data.map(m => {
                 let key = '';
 
@@ -68,7 +67,7 @@ export const LoadImage: FC<Image> = ({ createPosts }) => {
         <DragDrop
             uppy={uppy}
         />
-        <input type='text' name='description' onChange={(e) => setDescription(e.target.value)} />
+        <input type='textarea' />
     </>
 
     );
