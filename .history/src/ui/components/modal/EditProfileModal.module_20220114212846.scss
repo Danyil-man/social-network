@@ -1,0 +1,207 @@
+// Modal
+.loadImageModal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  .loadPhotoBlock {
+    width: 300px;
+    height: 150px;
+    background-color: #fff;
+    border-radius: 18px;
+    position: relative;
+    padding: 20px;
+    .uploadPhotoBlock {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      margin-bottom: 20px;
+      .btnBlock {
+        display: flex;
+        justify-content: center;
+        button {
+          background: none;
+          border: none;
+          font-size: 16px;
+        }
+      }
+      p {
+        text-align: center;
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+//Main
+.wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.container {
+  width: 100%;
+  max-width: 576px;
+  height: 672px;
+  background-color: #f7f4f4;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 48px 48px 70px 48px;
+  border-radius: 32px;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h4 {
+    font-size: 36px;
+    font-weight: 700;
+  }
+}
+
+.formContainer {
+  width: 100%;
+  label {
+    font-size: 14px;
+    opacity: 0.6;
+    font-weight: 500;
+    display: flex;
+    justify-content: start;
+  }
+
+  .descriptionProfileBlock {
+    width: 100%;
+  }
+
+  .formFieldItem {
+    margin-bottom: 25px;
+    &:last-child {
+      margin-bottom: 0px;
+    }
+  }
+
+  input {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid #c9cad1;
+    margin-top: 2px;
+    font-weight: 500;
+  }
+  .profilePhotoNameSide {
+    display: flex;
+    margin: 32px 0;
+    .imgBlock {
+      cursor: pointer;
+      margin-right: 40px;
+    }
+    .NamseFields {
+      width: 100%;
+    }
+  }
+}
+
+.editFormFooter {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  .cancelBtn {
+    width: 235px;
+    height: 50px;
+    border: 1px solid #c9cad1;
+    border-radius: 12px;
+    background: none;
+    background-color: #fff;
+    cursor: pointer;
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    &:hover {
+      background-color: #333;
+      color: #fff;
+      transition: 0.3s ease-in-out;
+    }
+  }
+  .saveBtn {
+    width: 235px;
+    height: 50px;
+    border: 1px solid #c9cad1;
+    border-radius: 12px;
+    background: none;
+    background-color: #0087ff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    &:hover {
+      background-color: #fff;
+      color: #0087ff;
+      transition: 0.3s ease-in-out;
+    }
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+  }
+
+  .container {
+    width: 100%;
+    height: 100%;
+    background-color: #f7f4f4;
+    box-shadow: none;
+    padding: 88px 15px 0px 15px;
+    border-radius: 0px;
+  }
+  .formContainer {
+    width: 100%;
+  }
+  .modalHeader {
+    display: none;
+  }
+  .imgBlock {
+    display: none;
+  }
+  .editFormFooter {
+    position: absolute;
+    flex-direction: column-reverse;
+    padding: 15px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    .cancelBtn {
+      width: 100%;
+    }
+    .saveBtn {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+}
